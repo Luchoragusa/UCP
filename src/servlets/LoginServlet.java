@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 import data.*;
 import entities.*;
-import logic.Login;
 
 /**
  * Servlet implementation class LoginServlet
@@ -34,7 +34,15 @@ public class LoginServlet extends HttpServlet {
 	{
 		// TODO Auto-generated method stub
 		try
-		{		
+		{
+			
+			//i.setUsuario(request.getParameter("txtUser"));
+			//i.setPw(request.getParameter("txtPw"));
+			
+			//Login ctrlLogin = new Login();
+			//i=ctrlLogin.validate(i);
+			
+			DataIntegrante di = new DataIntegrante();
 			Integrante i = new Integrante();
 			String usuario = request.getParameter("txtUser");
 			String pw = request.getParameter("txtPw");
@@ -42,8 +50,7 @@ public class LoginServlet extends HttpServlet {
 			i.setUsuario(usuario);
 			i.setPw(pw);
 			
-			Login ctrlLogin = new Login();
-			i=ctrlLogin.validate(i);
+			i = di.getByUser(i);
 			
 			if (i.getUsuario() == usuario && i.getPw() == pw)
 			{
@@ -51,8 +58,13 @@ public class LoginServlet extends HttpServlet {
 				response.sendRedirect("home.jsp");
 			}
 			else { 
+<<<<<<< HEAD
+				//JOptionPane.showMessageDialog(null, "Login inválido.", "Login Error", JOptionPane.ERROR_MESSAGE);
+				
+=======
 				//response.sendRedirect("home.jsp");
 				request.getRequestDispatcher("login.jsp");
+>>>>>>> 7859f1f0a35ede8daf5402fde3349722ffd96fb4
 			}
 		}
 		catch (Exception e) {

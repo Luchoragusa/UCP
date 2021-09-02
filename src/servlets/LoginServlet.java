@@ -55,7 +55,7 @@ public class LoginServlet extends HttpServlet {
 			if (i.getUsuario() == usuario && i.getPw() == pw)
 			{
 				HttpSession objsesion = request.getSession(true); // Creo el objeto para obetener la saesion y asi tener los datos durante la navegacion
-				objsesion.setAttribute("user", i);
+				request.getSession().setAttribute("user", i);
 				
 			}
 			else { 

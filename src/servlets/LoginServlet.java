@@ -63,9 +63,6 @@ public class LoginServlet extends HttpServlet {
 				//response.sendRedirect("home.jsp");
 				request.getRequestDispatcher("login.jsp");
 
-				//response.sendRedirect("home.jsp");
-				request.getRequestDispatcher("login.jsp");
-
 			}
 		}
 		catch (Exception e) {

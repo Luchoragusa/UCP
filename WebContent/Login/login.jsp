@@ -29,7 +29,7 @@
               <div class="content">
                 <div class="field">
                   <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="user" placeholder="User">
+                    <input class="input" type="text" placeholder="User"id="txtUser" required="required" name="txtUser">
                     <span class="icon is-small is-left">
                       <span class="material-icons">account_box</span>
                     </span>
@@ -41,7 +41,7 @@
                 
                 <div class="field">
                   <p class="control has-icons-left">
-                    <input class="input" type="password" placeholder="Password">
+                    <input class="input" type="password" placeholder="Password" id="txtPw" required="required" name="txtPw">
                     <span class="icon is-small is-left">
                       <span class="material-icons">
                         lock
@@ -53,10 +53,11 @@
                 <div class="field">
                   <p class="control">
                     <button class="button is-fullwidth is-success">
-                      Login
+                      Log In
                     </button>
                   </p>
                 </div>
+                
               </div>
             </div>
           </div>

@@ -23,7 +23,7 @@
         </figure>
       </div>
 
-      <form class="formularioLogin" id="formularioLogin" method="post" action="LoginS">
+      <form method="post" action="LoginS">
 
         <div class="card-content has-background-grey-lighter">
           <div class="media">

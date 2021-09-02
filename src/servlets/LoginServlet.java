@@ -54,7 +54,7 @@ public class LoginServlet extends HttpServlet {
 			if (i.getUsuario() == usuario && i.getPw() == pw)
 			{
 				request.getSession().setAttribute("user", i);
-				response.sendRedirect("home.jsp");
+				response.sendRedirect("LaHome.jsp");
 			}
 			else { 
 

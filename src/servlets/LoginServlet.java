@@ -35,7 +35,6 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		try
 		{
-			
 			//i.setUsuario(request.getParameter("txtUser"));
 			//i.setPw(request.getParameter("txtPw"));
 			
@@ -58,8 +57,12 @@ public class LoginServlet extends HttpServlet {
 				response.sendRedirect("home.jsp");
 			}
 			else { 
+
 				//JOptionPane.showMessageDialog(null, "Login inválido.", "Login Error", JOptionPane.ERROR_MESSAGE);
 				
+				//response.sendRedirect("home.jsp");
+				request.getRequestDispatcher("login.jsp");
+
 				//response.sendRedirect("home.jsp");
 				request.getRequestDispatcher("login.jsp");
 

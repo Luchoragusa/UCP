@@ -51,8 +51,11 @@ public class LoginServlet extends HttpServlet {
 				request.getSession().setAttribute("user", i);
 				
 			}
-			else
-				response.sendRedirect("home.jsp");
+			else { 
+				//response.sendRedirect("home.jsp");
+				response.getWriter().append("incorrecto");
+				response.getWriter().append("i");
+			}
 		}
 		catch (Exception e) {
 			// TODO: handle exception

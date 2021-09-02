@@ -58,13 +58,11 @@ public class LoginServlet extends HttpServlet {
 				response.sendRedirect("home.jsp");
 			}
 			else { 
-<<<<<<< HEAD
 				//JOptionPane.showMessageDialog(null, "Login inválido.", "Login Error", JOptionPane.ERROR_MESSAGE);
 				
-=======
 				//response.sendRedirect("home.jsp");
 				request.getRequestDispatcher("login.jsp");
->>>>>>> 7859f1f0a35ede8daf5402fde3349722ffd96fb4
+
 			}
 		}
 		catch (Exception e) {

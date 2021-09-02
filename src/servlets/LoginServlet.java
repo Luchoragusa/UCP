@@ -47,14 +47,12 @@ public class LoginServlet extends HttpServlet {
 			
 			if (i.getUsuario() == usuario && i.getPw() == pw)
 			{
-				HttpSession objsesion = request.getSession(true); // Creo el objeto para obetener la saesion y asi tener los datos durante la navegacion
 				request.getSession().setAttribute("user", i);
-				
+				response.sendRedirect("home.jsp");
 			}
 			else { 
 				//response.sendRedirect("home.jsp");
-				response.getWriter().append("incorrecto");
-				response.getWriter().append("i");
+				request.getRequestDispatcher("login.jsp");
 			}
 		}
 		catch (Exception e) {

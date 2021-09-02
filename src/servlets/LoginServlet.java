@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import data.*;
 import entities.*;
+import logic.Login;
 
 /**
  * Servlet implementation class LoginServlet
@@ -33,15 +34,7 @@ public class LoginServlet extends HttpServlet {
 	{
 		// TODO Auto-generated method stub
 		try
-		{
-			
-			//i.setUsuario(request.getParameter("txtUser"));
-			//i.setPw(request.getParameter("txtPw"));
-			
-			//Login ctrlLogin = new Login();
-			//i=ctrlLogin.validate(i);
-			
-			DataIntegrante di = new DataIntegrante();
+		{		
 			Integrante i = new Integrante();
 			String usuario = request.getParameter("txtUser");
 			String pw = request.getParameter("txtPw");
@@ -49,7 +42,8 @@ public class LoginServlet extends HttpServlet {
 			i.setUsuario(usuario);
 			i.setPw(pw);
 			
-			i = di.getByUser(i);
+			Login ctrlLogin = new Login();
+			i=ctrlLogin.validate(i);
 			
 			if (i.getUsuario() == usuario && i.getPw() == pw)
 			{

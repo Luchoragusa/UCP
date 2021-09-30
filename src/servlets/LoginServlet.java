@@ -1,6 +1,8 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.LinkedList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +13,7 @@ import javax.swing.JOptionPane;
 
 import data.*;
 import entities.*;
+import logic.Login;
 
 /**
  * Servlet implementation class LoginServlet
@@ -45,25 +48,33 @@ public class LoginServlet extends HttpServlet {
 			Integrante i = new Integrante();
 			String usuario = request.getParameter("txtUser");
 			String pw = request.getParameter("txtPw");
+			Login ctrl = new Login();
 			
 			i.setUsuario(usuario);
 			i.setPw(pw);
 			
 			i = di.getByUser(i);
 			
-			if (i.getUsuario() == usuario && i.getPw() == pw)
+			LinkedList<Integrante> integrantes = ctrl.getAll(); 
+			
+			request.getSession().setAttribute("integrantes", i);
+			request.setAttribute("listaIntegrantes", integrantes);
+						
+			request.getRequestDispatcher("WEB-INF/LaHome.jsp").forward(request, response);
+			
+			/*if (i.getUsuario() == usuario && i.getPw() == pw)
 			{
 				request.getSession().setAttribute("user", i);
 				response.sendRedirect("LaHome.jsp");
 			}
 			else { 
 
-				//JOptionPane.showMessageDialog(null, "Login inválido.", "Login Error", JOptionPane.ERROR_MESSAGE);
-				
+				//JOptionPane.showMessageDialog(null, "Login inválido.", "Login Error", JOptionPane.ERROR_MESSAGE);				
 				//response.sendRedirect("home.jsp");
 				//request.getRequestDispatcher("login.jsp");
-
-			}
+			}*/
+			
+			
 		}
 		catch (Exception e) {
 			// TODO: handle exception

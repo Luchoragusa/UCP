@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
+  <title>[PSG]Login</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -23,7 +23,7 @@
         </figure>
       </div>
 
-      <form method="post" action="LoginS">
+	<form action="loginS" method="post">
 
         <div class="card-content has-background-grey-lighter">
           <div class="media">
@@ -33,7 +33,7 @@
           <div class="content">
             <div class="field">
               <p class="control has-icons-left has-icons-right">
-                <input class="input" type="text" placeholder="User" id="txtUser" required="required" name="txtUser">
+                <input class="input" type="text" placeholder="User" required="required" name="user">
                 <span class="icon is-small is-left">
                   <span class="material-icons">account_box</span>
                 </span>
@@ -45,7 +45,7 @@
 
             <div class="field">
               <p class="control has-icons-left">
-                <input class="input" type="password" placeholder="Password" id="txtPw" required="required" name="txtPw">
+                <input class="input" type="password" placeholder="Password" required="required" name="pw">
                 <span class="icon is-small is-left">
                   <span class="material-icons">
                     lock

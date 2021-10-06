@@ -16,13 +16,22 @@ public class Login
 		di=new DataIntegrante();
 	}
 	
-	public Integrante validate(Integrante i) 
+	public Integrante getIntegrante(Integrante i) 
 	{
 		/* para hacer mas seguro el manejo de passwords este sera un lugar 
 		 * adecuado para generar un hash de la password utilizando un cifrado
 		 * asimétrico como sha256j y utilizar el hash en lugar de la password en plano 
 		 */
 		return di.getByUser(i);
+	}
+	
+	public Boolean validateWeb(Integrante i) 
+	{
+		/* para hacer mas seguro el manejo de passwords este sera un lugar 
+		 * adecuado para generar un hash de la password utilizando un cifrado
+		 * asimétrico como sha256j y utilizar el hash en lugar de la password en plano 
+		 */
+		return di.getLogin(i);
 	}
 	
 	public Integrante getByIdIntegrante(Integrante I) {

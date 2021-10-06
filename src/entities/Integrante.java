@@ -1,16 +1,14 @@
 package entities;
 
+import java.util.HashMap;
 
 public class Integrante {
 
 	private int idIntegrante;
-	private String nombre;
-	private String apellido;
-	private String steamHex;
-	private String discordId;
-	private String usuario;
-	private String pw;
-	
+	private String nombre, apellido, steamHex, discordId, usuario, pw;
+	private HashMap<Integer, Rol> roles;
+	private HashMap<Integer, Rango> rangos;
+
 	public Integrante(int idIntegrante, String nombre, String apellido, String steamHex, String discordId) {
 		super();
 		this.idIntegrante = idIntegrante;
@@ -20,17 +18,6 @@ public class Integrante {
 		this.discordId = discordId;
 	}
 
-	public Integrante(String nombre, String apellido, String discordId) 
-	{
-		super();
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.discordId = discordId;
-	}
-	
-	public Integrante() {
-	}
-	
 	public int getIdIntegrante() {
 		return idIntegrante;
 	}
@@ -85,6 +72,48 @@ public class Integrante {
 
 	public void setPw(String pw) {
 		this.pw = pw;
+	}
+	
+	public Integrante() 
+	{
+		this.roles=new HashMap<>();
+	}
+	
+	public void addRol(Rol rolToBeAdded) 
+	{
+		this.roles.put(rolToBeAdded.getIdRol(), rolToBeAdded);
+	}
+	
+	public void removeRol(Rol rolToBeRemoved) 
+	{
+		this.roles.remove(rolToBeRemoved.getIdRol());
+	}
+	
+	public boolean hasRol(Rol rolToCheck) 
+	{
+		return this.roles.containsKey(rolToCheck.getIdRol());
+	}
+
+	@Override
+	public String toString() {
+		return "Integrante [idIntegrante=" + idIntegrante + ", nombre=" + nombre + ", apellido=" + apellido
+				+ ", steamHex=" + steamHex + ", discordId=" + discordId + ", usuario=" + usuario + ", pw=" + pw
+				+ ", roles=" + roles + "]";
+	}
+
+	public void addRango(Rango rangoToBeAdded) {
+		this.rangos.put(rangoToBeAdded.getIdRango(), rangoToBeAdded);
+		
+	}
+	
+	public void removeRango(Rango rangoToBeRemoved) 
+	{
+		this.rangos.remove(rangoToBeRemoved.getIdRango());
+	}
+	
+	public boolean hasRango(Rango rangoToCheck) 
+	{
+		return this.rangos.containsKey(rangoToCheck.getIdRango());
 	}
 	
 }

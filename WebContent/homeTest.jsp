@@ -25,20 +25,30 @@
 		<br>
 		<b>Id:</b> ${id}
 		
-		<table border="0" align="center" width="1000">
-			
+		<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
+		<tr bgcolor=grey>
+			<th>Nombre</th>
+			<th>Apellido</th>
+			<th>SteamHEX</th>
+			<th>DiscordID</th>
+			<th>Usuario</th>
+		</tr>
 			<%
 				DataIntegrante di = new DataIntegrante();
 				LinkedList<Integrante> usuarios =  di.getAll();
-				for (Integrante i : usuarios) {
+				for (Integrante i : usuarios) 
+				{
 			%>	
-			
-			<% i.getNombre();%> 
-			
+			<tr>
+				<th> <%= i.getNombre() %> </th>
+				<th> <%= i.getApellido() %> </th>
+				<th> <%= i.getSteamHex() %> </th>
+				<th> <%= i.getDiscordId() %> </th>
+				<th> <%= i.getUsuario() %> </th>
+			</tr>
 			<%
 				}
 			%>
-			
 		</table>
 
 		<form action="logoutS" method="post">

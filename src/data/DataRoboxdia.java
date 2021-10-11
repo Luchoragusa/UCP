@@ -175,12 +175,11 @@ public class DataRoboxdia {
 		HashMap<HashMap<Integrante,Roboxdia>, Robo> inteRxdR = null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement(" select i.nombre, i.apellido, r.nomRobo, resultado, hora_robo, idRobo \r\n"
-					+ "					from roboxdia \r\n"
-					+ "					inner join integrante i on roboxdia.idIntegrante = i.idIntegrante \r\n"
-					+ "                    inner join robo r on r.idLugarRobo = roboxdia.idLugarRobo \r\n"
-					+ "					where idRobo between ((select max(idRobo)-5 from roboxdia)) and (select max(idRobo) from roboxdia) \r\n"
-					+ "					order by idRobo asc");
+			stmt=DbConnector.getInstancia().getConn().prepareStatement( "select i.nombre, i.apellido, r.nomRobo, resultado, hora_robo, idRobo "
+					+ "from roboxdia "
+					+ "inner join integrante i on roboxdia.idIntegrante = i.idIntegrante "
+					+ "where idRobo between ((select max(idRobo)-5 from roboxdia)) and (select max(idRobo) from roboxdia) "
+					+ "order by idRobo asc");
 			rs= stmt.executeQuery();
 			if(rs!=null) 
 			{
@@ -224,6 +223,7 @@ public class DataRoboxdia {
 			}
 		}
 		return inteRxdR;
-	}
+	}	
+
 
 }

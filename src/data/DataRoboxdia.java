@@ -162,7 +162,7 @@ public class DataRoboxdia {
 		return rd;
 	}
 	
-	public HashMap getUltimos5robos() // hacer el Hash para las 3 entidades
+	public HashMap<HashMap<Integrante, Roboxdia>, Robo> getUltimos5robos() // hacer el Hash para las 3 entidades
 	{	
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
@@ -180,7 +180,7 @@ public class DataRoboxdia {
 					+ "                    inner join roboxdia  on roboxdia.idIntegrante = i.idIntegrante \r\n"
 					+ "                    inner join robo r on r.idLugarRobo = roboxdia.idLugarRobo\r\n"
 					+ "					where roboxdia.idRobo between ((select max(roboxdia.idRobo)-5 from roboxdia)) and (select max(roboxdia.idRobo) from roboxdia) \r\n"
-					+ "                    order by roboxdia.idRobo asc");
+					+ "					order by roboxdia.idRobo asc");
 			rs= stmt.executeQuery();
 			if(rs!=null) 
 			{

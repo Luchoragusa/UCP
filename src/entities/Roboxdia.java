@@ -7,6 +7,7 @@ public class Roboxdia {
 	private LocalTime hora_robo;
 	private LocalDate fecha_robo;
 	private int idIntegrante, idLugarRobo, idRobo;
+	
 	public int getIdRobo() {
 		return idRobo;
 	}

@@ -37,10 +37,7 @@
 			<th>horaInicio</th>
 		</tr>
 			<%
-			
-			HashMap<Integrante,Rango> inteRango = new HashMap<>();
-			
-			HashMap<Horas,Subdivision> horaSubdivision = new HashMap<>();
+
 			
 			HashMap<HashMap<Integrante,Rango>,HashMap<Horas,Subdivision>> uActivos = new HashMap<>();
 			
@@ -78,6 +75,77 @@
 			}
 			%>
 		</table>
+		
+
+		
+		<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
+		<tr bgcolor=grey>
+			<th>Nombre</th>
+			<th>Apellido</th>
+			<th>resultado</th>
+			<th>hora_robo</th>
+			<th>idRobo</th>
+			<th>nomRobo</th>
+			
+		</tr>
+			<%
+			
+			
+			DataRoboxdia drxd = new DataRoboxdia();
+			
+			HashMap<HashMap<Integrante,Roboxdia>,Robo> inteRxdR = new HashMap<>();
+			
+			
+			inteRxdR = drxd.getUltimos5robos();
+			
+			
+			for(HashMap.Entry<HashMap<Integrante,Roboxdia>,Robo> en:  inteRxdR.entrySet()) { %>
+			
+				<% for(HashMap.Entry<Integrante,Roboxdia> en1 : (en.getKey()).entrySet() ) { %>
+					<tr>
+					<th> <%= en1.getKey().getNombre() %> </th>
+					<th> <%= en1.getKey().getApellido() %> </th>
+					<th> <%= en1.getValue().getResultado() %> </th>
+					<th> <%= en1.getValue().getHora_robo() %> </th>
+					<th> <%= en1.getValue().getIdRobo() %> </th>
+					
+				
+				<%
+				}
+				%>
+				
+				
+					<th> <%= en.getValue().getNomRobo() %> </th>
+					</tr>
+				
+			<%
+			}
+			%>
+		</table>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 		<form action="logoutS" method="post">
 			<input type = "submit" value = "Logout"><br>

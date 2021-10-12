@@ -25,9 +25,4 @@ public class Ransub_integrante
 	public void setFecha_desde(LocalDate fecha_desde) {
 		this.fecha_desde = fecha_desde;
 	}
-	@Override
-	public String toString() {
-		return "Ransub_integrante [idIntegrante=" + idIntegrante + ", idRangoSub=" + idRangoSub + ", fecha_desde="
-				+ fecha_desde + "]";
-	}
 }

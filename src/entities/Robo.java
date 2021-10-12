@@ -50,9 +50,4 @@ public class Robo {
 	public void setLugar_robo(LugarRobo lugar_robo) {
 		this.lugar_robo = lugar_robo;
 	}
-	
-	
-	
-	
-	
 }

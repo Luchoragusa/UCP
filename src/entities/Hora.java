@@ -8,9 +8,7 @@ public class Hora
 	private LocalDate fecha;
 	
 	public Hora () {
-		
 	}
-	
 	public int getIdIntegrante() {
 		return idIntegrante;
 	}
@@ -29,7 +27,6 @@ public class Hora
 	public void setHoraFin(LocalTime horaFin) {
 		this.horaFin = horaFin;
 	}
-
 	public LocalDate getFecha() {
 		return fecha;
 	}
@@ -42,6 +39,4 @@ public class Hora
 	public void setHorasJugadas(LocalTime horasJugadas) {
 		this.horasJugadas = horasJugadas;
 	}
-	
-
 }

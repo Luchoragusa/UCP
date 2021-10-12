@@ -8,11 +8,11 @@ import java.util.HashMap;
 
 import entities.Integrante;
 import entities.LugarRobo;
-import entities.Roboxdia;
+import entities.Robo;
 
 public class DataRoboxdia {
 	
-	public void saveRobo(Integrante intg, LugarRobo rob, Roboxdia rd) {
+	public void saveRobo(Integrante intg, LugarRobo rob, Robo rd) {
 
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
@@ -102,7 +102,7 @@ public class DataRoboxdia {
 				{
 					LugarRobo r=new LugarRobo();
 					r.setIdLugarRobo(rs.getInt("idLugarRobo"));
-					r.setNomRobo(rs.getString("nomRobo"));
+					r.setTipoRobo(rs.getString("nomRobo"));
 					r.setLugarRobo(rs.getString("lugarRobo"));
 				}
 			}
@@ -126,18 +126,18 @@ public class DataRoboxdia {
 		}
 	}
 	
-	public Roboxdia getLastIdRobo() 
+	public Robo getLastIdRobo() 
 	{	
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
-		Roboxdia rd = null;
+		Robo rd = null;
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement("select max(idRobo) from roboxdia");
 			rs= stmt.executeQuery();
 			if(rs!=null && rs.next()) 
 			{
-					rd = new Roboxdia();
+					rd = new Robo();
 					rd.setIdRobo(rs.getInt("max(idRobo)"));
 					rd.setIdRobo(rd.getIdRobo()+1);
 			}
@@ -162,17 +162,17 @@ public class DataRoboxdia {
 		return rd;
 	}
 	
-	public HashMap<HashMap<Integrante, Roboxdia>, LugarRobo> getUltimos5robos() // hacer el Hash para las 3 entidades
+	public HashMap<HashMap<Integrante, Robo>, LugarRobo> getUltimos5robos() // hacer el Hash para las 3 entidades
 	{	
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		Integrante i = null;
 		LugarRobo r = null;
-		Roboxdia rxd = null;
+		Robo rxd = null;
 		
-		HashMap<Integrante,Roboxdia> irxd = null;
+		HashMap<Integrante,Robo> irxd = null;
 	
-		HashMap<HashMap<Integrante,Roboxdia>, LugarRobo> inteRxdR = null;
+		HashMap<HashMap<Integrante,Robo>, LugarRobo> inteRxdR = null;
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement("select i.nombre, i.apellido, r.nomRobo, roboxdia.resultado, roboxdia.hora_robo, roboxdia.idRobo \r\n"
@@ -189,9 +189,9 @@ public class DataRoboxdia {
 					irxd = new HashMap<>();
 					inteRxdR = new HashMap<>();
 					r=new LugarRobo();
-					r.setNomRobo(rs.getString("nomRobo"));
+					r.setTipoRobo(rs.getString("nomRobo"));
 					
-					rxd=new Roboxdia();
+					rxd=new Robo();
 					rxd.setResultado(rs.getString("resultado"));
 					rxd.setIdRobo(rs.getInt("idRobo"));
 					rxd.setHora_robo(rs.getObject("hora_robo", LocalTime.class));

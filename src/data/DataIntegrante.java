@@ -9,7 +9,7 @@ import java.util.*;
 
 
 
-import entities.Horas;
+import entities.Hora;
 import entities.Integrante;
 import entities.Rango;
 import entities.Rol;
@@ -465,12 +465,12 @@ import entities.Subdivision;
 	{
 		Statement stmt=null;
 		ResultSet rs=null;
-		HashMap<HashMap<Integrante,Rango>,HashMap<Horas,Subdivision>> uActivos = new HashMap<>();
+		HashMap<HashMap<Integrante,Rango>,HashMap<Hora,Subdivision>> uActivos = new HashMap<>();
 		HashMap<Integrante,Rango> inteRango = null;
-		HashMap<Horas,Subdivision> horaSubdivision = null;
+		HashMap<Hora,Subdivision> horaSubdivision = null;
 		Integrante i=null;
 		Rango r = null;
-		Horas h = null;
+		Hora h = null;
 		Subdivision s = null;
 		
 		try {
@@ -494,7 +494,7 @@ import entities.Subdivision;
 				{
 					i = new Integrante();
 					r = new Rango();
-					h = new Horas();
+					h = new Hora();
 					s = new Subdivision();
 				
 					inteRango = new HashMap<>();

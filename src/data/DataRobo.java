@@ -24,7 +24,7 @@ public class DataRobo
 				{
 					LugarRobo r=new LugarRobo();
 					r.setIdLugarRobo(rs.getInt("idLugarRobo"));
-					r.setNomRobo(rs.getString("nomRobo"));
+					r.setTipoRobo(rs.getString("nomRobo"));
 					r.setLugarRobo(rs.getString("lugarRobo"));
 					r.setMaxIntegrantes(rs.getInt("maxIntegrantes"));
 					r.setMinIntregantes(rs.getInt("minIntegrantes"));
@@ -68,7 +68,7 @@ public class DataRobo
 			{
 				r=new LugarRobo();
 				r.setIdLugarRobo(rs.getInt("idLugarRobo"));
-				r.setNomRobo(rs.getString("nomRobo"));
+				r.setTipoRobo(rs.getString("nomRobo"));
 				r.setLugarRobo(rs.getString("lugarRobo"));
 				r.setMaxIntegrantes(rs.getInt("maxIntegrantes"));
 				r.setMinIntregantes(rs.getInt("minIntegrantes"));
@@ -103,13 +103,13 @@ public class DataRobo
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
 					"select * from rol where nomRobo=?"
 					);
-			stmt.setString(1, roboToSearch.getNomRobo());
+			stmt.setString(1, roboToSearch.getTipoRobo());
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()) 
 			{
 				r=new LugarRobo();
 				r.setIdLugarRobo(rs.getInt("idLugarRobo"));
-				r.setNomRobo(rs.getString("nomRobo"));
+				r.setTipoRobo(rs.getString("nomRobo"));
 				r.setLugarRobo(rs.getString("lugarRobo"));
 				r.setMaxIntegrantes(rs.getInt("maxIntegrantes"));
 				r.setMinIntregantes(rs.getInt("minIntegrantes"));
@@ -147,7 +147,7 @@ public class DataRobo
 							"insert into robo(nomRobo, lugarRobo, maxIntegrantes, minIntegrantes) values(?,?,?,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
-			stmt.setString(1, robo.getNomRobo());
+			stmt.setString(1, robo.getTipoRobo());
 			stmt.setString(2, robo.getLugarRobo());
 			stmt.setInt(3, robo.getMaxIntegrantes());
 			stmt.setInt(4, robo.getMinIntregantes());
@@ -188,7 +188,7 @@ public class DataRobo
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
 							"update robo set nomRobo=?, lugarRobo=?, maxIntegrantes=?, minIntegrantes=? where idLugarRobo=?");
-			stmt.setString(1, robo.getNomRobo());
+			stmt.setString(1, robo.getTipoRobo());
 			stmt.setString(2, robo.getLugarRobo());
 			stmt.setInt(3, robo.getMaxIntegrantes());
 			stmt.setInt(4, robo.getMinIntregantes());

@@ -1,30 +1,16 @@
 package entities;
 import java.time.*;
 
-public class Horas 
+public class Hora 
 {
 	private int idIntegrante;
 	private LocalTime horaInicio, horaFin, horasJugadas;
-	private LocalDate fecha, fechaFin;
+	private LocalDate fecha;
 	
-	public Horas () {
+	public Hora () {
 		
 	}
-	public Horas(int idIntegrante, LocalTime horaInicio, LocalTime horaFin, LocalDate fecha, LocalDate fechaFin, LocalTime horasJugadas) {
-		super();
-		this.idIntegrante = idIntegrante;
-		this.horaInicio = horaInicio;
-		this.horaFin = horaFin;
-		this.fecha = fecha;
-		this.fechaFin = fechaFin;
-		this.horasJugadas = horasJugadas;
-	}
 	
-	@Override
-	public String toString() {
-		return "Horas [idIntegrante=" + idIntegrante + ", horaInicio=" + horaInicio + ", horaFin=" + horaFin
-				+ ", horasJugadas=" + horasJugadas + ", fecha=" + fecha + ", fechaFin=" + fechaFin + "]";
-	}
 	public int getIdIntegrante() {
 		return idIntegrante;
 	}
@@ -49,12 +35,6 @@ public class Horas
 	}
 	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
-	}
-	public LocalDate getFechaFin() {
-		return fechaFin;
-	}
-	public void setFechaFin(LocalDate fechaFin) {
-		this.fechaFin = fechaFin;
 	}
 	public LocalTime getHorasJugadas() {
 		return horasJugadas;

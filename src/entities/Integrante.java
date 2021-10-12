@@ -9,7 +9,7 @@ public class Integrante {
 	private String nombre, apellido, steamHex, discordId, usuario, pw;
 	private HashMap<Integer, Rol> rol;
 	private Rango rango;
-	private Horas hora;
+	private Hora hora;
 	private Ran_Subdivision ranSub;
 
 	public int getIdIntegrante() {
@@ -31,10 +31,10 @@ public class Integrante {
 	public void setRango(Rango rango) {
 		this.rango = rango;
 	}
-	public Horas getHora() {
+	public Hora getHora() {
 		return hora;
 	}
-	public void setHora(Horas hora) {
+	public void setHora(Hora hora) {
 		this.hora = hora;
 	}
 	public void setRanSub(Ran_Subdivision ranSub) {

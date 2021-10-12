@@ -3,7 +3,7 @@ package entities;
 public class LugarRobo {
 
 	private int idLugarRobo, minIntregantes, maxIntegrantes;
-	private String nomRobo, lugarRobo;
+	private String tipoRobo, lugarRobo;
 	
 	public int getMinIntregantes() {
 		return minIntregantes;
@@ -35,12 +35,12 @@ public class LugarRobo {
 		this.idLugarRobo = idLugarRobo;
 	}
 
-	public String getNomRobo() {
-		return nomRobo;
+	public String getTipoRobo() {
+		return tipoRobo;
 	}
 
-	public void setNomRobo(String nomRobo) {
-		this.nomRobo = nomRobo;
+	public void setTipoRobo(String tipoRobo) {
+		this.tipoRobo = tipoRobo;
 	}
 
 	public String getLugarRobo() {

@@ -11,17 +11,17 @@ import java.util.LinkedList;
 
 import com.mysql.cj.MysqlType;
 
-import entities.Horas;
+import entities.Hora;
 import entities.Integrante;
 
 
 public class DataHoras {
 	
-public Horas getHorasDelIntegrante(int id) {
+public Hora getHorasDelIntegrante(int id) {
 		
 	PreparedStatement stmt=null;
 	ResultSet rs=null;
-	Horas h = null;
+	Hora h = null;
 	
 	try 
 	{
@@ -34,7 +34,7 @@ public Horas getHorasDelIntegrante(int id) {
 		{
 			while(rs.next()) 
 			{
-				h = new Horas();
+				h = new Hora();
 				h.setIdIntegrante(id);
 				h.setFecha(rs.getDate("fecha").toLocalDate());
 				h.setHoraInicio(rs.getObject("horaInicio", LocalTime.class));
@@ -61,10 +61,10 @@ public Horas getHorasDelIntegrante(int id) {
 	return h;
 	}
 	
-	public LinkedList<Horas> getById(Horas hr){
+	public LinkedList<Hora> getById(Hora hr){
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
-		LinkedList<Horas> hras= new LinkedList<>();
+		LinkedList<Hora> hras= new LinkedList<>();
 		
 		try 
 		{
@@ -77,7 +77,7 @@ public Horas getHorasDelIntegrante(int id) {
 			{
 				while(rs.next()) 
 				{
-					Horas h=new Horas();
+					Hora h=new Hora();
 					h.setIdIntegrante(hr.getIdIntegrante());
 					h.setFecha(rs.getDate("fecha").toLocalDate());
 					h.setHoraInicio(rs.getObject("horaInicio", LocalTime.class));
@@ -105,10 +105,10 @@ public Horas getHorasDelIntegrante(int id) {
 		return hras;
 	}
 	
-	public LinkedList<Horas> getByFecha(Horas hr){
+	public LinkedList<Hora> getByFecha(Hora hr){
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
-		LinkedList<Horas> hras= new LinkedList<>();
+		LinkedList<Hora> hras= new LinkedList<>();
 		
 		try 
 		{
@@ -121,7 +121,7 @@ public Horas getHorasDelIntegrante(int id) {
 			{
 				while(rs.next()) 
 				{
-					Horas h=new Horas();
+					Hora h=new Hora();
 					h.setIdIntegrante(rs.getInt("idIntegrante"));
 					h.setFecha(hr.getFecha());
 					h.setHoraInicio(rs.getObject("horaInicio", LocalTime.class));
@@ -149,7 +149,7 @@ public Horas getHorasDelIntegrante(int id) {
 		return hras;
 	}
 	
-	public void add (Horas hr) {
+	public void add (Hora hr) {
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		try 
@@ -191,7 +191,7 @@ public Horas getHorasDelIntegrante(int id) {
 
 	}
 	
-	public void update(Horas hr) {
+	public void update(Hora hr) {
 
 		PreparedStatement stmt= null;
 		try 
@@ -226,7 +226,7 @@ public Horas getHorasDelIntegrante(int id) {
 	
 	}
 
-	public void remove(Horas hr) {
+	public void remove(Hora hr) {
 
 		PreparedStatement stmt= null;
 		try 
@@ -256,11 +256,11 @@ public Horas getHorasDelIntegrante(int id) {
 	
 	}
 
-	public LinkedList<Horas> getTuplasIntegrante(int id, LocalDate fecha, LocalDate fechaFin) 
+	public LinkedList<Hora> getTuplasIntegrante(int id, LocalDate fecha, LocalDate fechaFin) 
 	{
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
-		LinkedList<Horas> h = new LinkedList<>();
+		LinkedList<Hora> h = new LinkedList<>();
 		
 		try 
 		{
@@ -277,7 +277,7 @@ public Horas getHorasDelIntegrante(int id) {
 			{
 				while(rs.next()) 
 				{
-					Horas h1 = new Horas();
+					Hora h1 = new Hora();
 
 					h1.setHorasJugadas(rs.getObject("horasJugadas", LocalTime.class));
 					
@@ -305,11 +305,11 @@ public Horas getHorasDelIntegrante(int id) {
 		
 	}
 
-	public LinkedList<Horas> getHorasAllIntegrantes(LocalDate fecha, LocalDate fechaFin) 
+	public LinkedList<Hora> getHorasAllIntegrantes(LocalDate fecha, LocalDate fechaFin) 
 	{
         PreparedStatement stmt=null;
         ResultSet rs=null;
-        LinkedList<Horas> h = new LinkedList<>();
+        LinkedList<Hora> h = new LinkedList<>();
 
         try 
         {
@@ -325,7 +325,7 @@ public Horas getHorasDelIntegrante(int id) {
             {
                 while(rs.next()) 
                 {
-                    Horas h1 = new Horas();
+                    Hora h1 = new Hora();
 
                     h1.setHorasJugadas(rs.getObject("horasJugadas", LocalTime.class));
                     h1.setIdIntegrante(rs.getInt("idIntegrante"));
@@ -354,7 +354,7 @@ public Horas getHorasDelIntegrante(int id) {
         return h;
     }
 	
-	public void diferenciaHoras(Horas h) 
+	public void diferenciaHoras(Hora h) 
 	{
 		PreparedStatement stmt= null;
 		try 

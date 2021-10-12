@@ -4,9 +4,16 @@ public class Ran_Subdivision {
 
 	private String nombreRangoSub;
 	private int idSub, idRanSub;
+	private Subdivision sub;
 	
 	public int getIdRanSub() {
 		return idRanSub;
+	}
+	public Subdivision getSub() {
+		return sub;
+	}
+	public void setSub(Subdivision sub) {
+		this.sub = sub;
 	}
 	public void setIdRanSub(int idRanSub) {
 		this.idRanSub = idRanSub;
@@ -22,10 +29,5 @@ public class Ran_Subdivision {
 	}
 	public void setIdSub(int idSub) {
 		this.idSub = idSub;
-	}
-	@Override
-	public String toString() {
-		return "Ran_Subdivision [nombreRangoSub=" + nombreRangoSub + ", idSub=" + idSub + ", idRanSub=" + idRanSub
-				+ "]";
 	}
 }

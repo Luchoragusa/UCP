@@ -1,5 +1,6 @@
 package entities;
 
+import entities.*;
 import java.util.HashMap;
 
 public class Integrante {
@@ -8,18 +9,52 @@ public class Integrante {
 	private String nombre, apellido, steamHex, discordId, usuario, pw;
 	private HashMap<Integer, Rol> roles;
 	private HashMap<Integer, Rango> rangos;
-
-	public Integrante(int idIntegrante, String nombre, String apellido, String steamHex, String discordId) {
-		super();
-		this.idIntegrante = idIntegrante;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.steamHex = steamHex;
-		this.discordId = discordId;
-	}
+	private Rango ran;
+	private Horas hor;
+	private Ran_Subdivision ranSub;
 
 	public int getIdIntegrante() {
 		return idIntegrante;
+	}
+
+	public HashMap<Integer, Rol> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(HashMap<Integer, Rol> roles) {
+		this.roles = roles;
+	}
+
+	public HashMap<Integer, Rango> getRangos() {
+		return rangos;
+	}
+
+	public void setRangos(HashMap<Integer, Rango> rangos) {
+		this.rangos = rangos;
+	}
+
+	public Rango getRan() {
+		return ran;
+	}
+
+	public void setRan(Rango ran) {
+		this.ran = ran;
+	}
+
+	public Horas getHor() {
+		return hor;
+	}
+
+	public void setHor(Horas hor) {
+		this.hor = hor;
+	}
+
+	public Ran_Subdivision getRanSub() {
+		return ranSub;
+	}
+
+	public void setRanSub(Ran_Subdivision ranSub) {
+		this.ranSub = ranSub;
 	}
 
 	public void setIdIntegrante(int idIntegrante) {
@@ -93,14 +128,6 @@ public class Integrante {
 	{
 		return this.roles.containsKey(rolToCheck.getIdRol());
 	}
-
-	@Override
-	public String toString() {
-		return "Integrante [idIntegrante=" + idIntegrante + ", nombre=" + nombre + ", apellido=" + apellido
-				+ ", steamHex=" + steamHex + ", discordId=" + discordId + ", usuario=" + usuario + ", pw=" + pw
-				+ ", roles=" + roles + "]";
-	}
-
 	public void addRango(Rango rangoToBeAdded) {
 		this.rangos.put(rangoToBeAdded.getIdRango(), rangoToBeAdded);
 		

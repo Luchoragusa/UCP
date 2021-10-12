@@ -5,7 +5,8 @@ import java.time.*;
 public class Stockarma {
 
 	private LocalDate fecha;
-	private int idArma, cantidad;
+	private int cantidad;
+	private Arma arma;
 	
 	public Stockarma() {
 		
@@ -19,12 +20,12 @@ public class Stockarma {
 		this.fecha = fecha;
 	}
 
-	public int getIdArma() {
-		return idArma;
+	public Arma getArma() {
+		return arma;
 	}
 
-	public void setIdArma(int idArma) {
-		this.idArma = idArma;
+	public void setArma(Arma arma) {
+		this.arma = arma; 
 	}
 
 	public int getCantidad() {
@@ -33,11 +34,6 @@ public class Stockarma {
 
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
-	}
-
-	@Override
-	public String toString() {
-		return "Stockarma [fecha=" + fecha + ", idArma=" + idArma + ", cantidad=" + cantidad + "]";
 	}
 	
 }

@@ -89,17 +89,16 @@
 			
 		</tr>
 			<%
-			
-			
 			DataRoboxdia drxd = new DataRoboxdia();
-			
-			HashMap<HashMap<Integrante,Roboxdia>,Robo> inteRxdR = new HashMap<>();
-			
-			
-			inteRxdR = drxd.getUltimos5robos();
-			
-			
-			for(HashMap.Entry<HashMap<Integrante,Roboxdia>,Robo> en:  inteRxdR.entrySet()) { %>
+					
+					HashMap<HashMap<Integrante,Roboxdia>,LugarRobo> inteRxdR = new HashMap<>();
+					
+					
+					inteRxdR = drxd.getUltimos5robos();
+					
+					
+					for(HashMap.Entry<HashMap<Integrante,Roboxdia>,LugarRobo> en:  inteRxdR.entrySet()) {
+			%>
 			
 				<% for(HashMap.Entry<Integrante,Roboxdia> en1 : (en.getKey()).entrySet() ) { %>
 					<tr>

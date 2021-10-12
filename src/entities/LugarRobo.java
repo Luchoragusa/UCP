@@ -1,8 +1,10 @@
 package entities;
 
-public class Robo {
+public class LugarRobo {
 
 	private int idLugarRobo, minIntregantes, maxIntegrantes;
+	private String nomRobo, lugarRobo;
+	
 	public int getMinIntregantes() {
 		return minIntregantes;
 	}
@@ -19,9 +21,9 @@ public class Robo {
 		this.maxIntegrantes = maxIntegrantes;
 	}
 
-	private String nomRobo, lugarRobo;
 	
-	public Robo() {
+	
+	public LugarRobo() {
 		
 	}
 
@@ -49,9 +51,4 @@ public class Robo {
 		this.lugarRobo = lugarRobo;
 	}
 
-	@Override
-	public String toString() {
-		return "Robo [idLugarRobo=" + idLugarRobo + ", minIntregantes=" + minIntregantes + ", maxIntegrantes="
-				+ maxIntegrantes + ", nomRobo=" + nomRobo + ", lugarRobo=" + lugarRobo + "]";
-	}
 }

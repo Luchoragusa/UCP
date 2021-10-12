@@ -2,19 +2,19 @@ package entities;
 
 public class Sancion {
 
-	private int idIntegrante;
+	private Integrante integrante;
 	private String motivo, tipoSancion;
 	
 	public Sancion() {
 		
 	}
 
-	public int getIdIntegrante() {
-		return idIntegrante;
+	public Integrante getIntegrante() {
+		return integrante;
 	}
 
-	public void setIdIntegrante(int idIntegrante) {
-		this.idIntegrante = idIntegrante;
+	public void setIdIntegrante(Integrante inte) {
+		this.integrante = inte;
 	}
 
 	public String getMotivo() {
@@ -33,9 +33,5 @@ public class Sancion {
 		this.tipoSancion = tipoSancion;
 	}
 
-	@Override
-	public String toString() {
-		return "Sancion [idIntegrante=" + idIntegrante + ", motivo=" + motivo + ", tipoSancion=" + tipoSancion + "]";
-	}
 	
 }

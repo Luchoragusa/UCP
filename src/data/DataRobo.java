@@ -10,11 +10,11 @@ import entities.*;
 public class DataRobo 
 {
 	
-	public LinkedList<Robo> getAll()
+	public LinkedList<LugarRobo> getAll()
 	{
 		Statement stmt=null;
 		ResultSet rs=null;
-		LinkedList<Robo> robos= new LinkedList<>();
+		LinkedList<LugarRobo> robos= new LinkedList<>();
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
 			rs= stmt.executeQuery("select * from robo");
@@ -22,7 +22,7 @@ public class DataRobo
 			{
 				while(rs.next()) 
 				{
-					Robo r=new Robo();
+					LugarRobo r=new LugarRobo();
 					r.setIdLugarRobo(rs.getInt("idLugarRobo"));
 					r.setNomRobo(rs.getString("nomRobo"));
 					r.setLugarRobo(rs.getString("lugarRobo"));
@@ -52,9 +52,9 @@ public class DataRobo
 		return robos;
 	}
 	
-	public Robo getById(Robo roboToSearch) 
+	public LugarRobo getById(LugarRobo roboToSearch) 
 	{
-		Robo r=null;
+		LugarRobo r=null;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		try 
@@ -66,7 +66,7 @@ public class DataRobo
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()) 
 			{
-				r=new Robo();
+				r=new LugarRobo();
 				r.setIdLugarRobo(rs.getInt("idLugarRobo"));
 				r.setNomRobo(rs.getString("nomRobo"));
 				r.setLugarRobo(rs.getString("lugarRobo"));
@@ -94,9 +94,9 @@ public class DataRobo
 		return r;
 	}
 	
-	public Robo getByNomb(Robo roboToSearch) 
+	public LugarRobo getByNomb(LugarRobo roboToSearch) 
 	{
-		Robo r=null;
+		LugarRobo r=null;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		try {
@@ -107,7 +107,7 @@ public class DataRobo
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()) 
 			{
-				r=new Robo();
+				r=new LugarRobo();
 				r.setIdLugarRobo(rs.getInt("idLugarRobo"));
 				r.setNomRobo(rs.getString("nomRobo"));
 				r.setLugarRobo(rs.getString("lugarRobo"));
@@ -136,7 +136,7 @@ public class DataRobo
 		return r;
 	}
 	
-	public void add(Robo robo) 
+	public void add(LugarRobo robo) 
 	{
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
@@ -180,7 +180,7 @@ public class DataRobo
 
 	}
 
-	public void update(Robo robo) 
+	public void update(LugarRobo robo) 
 	{
 		PreparedStatement stmt= null;
 		try 
@@ -213,7 +213,7 @@ public class DataRobo
 		}
 	}
 
-	public void remove(Robo robo) 
+	public void remove(LugarRobo robo) 
 	{
 		PreparedStatement stmt= null;
 		try 

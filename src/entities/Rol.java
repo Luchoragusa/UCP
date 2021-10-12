@@ -9,22 +9,24 @@ public class Rol {
 		
 	}
 
-	public int getIdRol() {
+	public int getIdRol() 
+	{
 		return idRol;
 	}
 
-	public void setIdRol(int idRol) {
+	public void setIdRol(int idRol) 
+	{
 		this.idRol = idRol;
 	}
 
-	public String getDescripcion() {
+	public String getDescripcion() 
+	{
 		return descripcion;
 	}
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
 	public String toString() 
 	{
 		return "Rol [id=" + idRol + ", descripcion=" + descripcion + "]";

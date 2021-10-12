@@ -7,52 +7,36 @@ public class Integrante {
 
 	private int idIntegrante;
 	private String nombre, apellido, steamHex, discordId, usuario, pw;
-	private HashMap<Integer, Rol> roles;
-	private HashMap<Integer, Rango> rangos;
-	private Rango ran;
-	private Horas hor;
+	private HashMap<Integer, Rol> rol;
+	private Rango rango;
+	private Horas hora;
 	private Ran_Subdivision ranSub;
 
 	public int getIdIntegrante() {
 		return idIntegrante;
 	}
-
-	public HashMap<Integer, Rol> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(HashMap<Integer, Rol> roles) {
-		this.roles = roles;
-	}
-
-	public HashMap<Integer, Rango> getRangos() {
-		return rangos;
-	}
-
-	public void setRangos(HashMap<Integer, Rango> rangos) {
-		this.rangos = rangos;
-	}
-
-	public Rango getRan() {
-		return ran;
-	}
-
-	public void setRan(Rango ran) {
-		this.ran = ran;
-	}
-
-	public Horas getHor() {
-		return hor;
-	}
-
-	public void setHor(Horas hor) {
-		this.hor = hor;
-	}
-
 	public Ran_Subdivision getRanSub() {
 		return ranSub;
 	}
 
+	public HashMap<Integer, Rol> getRol() {
+		return rol;
+	}
+	public void setRol(HashMap<Integer, Rol> rol) {
+		this.rol = rol;
+	}
+	public Rango getRango() {
+		return rango;
+	}
+	public void setRango(Rango rango) {
+		this.rango = rango;
+	}
+	public Horas getHora() {
+		return hora;
+	}
+	public void setHora(Horas hora) {
+		this.hora = hora;
+	}
 	public void setRanSub(Ran_Subdivision ranSub) {
 		this.ranSub = ranSub;
 	}

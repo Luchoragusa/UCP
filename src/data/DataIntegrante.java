@@ -11,6 +11,7 @@ import java.util.*;
 
 import entities.Hora;
 import entities.Integrante;
+import entities.Ran_Subdivision;
 import entities.Rango;
 import entities.Rol;
 import entities.Subdivision;
@@ -20,26 +21,36 @@ import entities.Subdivision;
 	Scanner s = null;
 	public Integrante getByUser(Integrante inte) {
 		
-		DataRol dr=new DataRol();
+		
 		Integrante i=null;
+		Rol rolcito = null;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idIntegrante,nombre,apellido,discordId,steamHex from integrante where usuario=? and pw=?"
+					"select idIntegrante,nombre,apellido,discordId,steamHex, i.idRol, r.descripcion\r\n"
+					+ " from integrante i\r\n"
+					+ " inner join rol r\r\n"
+					+ "	on i.idRol = r.idRol\r\n"
+					+ " where usuario=? and pw=?"
 					);
 			stmt.setString(1, inte.getUsuario());
 			stmt.setString(2, inte.getPw());
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()) {
 				i=new Integrante();
+				rolcito = new Rol();
 				i.setIdIntegrante(rs.getInt("idIntegrante"));
 				i.setNombre(rs.getString("nombre"));
 				i.setApellido(rs.getString("apellido"));
 				i.setSteamHex(rs.getString("steamHex"));
 				i.setDiscordId(rs.getString("discordId"));
 				//
-				dr.setRoles(i);
+				rolcito.setIdRol(rs.getInt("idRol"));
+				rolcito.setDescripcion(rs.getString("descripcion"));
+				
+				i.setRol(rolcito);
+			
 			}
 		} catch (SQLException e) 
 		{
@@ -62,8 +73,6 @@ import entities.Subdivision;
 	
 	public Boolean getLogin(Integrante inte) 
 	{
-		DataRol dr=new DataRol();
-		Integrante i=null;
 		boolean status = false;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
@@ -461,29 +470,29 @@ import entities.Subdivision;
 		}
 	}
 	
-	public HashMap getServicio() 
+	public LinkedList<Integrante> getServicio() 
 	{
 		Statement stmt=null;
 		ResultSet rs=null;
-		HashMap<HashMap<Integrante,Rango>,HashMap<Hora,Subdivision>> uActivos = new HashMap<>();
-		HashMap<Integrante,Rango> inteRango = null;
-		HashMap<Hora,Subdivision> horaSubdivision = null;
+		
+		LinkedList<Integrante> uActivos = null;
 		Integrante i=null;
 		Rango r = null;
 		Hora h = null;
 		Subdivision s = null;
+		Ran_Subdivision rans = null;
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select nombre, apellido, r.nombRango, s.descripcion, horaInicio\r\n"
-					+ "from horas\r\n"
+			rs= stmt.executeQuery("select nombre, apellido, r.nombRango, s.descripcion, horaInicio \r\n"
+					+ "from hora\r\n"
 					+ "\r\n"
-					+ "inner join integrante i on horas.idIntegrante = i.idIntegrante\r\n"
+					+ "inner join integrante i on hora.idIntegrante = i.idIntegrante\r\n"
 					+ "inner join ran_integrante ri on i.idIntegrante = ri.idIntegrante\r\n"
 					+ "inner join rango r on ri.idRango = r.idRango\r\n"
 					+ "\r\n"
 					+ "inner join ransub_integrante ri2 on i.idIntegrante = ri2.idIntegrante\r\n"
-					+ "inner join ran_subdivision rs on ri2.idRangoSub = rs.idRanSub\r\n"
+					+ "inner join ran_subdivision rs on ri2.idRanSub = rs.idRanSub\r\n"
 					+ "inner join  subdivision s on rs.idSub = s.idSub\r\n"
 					+ "\r\n"
 					+ "where horaInicio is not null and horaFin is null;");
@@ -492,21 +501,25 @@ import entities.Subdivision;
 			{
 				while(rs.next()) 
 				{
+					uActivos = new LinkedList<>();
 					i = new Integrante();
 					r = new Rango();
 					h = new Hora();
 					s = new Subdivision();
 				
-					inteRango = new HashMap<>();
-					horaSubdivision = new HashMap<>();
+				
 					i.setNombre(rs.getString("nombre"));
 					i.setApellido(rs.getString("apellido"));
+					
 					r.setNomRango(rs.getString("nombRango"));
 					h.setHoraInicio(rs.getObject("horaInicio", LocalTime.class));
 					s.setDescripcion(rs.getString("descripcion"));
-					inteRango.put(i,r);
-					horaSubdivision.put(h,s);
-					uActivos.put(inteRango,horaSubdivision);
+					
+					i.setHora(h);
+					i.setRango(r);
+					i.setSub(s);
+					
+					uActivos.add(i);
 					
 				}
 			}	

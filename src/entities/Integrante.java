@@ -1,7 +1,8 @@
 package entities;
 
+import java.util.LinkedList;
+
 import entities.*;
-import java.util.HashMap;
 
 public class Integrante {
 
@@ -10,15 +11,21 @@ public class Integrante {
 	private Rol rol;
 	private Rango rango;
 	private Hora hora;
-	private Ran_Subdivision ranSub;
-	private Sancion sancion;
-	private Medalla medalla;
-	public Sancion getSancion() {
+	private Subdivision sub;
+	public Subdivision getSub() {
+		return sub;
+	}
+	public void setSub(Subdivision sub) {
+		this.sub = sub;
+	}
+	private LinkedList<Sancion> sancion;
+	public LinkedList<Sancion> getSancion() {
 		return sancion;
 	}
-	public void setSancion(Sancion sancion) {
+	public void setSancion(LinkedList<Sancion> sancion) {
 		this.sancion = sancion;
 	}
+	private Medalla medalla;
 	public Medalla getMedalla() {
 		return medalla;
 	}
@@ -33,12 +40,7 @@ public class Integrante {
 	public void setHora(Hora hora) {
 		this.hora = hora;
 	}
-	public void setRanSub(Ran_Subdivision ranSub) {
-		this.ranSub = ranSub;
-	}
-	public Ran_Subdivision getRanSub() {
-		return ranSub;
-	}
+	
 
 	public int getIdIntegrante() {
 		return idIntegrante;
@@ -98,7 +100,7 @@ public class Integrante {
 	
 	public Integrante() 
 	{
-		this.roles=new HashMap<>();
+		
 	}
 	
 	// ROL

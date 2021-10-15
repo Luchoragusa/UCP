@@ -37,43 +37,25 @@
 			<th>horaInicio</th>
 		</tr>
 			<%
-			HashMap<HashMap<Integrante,Rango>,HashMap<Hora,Subdivision>> uActivos = new HashMap<>();
+			LinkedList<Integrante> uActivos = new LinkedList<>();
 				
 				DataIntegrante di = new DataIntegrante();
-				Rango r = new Rango();
-				DataRango dr = new DataRango();
-
-				
+					
 				uActivos = di.getServicio();
 				
 				
-				for(HashMap.Entry<HashMap<Integrante,Rango>,HashMap<Hora,Subdivision>> entry :  uActivos.entrySet()) {
+				for(Integrante entry :  uActivos) {
 			%>
 			
-				<%
-							for(HashMap.Entry<Integrante,Rango> entry1 : (entry.getKey()).entrySet() ) {
-							%>
-					<tr>
-					<th> <%=entry1.getKey().getNombre()%> </th>
-					<th> <%=entry1.getKey().getApellido()%> </th>
-					<th> <%=entry1.getValue().getNomRango()%> </th>
+			
+			<tr>
 					
-				
-				<%
-													}
-													%>
-				<%
-				for(HashMap.Entry<Hora,Subdivision> entry2 : (entry.getValue()).entrySet() ) {
-				%>
-					
-					<th> <%= entry2.getValue().getDescripcion() %> </th>
-					<th> <%= entry2.getKey().getHoraInicio() %> </th>
-					</tr>
-				
-				
-				<%
-				}
-				%>
+					<th> <%=entry.getNombre() %> </th>
+					<th> <%=entry.getApellido() %> </th>
+					<th> <%=entry.getRango().getNomRango() %> </th>
+					<th> <%=entry.getSub().getDescripcion() %> </th>
+					<th> <%=entry.getHora().getHoraInicio() %> </th>
+			</tr>
 			<%
 			}
 			%>
@@ -91,40 +73,7 @@
 			<th>nomRobo</th>
 			
 		</tr>
-			<%
-			DataRoboxdia drxd = new DataRoboxdia();
-						
-						HashMap<HashMap<Integrante,Robo>,LugarRobo> inteRxdR = new HashMap<>();
-						
-						
-						inteRxdR = drxd.getUltimos5robos();
-						
-						
-						for(HashMap.Entry<HashMap<Integrante,Robo>,LugarRobo> en:  inteRxdR.entrySet()) {
-			%>
 			
-				<%
-							for(HashMap.Entry<Integrante,Robo> en1 : (en.getKey()).entrySet() ) {
-							%>
-					<tr>
-					<th> <%= en1.getKey().getNombre() %> </th>
-					<th> <%= en1.getKey().getApellido() %> </th>
-					<th> <%= en1.getValue().getResultado() %> </th>
-					<th> <%= en1.getValue().getHora_robo() %> </th>
-					<th> <%= en1.getValue().getIdRobo() %> </th>
-					
-				
-				<%
-				}
-				%>
-				
-				
-					<th> <%=en.getValue().getTipoRobo()%> </th>
-					</tr>
-				
-			<%
-			}
-			%>
 		</table>
 		
 		

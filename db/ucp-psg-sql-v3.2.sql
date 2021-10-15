@@ -51,10 +51,12 @@ DROP TABLE IF EXISTS `hora`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `hora` (
   `idIntegrante` int NOT NULL,
-  `fecha` date NOT NULL,
+  `fechaInicio` date NOT NULL,
   `horaInicio` time NOT NULL,
   `horaFin` time DEFAULT NULL,
-  PRIMARY KEY (`idIntegrante`,`fecha`,`horaInicio`),
+  `horasJugadas` time DEFAULT NULL,
+  `fechaFin` date DEFAULT NULL,
+  PRIMARY KEY (`idIntegrante`,`fechaInicio`,`horaInicio`),
   CONSTRAINT `id_Integ` FOREIGN KEY (`idIntegrante`) REFERENCES `integrante` (`idIntegrante`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -406,7 +408,7 @@ DROP TABLE IF EXISTS `subdivision`;
 CREATE TABLE `subdivision` (
   `idSub` int NOT NULL AUTO_INCREMENT,
   `nomSubdivision` varchar(45) NOT NULL,
-  `descripción` varchar(45) NOT NULL,
+  `descripcion` varchar(45) NOT NULL,
   PRIMARY KEY (`idSub`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -430,4 +432,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-12 19:17:22
+-- Dump completed on 2021-10-15 12:50:33

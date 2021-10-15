@@ -46,10 +46,7 @@
 				
 				for(Integrante entry :  uActivos) {
 			%>
-			
-			
 			<tr>
-					
 					<th> <%=entry.getNombre() %> </th>
 					<th> <%=entry.getApellido() %> </th>
 					<th> <%=entry.getRango().getNomRango() %> </th>

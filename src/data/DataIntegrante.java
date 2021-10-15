@@ -499,9 +499,9 @@ import entities.Subdivision;
 		
 			if(rs!=null) 
 			{
+				uActivos = new LinkedList<>();
 				while(rs.next()) 
 				{
-					uActivos = new LinkedList<>();
 					i = new Integrante();
 					r = new Rango();
 					h = new Hora();

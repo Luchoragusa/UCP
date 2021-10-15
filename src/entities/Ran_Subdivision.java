@@ -4,17 +4,11 @@ public class Ran_Subdivision {
 
 	private String nombreRangoSub;
 	private int idSub, idRanSub;
-	private Subdivision sub;
 	
 	public int getIdRanSub() {
 		return idRanSub;
 	}
-	public Subdivision getSub() {
-		return sub;
-	}
-	public void setSub(Subdivision sub) {
-		this.sub = sub;
-	}
+	
 	public void setIdRanSub(int idRanSub) {
 		this.idRanSub = idRanSub;
 	}

@@ -7,30 +7,26 @@ public class Integrante {
 
 	private int idIntegrante;
 	private String nombre, apellido, steamHex, discordId, usuario, pw;
-	private HashMap<Integer, Rol> rol;
+	private Rol rol;
 	private Rango rango;
 	private Hora hora;
 	private Ran_Subdivision ranSub;
+	private Sancion sancion;
+	private Medalla medalla;
+	public Sancion getSancion() {
+		return sancion;
+	}
+	public void setSancion(Sancion sancion) {
+		this.sancion = sancion;
+	}
+	public Medalla getMedalla() {
+		return medalla;
+	}
+	public void setMedalla(Medalla medalla) {
+		this.medalla = medalla;
+	}
 
-	public int getIdIntegrante() {
-		return idIntegrante;
-	}
-	public Ran_Subdivision getRanSub() {
-		return ranSub;
-	}
 
-	public HashMap<Integer, Rol> getRol() {
-		return rol;
-	}
-	public void setRol(HashMap<Integer, Rol> rol) {
-		this.rol = rol;
-	}
-	public Rango getRango() {
-		return rango;
-	}
-	public void setRango(Rango rango) {
-		this.rango = rango;
-	}
 	public Hora getHora() {
 		return hora;
 	}
@@ -39,6 +35,13 @@ public class Integrante {
 	}
 	public void setRanSub(Ran_Subdivision ranSub) {
 		this.ranSub = ranSub;
+	}
+	public Ran_Subdivision getRanSub() {
+		return ranSub;
+	}
+
+	public int getIdIntegrante() {
+		return idIntegrante;
 	}
 
 	public void setIdIntegrante(int idIntegrante) {
@@ -98,33 +101,22 @@ public class Integrante {
 		this.roles=new HashMap<>();
 	}
 	
-	public void addRol(Rol rolToBeAdded) 
-	{
-		this.roles.put(rolToBeAdded.getIdRol(), rolToBeAdded);
+	// ROL
+
+	public Rol getRol() {
+		return rol;
+	}
+	public void setRol(Rol rol) {
+		this.rol = rol;
 	}
 	
-	public void removeRol(Rol rolToBeRemoved) 
-	{
-		this.roles.remove(rolToBeRemoved.getIdRol());
-	}
 	
-	public boolean hasRol(Rol rolToCheck) 
-	{
-		return this.roles.containsKey(rolToCheck.getIdRol());
-	}
-	public void addRango(Rango rangoToBeAdded) {
-		this.rangos.put(rangoToBeAdded.getIdRango(), rangoToBeAdded);
-		
-	}
+	//RANGO
 	
-	public void removeRango(Rango rangoToBeRemoved) 
-	{
-		this.rangos.remove(rangoToBeRemoved.getIdRango());
+	public Rango getRango() {
+		return rango;
 	}
-	
-	public boolean hasRango(Rango rangoToCheck) 
-	{
-		return this.rangos.containsKey(rangoToCheck.getIdRango());
+	public void setRango(Rango rango) {
+		this.rango = rango;
 	}
-	
 }

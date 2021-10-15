@@ -4,6 +4,7 @@ public class Subdivision {
 
 	private int idSub;
 	private String descripcion, nomSubDivision;
+	private Ran_Subdivision ranSub;
 	
 	public Subdivision() {		
 	}
@@ -25,4 +26,11 @@ public class Subdivision {
 	public void setNomSubDivision(String nomSubDivision) {
 		this.nomSubDivision = nomSubDivision;
 	}
+	public Ran_Subdivision getRanSub() {
+		return ranSub;
+	}
+	public void setRanSub(Ran_Subdivision ranSub) {
+		this.ranSub = ranSub;
+	}
+	
 }

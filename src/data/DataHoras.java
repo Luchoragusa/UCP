@@ -26,7 +26,7 @@ public Hora getHorasDelIntegrante(int id) {
 	try 
 	{
 		stmt = DbConnector.getInstancia().getConn().prepareStatement(
-		 "select * FROM horas WHERE idIntegrante = ? ORDER BY fecha desc, horaInicio desc limit 1");
+		 "select * FROM hora WHERE idIntegrante = ? ORDER BY fechaInicio desc, horaInicio desc limit 1");
 		stmt.setInt(1, id);
 		rs=stmt.executeQuery();
 		
@@ -36,7 +36,7 @@ public Hora getHorasDelIntegrante(int id) {
 			{
 				h = new Hora();
 				h.setIdIntegrante(id);
-				//h.setFecha(rs.getDate("fecha").toLocalDate());
+				h.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
 				h.setHoraInicio(rs.getObject("horaInicio", LocalTime.class));
 				h.setHoraFin(rs.getObject("horaFin", LocalTime.class));	
 			}
@@ -182,18 +182,18 @@ public Hora getHorasDelIntegrante(int id) {
 
 	}
 	
-	public void update(Hora hr) {
-
+	public void update(Hora hr)
+	{
 		PreparedStatement stmt= null;
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"update horas set horaFin = ?, fechaFin = ? where idIntegrante=? and fecha = ? and horaInicio = ?");
+							"update hora set horaFin = ?, fechaFin = ?, horasJugadas = timediff(horaFin, horaInicio) where idIntegrante=? and fechaInicio = ? and horaInicio = ?");
 			stmt.setObject(1, hr.getHoraFin());		
 			stmt.setObject(2, hr.getFechaFin());
 			stmt.setInt(3, hr.getIdIntegrante());
-			//stmt.setObject(4, hr.getFecha());
+			stmt.setObject(4, hr.getFechaFin());
 			stmt.setObject(5, hr.getHoraInicio());
 			
 			stmt.executeUpdate();
@@ -214,7 +214,6 @@ public Hora getHorasDelIntegrante(int id) {
             	e.printStackTrace();
             }
 		}
-	
 	}
 
 	public void remove(Hora hr) {

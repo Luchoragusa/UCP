@@ -4,7 +4,14 @@ public class Sancion {
 
 	private int idIntegrante;
 	private String motivo, tipoSancion;
+	private boolean estado;
 	
+	public boolean isEstado() {
+		return estado;
+	}
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
 	public Sancion() {	
 	}
 	public int getIdIntegrante() {

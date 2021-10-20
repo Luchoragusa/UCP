@@ -79,7 +79,6 @@ public LinkedList<Hora> get5HorasDelIntegrante(Hora hora)
 			while(rs.next()) 
 			{
 				Hora h = null;
-				
 				h = new Hora();
 				h.setIdIntegrante(hora.getIdIntegrante());
 				h.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());

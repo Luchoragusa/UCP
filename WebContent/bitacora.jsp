@@ -4,6 +4,8 @@
 <%@page import="java.util.Collection"%>
 <%@page import="data.*"%>
 <%@page import="entities.*"%>
+<%@page import="java.time.Duration"%>
+<%@page import="java.time.LocalTime"%>
 <%@page import="java.util.concurrent.LinkedBlockingDeque"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -24,36 +26,55 @@
 		</form>
 	</body>
 	
-			<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
-		<tr bgcolor=grey>
-			<th>Hora Inicio</th>
-			<th>Fecha Inicio</th>
-			<th>horaFin</th>
-			<th>Fecha Fin</th>	
-			<th>Horas Jugadas</th>		
-		</tr>
-		<%
-			LinkedList<Hora> horas = new LinkedList<>();
-		
-			Integrante i = new Integrante();
-			i.setIdIntegrante((int) session.getAttribute("id"));
-			Hora hora = new Hora(); 
-			DataHoras dh = new DataHoras();
-	
-			hora.setIdIntegrante(i.getIdIntegrante());
-			horas = dh.get5HorasDelIntegrante(hora);	
+		<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
+			<tr bgcolor=grey>
+				<th>Hora Inicio</th>
+				<th>Fecha Inicio</th>
+				<th>horaFin</th>
+				<th>Fecha Fin</th>	
+				<th>Horas Jugadas</th>		
+			</tr>
+			<%
+				LinkedList<Hora> horas = new LinkedList<>();
 			
-			for(Hora h :  horas) {
-		%>
-			<tr>
-				<th> <%=h.getHoraInicio() %> </th>
-				<th> <%=h.getFechaInicio() %> </th>
-				<th> <%=h.getHoraFin() %> </th>
-				<th> <%=h.getFechaFin() %> </th>
-				<th> <%=h.getHorasJugadas() %> </th>
-		   </tr>
-		<%
-			}
-		%>
-		</table>
+				Integrante i = new Integrante();
+				i.setIdIntegrante((int) session.getAttribute("id"));
+				Hora hora = new Hora(); 
+				DataHoras dh = new DataHoras();
+		
+				hora.setIdIntegrante(i.getIdIntegrante());
+				horas = dh.get5HorasDelIntegrante(hora);	
+				
+				for(Hora h :  horas) {
+			%>
+				<tr>
+					<th> <%=h.getHoraInicio() %> </th>
+					<th> <%=h.getFechaInicio() %> </th>
+					<th> <%=h.getHoraFin() %> </th>
+					<th> <%=h.getFechaFin() %> </th>
+					<th> <%=h.getHorasJugadas() %> </th>
+			   </tr>
+			<%
+				}
+			%>
+			<%
+				LinkedList<Hora> horass = new LinkedList<>();
+			
+				Integrante is = new Integrante();
+				i.setIdIntegrante((int) session.getAttribute("id"));
+				Hora ho = new Hora(); 
+				DataHoras dhs = new DataHoras();
+		
+				hora.setIdIntegrante(i.getIdIntegrante());
+				horas = dh.get5HorasDelIntegrante(hora);	
+	
+				LocalTime contadorHorasJugadas = LocalTime.of(0, 0);
+				for(Hora h :  horas) 
+				{
+					contadorHorasJugadas = contadorHorasJugadas.plusHours(h.getHorasJugadas().getHour())
+																.plusMinutes(h.getHorasJugadas().getMinute())
+																.plusSeconds(h.getHorasJugadas().getSecond());
+				}
+			%>
+		<h3> Horas totales: <% out.println(contadorHorasJugadas); %> </h3>
 </html>

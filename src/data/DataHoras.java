@@ -61,6 +61,56 @@ public Hora getHorasDelIntegrante(int id) {
 	return h;
 	}
 	
+public LinkedList<Hora> get5HorasDelIntegrante(int id) 
+{	
+	PreparedStatement stmt=null;
+	ResultSet rs=null;
+	LinkedList<Hora> lista = null;
+	try 
+	{
+		stmt = DbConnector.getInstancia().getConn().prepareStatement(
+		 "select * FROM hora WHERE idIntegrante = ? ORDER BY fechaInicio desc, horaInicio desc limit 5");
+		stmt.setInt(1, id);
+		rs=stmt.executeQuery();
+		
+		if(rs!=null) 
+		{
+			lista = new LinkedList<Hora>();
+			while(rs.next()) 
+			{
+				Hora h = null;
+				
+				h = new Hora();
+				h.setIdIntegrante(id);
+				h.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
+				h.setHoraInicio(rs.getObject("horaInicio", LocalTime.class));
+				h.setHoraFin(rs.getObject("horaFin", LocalTime.class));
+				h.setFechaFin(rs.getDate("fechaFin").toLocalDate());
+				h.setHorasJugadas(rs.getObject("horasJugadas", LocalTime.class));
+				
+				lista.add(h);
+			}
+		}	
+	} catch (SQLException e) {
+		e.printStackTrace();
+		
+	} 
+	finally 
+	{
+		try 
+		{
+			if(rs!=null) {rs.close();}
+			if(stmt!=null) {stmt.close();}
+			DbConnector.getInstancia().releaseConn();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+	return lista;
+}
+
 	public LinkedList<Hora> getById(Hora hr){
 		PreparedStatement stmt=null;
 		ResultSet rs=null;

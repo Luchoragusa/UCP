@@ -26,12 +26,11 @@
 	
 			<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
 		<tr bgcolor=grey>
-			<th>idIntegrante</th>
-			<th>fechaInicio</th>
-			<th>horaInicio</th>
+			<th>Hora Inicio</th>
+			<th>Fecha Inicio</th>
 			<th>horaFin</th>
-			<th>horasJugadas</th>
-			<th>fechaFin</th>			
+			<th>Fecha Fin</th>	
+			<th>Horas Jugadas</th>		
 		</tr>
 		<%
 			LinkedList<Hora> horas = new LinkedList<>();
@@ -42,20 +41,19 @@
 			DataHoras dh = new DataHoras();
 	
 			hora.setIdIntegrante(i.getIdIntegrante());
-			horas = dh.get5HorasDelIntegrante(hora.getIdIntegrante());	
+			horas = dh.get5HorasDelIntegrante(hora);	
 			
 			for(Hora h :  horas) {
 		%>
 			<tr>
-				<th> <%=h.getIdIntegrante() %> </th>
-				<th> <%=h.getFechaInicio() %> </th>
 				<th> <%=h.getHoraInicio() %> </th>
+				<th> <%=h.getFechaInicio() %> </th>
 				<th> <%=h.getHoraFin() %> </th>
+				<th> <%=h.getFechaFin() %> </th>
 				<th> <%=h.getHorasJugadas() %> </th>
 		   </tr>
 		<%
 			}
 		%>
 		</table>
-	
 </html>

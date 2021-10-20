@@ -61,7 +61,7 @@ public Hora getHorasDelIntegrante(int id) {
 	return h;
 	}
 	
-public LinkedList<Hora> get5HorasDelIntegrante(int id) 
+public LinkedList<Hora> get5HorasDelIntegrante(Hora hora) 
 {	
 	PreparedStatement stmt=null;
 	ResultSet rs=null;
@@ -70,7 +70,7 @@ public LinkedList<Hora> get5HorasDelIntegrante(int id)
 	{
 		stmt = DbConnector.getInstancia().getConn().prepareStatement(
 		 "select * FROM hora WHERE idIntegrante = ? ORDER BY fechaInicio desc, horaInicio desc limit 5");
-		stmt.setInt(1, id);
+		stmt.setInt(1, hora.getIdIntegrante());
 		rs=stmt.executeQuery();
 		
 		if(rs!=null) 
@@ -81,30 +81,29 @@ public LinkedList<Hora> get5HorasDelIntegrante(int id)
 				Hora h = null;
 				
 				h = new Hora();
-				h.setIdIntegrante(id);
+				h.setIdIntegrante(hora.getIdIntegrante());
 				h.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
 				h.setHoraInicio(rs.getObject("horaInicio", LocalTime.class));
-				h.setHoraFin(rs.getObject("horaFin", LocalTime.class));
-				h.setFechaFin(rs.getDate("fechaFin").toLocalDate());
-				h.setHorasJugadas(rs.getObject("horasJugadas", LocalTime.class));
-				
+				if (rs.getObject("horaFin", LocalTime.class) != null)
+				{
+					h.setHoraFin(rs.getObject("horaFin", LocalTime.class));
+					h.setFechaFin(rs.getDate("fechaFin").toLocalDate());
+					h.setHorasJugadas(rs.getObject("horasJugadas", LocalTime.class));
+				}
 				lista.add(h);
 			}
 		}	
-	} catch (SQLException e) {
-		e.printStackTrace();
-		
 	} 
-	finally 
-	{
-		try 
-		{
+	catch (SQLException e) {
+		e.printStackTrace();
+	} 
+	finally {
+		try {
 			if(rs!=null) {rs.close();}
 			if(stmt!=null) {stmt.close();}
 			DbConnector.getInstancia().releaseConn();
 		} 
-		catch (SQLException e) 
-		{
+		catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}

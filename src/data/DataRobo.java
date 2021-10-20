@@ -3,80 +3,165 @@ package data;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.LinkedList;
-import entities.*;
+import java.time.LocalTime;
+import java.util.HashMap;
 
-public class DataRobo 
+import entities.Integrante;
+import entities.LugarRobo;
+import entities.Robo;
+
+public class DataRobo
 {
-	
-	public LinkedList<LugarRobo> getAll()
+	public void saveRobo(Integrante intg, LugarRobo rob, Robo rd) 
 	{
-		Statement stmt=null;
+		PreparedStatement stmt=null;
 		ResultSet rs=null;
-		LinkedList<LugarRobo> robos= new LinkedList<>();
-		try {
-			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select * from robo");
+		try 
+		{
+			stmt=DbConnector.getInstancia().getConn().prepareStatement( 
+					"insert into roboxdia (idLugarRobo, idIntegrante, fecha_robo, hora_robo,resultado, idRobo) values(?,?,?,?,?,?)");
+			
+			//stmt.setInt(1, rd.getIdLugarRobo());
+			stmt.setInt(2, intg.getIdIntegrante());
+			stmt.setObject(3, rd.getFecha_robo());
+			stmt.setObject(4, rd.getHora_robo());
+			stmt.setString(5, rd.getResultado());
+			//stmt.setInt(6, rd.getIdRobo());
+			stmt.executeUpdate();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			try 
+			{
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+	
+	}
+	
+	public void deleteRobo(Integrante intg) 
+	{
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		try 
+		{
+			stmt=DbConnector.getInstancia().getConn().prepareStatement( 
+					"delete from roboxdia where idIntegrante = ?");
+			
+			stmt.setInt(1, intg.getIdIntegrante());
+			stmt.execute();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			try 
+			{
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+	
+	}
+
+	public Robo getLastIdRobo() 
+	{	
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		Robo rd = null;
+		try 
+		{
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select max(idRobo) from roboxdia");
+			rs= stmt.executeQuery();
+			if(rs!=null && rs.next()) 
+			{
+					rd = new Robo();
+					rd.setIdRobo(rs.getInt("max(idRobo)"));
+					rd.setIdRobo(rd.getIdRobo()+1);
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			try 
+			{
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+		return rd;
+	}
+	
+	public HashMap<HashMap<Integrante, Robo>, LugarRobo> getUltimos5robos() // hacer el Hash para las 3 entidades
+	{	
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		Integrante i = null;
+		LugarRobo r = null;
+		Robo rxd = null;
+		
+		HashMap<Integrante,Robo> irxd = null;
+	
+		HashMap<HashMap<Integrante,Robo>, LugarRobo> inteRxdR = null;
+		try 
+		{
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select i.nombre, i.apellido, r.nomRobo, roboxdia.resultado, roboxdia.hora_robo, roboxdia.idRobo \r\n"
+					+ "					from integrante i\r\n"
+					+ "                    inner join roboxdia  on roboxdia.idIntegrante = i.idIntegrante \r\n"
+					+ "                    inner join robo r on r.idLugarRobo = roboxdia.idLugarRobo\r\n"
+					+ "					where roboxdia.idRobo between ((select max(roboxdia.idRobo)-5 from roboxdia)) and (select max(roboxdia.idRobo) from roboxdia) \r\n"
+					+ "					order by roboxdia.idRobo asc");
+			rs= stmt.executeQuery();
 			if(rs!=null) 
 			{
 				while(rs.next()) 
 				{
-					LugarRobo r=new LugarRobo();
-					r.setIdLugarRobo(rs.getInt("idLugarRobo"));
+					irxd = new HashMap<>();
+					inteRxdR = new HashMap<>();
+					r=new LugarRobo();
 					r.setTipoRobo(rs.getString("nomRobo"));
-					r.setLugarRobo(rs.getString("lugarRobo"));
-					r.setMaxIntegrantes(rs.getInt("maxIntegrantes"));
-					r.setMinIntregantes(rs.getInt("minIntegrantes"));
-					robos.add(r);
+					
+					rxd=new Robo();
+					rxd.setResultado(rs.getString("resultado"));
+					rxd.setIdRobo(rs.getInt("idRobo"));
+					rxd.setHora_robo(rs.getObject("hora_robo", LocalTime.class));
+					
+					i=new Integrante();
+					i.setNombre(rs.getString("nombre"));
+					i.setApellido(rs.getString("apellido"));
+					irxd.put(i,rxd);
+					inteRxdR.put(irxd,r);
 				}
 			}
 		} 
 		catch (SQLException e) 
 		{
 			e.printStackTrace();
-		} 
-		finally 
-		{
-			try 
-			{
-				if(rs!=null) {rs.close();}
-				if(stmt!=null) {stmt.close();}
-				DbConnector.getInstancia().releaseConn();
-			} 
-			catch (SQLException e) 
-			{
-				e.printStackTrace();
-			}
-		}
-		return robos;
-	}
-	
-	public LugarRobo getById(LugarRobo roboToSearch) 
-	{
-		LugarRobo r=null;
-		PreparedStatement stmt=null;
-		ResultSet rs=null;
-		try 
-		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select * from robo where idLugarRobo=?"
-					);
-			stmt.setInt(1, roboToSearch.getIdLugarRobo());
-			rs=stmt.executeQuery();
-			if(rs!=null && rs.next()) 
-			{
-				r=new LugarRobo();
-				r.setIdLugarRobo(rs.getInt("idLugarRobo"));
-				r.setTipoRobo(rs.getString("nomRobo"));
-				r.setLugarRobo(rs.getString("lugarRobo"));
-				r.setMaxIntegrantes(rs.getInt("maxIntegrantes"));
-				r.setMinIntregantes(rs.getInt("minIntegrantes"));
-			}
-		} 
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
 		}
 		finally 
 		{
@@ -91,155 +176,8 @@ public class DataRobo
 				e.printStackTrace();
 			}
 		}
-		return r;
-	}
-	
-	public LugarRobo getByNomb(LugarRobo roboToSearch) 
-	{
-		LugarRobo r=null;
-		PreparedStatement stmt=null;
-		ResultSet rs=null;
-		try {
-			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select * from rol where nomRobo=?"
-					);
-			stmt.setString(1, roboToSearch.getTipoRobo());
-			rs=stmt.executeQuery();
-			if(rs!=null && rs.next()) 
-			{
-				r=new LugarRobo();
-				r.setIdLugarRobo(rs.getInt("idLugarRobo"));
-				r.setTipoRobo(rs.getString("nomRobo"));
-				r.setLugarRobo(rs.getString("lugarRobo"));
-				r.setMaxIntegrantes(rs.getInt("maxIntegrantes"));
-				r.setMinIntregantes(rs.getInt("minIntegrantes"));
-			}
-		}
-		
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
-		}
-		finally 
-		{
-			try 
-			{
-				if(rs!=null) {rs.close();}
-				if(stmt!=null) {stmt.close();}
-				DbConnector.getInstancia().releaseConn();
-			} 
-			catch (SQLException e) 
-			{
-				e.printStackTrace();
-			}
-		}
-		return r;
-	}
-	
-	public void add(LugarRobo robo) 
-	{
-		PreparedStatement stmt= null;
-		ResultSet keyResultSet=null;
-		try 
-		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"insert into robo(nomRobo, lugarRobo, maxIntegrantes, minIntegrantes) values(?,?,?,?)",
-							PreparedStatement.RETURN_GENERATED_KEYS
-							);
-			stmt.setString(1, robo.getTipoRobo());
-			stmt.setString(2, robo.getLugarRobo());
-			stmt.setInt(3, robo.getMaxIntegrantes());
-			stmt.setInt(4, robo.getMinIntregantes());
-			stmt.executeUpdate();
-			
-			keyResultSet=stmt.getGeneratedKeys();
-            if(keyResultSet!=null && keyResultSet.next())
-            {
-                robo.setIdLugarRobo(keyResultSet.getInt(1));   // creo q es al pedo pq no le devolvemos
-            }
+		return inteRxdR;
+	}	
 
-		} 
-		catch (SQLException e) 
-		{
-            e.printStackTrace();
-		} 
-		finally 
-		{
-            try 
-            {
-                if(keyResultSet!=null)keyResultSet.close();
-                if(stmt!=null)stmt.close();
-                DbConnector.getInstancia().releaseConn();
-            } 
-            catch (SQLException e) 
-            {
-            	e.printStackTrace();
-            }
-		}
 
-	}
-
-	public void update(LugarRobo robo) 
-	{
-		PreparedStatement stmt= null;
-		try 
-		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"update robo set nomRobo=?, lugarRobo=?, maxIntegrantes=?, minIntegrantes=? where idLugarRobo=?");
-			stmt.setString(1, robo.getTipoRobo());
-			stmt.setString(2, robo.getLugarRobo());
-			stmt.setInt(3, robo.getMaxIntegrantes());
-			stmt.setInt(4, robo.getMinIntregantes());
-			stmt.setInt(5, robo.getIdLugarRobo());
-			stmt.executeUpdate();
-		} 
-		catch (SQLException e) 
-		{
-            e.printStackTrace();
-		} 
-		finally 
-		{
-            try 
-            {
-                if(stmt!=null)stmt.close();
-                DbConnector.getInstancia().releaseConn();
-            } 
-            catch (SQLException e) 
-            {
-            	e.printStackTrace();
-            }
-		}
-	}
-
-	public void remove(LugarRobo robo) 
-	{
-		PreparedStatement stmt= null;
-		try 
-		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"delete from robo where idLugarRobo=?");
-			stmt.setInt(1, robo.getIdLugarRobo());
-			stmt.executeUpdate();
-		} 
-		catch (SQLException e) 
-		{
-            e.printStackTrace();
-		} 
-		finally 
-		{
-            try 
-            {
-                if(stmt!=null)stmt.close();
-                DbConnector.getInstancia().releaseConn();
-            } 
-            catch (SQLException e) 
-            {
-            	e.printStackTrace();
-            }
-		}
-	}
-	
 }

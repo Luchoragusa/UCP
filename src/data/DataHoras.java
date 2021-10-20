@@ -36,7 +36,7 @@ public Hora getHorasDelIntegrante(int id) {
 			{
 				h = new Hora();
 				h.setIdIntegrante(id);
-				h.setFecha(rs.getDate("fecha").toLocalDate());
+				//h.setFecha(rs.getDate("fecha").toLocalDate());
 				h.setHoraInicio(rs.getObject("horaInicio", LocalTime.class));
 				h.setHoraFin(rs.getObject("horaFin", LocalTime.class));	
 			}
@@ -79,7 +79,7 @@ public Hora getHorasDelIntegrante(int id) {
 				{
 					Hora h=new Hora();
 					h.setIdIntegrante(hr.getIdIntegrante());
-					h.setFecha(rs.getDate("fecha").toLocalDate());
+					//h.setFecha(rs.getDate("fecha").toLocalDate());
 					h.setHoraInicio(rs.getObject("horaInicio", LocalTime.class));
 					h.setHoraFin(rs.getTime("horaFin").toLocalTime());	
 					hras.add(h);
@@ -123,7 +123,7 @@ public Hora getHorasDelIntegrante(int id) {
 				{
 					Hora h=new Hora();
 					h.setIdIntegrante(rs.getInt("idIntegrante"));
-					h.setFecha(hr.getFecha());
+					//h.setFecha(hr.getFecha());
 					h.setHoraInicio(rs.getObject("horaInicio", LocalTime.class));
 					h.setHoraFin(rs.getTime("horaFin").toLocalTime());	
 					hras.add(h);
@@ -156,20 +156,11 @@ public Hora getHorasDelIntegrante(int id) {
 		{
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into horas(idIntegrante,horaInicio,fecha) values(?,?,?)",
-							PreparedStatement.RETURN_GENERATED_KEYS
-							);
+							"insert into hora(idIntegrante, horaInicio,fechaInicio) values(?,?,?)");
 			stmt.setInt(1, hr.getIdIntegrante());
 			stmt.setObject (2, hr.getHoraInicio()); 
-			stmt.setObject(3, hr.getFecha());
+			stmt.setObject(3, hr.getFechaInicio());
 			stmt.executeUpdate();
-			
-			keyResultSet=stmt.getGeneratedKeys();
-            if(keyResultSet!=null && keyResultSet.next())
-            {
-                hr.setHoraFin(keyResultSet.getTime(1).toLocalTime());
-            }
-
 		} 
 		catch (SQLException e) 
 		{
@@ -202,7 +193,7 @@ public Hora getHorasDelIntegrante(int id) {
 			stmt.setObject(1, hr.getHoraFin());		
 			stmt.setObject(2, hr.getFechaFin());
 			stmt.setInt(3, hr.getIdIntegrante());
-			stmt.setObject(4, hr.getFecha());
+			//stmt.setObject(4, hr.getFecha());
 			stmt.setObject(5, hr.getHoraInicio());
 			
 			stmt.executeUpdate();
@@ -383,8 +374,5 @@ public Hora getHorasDelIntegrante(int id) {
             	e.printStackTrace();
             }
 		}
-	
 	}
-
-	
 }

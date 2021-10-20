@@ -36,70 +36,42 @@
 			<th>descripcion</th>
 			<th>horaInicio</th>
 		</tr>
-			<%
+		<%
 			LinkedList<Integrante> uActivos = new LinkedList<>();
-				
-				DataIntegrante di = new DataIntegrante();
-					
-				uActivos = di.getServicio();
-				
-				
-				for(Integrante entry :  uActivos) {
-			%>
+			DataIntegrante di = new DataIntegrante();
+			uActivos = di.getServicio();
+			for(Integrante entry :  uActivos) {
+		%>
 			<tr>
-					<th> <%=entry.getNombre() %> </th>
-					<th> <%=entry.getApellido() %> </th>
-					<th> <%=entry.getRango().getNomRango() %> </th>
-					<th> <%=entry.getSub().getDescripcion() %> </th>
-					<th> <%=entry.getHora().getHoraInicio() %> </th>
+				<th> <%=entry.getNombre() %> </th>
+				<th> <%=entry.getApellido() %> </th>
+				<th> <%=entry.getRango().getNomRango() %> </th>
+				<th> <%=entry.getSub().getDescripcion() %> </th>
+				<th> <%=entry.getHora().getHoraInicio() %> </th>
 			</tr>
-			<%
+		<%
 			}
-			%>
+		%>
 		</table>
-		
-
-		
 		<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
-		<tr bgcolor=grey>
-			<th>Nombre</th>
-			<th>Apellido</th>
-			<th>resultado</th>
-			<th>hora_robo</th>
-			<th>idRobo</th>
-			<th>nomRobo</th>
-			
-		</tr>
-			
+			<tr bgcolor=grey>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>resultado</th>
+				<th>hora_robo</th>
+				<th>idRobo</th>
+				<th>nomRobo</th>
+			</tr>
 		</table>
 		
+		<form action="bitacora.jsp">
+			<input type = "submit" value = "Bitacora"><br>
+		</form>
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
-		<form action="logoutS" method="post">
+		<form action="loginTest.jsp">
 			<input type = "submit" value = "Logout"><br>
 		</form>
+		
 	</body>
 	
 </html>

@@ -13,7 +13,6 @@ public class Robo {
 	private LinkedList<Integrante> integrantes;
 	private LugarRobo lugar_robo;
 	
-	
 	public int getNroRobo() {
 		return nroRobo;
 	}

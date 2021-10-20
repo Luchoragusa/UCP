@@ -4,6 +4,8 @@
 <%@page import="java.util.Collection"%>
 <%@page import="data.*"%>
 <%@page import="entities.*"%>
+<%@page import="java.time.Duration"%>
+<%@page import="java.time.LocalTime"%>
 <%@page import="java.util.concurrent.LinkedBlockingDeque"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -32,9 +34,10 @@
 		<tr bgcolor=grey>
 			<th>Nombre</th>
 			<th>Apellido</th>
-			<th>nombRango</th>
-			<th>descripcion</th>
-			<th>horaInicio</th>
+			<th>Rango</th>
+			<th>SubDivision</th>
+			<th>Hora Inicio</th>
+			<th>Tiempo en Servicio</th>
 		</tr>
 		<%
 			LinkedList<Integrante> uActivos = new LinkedList<>();
@@ -48,6 +51,10 @@
 				<th> <%=entry.getRango().getNomRango() %> </th>
 				<th> <%=entry.getSub().getDescripcion() %> </th>
 				<th> <%=entry.getHora().getHoraInicio() %> </th>
+				<th> 
+					<% Duration diferencia = Duration.between(entry.getHora().getHoraInicio(), LocalTime.now());
+				     out.println(diferencia.toHoursPart() + "h " + diferencia.toMinutesPart() + "m");%>
+			    </th>
 			</tr>
 		<%
 			}

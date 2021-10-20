@@ -52,8 +52,7 @@
 				<th> <%=h.getHoraInicio() %> </th>
 				<th> <%=h.getHoraFin() %> </th>
 				<th> <%=h.getHorasJugadas() %> </th>
-				<th> <%=h.getFechaFin() %> </th>
-			</tr>
+		   </tr>
 		<%
 			}
 		%>

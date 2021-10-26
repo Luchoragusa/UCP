@@ -6,6 +6,7 @@
 <%@page import="entities.*"%>
 <%@page import="java.time.Duration"%>
 <%@page import="java.time.LocalTime"%>
+<%@page import="java.time.LocalDate"%>
 <%@page import="java.util.concurrent.LinkedBlockingDeque"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -52,8 +53,18 @@
 				<th> <%=entry.getSub().getDescripcion() %> </th>
 				<th> <%=entry.getHora().getHoraInicio() %> </th>
 				<th> 
-					<% Duration diferencia = Duration.between(entry.getHora().getHoraInicio(), LocalTime.now());
-				     out.println(diferencia.toHoursPart() + "h " + diferencia.toMinutesPart() + "m");%>
+					<% 
+						LocalDate fecha = LocalDate.now();
+						Duration diferencia = Duration.between(entry.getHora().getHoraInicio(), LocalTime.now());
+				        LocalTime tServicio = LocalTime.of(18, 00);
+						if (fecha != entry.getHora().getFechaInicio())
+						{
+							 LocalTime hrs24 = LocalTime.of(23, 59);
+							 Duration diferencia1 = Duration.between(hrs24, tServicio);
+							 tServicio = LocalTime.of(diferencia1.toHoursPart(), diferencia1.toMinutesPart());
+				    	}
+						out.println(tServicio);
+				     %>
 			    </th>
 			</tr>
 		<%

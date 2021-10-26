@@ -237,12 +237,13 @@ public LinkedList<Hora> get5HorasDelIntegrante(Hora hora)
 		{
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"update hora set horaFin = ?, fechaFin = ?, horasJugadas = timediff(horaFin, horaInicio) where idIntegrante=? and fechaInicio = ? and horaInicio = ?");
+							"update hora set horaFin = ?, fechaFin = ?, horasJugadas = ? where idIntegrante=? and fechaInicio = ? and horaInicio = ?");
 			stmt.setObject(1, hr.getHoraFin());		
 			stmt.setObject(2, hr.getFechaFin());
-			stmt.setInt(3, hr.getIdIntegrante());
-			stmt.setObject(4, hr.getFechaFin());
-			stmt.setObject(5, hr.getHoraInicio());
+			stmt.setObject(3, hr.getHorasJugadas());	
+			stmt.setInt(4, hr.getIdIntegrante());
+			stmt.setObject(5, hr.getFechaFin());
+			stmt.setObject(6, hr.getHoraInicio());
 			
 			stmt.executeUpdate();
 		} 

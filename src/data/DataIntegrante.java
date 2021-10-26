@@ -484,7 +484,7 @@ import entities.Subdivision;
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select nombre, apellido, r.nombRango, s.descripcion, horaInicio \r\n"
+			rs= stmt.executeQuery("select nombre, apellido, fechaInicio ,r.nombRango, s.descripcion, horaInicio \r\n"
 					+ "from hora\r\n"
 					+ "\r\n"
 					+ "inner join integrante i on hora.idIntegrante = i.idIntegrante\r\n"
@@ -514,6 +514,7 @@ import entities.Subdivision;
 					r.setNomRango(rs.getString("nombRango"));
 					h.setHoraInicio(rs.getObject("horaInicio", LocalTime.class));
 					s.setDescripcion(rs.getString("descripcion"));
+					h.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
 					
 					i.setHora(h);
 					i.setRango(r);

@@ -38,6 +38,7 @@
 			<th>Rango</th>
 			<th>SubDivision</th>
 			<th>Hora Inicio</th>
+			<th>Fecha Inicio</th>
 			<th>Tiempo en Servicio</th>
 		</tr>
 		<%
@@ -52,18 +53,21 @@
 				<th> <%=entry.getRango().getNomRango() %> </th>
 				<th> <%=entry.getSub().getDescripcion() %> </th>
 				<th> <%=entry.getHora().getHoraInicio() %> </th>
+				<th> <%=entry.getHora().getFechaInicio() %> </th>
 				<th> 
 					<% 
-						LocalDate fecha = LocalDate.now();
-						Duration diferencia = Duration.between(entry.getHora().getHoraInicio(), LocalTime.now());
-				        LocalTime tServicio = LocalTime.of(18, 00);
-						if (fecha != entry.getHora().getFechaInicio())
-						{
-							 LocalTime hrs24 = LocalTime.of(23, 59);
-							 Duration diferencia1 = Duration.between(hrs24, tServicio);
-							 tServicio = LocalTime.of(diferencia1.toHoursPart(), diferencia1.toMinutesPart());
-				    	}
-						out.println(tServicio);
+					LocalDate fecha = LocalDate.now();
+					LocalTime tServicio;
+					Duration diferencia = Duration.between(entry.getHora().getHoraInicio(), LocalTime.now());
+					if (fecha.getDayOfMonth() == entry.getHora().getFechaInicio().getDayOfMonth())
+					{
+				        tServicio = LocalTime.of(diferencia.toHoursPart(), diferencia.toMinutesPart());
+					}
+					else
+					{						
+				        tServicio = LocalTime.of(diferencia.toHoursPart()+23, diferencia.toMinutesPart()+59);
+					}
+					out.println(tServicio);
 				     %>
 			    </th>
 			</tr>

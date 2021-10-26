@@ -71,9 +71,12 @@
 				LocalTime contadorHorasJugadas = LocalTime.of(0, 0);
 				for(Hora h :  horas) 
 				{
-					contadorHorasJugadas = contadorHorasJugadas.plusHours(h.getHorasJugadas().getHour())
-																.plusMinutes(h.getHorasJugadas().getMinute())
-																.plusSeconds(h.getHorasJugadas().getSecond());
+					if (h.getHorasJugadas() != null)
+					{
+						contadorHorasJugadas = contadorHorasJugadas.plusHours(h.getHorasJugadas().getHour())
+								.plusMinutes(h.getHorasJugadas().getMinute())
+								.plusSeconds(h.getHorasJugadas().getSecond());
+					}
 				}
 			%>
 		<h3> Horas totales: <% out.println(contadorHorasJugadas); %> </h3>

@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -31,12 +32,19 @@ public class cerrarBitacoraS extends HttpServlet
 				
 		if (h.getHoraFin() == null) 
 		{
+			LocalDate fechaF = LocalDate.now();
 			LocalTime fin = LocalTime.now();
 			h.setHoraFin(fin);
-			
-			LocalDate fechaF = LocalDate.now();
-			h.setFechaFin(fechaF);						
-			
+			h.setFechaFin(fechaF);
+			Duration diferencia = Duration.between(h.getHoraInicio(), h.getHoraFin());
+			if (fechaF.getDayOfMonth() == h.getFechaInicio().getDayOfMonth())
+			{
+				h.setHorasJugadas(LocalTime.of(diferencia.toHoursPart(), diferencia.toMinutesPart())); 
+			}
+			else
+			{
+				h.setHorasJugadas(LocalTime.of(diferencia.toHoursPart()+23, diferencia.toMinutesPart()+59));
+			}
 			dh.update(h);	
 			response.sendRedirect("homeTest.jsp");
 		}
@@ -44,7 +52,5 @@ public class cerrarBitacoraS extends HttpServlet
 		{
 			response.sendRedirect("bitacora.jsp");
 		}
-		
-		
 	}
 }

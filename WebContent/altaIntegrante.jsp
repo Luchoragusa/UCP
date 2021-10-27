@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="data.*"%>
+<%@page import="entities.*"%>
+<%@page import="java.util.LinkedList"%>
 <!DOCTYPE html>
 
 <html>
@@ -19,26 +22,22 @@
 			SteamHex: <input type="text" name = "steamHex"><br><br>
 			Nombre usuario: <input type="text" name = "nombreUsuario"><br><br>
 			Contrasenia: <input type="password" name = "pw"><br><br>
+ 			<%
+ 				DataRango dr = new DataRango();
+ 				LinkedList<Rango> lista = new LinkedList<Rango>();
+ 				lista = dr.getAll();
+ 			%>
 			Rango:
-			 <select name="rango">
-                    <option value="Aspirante"> Aspirante</option>
-                    <option value="Aprendiz"> Aprendiz</option>
-                    <option value="Empleado"> Empleado</option>
-                    <option value="Experimentado"> Experimentado</option>
-                    <option value="Agente"> Agente</option>
-                    <option value="Supervisor"> Supervisor</option>
-                    <option value="Auxiliar del Cuerpo"> Auxiliar del Cuerpo</option>
-                    <option value="Seguridad del Cuerpo"> Seguridad del Cuerpo</option>
-                    <option value="Sub-Encargado del Cuerpo"> Sub-Encargado del Cuerpo</option>         
-                    <option value="Encargado del Cuerpo"> Encargado del Cuerpo</option>
-                    <option value="Maestro del Cuerpo"> Maestro del Cuerpo</option>
-                    <option value="Instructor del Cuerpo"> Instructor del Cuerpo</option>
-                    <option value="Especialista del Cuerpo"> Especialista del Cuerpo</option>
-                    <option value="Sub-Jefe del Cuerpo"> Sub-Jefe del Cuerpo</option>
-                    <option value="Jefe del Cuerpo"> Jefe del Cuerpo</option>
-                    <option value="Gerente"> Gerente</option>
-                    <option value="Interventor"> Interventor</option>
-                </select><br><br>
+       		<select name="rango">
+ 			<%
+ 				for(Rango r :  lista) {
+ 			%>
+	        <option value="<%=r.getNomRango()%>"> 
+	        <%=r.getNomRango()%></option>
+		    <%
+				}
+			%>
+			</select><br><br>
              Rol:
 			 <select name="rol">
                     <option value="User"> Usuario</option>

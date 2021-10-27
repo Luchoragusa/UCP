@@ -127,27 +127,21 @@ public class DataRobo
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement("select count(*) into @total\r\n"
 					+ "from robo\r\n"
-					+ "where idIntegrante = ?;\r\n"
-					+ "select count(*) into @ganados\r\n"
-					+ "from robo\r\n"
-					+ "where idIntegrante = ? and resultado = ?;\r\n"
-					+ "select count(*) into @empatado\r\n"
-					+ "from robo\r\n"
-					+ "where idIntegrante = ? and resultado = ?;\r\n"
-					+ "select @ganados, @total, @empatado;");
+					+ "where idIntegrante = ?;"
+					+ "select @total 'Total';");
 			stmt.setInt(1, i.getIdIntegrante());
-			stmt.setInt(2, i.getIdIntegrante());
-			stmt.setString(3, "Ganado");
-			stmt.setInt(4, i.getIdIntegrante());
-			stmt.setString(5, "Empate");
+			//stmt.setInt(2, i.getIdIntegrante());
+			//stmt.setString(3, "Ganado");
+			//stmt.setInt(4, i.getIdIntegrante());
+			//stmt.setString(5, "Empate");
 			rs= stmt.executeQuery();
 			
 			if(rs!=null && rs.next()) 
 			{
 				numeros = new LinkedList<Integer>();
-				numeros.add(rs.getInt("@ganados"));
-				numeros.add(rs.getInt("@total"));
-				numeros.add(rs.getInt("@empatado"));
+				numeros.add(rs.getInt("Total"));
+				//numeros.add(rs.getInt("@total"));
+				//numeros.add(rs.getInt("@empatado"));
 			}
 		} 
 		catch (SQLException e) 

@@ -5,7 +5,13 @@ import java.time.LocalDate;
 public class Sancion {
 
 	private int idIntegrante, nroSancion, id;
-	private String motivo, tipoSancion;
+	private String motivo, tipoSancion, urlSancion;
+	public String getUrlSancion() {
+		return urlSancion;
+	}
+	public void setUrlSancion(String urlSancion) {
+		this.urlSancion = urlSancion;
+	}
 	private LocalDate fecha;
 	
 	public LocalDate getFecha() {

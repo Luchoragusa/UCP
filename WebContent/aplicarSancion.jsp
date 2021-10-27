@@ -40,6 +40,6 @@
         </select><br><br>
         
         Motivo de la sancion: <input type = "text" name = "motivo"><br><br>
-        Imagen (opcional): <input type = "text" name = "motivo"><br><br>
+        Imagen (opcional): <input type = "text" name = "url"><br><br>
 	</body>
 </html>

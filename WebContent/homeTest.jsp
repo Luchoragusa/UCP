@@ -38,7 +38,6 @@
 			<th>Rango</th>
 			<th>SubDivision</th>
 			<th>Hora Inicio</th>
-			<th>Fecha Inicio</th>
 			<th>Tiempo en Servicio</th>
 		</tr>
 		<%
@@ -51,9 +50,14 @@
 				<th> <%=entry.getNombre() %> </th>
 				<th> <%=entry.getApellido() %> </th>
 				<th> <%=entry.getRango().getNomRango() %> </th>
-				<th> <%=entry.getSub().getDescripcion() %> </th>
+				<th> <%
+						String nSub = entry.getSub().getDescripcion();
+						if(nSub != null)
+							out.println(nSub);
+						else
+							out.println("Sin Sub");
+				%> </th>
 				<th> <%=entry.getHora().getHoraInicio() %> </th>
-				<th> <%=entry.getHora().getFechaInicio() %> </th>
 				<th> 
 					<% 
 					LocalDate fecha = LocalDate.now();
@@ -74,7 +78,7 @@
 		<%
 			}
 		%>
-		</table>
+		</table><br>
 		<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
 			<tr bgcolor=grey>
 				<th>Nombre</th>
@@ -84,16 +88,16 @@
 				<th>idRobo</th>
 				<th>nomRobo</th>
 			</tr>
-		</table>
+		</table><br>
 		
 		<form action="bitacora.jsp">
-			<input type = "submit" value = "Bitacora"><br>
+			<input type = "submit" value = "Bitacora"><br><br>
 		</form>
-		
+		<form action="altaIntegrante.jsp">
+			<input type = "submit" value = "Alta Integrante"><br><br>
+		</form>
 		<form action="loginTest.jsp">
 			<input type = "submit" value = "Logout"><br>
 		</form>
-		
 	</body>
-	
 </html>

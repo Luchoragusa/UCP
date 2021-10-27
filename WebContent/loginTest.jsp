@@ -10,8 +10,8 @@
 	
 	<body>
 		<form action="loginS" method="post">
-			User: <input type = "text" name = "user"><br>
-			PW: <input type="password" name = "pw"><br>
+			User: <input type = "text" name = "user"><br><br>
+			PW: <input type="password" name = "pw"><br><br>
 			<input type = "submit" value = "Login"><br>
 		</form>
 	</body>

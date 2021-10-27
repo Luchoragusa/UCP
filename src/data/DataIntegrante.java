@@ -11,6 +11,7 @@ import java.util.*;
 
 import entities.Hora;
 import entities.Integrante;
+import entities.Ran_Integrante;
 import entities.Ran_Subdivision;
 import entities.Rango;
 import entities.Rol;
@@ -247,18 +248,16 @@ import entities.Subdivision;
 	
 	}
 
-	public void add(Integrante i) {
-		s = new Scanner(System.in);
-		Rol r = new Rol();
-		DataRol dr = new DataRol();
-		Boolean otroRol = true;
+	public Integrante add(Integrante i) 
+	{
+		Rol r = i.getRol();
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into integrante(nombre, apellido, discordId, steamHex, usuario, pw) values(?,?,?,?,?,?)",
+							"insert into integrante(nombre, apellido, discordId, steamHex, usuario, pw, idRol) values(?,?,?,?,?,?,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
 			stmt.setString(1, i.getNombre());
@@ -267,32 +266,13 @@ import entities.Subdivision;
 			stmt.setString(4, i.getSteamHex());
 			stmt.setString(5, i.getUsuario());
 			stmt.setString(6, i.getPw());
+			stmt.setInt(7, r.getIdRol());
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();
 			
-			if(keyResultSet!=null && keyResultSet.next()){
-                i.setIdIntegrante(keyResultSet.getInt(1));
-            }
-            
-			while(otroRol) {
-				r = this.executeRol();
-				if (i.hasRol(r)) System.out.println("\n Esta persona ya tiene ese rol asignado ");
-				else {
-					dr.setRoles(i);
-					dr.saveRoles(i,r);
-					System.out.print("\n rol asinado correctamente ");
-				}
-				System.out.print("\n Desea agregar otro rol? \n (1 = SI / 2 = NO): ");
-				if(s.nextInt() == 1) {
-					otroRol = true;
-				}else otroRol =false;
-			}
-			
-			
-			
-            if(keyResultSet!=null && keyResultSet.next())
-            {
+			if(keyResultSet!=null && keyResultSet.next())
+			{
                 i.setIdIntegrante(keyResultSet.getInt(1));
             }
 		}  
@@ -313,30 +293,40 @@ import entities.Subdivision;
             	e.printStackTrace();
             }
 		}
+		return i;
 	}
-
 	
-	public Rol executeRol() {
-		s = new Scanner(System.in);
-		DataRol dr = new DataRol();
-		Rol r = new Rol();
-		int idRol = 0;
-		Boolean band = true;
-		
-		System.out.println("Lista de Roles: ");
-		System.out.println(dr.getAll());
-		while(band) {
-			System.out.print("Ingrese ID del rol elegido: ");
-			idRol = s.nextInt();
-			r.setIdRol(idRol);
-			r = dr.getById(r);
-			if(r.getDescripcion() != null) {
-				band=false;
-			}
-			else System.out.print("\n ID de Rol invalido intente nuevamente.");
+	public void addRangoIntegrante(Ran_Integrante ri) 
+	{
+		PreparedStatement stmt= null;
+		ResultSet keyResultSet=null;
+		try 
+		{
+			stmt=DbConnector.getInstancia().getConn().
+					prepareStatement(
+							"insert into ran_integrante(idIntegrante, idRango, fechaDesde) values(?,?,?)");
+			stmt.setInt(1, ri.getIdIntegrante());
+			stmt.setInt(2, ri.getIdRango());
+			stmt.setObject(3, ri.getFecha_desde());
+			stmt.executeUpdate();
+		}  
+		catch (SQLException e) 
+		{
+            e.printStackTrace();
+		} 
+		finally 
+		{
+            try 
+            {
+                if(keyResultSet!=null)keyResultSet.close();
+                if(stmt!=null)stmt.close();
+                DbConnector.getInstancia().releaseConn();
+            } 
+            catch (SQLException e) 
+            {
+            	e.printStackTrace();
+            }
 		}
-		
-		return r;
 	}
 	
 	public void update(Integrante i) {
@@ -357,7 +347,6 @@ import entities.Subdivision;
 			stmt.setString(6, i.getSteamHex());	
 			stmt.setInt(7, i.getIdIntegrante());	
 			stmt.executeUpdate();
-			this.updateRoles(i);
 		}  
 		catch (SQLException e) 
 		{
@@ -379,8 +368,8 @@ import entities.Subdivision;
     
 	}
 
-	public void delete(Integrante i) {
-
+	public void delete(Integrante i) 
+	{
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		try 
@@ -407,67 +396,6 @@ import entities.Subdivision;
             	e.printStackTrace();
             }
 		}
-    
-	}
-
-	private void updateRoles(Integrante i) {
-		 s = new Scanner(System.in);
-		DataRol dr = new DataRol();
-		Rol r = new Rol();
-		Boolean tieneRol = false;
-		Boolean band = true;
-		int b1 = 1;
-		for(int p=1;p<=dr.getAll().size();p++) {
-			 r.setIdRol(p);
-			 if(i.hasRol(r)) tieneRol=true ; 
-		}
-		
-		if(tieneRol) {
-			System.out.println("\n Esta persona ya tiene roles asignados: ");
-			System.out.println("\n" + i);	
-			System.out.print("\n Desea añadir otro rol? (S/N): ");
-			if(s.nextLine().trim().equalsIgnoreCase("S")) {
-				r = this.executeRol();
-				dr.setRoles(i);
-				i.addRol(r);
-				dr.saveRoles(i, r);
-				System.out.print("\n rol asinado correctamente ");
-			}
-			System.out.print("\n Desea eliminar algun rol? (S/N): ");
-			if(s.nextLine().trim().equalsIgnoreCase("S")) {
-				while(band) {
-					r = this.executeRol();
-					if(i.hasRol(r)) {
-						dr.setRoles(i);
-						i.removeRol(r);
-						dr.undoneRol(i, r);
-						System.out.print("\n rol eliminado correctamente"
-								+"\n Desea eliminar otro? (S/N): ");
-						if(s.nextLine().trim().equalsIgnoreCase("S")) band = true; else band=false;
-					}else {
-						System.out.println("Esta persona no contiene ese rol"
-								+ "\n intente nuevamente");
-					}
-				}
-			}
-		}else {
-			System.out.println("\n Esta persona NO tiene roles asignados ");
-			System.out.println("\n A continuacion se asignaran roles: ");
-			while(b1 == 1) {
-				r = this.executeRol();
-				dr.setRoles(i);
-				i.addRol(r);
-				dr.saveRoles(i, r);
-				
-				System.out.print("\n rol asignado correctamente ");
-				System.out.println("\n Desea añadir otro rol? \n 1 = SI / 2 = NO: ");
-				if(s.nextInt() != 1) {
-					b1 = 2;
-				}
-				
-			}
-			
-		}
 	}
 	
 	public LinkedList<Integrante> getServicio() 
@@ -491,9 +419,9 @@ import entities.Subdivision;
 					+ "inner join ran_integrante ri on i.idIntegrante = ri.idIntegrante\r\n"
 					+ "inner join rango r on ri.idRango = r.idRango\r\n"
 					+ "\r\n"
-					+ "inner join ransub_integrante ri2 on i.idIntegrante = ri2.idIntegrante\r\n"
-					+ "inner join ran_subdivision rs on ri2.idRanSub = rs.idRanSub\r\n"
-					+ "inner join  subdivision s on rs.idSub = s.idSub\r\n"
+					+ "left join ransub_integrante ri2 on i.idIntegrante = ri2.idIntegrante\r\n"
+					+ "left join ran_subdivision rs on ri2.idRanSub = rs.idRanSub\r\n"
+					+ "left join  subdivision s on rs.idSub = s.idSub\r\n"
 					+ "\r\n"
 					+ "where horaInicio is not null and horaFin is null;");
 		

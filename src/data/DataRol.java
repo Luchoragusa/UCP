@@ -106,7 +106,6 @@ public class DataRol {
 				r.setDescripcion(rs.getString("descripcion"));
 			}
 		}
-		
 		catch (SQLException e) 
 		{
 			e.printStackTrace();

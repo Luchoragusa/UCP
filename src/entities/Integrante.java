@@ -12,7 +12,8 @@ public class Integrante {
 	private Rango rango;
 	private Hora hora;
 	private Subdivision sub;
-	public Subdivision getSub() {
+	public Subdivision getSub() 
+	{
 		return sub;
 	}
 	public void setSub(Subdivision sub) {
@@ -111,8 +112,6 @@ public class Integrante {
 	public void setRol(Rol rol) {
 		this.rol = rol;
 	}
-	
-	
 	//RANGO
 	
 	public Rango getRango() {

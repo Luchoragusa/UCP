@@ -183,17 +183,25 @@ public class DataSancion {
 		return s;
 	}
 
-	public void add(Sancion s) {
+	public void add(Sancion s) 
+	{
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into sancon(tipoSancion) values(?)",
+							"insert into sancion (tipoSancion, motivo, idIntegrante, estado, nroSancion, fecha, urlImagen) VALUES "+
+							"(?,?,?,?,?,?,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
 			stmt.setString(1, s.getTipoSancion());
+			stmt.setString(2, s.getMotivo());
+			stmt.setInt(3, 1/*s.getIdIntegrante()*/);
+			stmt.setBoolean(4, true);
+			stmt.setInt(5, 1/*s.getNroSancion()*/);
+			stmt.setObject(6, s.getFecha());
+			stmt.setString(7, s.getUrlSancion());
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();

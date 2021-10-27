@@ -10,36 +10,38 @@
 		<title>[PSG]Aplicar Sancion</title>
 	</head>
 	<body>
-	
-		<% 
-	    	DataIntegrante di = new  DataIntegrante();
-	    	LinkedList<Integrante> lista = di.getAll();
-		%>
-		Integrante a sancionar:
-		 <select name="integrante">
- 			<%
- 				for(Integrante i :  lista) {
- 			%>
-	        <option value="<%=i.getIdIntegrante()%>"> 
-	        <% out.print(i.getNombre() + " " + i.getApellido()); %></option>
-		    <%
-				}
+		<form action="sancionS" method="post">
+			<% 
+		    	DataIntegrante di = new  DataIntegrante();
+		    	LinkedList<Integrante> lista = di.getAll();
 			%>
-         </select><br><br>
-		Tipo de sancion:
-		<select name="tipoSancion">
-	        <option value="Raya"> Raya </option>
-			<option value="Strike"> Strike </option>
-        </select><br><br>
-        
-        Numero de Sancion: 
-        <select name="tipoSancion">
-	        <option value="1"> 1 </option>
-			<option value="2"> 2 </option>
-			<option value="3"> 3 </option>
-        </select><br><br>
-        
-        Motivo de la sancion: <input type = "text" name = "motivo"><br><br>
-        Imagen (opcional): <input type = "text" name = "url"><br><br>
+			Integrante a sancionar:
+			 <select name="integrante">
+	 			<%
+	 				for(Integrante i :  lista) {
+	 			%>
+		        <option value="<%=i.getIdIntegrante()%>"> 
+		        <% out.print(i.getNombre() + " " + i.getApellido()); %></option>
+			    <%
+					}
+				%>
+	         </select><br><br>
+			Tipo de sancion:
+			<select name="tipoSancion">
+		        <option value="Raya"> Raya </option>
+				<option value="Strike"> Strike </option>
+	        </select><br><br>
+	        
+	        Numero de Sancion: 
+	        <select name="nroSancion">
+		        <option value="1"> 1 </option>
+				<option value="2"> 2 </option>
+				<option value="3"> 3 </option>
+	        </select><br><br>
+	        
+	        Motivo de la sancion: <input type = "text" name = "motivo"><br><br>
+	        Imagen (opcional): <input type = "text" name = "url"><br><br>
+			<input type = "submit" value = "Aplicar Sancion"><br>
+		</form>
 	</body>
 </html>

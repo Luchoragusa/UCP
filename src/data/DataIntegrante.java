@@ -16,13 +16,13 @@ import entities.Ran_Subdivision;
 import entities.Rango;
 import entities.Rol;
 import entities.Subdivision;
+import logic.LlaveMaestra;
 
 	public class DataIntegrante 
 	{
 	Scanner s = null;
-	public Integrante getByUser(Integrante inte) {
-		
-		
+	public Integrante getByUser(Integrante inte) 
+	{	
 		Integrante i=null;
 		Rol rolcito = null;
 		PreparedStatement stmt=null;
@@ -33,10 +33,11 @@ import entities.Subdivision;
 					+ " from integrante i\r\n"
 					+ " inner join rol r\r\n"
 					+ "	on i.idRol = r.idRol\r\n"
-					+ " where usuario=? and pw=?"
+					+ " where usuario=? and pw = AES_ENCRYPT(?,?)"
 					);
 			stmt.setString(1, inte.getUsuario());
 			stmt.setString(2, inte.getPw());
+			stmt.setString(3, LlaveMaestra.getLlave());
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()) {
 				i=new Integrante();
@@ -79,10 +80,11 @@ import entities.Subdivision;
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idIntegrante,nombre,apellido,discordId,steamHex from integrante where usuario=? and pw=?"
+					"select idIntegrante,nombre,apellido,discordId,steamHex from integrante where usuario=? and pw = AES_ENCRYPT(?,?)"
 					);
 			stmt.setString(1, inte.getUsuario());
 			stmt.setString(2, inte.getPw());
+			stmt.setString(3, LlaveMaestra.getLlave());
 			rs=stmt.executeQuery();
 			status = rs.next();
 		} 
@@ -257,7 +259,7 @@ import entities.Subdivision;
 		{
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into integrante(nombre, apellido, discordId, steamHex, usuario, pw, idRol) values(?,?,?,?,?,?,?)",
+							"insert into integrante(nombre, apellido, discordId, steamHex, usuario, pw, idRol) values(?,?,?,?,?,AES_ENCRYPT(?,?),?)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
 			stmt.setString(1, i.getNombre());
@@ -266,7 +268,8 @@ import entities.Subdivision;
 			stmt.setString(4, i.getSteamHex());
 			stmt.setString(5, i.getUsuario());
 			stmt.setString(6, i.getPw());
-			stmt.setInt(7, r.getIdRol());
+			stmt.setString(7, LlaveMaestra.getLlave());
+			stmt.setInt(8, r.getIdRol());
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();

@@ -38,11 +38,22 @@
 				}
 			%>
 			</select><br><br>
-             Rol:
-			 <select name="rol">
-                    <option value="User"> Usuario</option>
-                    <option value="Admin"> Admin</option>
-                </select><br><br>
+             <%
+ 				DataRol drol = new DataRol();
+ 				LinkedList<Rol> listaRol = new LinkedList<Rol>();
+ 				listaRol = drol.getAll();
+ 			%>
+			Rol:
+       		<select name="rol">
+ 			<%
+ 				for(Rol rol :  listaRol) {
+ 			%>
+	        <option value="<%=rol.getDescripcion()%>"> 
+	        <%=rol.getDescripcion()%></option>
+		    <%
+				}
+			%>
+			</select><br><br>
 			<input type = "submit" value = "Agregar"><br>
 		</form>
 	</body>

@@ -113,15 +113,13 @@
 		%>"></progress>
 		
 		<% 
-			
+			DataRobo dr = new DataRobo();
+			LinkedList<Integer> por = dr.getPorcentaje(i);
 		%>
 		
 		<h3>Porcentaje de robos:</h3> <progress align="center" id="robos" 
-		max="720"
+		max="<%=por.get(0)%>"
 		value="
-		<% 
-		out.print(contadorHorasJugadas.getHour()*60 + contadorHorasJugadas.getMinute());
-		%>"></progress>
-		
+		<%=por.get(1)%>"></progress>
 	</body>
 </html>

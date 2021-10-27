@@ -174,7 +174,6 @@ import logic.LlaveMaestra;
 					i.setApellido(rs.getString("apellido"));
 					i.setDiscordId(rs.getString("discordId"));
 					i.setSteamHex(rs.getString("steamHex"));
-					
 					inte.add(i);
 				}
 			}	

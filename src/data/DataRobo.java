@@ -122,16 +122,32 @@ public class DataRobo
 	{	
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
-		Robo rd = null;
+		LinkedList<Integer> numeros = null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement("select max(idRobo) from roboxdia");
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select count(*) into @total\r\n"
+					+ "from robo\r\n"
+					+ "where idIntegrante = ?;\r\n"
+					+ "select count(*) into @ganados\r\n"
+					+ "from robo\r\n"
+					+ "where idIntegrante = ? and resultado = ?;\r\n"
+					+ "select count(*) into @empatado\r\n"
+					+ "from robo\r\n"
+					+ "where idIntegrante = ? and resultado = ?;\r\n"
+					+ "select @ganados, @total, @empatado;");
+			stmt.setInt(1, i.getIdIntegrante());
+			stmt.setInt(2, i.getIdIntegrante());
+			stmt.setString(3, "Ganado");
+			stmt.setInt(4, i.getIdIntegrante());
+			stmt.setString(5, "Empate");
 			rs= stmt.executeQuery();
+			
 			if(rs!=null && rs.next()) 
 			{
-					rd = new Robo();
-					rd.setIdRobo(rs.getInt("max(idRobo)"));
-					rd.setIdRobo(rd.getIdRobo()+1);
+				numeros = new LinkedList<Integer>();
+				numeros.add(rs.getInt("@ganados"));
+				numeros.add(rs.getInt("@total"));
+				numeros.add(rs.getInt("@empatado"));
 			}
 		} 
 		catch (SQLException e) 
@@ -151,7 +167,7 @@ public class DataRobo
 				e.printStackTrace();
 			}
 		}
-		return rd;
+		return numeros;
 	}
 	
 	public HashMap<HashMap<Integrante, Robo>, LugarRobo> getUltimos5robos() // hacer el Hash para las 3 entidades

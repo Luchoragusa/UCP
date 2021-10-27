@@ -15,7 +15,7 @@
 	    	DataIntegrante di = new  DataIntegrante();
 	    	LinkedList<Integrante> lista = di.getAll();
 		%>
-		Seleccione el Integrante a sancionar:
+		Integrante a sancionar:
 		 <select name="integrante">
  			<%
  				for(Integrante i :  lista) {
@@ -26,6 +26,20 @@
 				}
 			%>
          </select><br><br>
-	
+		Tipo de sancion:
+		<select name="tipoSancion">
+	        <option value="Raya"> Raya </option>
+			<option value="Strike"> Strike </option>
+        </select><br><br>
+        
+        Numero de Sancion: 
+        <select name="tipoSancion">
+	        <option value="1"> 1 </option>
+			<option value="2"> 2 </option>
+			<option value="3"> 3 </option>
+        </select><br><br>
+        
+        Motivo de la sancion: <input type = "text" name = "motivo"><br><br>
+        Imagen (opcional): <input type = "text" name = "motivo"><br><br>
 	</body>
 </html>

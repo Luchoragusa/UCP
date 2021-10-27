@@ -11,6 +11,12 @@ public class Sancion {
 	public LocalDate getFecha() {
 		return fecha;
 	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}

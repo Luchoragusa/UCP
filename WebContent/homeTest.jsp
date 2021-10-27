@@ -93,6 +93,9 @@
 		<form action="miPerfil.jsp">
 			<input type = "submit" value = "Mi perfil"><br><br>
 		</form>
+		<form action="aplicarSancion.jsp">
+			<input type = "submit" value = "Aplicar Sancion"><br><br>
+		</form>
 		<form action="bitacora.jsp">
 			<input type = "submit" value = "Bitacora"><br><br>
 		</form>

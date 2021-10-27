@@ -153,7 +153,6 @@ import logic.LlaveMaestra;
 	
 	public LinkedList<Integrante> getAll() 
 	{
-		DataRol dr=new DataRol();
 		Statement stmt=null;
 		ResultSet rs=null;
 		LinkedList<Integrante> inte= new LinkedList<>();		
@@ -170,7 +169,6 @@ import logic.LlaveMaestra;
 					i.setApellido(rs.getString("apellido"));
 					i.setDiscordId(rs.getString("discordId"));
 					i.setSteamHex(rs.getString("steamHex"));
-					dr.setRoles(i);
 					
 					inte.add(i);
 				}

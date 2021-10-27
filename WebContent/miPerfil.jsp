@@ -111,6 +111,11 @@
 		<% 
 		out.print(contadorHorasJugadas.getHour()*60 + contadorHorasJugadas.getMinute());
 		%>"></progress>
+		
+		<% 
+			
+		%>
+		
 		<h3>Porcentaje de robos:</h3> <progress align="center" id="robos" 
 		max="720"
 		value="

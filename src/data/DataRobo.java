@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalTime;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 import entities.Integrante;
 import entities.LugarRobo;
@@ -82,6 +83,42 @@ public class DataRobo
 	}
 
 	public Robo getLastIdRobo() 
+	{	
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		Robo rd = null;
+		try 
+		{
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select max(idRobo) from roboxdia");
+			rs= stmt.executeQuery();
+			if(rs!=null && rs.next()) 
+			{
+					rd = new Robo();
+					rd.setIdRobo(rs.getInt("max(idRobo)"));
+					rd.setIdRobo(rd.getIdRobo()+1);
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			try 
+			{
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+		return rd;
+	}
+	
+	public LinkedList<Integer> getPorcentaje(Integrante i) 
 	{	
 		PreparedStatement stmt=null;
 		ResultSet rs=null;

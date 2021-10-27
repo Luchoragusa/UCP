@@ -6,17 +6,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 
+import entities.Integrante;
 import entities.Sancion;
 
 public class DataSancion {
 
 
-	public LinkedList<Sancion> getAll(){
+	public LinkedList<Sancion> getAll()
+	{
 		Statement stmt=null;
 		ResultSet rs=null;
 		LinkedList<Sancion> sanciones= new LinkedList<>();
-		
-		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
 			rs= stmt.executeQuery("select * from sancion");
@@ -54,18 +54,16 @@ public class DataSancion {
 		return sanciones;
 	}
 	
-	public LinkedList<Sancion> getById(Sancion s){
-
-
+	public Integrante getById(Integrante i)
+	{
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		LinkedList<Sancion> sanciones= new LinkedList<>();
-		
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-			 "select motivo, tipoSancion from ran_subdivision where idIntegrante = ?");
-			stmt.setInt(1, s.getIdIntegrante());
+			 "select * from sancion where idIntegrante = ?");
+			stmt.setInt(1, i.getIdIntegrante());
 			rs=stmt.executeQuery();
 			
 			if(rs!=null) 
@@ -73,12 +71,17 @@ public class DataSancion {
 				while(rs.next()) 
 				{
 					Sancion san =new Sancion();
-					san.setIdIntegrante(s.getIdIntegrante());
+					san.setIdIntegrante(san.getIdIntegrante());
 					san.setMotivo(rs.getString("motivo"));		
 					san.setTipoSancion(rs.getString("tipoSancion"));
+					san.setEstado(rs.getBoolean("estado"));
+					san.setNroSancion(rs.getInt("nroSancion"));
+					san.setFecha(rs.getDate("fecha").toLocalDate());
+					san.setUrlSancion(rs.getString("urlImagen"));
 					sanciones.add(san);
 				}
 			}	
+			i.setSancion(sanciones);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			
@@ -96,7 +99,7 @@ public class DataSancion {
 				e.printStackTrace();
 			}
 		}
-		return sanciones;
+		return i;
 	}
 	
 	public Sancion getByIdAndMotivo(Sancion sancionToSearch) {

@@ -12,6 +12,7 @@ public class Integrante {
 	private Rango rango;
 	private Hora hora;
 	private Subdivision sub;
+	private LinkedList<Sancion> sancion;
 	public Subdivision getSub() 
 	{
 		return sub;
@@ -19,7 +20,6 @@ public class Integrante {
 	public void setSub(Subdivision sub) {
 		this.sub = sub;
 	}
-	private LinkedList<Sancion> sancion;
 	public LinkedList<Sancion> getSancion() {
 		return sancion;
 	}

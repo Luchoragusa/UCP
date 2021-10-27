@@ -6,6 +6,7 @@ public class Sancion {
 
 	private int idIntegrante, nroSancion, id;
 	private String motivo, tipoSancion, urlSancion;
+	private boolean estado;
 	public String getUrlSancion() {
 		return urlSancion;
 	}
@@ -26,7 +27,6 @@ public class Sancion {
 	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
-	private boolean estado;
 	public int getNroSancion() {
 		return nroSancion;
 	}

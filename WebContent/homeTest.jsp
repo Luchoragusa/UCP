@@ -57,13 +57,16 @@
 						else
 							out.println("Sin Sub");
 				%> </th>
-				<th> <%=entry.getHora().getHoraInicio() %> </th>
+				<th> 
+						<%	Hora hr = entry.getHora().getFirst();
+						out.print(entry.getHora().getFirst().getHoraInicio()); %>
+				</th>
 				<th> 
 					<% 
 					LocalDate fecha = LocalDate.now();
 					LocalTime tServicio;
-					Duration diferencia = Duration.between(entry.getHora().getHoraInicio(), LocalTime.now());
-					if (fecha.getDayOfMonth() == entry.getHora().getFechaInicio().getDayOfMonth())
+					Duration diferencia = Duration.between(hr.getHoraInicio(), LocalTime.now());
+					if (fecha.getDayOfMonth() == hr.getFechaInicio().getDayOfMonth())
 					{
 				        tServicio = LocalTime.of(diferencia.toHoursPart(), diferencia.toMinutesPart());
 					}

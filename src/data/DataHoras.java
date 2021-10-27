@@ -61,7 +61,7 @@ public Hora getHorasDelIntegrante(int id) {
 	return h;
 	}
 	
-public LinkedList<Hora> get5HorasDelIntegrante(Hora hora) 
+public Integrante get5HorasDelIntegrante(Integrante i) 
 {	
 	PreparedStatement stmt=null;
 	ResultSet rs=null;
@@ -70,7 +70,7 @@ public LinkedList<Hora> get5HorasDelIntegrante(Hora hora)
 	{
 		stmt = DbConnector.getInstancia().getConn().prepareStatement(
 		 "select * FROM hora WHERE idIntegrante = ? ORDER BY fechaInicio desc, horaInicio desc limit 5");
-		stmt.setInt(1, hora.getIdIntegrante());
+		stmt.setInt(1, i.getIdIntegrante());
 		rs=stmt.executeQuery();
 		
 		if(rs!=null) 
@@ -80,7 +80,7 @@ public LinkedList<Hora> get5HorasDelIntegrante(Hora hora)
 			{
 				Hora h = null;
 				h = new Hora();
-				h.setIdIntegrante(hora.getIdIntegrante());
+				h.setIdIntegrante(i.getIdIntegrante());
 				h.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
 				h.setHoraInicio(rs.getObject("horaInicio", LocalTime.class));
 				if (rs.getObject("horaFin", LocalTime.class) != null)
@@ -91,7 +91,8 @@ public LinkedList<Hora> get5HorasDelIntegrante(Hora hora)
 				}
 				lista.add(h);
 			}
-		}	
+		}
+		i.setHora(lista);
 	} 
 	catch (SQLException e) {
 		e.printStackTrace();
@@ -106,7 +107,7 @@ public LinkedList<Hora> get5HorasDelIntegrante(Hora hora)
 			e.printStackTrace();
 		}
 	}
-	return lista;
+	return i;
 }
 
 	public LinkedList<Hora> getById(Hora hr){

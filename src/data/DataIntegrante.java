@@ -130,7 +130,12 @@ import logic.LlaveMaestra;
 					i.setSteamHex(rs.getString("steamHex"));
 					i.setUsuario(rs.getString("usuario"));
 					i.setIdIntegrante(rs.getInt("idRol"));
-			}	
+			}
+			
+			DataSancion ds = new DataSancion();
+			i = ds.getById(i); // carga las sanciones del mismo
+			DataHoras dh = new DataHoras();
+			i = dh.get5HorasDelIntegrante(i);
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -443,12 +448,13 @@ import logic.LlaveMaestra;
 					s.setDescripcion(rs.getString("descripcion"));
 					h.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
 					
-					i.setHora(h);
+					LinkedList<Hora> horas = new LinkedList<Hora>();
+					horas.add(h);
+					i.setHora(horas);
 					i.setRango(r);
 					i.setSub(s);
 					
 					uActivos.add(i);
-					
 				}
 			}	
 		} 

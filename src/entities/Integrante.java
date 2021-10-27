@@ -10,7 +10,7 @@ public class Integrante {
 	private String nombre, apellido, steamHex, discordId, usuario, pw;
 	private Rol rol;
 	private Rango rango;
-	private Hora hora;
+	private LinkedList<Hora> hora;
 	private Subdivision sub;
 	private LinkedList<Sancion> sancion;
 	public Subdivision getSub() 
@@ -34,15 +34,12 @@ public class Integrante {
 		this.medalla = medalla;
 	}
 
-
-	public Hora getHora() {
+	public LinkedList<Hora> getHora() {
 		return hora;
 	}
-	public void setHora(Hora hora) {
+	public void setHora(LinkedList<Hora> hora) {
 		this.hora = hora;
 	}
-	
-
 	public int getIdIntegrante() {
 		return idIntegrante;
 	}

@@ -67,6 +67,7 @@ CREATE TABLE `hora` (
 
 LOCK TABLES `hora` WRITE;
 /*!40000 ALTER TABLE `hora` DISABLE KEYS */;
+INSERT INTO `hora` VALUES (1,'2021-10-20','01:22:44','01:40:58','00:18:14','2021-10-20'),(1,'2021-10-20','01:41:45','01:41:47','00:00:02','2021-10-20'),(1,'2021-10-20','10:31:05','11:14:18','00:43:13','2021-10-20'),(1,'2021-10-26','19:40:12','21:42:12','02:02:00','2021-10-26'),(1,'2021-10-26','21:44:26',NULL,NULL,NULL),(6,'2021-10-26','21:27:53','21:28:56','00:01:00','2021-10-26'),(6,'2021-10-26','21:31:11','21:42:33','00:11:00','2021-10-26'),(6,'2021-10-26','21:42:37',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `hora` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,12 +85,12 @@ CREATE TABLE `integrante` (
   `discordId` varchar(45) NOT NULL,
   `steamHex` varchar(45) NOT NULL,
   `usuario` varchar(45) NOT NULL,
-  `pw` varchar(45) NOT NULL,
+  `pw` varbinary(150) DEFAULT NULL,
   `idRol` int NOT NULL,
   PRIMARY KEY (`idIntegrante`),
   KEY `id_Rol_idx` (`idRol`),
   CONSTRAINT `id_Rol` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +99,7 @@ CREATE TABLE `integrante` (
 
 LOCK TABLES `integrante` WRITE;
 /*!40000 ALTER TABLE `integrante` DISABLE KEYS */;
-INSERT INTO `integrante` VALUES (1,'Luciano','Ragusa','328247693724090369','steam:123','lragusa','lr123',1),(2,'Camilo','Pereyra','404471332991008768','steam:123','cpereyra','cp123',1),(3,'Juan Ignacio','Pucheta','558091838259724309','steam:123','jipucheta','jip123',1);
+INSERT INTO `integrante` VALUES (1,'Luciano','Ragusa','328247693724090369','steam:123','lragusa',_binary '‘ƒ\Ñ)\Ã~‡ö\'°:t\è\rõ',1),(2,'Camilo','Pereyra','404471332991008768','steam:123','cpereyra',_binary ':=R\åuˆ\nù!µh:\n',1),(3,'Juan Ignacio','Pucheta','558091838259724309','steam:123','jipucheta',_binary ' Xl…Â­cœ°ð¼ƒjh ',1),(6,'Agus','Uruguayo','320381919575539722','steam:123','agus',_binary 'agus',2),(7,'Agus','Uru','213','asd','asd',_binary 'Ÿ3ô\ËJ>U\Ó\ï\íŒJª4KA',1),(9,'a','a','a','a','a',_binary '@y\ä\n\Æ[Šˆ·)“\Ï\Ð',2),(10,'ds','ad','d','d','d',_binary '©LAˆa?<Œv&\Ò.G!',2);
 /*!40000 ALTER TABLE `integrante` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -206,7 +207,7 @@ CREATE TABLE `ran_integrante` (
 
 LOCK TABLES `ran_integrante` WRITE;
 /*!40000 ALTER TABLE `ran_integrante` DISABLE KEYS */;
-INSERT INTO `ran_integrante` VALUES (1,14,'2021-10-12'),(2,14,'2021-10-12'),(3,14,'2021-10-12');
+INSERT INTO `ran_integrante` VALUES (1,14,'2021-10-12'),(2,14,'2021-10-12'),(3,14,'2021-10-12'),(6,17,'2021-10-26'),(9,1,'2021-10-26');
 /*!40000 ALTER TABLE `ran_integrante` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -355,9 +356,10 @@ DROP TABLE IF EXISTS `sancion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sancion` (
-  `tipoSansion` varchar(45) NOT NULL,
+  `tipoSancion` varchar(45) NOT NULL,
   `motivo` varchar(45) NOT NULL,
   `idIntegrante` int NOT NULL,
+  `estado` tinyint NOT NULL,
   PRIMARY KEY (`motivo`,`idIntegrante`),
   KEY `id_Integrante_idx` (`idIntegrante`),
   CONSTRAINT `id_Integrante` FOREIGN KEY (`idIntegrante`) REFERENCES `integrante` (`idIntegrante`)
@@ -432,4 +434,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-15 12:50:33
+-- Dump completed on 2021-10-27  0:01:49

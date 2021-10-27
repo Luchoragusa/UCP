@@ -111,6 +111,5 @@
 		<% 
 		out.print(contadorHorasJugadas.getHour()*60 + contadorHorasJugadas.getMinute());
 		%>"></progress>
-		
 	</body>
 </html>

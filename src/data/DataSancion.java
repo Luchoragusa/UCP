@@ -62,7 +62,7 @@ public class DataSancion {
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-			 "select * from sancion where idIntegrante = ?");
+			 "select * from sancion where idIntegrante = ? order by fecha desc");
 			stmt.setInt(1, i.getIdIntegrante());
 			rs=stmt.executeQuery();
 			
@@ -100,87 +100,6 @@ public class DataSancion {
 			}
 		}
 		return i;
-	}
-	
-	public Sancion getByIdAndMotivo(Sancion sancionToSearch) {
-		Sancion s = null;
-		PreparedStatement stmt=null;
-		ResultSet rs=null;
-		try 
-		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select * from sancion where idIntegrante=?, motivo = ?"
-					);
-			stmt.setInt(1, sancionToSearch.getIdIntegrante());
-			stmt.setString(2, sancionToSearch.getMotivo());
-			rs=stmt.executeQuery();
-			if(rs!=null && rs.next()) 
-			{
-				s=new Sancion();
-				s.setIdIntegrante(rs.getInt("idIntegrante"));
-				s.setMotivo(rs.getString("motivo"));
-				s.setTipoSancion(rs.getString("tipoSancion"));
-			}
-		} 
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
-		}
-		finally 
-		{
-			try 
-			{
-				if(rs!=null) {rs.close();}
-				if(stmt!=null) {stmt.close();}
-				DbConnector.getInstancia().releaseConn();
-			} 
-			catch (SQLException e) 
-			{
-				e.printStackTrace();
-			}
-		}
-		return s;
-	}
-
-	public Sancion getByTipoSancion(Sancion sancionToSearch) {
-		Sancion s = null;
-		PreparedStatement stmt=null;
-		ResultSet rs=null;
-		try 
-		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select * from sancion where tipoSancion=?"
-					);
-			stmt.setInt(1, sancionToSearch.getIdIntegrante());
-			stmt.setString(2, sancionToSearch.getMotivo());
-			rs=stmt.executeQuery();
-			if(rs!=null && rs.next()) 
-			{
-				s = new Sancion();
-				s.setIdIntegrante(rs.getInt("idIntegrante"));
-				s.setMotivo(rs.getString("motivo"));
-				s.setTipoSancion(rs.getString("tipoSancion"));
-			}
-		} 
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
-		}
-		finally 
-		{
-			try 
-			{
-				if(rs!=null) {rs.close();}
-				if(stmt!=null) {stmt.close();}
-				DbConnector.getInstancia().releaseConn();
-			} 
-			catch (SQLException e) 
-			{
-				e.printStackTrace();
-			}
-		}
-		
-		return s;
 	}
 
 	public void add(Sancion s) 

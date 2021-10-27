@@ -125,10 +125,7 @@ public class DataRobo
 		LinkedList<Integer> numeros = null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement("select count(*) into @total\r\n"
-					+ "from robo\r\n"
-					+ "where idIntegrante = ?;"
-					+ "select @total 'Total';");
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select count(*) into @total from robo where idIntegrante = ?; select @total 'Total'");
 			stmt.setInt(1, i.getIdIntegrante());
 			//stmt.setInt(2, i.getIdIntegrante());
 			//stmt.setString(3, "Ganado");

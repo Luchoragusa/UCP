@@ -67,13 +67,9 @@
 					LocalTime tServicio;
 					Duration diferencia = Duration.between(hr.getHoraInicio(), LocalTime.now());
 					if (fecha.getDayOfMonth() == hr.getFechaInicio().getDayOfMonth())
-					{
 				        tServicio = LocalTime.of(diferencia.toHoursPart(), diferencia.toMinutesPart());
-					}
-					else
-					{						
+					else					
 				        tServicio = LocalTime.of(diferencia.toHoursPart()+23, diferencia.toMinutesPart()+59);
-					}
 					out.println(tServicio);
 				     %>
 			    </th>
@@ -86,10 +82,10 @@
 			<tr bgcolor=grey>
 				<th>Nombre</th>
 				<th>Apellido</th>
-				<th>resultado</th>
-				<th>hora_robo</th>
+				<th>Resultado</th>
+				<th>Hora del robo</th>
 				<th>idRobo</th>
-				<th>nomRobo</th>
+				<th>Nombre del Robo</th>
 			</tr>
 		</table><br><br>
 		

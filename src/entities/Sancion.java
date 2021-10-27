@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Sancion {
 
-	private int idIntegrante, nroSancion;
+	private int idIntegrante, nroSancion, id;
 	private String motivo, tipoSancion;
 	private LocalDate fecha;
 	

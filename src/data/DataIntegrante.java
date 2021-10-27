@@ -131,7 +131,6 @@ import logic.LlaveMaestra;
 					i.setUsuario(rs.getString("usuario"));
 					i.setIdIntegrante(rs.getInt("idRol"));
 			}
-			
 			DataSancion ds = new DataSancion();
 			i = ds.getById(i); // carga las sanciones del mismo
 			DataHoras dh = new DataHoras();

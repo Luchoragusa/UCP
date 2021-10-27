@@ -2,10 +2,18 @@ package entities;
 
 public class Sancion {
 
-	private int idIntegrante;
+	private int idIntegrante, nroSancion;
 	private String motivo, tipoSancion;
 	private boolean estado;
 	
+	
+	
+	public int getNroSancion() {
+		return nroSancion;
+	}
+	public void setNroSancion(int nroSancion) {
+		this.nroSancion = nroSancion;
+	}
 	public boolean isEstado() {
 		return estado;
 	}

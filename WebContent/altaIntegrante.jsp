@@ -8,6 +8,10 @@
 		<title>[PSG]Alta Integrante</title>
 	</head>
 	<body>
+		<%
+			if (session.getAttribute("Nombre") == null)
+			response.sendRedirect("loginTest.jsp");
+		%>
 		<form action="altaIntegranteS" method="post">
 			Nombre: <input type = "text" name = "nombre"><br><br>
 			Apellido: <input type="text" name = "apellido"><br><br>

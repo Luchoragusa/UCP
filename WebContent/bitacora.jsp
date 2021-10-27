@@ -17,6 +17,10 @@
 	</head>
 	
 	<body>
+		<%
+			if (session.getAttribute("Nombre") == null)
+			response.sendRedirect("loginTest.jsp");
+		%>
 		<form action="bitacoraS" method="post">
 			<input type = "submit" value = "Abrir Bitacora"><br>
 		</form>

@@ -107,10 +107,8 @@ import logic.LlaveMaestra;
 		return status;
 	}
 
-	public Integrante getByIdIntegrante(Integrante inte) {
-
-
-		DataRol dr=new DataRol();
+	public Integrante getByIdIntegrante(Integrante inte) 
+	{
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		Integrante i=null;
@@ -118,7 +116,7 @@ import logic.LlaveMaestra;
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-			 "select nombre,apellido, discordId,steamHex,usuario from integrante where idIntegrante = ?");
+			 "select nombre,apellido,discordId,steamHex,usuario, idRol from integrante where idIntegrante = ?");
 			stmt.setInt(1, inte.getIdIntegrante());
 			rs=stmt.executeQuery();
 			
@@ -131,10 +129,10 @@ import logic.LlaveMaestra;
 					i.setDiscordId(rs.getString("discordId"));
 					i.setSteamHex(rs.getString("steamHex"));
 					i.setUsuario(rs.getString("usuario"));
-					
-					dr.setRoles(i);
+					i.setIdIntegrante(rs.getInt("idRol"));
 			}	
-		} catch (SQLException e) {
+		} 
+		catch (SQLException e) {
 			e.printStackTrace();
 		} 
 		finally 

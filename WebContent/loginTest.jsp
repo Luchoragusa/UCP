@@ -9,7 +9,7 @@
 	</head>
 	
 	<body>
-		<form action="loginS" method="post">
+		<form action="loginS" method="post">						<!-- action href a src>servlets -->
 			User: <input type = "text" name = "user"><br><br>
 			PW: <input type="password" name = "pw"><br><br>
 			<input type = "submit" value = "Login"><br>

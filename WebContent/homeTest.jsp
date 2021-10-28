@@ -101,6 +101,9 @@
 		<form action="altaIntegrante.jsp">
 			<input type = "submit" value = "Alta Integrante"><br><br>
 		</form>
+		<form action="registrarRobo.jsp">
+			<input type = "submit" value = "Registrar Robos"><br><br>
+		</form>
 		<form action="loginTest.jsp">
 			<input type = "submit" value = "Logout"><br>
 		</form>

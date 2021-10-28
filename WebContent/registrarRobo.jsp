@@ -31,9 +31,10 @@
 		%>
 	</select><br><br>
 	
-<%out.print(request.getAttribute("maxInte"));%>
-	
-	
+	  Cantidad de Integrantes: <input type = "number" name = "cantInte"><br><br>
+	  Resultado: <input type = "text" name = "rto"><br><br>
+	  Fecha del robo: <input type = "date" name = "fechaR"><br><br>
+	  Hora del robo: <input type = "time" name = "horaR"><br><br>
 	
 	
 	

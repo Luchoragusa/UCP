@@ -30,6 +30,7 @@ public class registrarRoboS extends HttpServlet {
 		lr = dlr.getById(lr);
 		r.setLugar_robo(lr); 
 		
+		request.setAttribute("idLr", lr.getIdLugarRobo());
 		request.setAttribute("maxInte", lr.getMaxIntegrantes());
 		request.setAttribute("minInte", lr.getMinIntegrantes());
 		

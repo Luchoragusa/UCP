@@ -7,7 +7,7 @@ public class LugarRobo {
 	
 	public LugarRobo() {
 	}
-	public int getMinIntregantes() {
+	public int getMinIntegrantes() {
 		return minIntregantes;
 	}
 	public void setMinIntregantes(int minIntregantes) {

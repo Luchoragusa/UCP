@@ -3,7 +3,7 @@
 <%@page import="data.*"%>
 <%@page import="entities.*"%>
 <%@page import="java.util.LinkedList"%>
-    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,9 +15,11 @@
 	<% 
 		DataLugarRobo dlr = new  DataLugarRobo();
 		LinkedList<LugarRobo> lugares = dlr.getAll();
+		
 	%>
 	Seleccione Lugar de robo:
-	 <select name="lugarRobo">
+	 <select name="lugarRobo"> 
+	 
 		<%
 			for(LugarRobo i :  lugares) {
 		%>
@@ -28,8 +30,8 @@
 			}
 		%>
 	</select><br><br>
-	<%int lrobo = (Integer.parseInt(request.getParameter("lugarRobo")));	
-	out.print(lrobo);%>
+	
+<%out.print(request.getAttribute("maxInte"));%>
 	
 	
 	

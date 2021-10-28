@@ -150,7 +150,7 @@ public class DataLugarRobo
 			stmt.setString(1, robo.getTipoRobo());
 			stmt.setString(2, robo.getLugarRobo());
 			stmt.setInt(3, robo.getMaxIntegrantes());
-			stmt.setInt(4, robo.getMinIntregantes());
+			stmt.setInt(4, robo.getMinIntegrantes());
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();
@@ -191,7 +191,7 @@ public class DataLugarRobo
 			stmt.setString(1, robo.getTipoRobo());
 			stmt.setString(2, robo.getLugarRobo());
 			stmt.setInt(3, robo.getMaxIntegrantes());
-			stmt.setInt(4, robo.getMinIntregantes());
+			stmt.setInt(4, robo.getMinIntegrantes());
 			stmt.setInt(5, robo.getIdLugarRobo());
 			stmt.executeUpdate();
 		} 

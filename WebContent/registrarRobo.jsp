@@ -28,7 +28,8 @@
 			}
 		%>
 	</select><br><br>
-	
+	<%int lrobo = (Integer.parseInt(request.getParameter("lugarRobo")));	
+	out.print(lrobo);%>
 	
 	
 	

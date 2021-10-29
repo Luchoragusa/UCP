@@ -68,7 +68,7 @@ public class DataLugarRobo
 			{
 				r=new LugarRobo();
 				r.setIdLugarRobo(rs.getInt("idLugarRobo"));
-				r.setTipoRobo(rs.getString("nomRobo"));
+				r.setTipoRobo(rs.getString("tipoRobo"));
 				r.setLugarRobo(rs.getString("lugarRobo"));
 				r.setMaxIntegrantes(rs.getInt("maxIntegrantes"));
 				r.setMinIntregantes(rs.getInt("minIntegrantes"));

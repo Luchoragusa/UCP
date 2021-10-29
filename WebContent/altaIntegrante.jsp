@@ -16,12 +16,12 @@
 			response.sendRedirect("loginTest.jsp");
 		%>
 		<form action="altaIntegranteS" method="post">
-			Nombre: <input type = "text" name = "nombre"><br><br>
-			Apellido: <input type="text" name = "apellido"><br><br>
-			DiscordID: <input type="text" name = "dsId"><br><br>
-			SteamHex: <input type="text" name = "steamHex"><br><br>
-			Nombre usuario: <input type="text" name = "nombreUsuario"><br><br>
-			Contrasenia: <input type="password" name = "pw"><br><br>
+			Nombre: <input type = "text" name = "nombre" Required><br><br>
+			Apellido: <input type="text" name = "apellido" Required><br><br>
+			DiscordID: <input type="text" name = "dsId" Required><br><br>
+			SteamHex: <input type="text" name = "steamHex" Required><br><br>
+			Nombre usuario: <input type="text" name = "nombreUsuario" Required><br><br>
+			Contrasenia: <input type="password" name = "pw" Required><br><br>
  			<%
  				DataRango dr = new DataRango();
  				LinkedList<Rango> lista = new LinkedList<Rango>();

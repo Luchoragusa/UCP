@@ -339,14 +339,14 @@ import logic.LlaveMaestra;
 		{
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"update integrante set nombre=?, apellido=?, usuario=?, pw=?, discordId=?, steamHex=? where idIntegrante = ?");
+							"update integrante set nombre=?, apellido=?, usuario=?, pw=AES_ENCRYPT(?,?), discordId=?, steamHex=? where idIntegrante = ?");
 			
 			stmt.setString(1, i.getNombre());
 			stmt.setString(2, i.getApellido());
 			stmt.setString(3, i.getUsuario());
 			stmt.setString(4, i.getPw());
-			stmt.setString(5, i.getDiscordId());
-			stmt.setString(6, i.getSteamHex());	
+			stmt.setString(5, LlaveMaestra.getLlave());
+			stmt.setString(6, i.getDiscordId());
 			stmt.setInt(7, i.getIdIntegrante());	
 			stmt.executeUpdate();
 		}  

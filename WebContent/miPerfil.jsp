@@ -120,5 +120,9 @@
 		max="<%=por.get(0)%>"
 		value="
 		<%=por.get(1)%>"></progress>
+		
+		<form action="editarPerfil" method="post">
+			<input type = "submit" value = "Mi perfil"><br><br>
+		</form>
 	</body>
 </html>

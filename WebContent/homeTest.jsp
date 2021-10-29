@@ -23,6 +23,7 @@
 		if (session.getAttribute("Nombre") == null)
 			response.sendRedirect("loginTest.jsp");
 		%>
+
 		<b><i>[PSG] Bienvenido al panel de usuario!</i></b>
 		<br>
 		<b>Nombre:</b> ${Nombre} 

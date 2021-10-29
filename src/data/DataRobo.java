@@ -145,18 +145,6 @@ public class DataRobo
 			{
 				numeros.add(rs.getInt("SumaG"));
 			}
-			
-			stmt=null;
-			rs=null;
-			stmt=DbConnector.getInstancia().getConn().prepareStatement("select count(*) as SumaP from robo where idIntegrante = ? and resultado = ?");
-			stmt.setInt(1, i.getIdIntegrante());
-			stmt.setString(2, "Perdido");
-			rs= stmt.executeQuery();
-			
-			if(rs!=null && rs.next()) 
-			{
-				numeros.add(rs.getInt("SumaP"));
-			}	
 		} 
 		catch (SQLException e) 
 		{

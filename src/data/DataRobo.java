@@ -125,21 +125,38 @@ public class DataRobo
 		LinkedList<Integer> numeros = null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement("select count(*) into @total from robo where idIntegrante = ?; select @total 'Total'");
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select count(*) as Suma from robo where idIntegrante = ?");
 			stmt.setInt(1, i.getIdIntegrante());
-			//stmt.setInt(2, i.getIdIntegrante());
-			//stmt.setString(3, "Ganado");
-			//stmt.setInt(4, i.getIdIntegrante());
-			//stmt.setString(5, "Empate");
 			rs= stmt.executeQuery();
 			
 			if(rs!=null && rs.next()) 
 			{
 				numeros = new LinkedList<Integer>();
-				numeros.add(rs.getInt("Total"));
-				//numeros.add(rs.getInt("@total"));
-				//numeros.add(rs.getInt("@empatado"));
+				numeros.add(rs.getInt("Suma"));
 			}
+			
+			stmt=null;
+			rs=null;
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select count(*) as SumaG from robo where idIntegrante = ? and resultado = ?");
+			stmt.setInt(1, i.getIdIntegrante());
+			stmt.setString(2, "Ganado");
+			rs= stmt.executeQuery();
+			if(rs!=null && rs.next()) 
+			{
+				numeros.add(rs.getInt("SumaG"));
+			}
+			
+			stmt=null;
+			rs=null;
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select count(*) as SumaP from robo where idIntegrante = ? and resultado = ?");
+			stmt.setInt(1, i.getIdIntegrante());
+			stmt.setString(2, "Perdido");
+			rs= stmt.executeQuery();
+			
+			if(rs!=null && rs.next()) 
+			{
+				numeros.add(rs.getInt("SumaP"));
+			}	
 		} 
 		catch (SQLException e) 
 		{

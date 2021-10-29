@@ -117,8 +117,8 @@
 			LinkedList<Integer> por = dr.getPorcentaje(i);
 		%>
 		<h3>Porcentaje de robos:</h3> <progress align="center" id="robos" 
-		max="<%=por.get(0)%>"
+		max="<% //por.get(0)%>"
 		value="
-		<%=por.get(1)%>"></progress>
+		<% //por.get(1)%>"></progress>
 	</body>
 </html>

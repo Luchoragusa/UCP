@@ -36,11 +36,6 @@
 	  Fecha del robo: <input type = "date" name = "fechaR"><br><br>
 	  Hora del robo: <input type = "time" name = "horaR"><br><br>
 	
-	
-	
-	
-	
-	
 	</form>
 
 </body>

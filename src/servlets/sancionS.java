@@ -18,9 +18,9 @@ public class sancionS extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		Sancion s = new Sancion();
-		//s.setIdIntegrante(request.getParameter("integrante")); Ver como hacer que sea de funcione el parse
+		s.setIdIntegrante(Integer.parseInt(request.getParameter("integrante")));
 		s.setTipoSancion(request.getParameter("tipoSancion"));
-		//s.setNroSancion(request.getParameter("nroSancion"));
+		s.setNroSancion(Integer.parseInt(request.getParameter("nroSancion")));
 		s.setMotivo(request.getParameter("motivo"));
 		s.setUrlSancion(request.getParameter("url"));
 		s.setFecha(LocalDate.now());

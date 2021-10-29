@@ -47,12 +47,11 @@ import logic.LlaveMaestra;
 				i.setApellido(rs.getString("apellido"));
 				i.setSteamHex(rs.getString("steamHex"));
 				i.setDiscordId(rs.getString("discordId"));
-				//
+
 				rolcito.setIdRol(rs.getInt("idRol"));
 				rolcito.setDescripcion(rs.getString("descripcion"));
-				
-				i.setRol(rolcito);
 			
+				i.setRol(rolcito);
 			}
 		} catch (SQLException e) 
 		{
@@ -60,7 +59,8 @@ import logic.LlaveMaestra;
 		}
 		finally 
 		{
-			try {
+			try 
+			{
 				if(rs!=null) {rs.close();}
 				if(stmt!=null) {stmt.close();}
 				DbConnector.getInstancia().releaseConn();
@@ -166,8 +166,7 @@ import logic.LlaveMaestra;
 		
 			if(rs!=null) {
 				while(rs.next()) {
-					Integrante i=new Integrante();
-					
+					Integrante i=new Integrante();					
 					i.setIdIntegrante(rs.getInt("idIntegrante"));
 					i.setNombre(rs.getString("nombre"));
 					i.setApellido(rs.getString("apellido"));
@@ -197,13 +196,83 @@ import logic.LlaveMaestra;
 		return inte;
 	}
 	
+	public LinkedList<Integrante> getAll1() 
+	{
+		Statement stmt=null;
+		ResultSet rs=null;
+		LinkedList<Integrante> uActivos = null;
+		Integrante i=null;
+		Rango r = null;
+		Hora h = null;
+		Subdivision s = null;
+		try {
+			stmt= DbConnector.getInstancia().getConn().createStatement();
+			rs= stmt.executeQuery("select nombre, apellido, fechaInicio ,r.nombRango, s.descripcion, horaInicio \r\n"
+					+ "from hora\r\n"
+					+ "\r\n"
+					+ "inner join integrante i on hora.idIntegrante = i.idIntegrante\r\n"
+					+ "inner join ran_integrante ri on i.idIntegrante = ri.idIntegrante\r\n"
+					+ "inner join rango r on ri.idRango = r.idRango\r\n"
+					+ "\r\n"
+					+ "left join ransub_integrante ri2 on i.idIntegrante = ri2.idIntegrante\r\n"
+					+ "left join ran_subdivision rs on ri2.idRanSub = rs.idRanSub\r\n"
+					+ "left join  subdivision s on rs.idSub = s.idSub");
+		
+			if(rs!=null) 
+			{
+				uActivos = new LinkedList<>();
+				while(rs.next()) 
+				{
+					i = new Integrante();
+					r = new Rango();
+					h = new Hora();
+					s = new Subdivision();
+				
+				
+					i.setNombre(rs.getString("nombre"));
+					i.setApellido(rs.getString("apellido"));
+					
+					r.setNomRango(rs.getString("nombRango"));
+					h.setHoraInicio(rs.getObject("horaInicio", LocalTime.class));
+					s.setDescripcion(rs.getString("descripcion"));
+					h.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
+					
+					LinkedList<Hora> horas = new LinkedList<Hora>();
+					horas.add(h);
+					i.setHora(horas);
+					i.setRango(r);
+					i.setSub(s);
+					
+					uActivos.add(i);
+				}
+			}	
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		} 
+		finally 
+		{
+			try 
+			{
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+		return inte;
+	}
+	
 	public LinkedList<Integrante> getByApellido(Integrante inte) {
 
 		DataRol dr=new DataRol();
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		LinkedList<Integrante> integ= new LinkedList<>();
-		//rfrfr
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
@@ -410,8 +479,6 @@ import logic.LlaveMaestra;
 		Rango r = null;
 		Hora h = null;
 		Subdivision s = null;
-		Ran_Subdivision rans = null;
-		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
 			rs= stmt.executeQuery("select nombre, apellido, fechaInicio ,r.nombRango, s.descripcion, horaInicio \r\n"

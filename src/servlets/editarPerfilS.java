@@ -25,9 +25,7 @@ public class editarPerfilS extends HttpServlet
 		i.setDiscordId(request.getParameter("discordId"));
 		i.setUsuario(request.getParameter("usuario"));
 		i.setPw(request.getParameter("pw"));
-
 		di.update(i);
-		
 		response.sendRedirect("homeTest.jsp");
 	}
 }

@@ -32,7 +32,7 @@
  			<%
  				for(Rango r :  lista) {
  			%>
-	        <option value="<%=r.getNomRango()%>"> 
+	        <option value="<%=r.getIdRango()%>"> 
 	        <%=r.getNomRango()%></option>
 		    <%
 				}
@@ -48,7 +48,7 @@
  			<%
  				for(Rol rol :  listaRol) {
  			%>
-	        <option value="<%=rol.getDescripcion()%>"> 
+	        <option value="<%=rol.getIdRol()%>"> 
 	        <%=rol.getDescripcion()%></option>
 		    <%
 				}

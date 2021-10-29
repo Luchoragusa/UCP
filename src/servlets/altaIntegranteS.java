@@ -30,20 +30,16 @@ public class altaIntegranteS extends HttpServlet
 		i.setUsuario(request.getParameter("nombreUsuario"));
 		i.setPw(request.getParameter("pw"));
 		
+		Ran_Integrante ranI = new Ran_Integrante();
+		ranI.setIdRango(Integer.parseInt(request.getParameter("rango")));
+		
 		Rol r = new Rol();
 		DataRol dr = new DataRol();
-		r.setDescripcion(request.getParameter("rol"));
-		i.setRol(dr.getByDesc(r));
-		
-		Ran_Integrante ranI = new Ran_Integrante();
-		Rango ran = new Rango();
-		DataRango dran = new DataRango();
+		r.setIdRol(Integer.parseInt(request.getParameter("rol")));
+		i.setRol(dr.getById(r));
 		
 		ranI.setFecha_desde(LocalDate.now());
 		ranI.setIdIntegrante(di.add(i).getIdIntegrante());
-		
-		ran.setNomRango(request.getParameter("rango"));
-		ranI.setIdRango(dran.getByNomb(ran).getIdRango());
 		
 		di.addRangoIntegrante(ranI);
 		

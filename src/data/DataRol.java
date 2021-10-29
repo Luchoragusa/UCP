@@ -49,9 +49,8 @@ public class DataRol {
 		return roles;
 	}
 	
-	public Rol getById(Rol rolToSearch) 
+	public Rol getById(Rol r) 
 	{
-		Rol r=null;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		try 
@@ -59,11 +58,10 @@ public class DataRol {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
 					"select * from rol where idRol=?"
 					);
-			stmt.setInt(1, rolToSearch.getIdRol());
+			stmt.setInt(1, r.getIdRol());
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()) 
 			{
-				r=new Rol();
 				r.setIdRol(rs.getInt("idRol"));
 				r.setDescripcion(rs.getString("descripcion"));
 			}

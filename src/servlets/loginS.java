@@ -18,8 +18,6 @@ public class loginS extends HttpServlet
 {	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		try
-		{
 			Integrante i = new Integrante();
 			Login ctrlLogin = new Login();
 			
@@ -40,10 +38,5 @@ public class loginS extends HttpServlet
 			}
 			else
 				response.sendRedirect("loginTest.jsp");
-		}
-		catch (Exception e) 
-		{
-			// TODO: handle exception
-		}
 	}
 }

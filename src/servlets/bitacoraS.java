@@ -22,23 +22,16 @@ public class bitacoraS extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{	
 		Integrante i = new Integrante();
-		
 		HttpSession session = request.getSession();
 		i.setIdIntegrante((int) session.getAttribute("id"));
-		
 		Hora h = new Hora();
 		DataHoras dh = new DataHoras();
-		
 		h.setIdIntegrante(i.getIdIntegrante());
-
 		LocalTime a = LocalTime.now();
 		h.setHoraInicio(a);
-
 		LocalDate fecha = LocalDate.now();
-		h.setFechaInicio(fecha);
-		
+		h.setFechaInicio(fecha);		
 		dh.add(h);
-		
 		response.sendRedirect("homeTest.jsp");
 	}
 

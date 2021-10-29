@@ -31,14 +31,12 @@
 		        <option value="Raya"> Raya </option>
 				<option value="Strike"> Strike </option>
 	        </select><br><br>
-	        
 	        Numero de Sancion: 
 	        <select name="nroSancion">
 		        <option value="1"> 1 </option>
 				<option value="2"> 2 </option>
 				<option value="3"> 3 </option>
 	        </select><br><br>
-	        
 	        Motivo de la sancion: <input type = "text" name = "motivo" Required><br><br>
 	        Imagen (opcional): <input type = "text" name = "url" Required><br><br>
 			<input type = "submit" value = "Aplicar Sancion" Required><br>

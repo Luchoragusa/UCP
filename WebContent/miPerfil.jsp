@@ -116,22 +116,25 @@
 			DataRobo dr = new DataRobo();
 			LinkedList<Integer> por = dr.getPorcentaje(i);
 		%>
-		<h3>Porcentaje de robos:</h3> <progress align="center" id="robos" 
+		<h3>Porcentaje de robos ganados:</h3> <progress align="center" id="robos" 
 		max="<%=por.get(0)%>"
 		value="
-		<%=por.get(1)%>"></progress>
-		
-		<input type = "submit" onclick = "<% boolean boton = true; %>" value = "Editar datos personales"><br><br>
-		
-		<%if(boton) {%>
-		<form action="editarPerfilS" method="post">
+		<%=por.get(1)%>"></progress><br><br>
+		<input type = "submit" onclick = "mostrarForm()" value = "Editar datos personales" id="btn1"><br><br>
+		<form action="editarPerfilS" method="post" id="editarDatos" hidden="">
 			Nombre: <input type = "text" name = "nombre" value="<%=i.getNombre()%>"Required><br><br>
 			Apellido: <input type = "text" name = "apellido" value="<%=i.getApellido()%>"Required><br><br>
 			Discord Id: <input type = "text" name = "discordId" value="<%=i.getDiscordId()%>"Required><br><br>
 			Usuario: <input type = "text" name = "usuario" value="<%=i.getUsuario()%>"Required><br><br>
 			Contrasenia: <input type = "password" name = "pw" placeholder="Obligatorio" Required><br><br>
-			<input type = "submit" value = "Guardar cambios"><br><br>
+			<input type = "submit" value = "Guardar cambios" ><br><br>
 		</form>
-		<% } %>
+		<script type="text/javascript">
+			function mostrarForm()
+			{
+				document.getElementById('editarDatos').hidden=false;
+				document.getElementById('btn1').hidden=true;
+			}
+		</script>
 	</body>
 </html>

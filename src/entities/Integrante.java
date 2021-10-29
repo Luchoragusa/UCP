@@ -26,14 +26,6 @@ public class Integrante {
 	public void setSancion(LinkedList<Sancion> sancion) {
 		this.sancion = sancion;
 	}
-	private Medalla medalla;
-	public Medalla getMedalla() {
-		return medalla;
-	}
-	public void setMedalla(Medalla medalla) {
-		this.medalla = medalla;
-	}
-
 	public LinkedList<Hora> getHora() {
 		return hora;
 	}

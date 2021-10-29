@@ -120,7 +120,6 @@
 		max="<%=por.get(0)%>"
 		value="
 		<%=por.get(1)%>"></progress><br><br>
-
 		<input type = "submit" onclick = "mostrarForm()" value = "Editar datos personales" id="btn1"><br><br>
 		<form action="editarPerfilS" method="post" id="editarDatos" hidden="">
 			Nombre: <input type = "text" name = "nombre" value="<%=i.getNombre()%>"Required><br><br>
@@ -130,7 +129,6 @@
 			Contrasenia: <input type = "password" name = "pw" placeholder="Obligatorio" Required><br><br>
 			<input type = "submit" value = "Guardar cambios" ><br><br>
 		</form>
-		
 		<script type="text/javascript">
 			function mostrarForm()
 			{

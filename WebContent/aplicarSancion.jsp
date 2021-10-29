@@ -39,9 +39,9 @@
 				<option value="3"> 3 </option>
 	        </select><br><br>
 	        
-	        Motivo de la sancion: <input type = "text" name = "motivo"><br><br>
-	        Imagen (opcional): <input type = "text" name = "url"><br><br>
-			<input type = "submit" value = "Aplicar Sancion"><br>
+	        Motivo de la sancion: <input type = "text" name = "motivo" Required><br><br>
+	        Imagen (opcional): <input type = "text" name = "url" Required><br><br>
+			<input type = "submit" value = "Aplicar Sancion" Required><br>
 		</form>
 	</body>
 </html>

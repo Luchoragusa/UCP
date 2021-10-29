@@ -124,10 +124,10 @@
 		<input type = "submit" value = "Editar datos personales"><br><br>
 		
 		<form action="editarPerfilS" method="post">
-			Nombre: <input type = "text" name = "nombre" value="<%=i.getNombre()%> Required"><br><br>
-			Apellido: <input type = "text" name = "apellido" value="<%=i.getApellido()%> Required"><br><br>
-			Discord Id: <input type = "text" name = "discordId" value="<%=i.getDiscordId()%> Required"><br><br>
-			Usuario: <input type = "text" name = "usuario" value="<%=i.getUsuario()%> Required"><br><br>
+			Nombre: <input type = "text" name = "nombre" value="<%=i.getNombre()%>"Required><br><br>
+			Apellido: <input type = "text" name = "apellido" value="<%=i.getApellido()%>"Required><br><br>
+			Discord Id: <input type = "text" name = "discordId" value="<%=i.getDiscordId()%>"Required><br><br>
+			Usuario: <input type = "text" name = "usuario" value="<%=i.getUsuario()%>"Required><br><br>
 			Contrasenia: <input type = "password" name = "pw" placeholder="Obligatorio" Required><br><br>
 			
 			<input type = "submit" value = "Guardar cambios"><br><br>

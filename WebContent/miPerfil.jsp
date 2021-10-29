@@ -138,7 +138,5 @@
 				document.getElementById('btn1').hidden=true;
 			}
 		</script>
-	
-		
 	</body>
 </html>

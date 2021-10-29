@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import data.DataIntegrante;
 import entities.Integrante;
@@ -17,8 +18,8 @@ public class editarPerfilS extends HttpServlet
 	{
 		Integrante i = new Integrante();
 		DataIntegrante di = new DataIntegrante();
-		ServletRequest session = null;
-		i.setIdIntegrante(Integer.parseInt((String) session.getAttribute("id")));
+		HttpSession session = request.getSession();
+		i.setIdIntegrante(Integer.parseInt(session.getAttribute("id").toString()));
 		i.setNombre(request.getParameter("nombre"));
 		i.setApellido(request.getParameter("apellido"));
 		i.setDiscordId(request.getParameter("discordId"));
@@ -26,5 +27,7 @@ public class editarPerfilS extends HttpServlet
 		i.setPw(request.getParameter("pw"));
 
 		di.update(i);
+		
+		response.sendRedirect("homeTest.jsp");
 	}
 }

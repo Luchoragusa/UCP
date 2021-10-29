@@ -339,7 +339,7 @@ import logic.LlaveMaestra;
 		{
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"update integrante set nombre=?, apellido=?, usuario=?, pw=AES_ENCRYPT(?,?), discordId=?, steamHex=? where idIntegrante = ?");
+							"update integrante set nombre=?, apellido=?, usuario=?, pw=AES_ENCRYPT(?,?), discordId=? where idIntegrante = ?");
 			
 			stmt.setString(1, i.getNombre());
 			stmt.setString(2, i.getApellido());

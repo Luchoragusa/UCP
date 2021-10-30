@@ -133,7 +133,7 @@ import logic.LlaveMaestra;
 			{
 					i = new Integrante();
 					r = new Rango();
-					s = new Subdivision();		
+					s = new Subdivision();
 					r_s = new Ran_Subdivision();
 					rol = new Rol();
 					
@@ -143,7 +143,7 @@ import logic.LlaveMaestra;
 					i.setDiscordId(rs.getString("discordId"));
 					i.setSteamHex(rs.getString("steamHex"));
 					i.setUsuario(rs.getString("usuario"));
-					i.setidrol(rs.getInt("idRol"));
+					i.setIdRol(rs.getInt("idRol"));
 					
 					r_s.setNombreRangoSub(rs.getString("nombreRangoSub"));
 					r_s.setIdRanSub(rs.getInt("idRanSub"));

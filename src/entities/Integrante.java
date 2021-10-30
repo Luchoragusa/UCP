@@ -12,6 +12,7 @@ public class Integrante {
 	private LinkedList<Hora> hora;
 	private Subdivision sub;
 	private LinkedList<Sancion> sancion;
+	
 	public Subdivision getSub() 
 	{
 		return sub;
@@ -34,65 +35,54 @@ public class Integrante {
 	public int getIdIntegrante() {
 		return idIntegrante;
 	}
-
 	public void setIdIntegrante(int idIntegrante) {
 		this.idIntegrante = idIntegrante;
 	}
-
 	public String getNombre() {
 		return nombre;
 	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 	public String getApellido() {
 		return apellido;
 	}
-
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-
 	public String getSteamHex() {
 		return steamHex;
 	}
-
 	public void setSteamHex(String steamHex) {
 		this.steamHex = steamHex;
 	}
-
 	public String getDiscordId() {
 		return discordId;
 	}
-
 	public void setDiscordId(String discordId) {
 		this.discordId = discordId;
 	}
-
 	public String getUsuario() {
 		return usuario;
 	}
-
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
-
 	public String getPw() {
 		return pw;
 	}
-
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
-	
-	public Integrante() 
-	{
-		
+	public Integrante() {
+	}
+	public int getIdRol() {
+		return idRol;
+	}
+	public void setIdRol(int idRol) {
+		this.idRol = idRol;
 	}
 	//RANGO
-	
 	public Rango getRango() {
 		return rango;
 	}

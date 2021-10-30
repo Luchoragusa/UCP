@@ -252,57 +252,6 @@ import logic.LlaveMaestra;
 		}
 		return integrantes;
 	}
-	
-	public LinkedList<Integrante> getByApellido(Integrante inte) {
-
-		DataRol dr=new DataRol();
-		PreparedStatement stmt=null;
-		ResultSet rs=null;
-		LinkedList<Integrante> integ= new LinkedList<>();
-		try 
-		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-			 "select idIntegrante,nombre,discordId,steamHex,usuario from integrante where apellido = ?");
-			stmt.setString(1, inte.getApellido());
-			rs=stmt.executeQuery();
-			
-			if(rs!=null) 
-			{
-				while(rs.next()) 
-				{
-					Integrante i=new Integrante();
-					i.setIdIntegrante(rs.getInt("idIntegrante"));
-					i.setNombre(rs.getString("nombre"));
-					i.setApellido(inte.getApellido());
-					i.setDiscordId(rs.getString("discordId"));
-					i.setSteamHex(rs.getString("steamHex"));
-					i.setUsuario(rs.getString("usuario"));
-					
-					dr.setRoles(i);
-					
-					integ.add(i);
-				}
-			}	
-		} catch (SQLException e) {
-			e.printStackTrace();
-			
-		} 
-		finally 
-		{
-			try 
-			{
-				if(rs!=null) {rs.close();}
-				if(stmt!=null) {stmt.close();}
-				DbConnector.getInstancia().releaseConn();
-			} 
-			catch (SQLException e) 
-			{
-				e.printStackTrace();
-			}
-		}
-		return integ;
-	
-	}
 
 	public Integrante add(Integrante i) 
 	{

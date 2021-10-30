@@ -22,7 +22,7 @@
 			<%
 				LinkedList<Integrante> integrantes = new LinkedList<>();
 				DataIntegrante di = new DataIntegrante();
-				integrantes = di.getAll1();
+				integrantes = di.getAll();
 				for(Integrante i :  integrantes) {
 			%>
 				<tr>

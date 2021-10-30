@@ -159,54 +159,13 @@ import logic.LlaveMaestra;
 	{
 		Statement stmt=null;
 		ResultSet rs=null;
-		LinkedList<Integrante> inte= new LinkedList<>();		
-		try {
-			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idIntegrante,nombre,apellido,discordId,steamHex from integrante");
-		
-			if(rs!=null) {
-				while(rs.next()) {
-					Integrante i=new Integrante();					
-					i.setIdIntegrante(rs.getInt("idIntegrante"));
-					i.setNombre(rs.getString("nombre"));
-					i.setApellido(rs.getString("apellido"));
-					i.setDiscordId(rs.getString("discordId"));
-					i.setSteamHex(rs.getString("steamHex"));
-					inte.add(i);
-				}
-			}	
-		} 
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
-		} 
-		finally 
-		{
-			try 
-			{
-				if(rs!=null) {rs.close();}
-				if(stmt!=null) {stmt.close();}
-				DbConnector.getInstancia().releaseConn();
-			} 
-			catch (SQLException e) 
-			{
-				e.printStackTrace();
-			}
-		}
-		return inte;
-	}
-	
-	public LinkedList<Integrante> getAll1() 
-	{
-		Statement stmt=null;
-		ResultSet rs=null;
 		LinkedList<Integrante> integrantes = null;
 		Integrante i=null;
 		Rango r = null;
 		Subdivision s = null;
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select nombre, apellido, discordId, r.nombRango, s.descripcion, i.idIntegrante \r\n"
+			rs= stmt.executeQuery("select nombre, apellido, steamHex,discordId, r.nombRango, s.descripcion, i.idIntegrante \r\n"
 					+ "from integrante i\r\n"
 					+ "inner join ran_integrante ri on i.idIntegrante = ri.idIntegrante\r\n"
 					+ "inner join rango r on ri.idRango = r.idRango\r\n"
@@ -228,6 +187,7 @@ import logic.LlaveMaestra;
 					i.setApellido(rs.getString("apellido"));
 					i.setDiscordId(rs.getString("discordId"));
 					i.setIdIntegrante(rs.getInt("idIntegrante"));
+					i.setSteamHex(rs.getString("steamHex"));
 					
 					r.setNomRango(rs.getString("nombRango"));
 					s.setDescripcion(rs.getString("descripcion"));

@@ -6,9 +6,8 @@ import entities.*;
 
 public class Integrante {
 
-	private int idIntegrante;
+	private int idIntegrante, idRol;
 	private String nombre, apellido, steamHex, discordId, usuario, pw;
-	private Rol rol;
 	private Rango rango;
 	private LinkedList<Hora> hora;
 	private Subdivision sub;
@@ -91,15 +90,6 @@ public class Integrante {
 	public Integrante() 
 	{
 		
-	}
-	
-	// ROL
-
-	public Rol getRol() {
-		return rol;
-	}
-	public void setRol(Rol rol) {
-		this.rol = rol;
 	}
 	//RANGO
 	

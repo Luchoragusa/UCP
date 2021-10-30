@@ -12,6 +12,8 @@
 		<% 
 			Integrante i = new Integrante();
 			i.setIdIntegrante(Integer.parseInt(request.getParameter("id")));
+			DataIntegrante di = new DataIntegrante();
+			i=di.getByIdIntegrante(i);
 		%>
 		<form action="editarPerfilS" method="post" id="editarDatos" hidden="">
 			Nombre: <input type = "text" name = "nombre" value="<%=i.getNombre()%>"Required><br><br>

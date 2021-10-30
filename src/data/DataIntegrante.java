@@ -112,29 +112,60 @@ import logic.LlaveMaestra;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		Integrante i=null;
-		
+		Rango r = null;
+		Subdivision s = null;
+		Ran_Subdivision r_s = null;
+		Rol rol = null;
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-			 "select nombre,apellido,discordId,steamHex,usuario, idRol from integrante where idIntegrante = ?");
+					          "select nombre, apellido, steamHex, discordId, rs.nombreRangoSub, rs.idRanSub,r.nombRango, r.idRango, s.descripcion, s.idRango,idRol, usuario \r\n"
+							+ "from integrante i\r\n"
+							+ "inner join ran_integrante ri on i.idIntegrante = ri.idIntegrante\r\n"
+							+ "inner join rango r on ri.idRango = r.idRango\r\n"
+							+ "left join ransub_integrante ri2 on i.idIntegrante = ri2.idIntegrante\r\n"
+							+ "left join ran_subdivision rs on ri2.idRanSub = rs.idRanSub\r\n"
+							+ "left join  subdivision s on rs.idSub = s.idSub where idIntegrante = ?");
 			stmt.setInt(1, inte.getIdIntegrante());
 			rs=stmt.executeQuery();
 			
 			if(rs!=null && rs.next()) 
 			{
-					i=new Integrante();					
+					i = new Integrante();
+					r = new Rango();
+					s = new Subdivision();		
+					r_s = new Ran_Subdivision();
+					rol = new Rol();
+					
 					i.setNombre(rs.getString("nombre"));
 					i.setApellido(rs.getString("apellido"));
 					i.setIdIntegrante(inte.getIdIntegrante());
 					i.setDiscordId(rs.getString("discordId"));
 					i.setSteamHex(rs.getString("steamHex"));
 					i.setUsuario(rs.getString("usuario"));
-					i.setIdIntegrante(rs.getInt("idRol"));
+					i.setidrol(rs.getInt("idRol"));
+					
+					r_s.setNombreRangoSub(rs.getString("nombreRangoSub"));
+					r_s.setIdRanSub(rs.getInt("idRanSub"));
+					
+					LinkedList<Ran_Subdivision> lrs = new LinkedList<Ran_Subdivision>();
+					lrs.add(r_s);
+					s.setRanSub(lrs);
+					
+					r.setNomRango(rs.getString("nombRango"));
+					r.setIdRango(rs.getInt("idRango"));
+					
+					s.setDescripcion(rs.getString("descripcion"));
+					s.setIdSub(rs.getInt("idSub"));
+					
+					i.setRango(r);
+					i.setSub(s);
 			}
+			
 			DataSancion ds = new DataSancion();
 			i = ds.getById(i); // carga las sanciones del mismo
 			DataHoras dh = new DataHoras();
-			i = dh.get5HorasDelIntegrante(i);
+			i = dh.get5HorasDelIntegrante(i); // cambiar para q traiga todas las de la semana
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();

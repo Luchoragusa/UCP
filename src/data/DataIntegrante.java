@@ -465,6 +465,7 @@ import logic.LlaveMaestra;
 		Rango r = null;
 		Hora h = null;
 		Subdivision s = null;
+		Ran_Integrante ri = null;
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
 			rs= stmt.executeQuery("select i.idIntegrante, nombre, apellido, s.descripcion, horaInicio, fechaInicio, nombRango\r\n"
@@ -490,7 +491,7 @@ import logic.LlaveMaestra;
 					r = new Rango();
 					h = new Hora();
 					s = new Subdivision();
-				
+					ri = new Ran_Integrante();
 				
 					i.setNombre(rs.getString("nombre"));
 					i.setApellido(rs.getString("apellido"));
@@ -503,7 +504,8 @@ import logic.LlaveMaestra;
 					LinkedList<Hora> horas = new LinkedList<Hora>();
 					horas.add(h);
 					i.setHora(horas);
-					i.setRango(r);
+					ri.setRango(r);
+					i.setRanInt(ri);
 					i.setSub(s);
 					
 					uActivos.add(i);

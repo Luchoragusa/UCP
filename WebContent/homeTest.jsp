@@ -48,7 +48,7 @@
 			<tr>
 				<th> <%=entry.getNombre() %> </th>
 				<th> <%=entry.getApellido() %> </th>
-				<th> <%=entry.getRango().getNomRango() %> </th>
+				<th> <%=entry.getRanInt().getRango().getNomRango() %> </th>
 				<th> <%
 						String nSub = entry.getSub().getDescripcion();
 						if(nSub != null)

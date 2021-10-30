@@ -20,7 +20,20 @@
 			Apellido: <input type = "text" name = "apellido" value="<%=i.getApellido()%>"Required><br><br>
 			Discord Id: <input type = "text" name = "discordId" value="<%=i.getDiscordId()%>"Required><br><br>
 			Usuario: <input type = "text" name = "usuario" value="<%=i.getUsuario()%>"Required><br><br>
-			Contrasenia: <input type = "password" name = "pw" placeholder="Obligatorio" Required><br><br>
+			SteamHex: <input type = "text" name = "usuario" value="<%=i.getSteamHex()%>"Required><br><br>
+			
+			Rol:
+       		<select name="rol">
+ 			<%
+ 				for(Rol rol :  listaRol) {
+ 			%>
+	        <option value="<%=rol.getIdRol()%>"> 
+	        <%=rol.getDescripcion()%></option>
+		    <%
+				}
+			%>
+			</select><br><br>
+			
 			<input type = "submit" value = "Guardar cambios" ><br><br>
 		</form>
 	</body>

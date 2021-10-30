@@ -143,7 +143,9 @@ import logic.LlaveMaestra;
 					i.setDiscordId(rs.getString("discordId"));
 					i.setSteamHex(rs.getString("steamHex"));
 					i.setUsuario(rs.getString("usuario"));
-					i.setIdRol(rs.getInt("idRol"));
+					
+					rol.setIdRol(rs.getInt("idRol"));
+				//	rol.setDescripcion(rs.getString("descripcion")); falta el inner
 					
 					r_s.setNombreRangoSub(rs.getString("nombreRangoSub"));
 					r_s.setIdRanSub(rs.getInt("idRanSub"));
@@ -158,6 +160,7 @@ import logic.LlaveMaestra;
 					s.setDescripcion(rs.getString("descripcion"));
 					s.setIdSub(rs.getInt("idSub"));
 					
+					i.setRol(rol);
 					i.setRango(r);
 					i.setSub(s);
 			}

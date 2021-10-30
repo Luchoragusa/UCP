@@ -206,7 +206,7 @@ import logic.LlaveMaestra;
 		Subdivision s = null;
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select nombre, apellido, discordId,r.nombRango, s.descripcion \r\n"
+			rs= stmt.executeQuery("select nombre, apellido, discordId, r.nombRango, s.descripcion, i.idIntegrante \r\n"
 					+ "from integrante i\r\n"
 					+ "inner join ran_integrante ri on i.idIntegrante = ri.idIntegrante\r\n"
 					+ "inner join rango r on ri.idRango = r.idRango\r\n"
@@ -227,6 +227,7 @@ import logic.LlaveMaestra;
 					i.setNombre(rs.getString("nombre"));
 					i.setApellido(rs.getString("apellido"));
 					i.setDiscordId(rs.getString("discordId"));
+					i.setIdIntegrante(rs.getInt("idIntegrante"));
 					
 					r.setNomRango(rs.getString("nombRango"));
 					s.setDescripcion(rs.getString("descripcion"));

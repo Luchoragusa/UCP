@@ -26,7 +26,7 @@
 				for(Integrante i :  integrantes) {
 			%>
 				<tr>
-					<th> <a href='homeTest.jsp' ><%=i.getNombre() + " " +  i.getApellido()%></a> </th>
+					<th> <a href='gestionIntegrante2.jsp?id=<%=i.getIdIntegrante()%>'><%=i.getNombre() + " " +  i.getApellido()%></a> </th>
 					<th> <%=i.getRango().getNomRango() %> </th>
 					<th> <%
 							String nSub = i.getSub().getDescripcion();

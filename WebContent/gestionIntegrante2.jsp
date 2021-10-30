@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>[PSG]Gestion integrante</title>
+		<title>[PSG]Gestion integrante2</title>
 	</head>
 	<body>
 	

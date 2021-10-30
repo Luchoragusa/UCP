@@ -32,8 +32,7 @@
 		
 		<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
 		<tr bgcolor=grey>
-			<th>Nombre</th>
-			<th>Apellido</th>
+			<th>Nombre y apellido</th>
 			<th>Rango</th>
 			<th>SubDivision</th>
 			<th>Hora Inicio</th>
@@ -46,8 +45,7 @@
 			for(Integrante entry :  uActivos) {
 		%>
 			<tr>
-				<th> <%=entry.getNombre() %> </th>
-				<th> <%=entry.getApellido() %> </th>
+				<th> <%=entry.getNombre() + " " + entry.getApellido()%> </th>
 				<th> <%=entry.getRanInt().getRango().getNomRango() %> </th>
 				<th> <%
 						String nSub = entry.getSub().getDescripcion();

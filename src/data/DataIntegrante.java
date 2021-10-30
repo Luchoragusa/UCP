@@ -1,5 +1,6 @@
 package data;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -116,16 +117,23 @@ import logic.LlaveMaestra;
 		Subdivision s = null;
 		Ran_Subdivision r_s = null;
 		Rol rol = null;
+		Ran_Integrante ri = null;
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					          "select nombre, apellido, steamHex, discordId, rs.nombreRangoSub, rs.idRanSub,r.nombRango, r.idRango, s.descripcion, s.idRango,idRol, usuario \r\n"
-							+ "from integrante i\r\n"
-							+ "inner join ran_integrante ri on i.idIntegrante = ri.idIntegrante\r\n"
-							+ "inner join rango r on ri.idRango = r.idRango\r\n"
-							+ "left join ransub_integrante ri2 on i.idIntegrante = ri2.idIntegrante\r\n"
-							+ "left join ran_subdivision rs on ri2.idRanSub = rs.idRanSub\r\n"
-							+ "left join  subdivision s on rs.idSub = s.idSub where idIntegrante = ?");
+					          "select nombre, apellido, discordId, steamHex, usuario, i.idRol, r.descripcion, rs.nombreRangoSub, rs.idRanSub, r2.nombRango ,ri.fechaDesde, ri.idRango,s.descripcion, s.idSub\r\n"
+					          + "from (select max(ri.fechaDesde) fecha\r\n"
+					          + "    from ran_integrante ri\r\n"
+					          + "    where idIntegrante = ?\r\n"
+					          + "    group by ri.idIntegrante) as tabla\r\n"
+					          + "inner join ran_integrante ri on ri.fechaDesde=tabla.fecha\r\n"
+					          + "inner join rango r2 on ri.idRango = r2.idRango\r\n"
+					          + "inner join integrante i on i.idIntegrante=ri.idIntegrante\r\n"
+					          + "inner join rol r on i.idRol = r.idRol\r\n"
+					          + "left join  ransub_integrante ri2 on i.idIntegrante = ri2.idIntegrante\r\n"
+					          + "left join  subdivision s on ri2.idSub = s.idSub\r\n"
+					          + "left join ran_subdivision rs on s.idSub = rs.idSub\r\n"
+					          + "group by ri.idIntegrante;");
 			stmt.setInt(1, inte.getIdIntegrante());
 			rs=stmt.executeQuery();
 			
@@ -136,6 +144,7 @@ import logic.LlaveMaestra;
 					s = new Subdivision();
 					r_s = new Ran_Subdivision();
 					rol = new Rol();
+					ri = new Ran_Integrante();
 					
 					i.setNombre(rs.getString("nombre"));
 					i.setApellido(rs.getString("apellido"));
@@ -157,14 +166,16 @@ import logic.LlaveMaestra;
 					r.setNomRango(rs.getString("nombRango"));
 					r.setIdRango(rs.getInt("idRango"));
 					
+					ri.setFecha_desde((rs.getDate("fechaDesde")).toLocalDate());
+					
 					s.setDescripcion(rs.getString("descripcion"));
 					s.setIdSub(rs.getInt("idSub"));
 					
 					i.setRol(rol);
-					i.setRango(r);
+					ri.setRango(r);
+					i.setRanInt(ri);
 					i.setSub(s);
 			}
-			
 			DataSancion ds = new DataSancion();
 			i = ds.getById(i); // carga las sanciones del mismo
 			DataHoras dh = new DataHoras();

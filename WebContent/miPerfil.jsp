@@ -25,14 +25,14 @@
 			i.setIdIntegrante((int)session.getAttribute("id"));
 			i = di.getByIdIntegrante(i);
 		%> <br>
-			Id:  <%=i.getIdIntegrante() %> <br>
-			Nombre:  <%=i.getNombre() %> <br>
-			Apellido:  <%=i.getApellido() %> <br>
-			Dicord Id:  <%=i.getDiscordId() %> <br>
-			Steam Hex:  <%=i.getSteamHex() %> <br>
-			Nombre Usuario:  <%=i.getUsuario() %> <br><br>
+			<b>Nombre y Apellido:</b>  <%=i.getNombre() + " " + i.getApellido()%> <br>
+			<b>Rango:</b>  <%=i.getRanInt().getRango().getNomRango() %> <br>
+			<b>Fecha ultimo ascenso:</b> <%=i.getRanInt().getFecha_desde() %> <br>
+			<b>Dicord Id:</b>  <%=i.getDiscordId() %> <br>
+			<b>Steam Hex: </b> <%=i.getSteamHex() %> <br>
+			<b>Nombre Usuario: </b> <%=i.getUsuario() %> <br>
 		
-		<h2 align="center">-- Sanciones --</h2> <br>
+		<h2 align="center">-- Sanciones --</h2>
 		<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
 			<tr bgcolor=blue>
 				<th>Tipo Sancion</th>
@@ -66,9 +66,9 @@
 			<%
 				}
 			%>
-		</table><br><br>
+		</table><br>
 		
-		<h2 align="center">-- Bitacoras --</h2> <br>
+		<h2 align="center">-- Bitacoras --</h2>
 		<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
 			<tr bgcolor=grey>
 				<th>Hora Inicio</th>
@@ -104,7 +104,7 @@
 				}
 			%>
 		</table><br>
-		<h3> Horas totales: <% out.println(contadorHorasJugadas); %> </h3>
+		<h3> Horas totales:</h3> <% out.println(contadorHorasJugadas); %> </h3>
 		<h3>Progreso de la semana:</h3> <progress align="center" id="horasSemana" 
 		max="720"
 		value="

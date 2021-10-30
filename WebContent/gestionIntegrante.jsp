@@ -12,37 +12,34 @@
 	</head>
 	<body>
 	
-				<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
-		<tr bgcolor=grey>
-			<th>Nombre y apellido</th>
-			<th>Rango</th>
-			<th>SubDivision</th>
-			<th>Fecha Ingreso</th>		
-			<th>Discord Id</th>	
-		</tr>
-		<%
-			LinkedList<Integrante> integrantes = new LinkedList<>();
-			DataIntegrante di = new DataIntegrante();
-			integrantes = di.getServicio();
-			for(Integrante i :  integrantes) {
-		%>
-			<tr>
-				<th> <%=i.getNombre() + " " +  i.getApellido()%> </th>
-				<th> <%=i.getRango().getNomRango() %> </th>
-				<th> <%
-						String nSub = i.getSub().getDescripcion();
-						if(nSub != null)
-							out.println(nSub);
-						else
-							out.println("Sin Sub");
-				%> </th>
-				<th> <%=i.getRango().getNomRango() %> </th>
-				<th> <%=i.getDiscordId() %> </th>
+		<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
+			<tr bgcolor=grey>
+				<th>Nombre y apellido</th>
+				<th>Rango</th>
+				<th>SubDivision</th>	
+				<th>Discord Id</th>	
 			</tr>
-		<%
-			}
-		%>
+			<%
+				LinkedList<Integrante> integrantes = new LinkedList<>();
+				DataIntegrante di = new DataIntegrante();
+				integrantes = di.getAll1();
+				for(Integrante i :  integrantes) {
+			%>
+				<tr>
+					<th> <a href='homeTest.jsp' ><%=i.getNombre() + " " +  i.getApellido()%></a> </th>
+					<th> <%=i.getRango().getNomRango() %> </th>
+					<th> <%
+							String nSub = i.getSub().getDescripcion();
+							if(nSub != null)
+								out.println(nSub);
+							else
+								out.println("Sin Sub");
+					%> </th>
+					<th> <%=i.getDiscordId() %> </th>
+				</tr>
+			<%
+				}
+			%>
 		</table><br>
-	
 	</body>
 </html>

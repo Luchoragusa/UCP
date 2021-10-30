@@ -200,50 +200,41 @@ import logic.LlaveMaestra;
 	{
 		Statement stmt=null;
 		ResultSet rs=null;
-		LinkedList<Integrante> uActivos = null;
+		LinkedList<Integrante> integrantes = null;
 		Integrante i=null;
 		Rango r = null;
-		Hora h = null;
 		Subdivision s = null;
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select nombre, apellido, fechaInicio ,r.nombRango, s.descripcion, horaInicio \r\n"
-					+ "from hora\r\n"
-					+ "\r\n"
-					+ "inner join integrante i on hora.idIntegrante = i.idIntegrante\r\n"
+			rs= stmt.executeQuery("select nombre, apellido, discordId,r.nombRango, s.descripcion \r\n"
+					+ "from integrante i\r\n"
 					+ "inner join ran_integrante ri on i.idIntegrante = ri.idIntegrante\r\n"
 					+ "inner join rango r on ri.idRango = r.idRango\r\n"
-					+ "\r\n"
 					+ "left join ransub_integrante ri2 on i.idIntegrante = ri2.idIntegrante\r\n"
 					+ "left join ran_subdivision rs on ri2.idRanSub = rs.idRanSub\r\n"
 					+ "left join  subdivision s on rs.idSub = s.idSub");
 		
 			if(rs!=null) 
 			{
-				uActivos = new LinkedList<>();
+				integrantes = new LinkedList<>();
 				while(rs.next()) 
 				{
 					i = new Integrante();
 					r = new Rango();
-					h = new Hora();
 					s = new Subdivision();
 				
 				
 					i.setNombre(rs.getString("nombre"));
 					i.setApellido(rs.getString("apellido"));
+					i.setDiscordId(rs.getString("discordId"));
 					
 					r.setNomRango(rs.getString("nombRango"));
-					h.setHoraInicio(rs.getObject("horaInicio", LocalTime.class));
 					s.setDescripcion(rs.getString("descripcion"));
-					h.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
 					
-					LinkedList<Hora> horas = new LinkedList<Hora>();
-					horas.add(h);
-					i.setHora(horas);
 					i.setRango(r);
 					i.setSub(s);
 					
-					uActivos.add(i);
+					integrantes.add(i);
 				}
 			}	
 		} 
@@ -264,7 +255,7 @@ import logic.LlaveMaestra;
 				e.printStackTrace();
 			}
 		}
-		return inte;
+		return integrantes;
 	}
 	
 	public LinkedList<Integrante> getByApellido(Integrante inte) {

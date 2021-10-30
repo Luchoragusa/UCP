@@ -145,7 +145,7 @@ import logic.LlaveMaestra;
 					i.setUsuario(rs.getString("usuario"));
 					
 					rol.setIdRol(rs.getInt("idRol"));
-				//	rol.setDescripcion(rs.getString("descripcion")); falta el inner
+					rol.setDescripcion(rs.getString("descripcion"));
 					
 					r_s.setNombreRangoSub(rs.getString("nombreRangoSub"));
 					r_s.setIdRanSub(rs.getInt("idRanSub"));

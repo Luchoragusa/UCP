@@ -9,7 +9,7 @@ public class Integrante {
 	private int idIntegrante;
 	private String nombre, apellido, steamHex, discordId, usuario, pw;
 	private Rol rol;
-	private Rango rango;
+	private Ran_Integrante ranInt;
 	private LinkedList<Hora> hora;
 	private Subdivision sub;
 	private LinkedList<Sancion> sancion;
@@ -101,12 +101,11 @@ public class Integrante {
 	public void setRol(Rol rol) {
 		this.rol = rol;
 	}
-	//RANGO
-	
-	public Rango getRango() {
-		return rango;
+	//RANGO-Fecha
+	public Ran_Integrante getRanInt() {
+		return ranInt;
 	}
-	public void setRango(Rango rango) {
-		this.rango = rango;
+	public void setRanInt(Ran_Integrante ranInt) {
+		this.ranInt = ranInt;
 	}
 }

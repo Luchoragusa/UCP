@@ -12,16 +12,19 @@
 
 </head>
 <body>
-
-<form action="registrarLugarRoboS" method="post">
 	<% 
 		DataLugarRobo dlr = new  DataLugarRobo();
 		LinkedList<LugarRobo> lugares = dlr.getAll();
 		LugarRobo lr =  new LugarRobo();
 		int idLR;
+	  	DataIntegrante di = new  DataIntegrante();
+    	LinkedList<Integrante> lista = di.getAll();
 	%>
+		
+<form action="registrarLugarRoboS?sizeLista=<%=lista.size()%>" method="post">
+	
 	Seleccione Lugar de robo:
-	 <select name="lugarRobo"> 
+	 <select name="lugarRobo" > 
 	 
 		<%
 			for(LugarRobo i : lugares) {
@@ -37,11 +40,6 @@
 		
 	</select><br><br>
 	
-		<%
-	  	DataIntegrante di = new  DataIntegrante();
-    	LinkedList<Integrante> lista = di.getAll();
-    	
-		%>
 		
 	  	<%
 	  		out.print("Seleccione participantes Max: NI IDEA COMO TRAER EL MAXIMO DE CADA LUGAR ROBO");
@@ -60,8 +58,14 @@
     	<%
 		}
 		%>
-		<br><br>
-		Ingrese Resultado: <input type = "text" name = "rto"><br><br>
+		<br>
+		Ingrese Resultado:
+		<select name="rto">
+			<option value="Ganado">Ganado</option>
+			<option value="Perdido">Perdido</option>
+			<option value="Empatado">Empatado</option>
+		</select>
+		<br>
 		
 		<input type = "submit" value = "Guardar" Required><br>
 	

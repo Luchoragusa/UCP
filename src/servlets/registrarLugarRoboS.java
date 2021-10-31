@@ -31,8 +31,11 @@ public class registrarLugarRoboS extends HttpServlet {
 		LugarRobo lr = new LugarRobo();
 		DataLugarRobo dlr = new DataLugarRobo();
 		LinkedList<Integrante> integrantes = new LinkedList<>();
+		Integrante inte= null;
 		
 		int nroInte;
+		int i=1;
+		Boolean band=true;
 		
 		//SETEO NRO ROBO
 		r = dr.getLastIdRobo();
@@ -54,18 +57,24 @@ public class registrarLugarRoboS extends HttpServlet {
 		r.setHora_robo(LocalTime.now());
 		
 		//SETEO INTEGRANTES
-		for(Integrante i : integrantes) {
+		while(band){
+			inte = new Integrante();
 			nroInte = Integer.parseInt(request.getParameter("integrante["+i+"]"));
-			i.setIdIntegrante(nroInte);
-			i=di.getByIdIntegrante(i);
-			integrantes.add(i);
+			
+			inte.setIdIntegrante(nroInte);
+			inte=di.getByIdIntegrante(inte);
+			integrantes.add(inte);
+			if(i== Integer.parseInt(request.getParameter("sizeLista").toString())) {
+				band=false;
+			}
+			i++;
 		}
 		r.setIntegrantes(integrantes);
 	
 		//INSERT ROBO:
 		
-		for(Integrante i : integrantes) {
-			dr.insertRobo(r, i, lr);
+		for(Integrante in : integrantes) {
+			dr.insertRobo(r, in, lr);
 		}
 		
 		

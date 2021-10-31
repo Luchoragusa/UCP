@@ -18,8 +18,7 @@ public class editarPerfilS extends HttpServlet
 	{
 		Integrante i = new Integrante();
 		DataIntegrante di = new DataIntegrante();
-		HttpSession session = request.getSession();
-		i.setIdIntegrante(Integer.parseInt(session.getAttribute("id").toString()));
+		i.setIdIntegrante(Integer.parseInt(request.getParameter("idInte").toString()));
 		i.setNombre(request.getParameter("nombre"));
 		i.setApellido(request.getParameter("apellido"));
 		i.setDiscordId(request.getParameter("discordId"));

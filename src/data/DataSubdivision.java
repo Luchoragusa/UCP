@@ -11,12 +11,11 @@ public class DataSubdivision {
 
 
 
-	public LinkedList<Subdivision> getAll(){
+	public LinkedList<Subdivision> getAll()
+	{
 		Statement stmt=null;
 		ResultSet rs=null;
-		LinkedList<Subdivision> subdivisiones= new LinkedList<>();
-		
-		
+		LinkedList<Subdivision> subdivisiones= new LinkedList<Subdivision>();
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
 			rs= stmt.executeQuery("select * from subdivision");

@@ -16,7 +16,8 @@
 			DataIntegrante di = new DataIntegrante();
 			i=di.getByIdIntegrante(i);
 		%>
-		<form action="editarPerfilS" method="post">
+		<form action="editarPerfilS?idInte=<%=i.getIdIntegrante()%>" method="post">
+		
 			Nombre: <input type = "text" name = "nombre" value="<%=i.getNombre()%>"Required><br><br>
 			Apellido: <input type = "text" name = "apellido" value="<%=i.getApellido()%>"Required><br><br>
 			Discord Id: <input type = "text" name = "discordId" value="<%=i.getDiscordId()%>"Required><br><br>
@@ -25,40 +26,78 @@
 			
 			Rol:
        		<select name="rol">
-       		<%
-				DataRol drol = new DataRol();
-				LinkedList<Rol> listaRol = new LinkedList<Rol>();
-				listaRol = drol.getAll();
-       		%>
-       		<option value="<%=i.getRol().getIdRol()%>"> 
-	        <%=i.getRol().getdescRol()%></option>
- 			<%
- 				for(Rol rol :  listaRol) {
- 			%>
-	        <option value="<%=rol.getIdRol()%>"> 
-	        <%=rol.getdescRol()%></option>
-		    <%
-				}
-			%>
+	       		<%
+					DataRol drol = new DataRol();
+					LinkedList<Rol> listaRol = new LinkedList<Rol>();
+					listaRol = drol.getAll();
+	       		%>
+	       		<option value="<%=i.getRol().getIdRol()%>"> 
+		        <%=i.getRol().getdescRol()%></option>
+	 			<%
+	 				for(Rol rol :  listaRol) {
+	 			%>
+		        <option value="<%=rol.getIdRol()%>"> 
+		        <%=rol.getdescRol()%></option>
+			    <%
+					}
+				%>
 			</select><br><br>
 			
 			Rango:
        		<select name="rango">
-			<%
- 				DataRango dr = new DataRango();
- 				LinkedList<Rango> lista = new LinkedList<Rango>();
- 				lista = dr.getAll();
- 			%>
-       		<option value="<%=i.getRanInt().getRango().getIdRango()%>"> 
-	        <%=i.getRanInt().getRango().getNomRango()%></option>
- 			<%
- 				for(Rango r :  lista) {
- 			%>
-	        <option value="<%=r.getIdRango()%>"> 
-	        <%=r.getNomRango()%></option>
-		    <%
-				}
-			%>
+				<%
+	 				DataRango dr = new DataRango();
+	 				LinkedList<Rango> lista = new LinkedList<Rango>();
+	 				lista = dr.getAll();
+	 			%>
+	       		<option value="<%=i.getRanInt().getRango().getIdRango()%>"> 
+		        <%=i.getRanInt().getRango().getNomRango()%></option>
+	 			<%
+	 				for(Rango r :  lista) {
+	 			%>
+		        <option value="<%=r.getIdRango()%>"> 
+		        <%=r.getNomRango()%></option>
+			    <%
+					}
+				%>
+			</select><br><br>
+			
+			Sub-division:
+       		<select name="sub">
+				<%
+	 				DataSubdivision ds = new DataSubdivision();
+	 				LinkedList<Subdivision> listaSub = new LinkedList<Subdivision>();
+	 				listaSub = ds.getAll();
+	 			%>
+	       		<option value="<% if(i.getSub() != null) i.getSub().getIdSub();%>"> 
+		        <% if(i.getSub() != null) out.print(i.getSub().getNomSubDivision()); else out.print("No tiene sub"); %></option>
+	 			<%
+	 				for(Subdivision s :  listaSub) {
+	 			%>
+		        <option value="<%=s.getIdSub()%>"> 
+		        <%=s.getNomSubDivision()%></option>
+			    <%
+					}
+				%>
+			</select><br><br>
+			
+			Rango Sub-division:
+       		<select name="ranSub">
+				<%
+	 				DataRan_Subdivision drs = new DataRan_Subdivision();
+	 				LinkedList<Ran_Subdivision> listaRanSub = new LinkedList<Ran_Subdivision>();
+	 				listaRanSub = drs.getAll();
+	 			%>
+	       		<option value="<% if(i.getSub() != null) i.getSub().getIdSub();%>"> 
+		        <% if(i.getSub() != null) out.print(i.getSub().getNomSubDivision()); else out.print("No tiene sub"); %></option>
+	 			<%
+	 				for(Ran_Subdivision rs :  listaRanSub) {
+	 			%>
+		        <option value="<%=rs.getIdRanSub()%>"> 
+		        <%=rs.getNombreRangoSub()%></option>
+			    <%
+					}
+				%>
 			</select><br><br>
 			
 			<input type = "submit" onclick = "mostrarForm()" value = "Editar PW" id="btn1"><br><br>

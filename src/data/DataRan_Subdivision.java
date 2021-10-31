@@ -11,49 +11,9 @@ import entities.Rango;
 import entities.Ran_Integrante;
 
 public class DataRan_Subdivision {
-
-	public LinkedList<Ran_Subdivision> getAll()
-	{
-		Statement stmt=null;
-		ResultSet rs=null;
-		LinkedList<Ran_Subdivision> rangosSub= new LinkedList<>();
-		try {
-			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select * from ran_subdivision");
-			if(rs!=null) 
-			{
-				while(rs.next()) 
-				{
-					Ran_Subdivision rsb =new Ran_Subdivision();
-					rsb.setIdSub(rs.getInt("idSub"));
-					rsb.setNombreRangoSub(rs.getString("nombreRangoSub"));
-					rangosSub.add(rsb);
-				}
-			}
-		} 
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
-		} 
-		finally 
-		{
-			try 
-			{
-				if(rs!=null) {rs.close();}
-				if(stmt!=null) {stmt.close();}
-				DbConnector.getInstancia().releaseConn();
-			} 
-			catch (SQLException e) 
-			{
-				e.printStackTrace();
-			}
-		}
-		return rangosSub;
-	}
 	
 	public LinkedList<Ran_Subdivision> getByIdSub(Ran_Subdivision rsub) 
 	{
-
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		LinkedList<Ran_Subdivision> rsubs= new LinkedList<>();
@@ -61,7 +21,7 @@ public class DataRan_Subdivision {
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-			 "select nombreRangoSub from ran_subdivision where idSub = ?");
+			 "select * from ran_subdivision where idSub = ?");
 			stmt.setInt(1, rsub.getIdSub());
 			rs=stmt.executeQuery();
 			
@@ -71,6 +31,7 @@ public class DataRan_Subdivision {
 				{
 					Ran_Subdivision s =new Ran_Subdivision();
 					s.setIdSub(rsub.getIdSub());
+					s.setIdRanSub(rs.getInt("idRanSub"));
 					s.setNombreRangoSub(rs.getString("nombreRangoSub"));			
 					rsubs.add(s);
 				}
@@ -93,45 +54,6 @@ public class DataRan_Subdivision {
 			}
 		}
 		return rsubs;
-	
-	}
-	
-	public Ran_Subdivision getByNombre(Ran_Subdivision rsub) 
-	{
-		Ran_Subdivision rsb = null;
-		PreparedStatement stmt=null;
-		ResultSet rs=null;
-		try {
-			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select * from ran_subdivision where nombreRangoSub=?"
-					);
-			stmt.setString(1, rsub.getNombreRangoSub());
-			rs=stmt.executeQuery();
-			if(rs!=null && rs.next()) 
-			{
-				rsb = new Ran_Subdivision();
-				rsb.setIdSub(rs.getInt("idSub"));
-				rsb.setNombreRangoSub(rs.getString("nombreRangoSub"));
-			}
-		}
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
-		}
-		finally 
-		{
-			try 
-			{
-				if(rs!=null) {rs.close();}
-				if(stmt!=null) {stmt.close();}
-				DbConnector.getInstancia().releaseConn();
-			} 
-			catch (SQLException e) 
-			{
-				e.printStackTrace();
-			}
-		}
-		return rsb;
 	}
 	
 	public void add(Ran_Subdivision rsub) 									
@@ -235,69 +157,4 @@ public class DataRan_Subdivision {
             }
 		}
 	}
-
-	public void saveRango(Integrante intg, Rango rango, Ran_Integrante ri) 
-	{
-		PreparedStatement stmt=null;
-		ResultSet rs=null;
-		try 
-		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement( 
-					"insert into ran_integrante (idRango, idIntegrante, fecha_desde) values(?,?,?)");
-			
-			stmt.setInt(1, rango.getIdRango());
-			stmt.setInt(2, intg.getIdIntegrante());
-			stmt.setObject(3, ri.getFecha_desde());
-			stmt.executeUpdate();
-		} 
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
-		}
-		finally 
-		{
-			try 
-			{
-				if(rs!=null) {rs.close();}
-				if(stmt!=null) {stmt.close();}
-				DbConnector.getInstancia().releaseConn();
-			} 
-			catch (SQLException e) 
-			{
-				e.printStackTrace();
-			}
-		}
-	}
-
-	public void deleteRango(Integrante intg) 
-	{
-		PreparedStatement stmt=null;
-		ResultSet rs=null;
-		try 
-		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement( 
-					"delete from ran_integrante where idIntegrante = ?");
-			
-			stmt.setInt(1, intg.getIdIntegrante());
-			stmt.execute();
-		} 
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
-		}
-		finally 
-		{
-			try 
-			{
-				if(rs!=null) {rs.close();}
-				if(stmt!=null) {stmt.close();}
-				DbConnector.getInstancia().releaseConn();
-			} 
-			catch (SQLException e) 
-			{
-				e.printStackTrace();
-			}
-		}
-	}
-	
 }

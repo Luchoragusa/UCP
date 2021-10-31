@@ -63,14 +63,14 @@
 			</select><br><br>
 			
 			Sub-division:
-       		<select name="sub">
+       		<select name="sub" id="subId" onchange ="selectRanSub()">
 				<%
 	 				DataSubdivision ds = new DataSubdivision();
 	 				LinkedList<Subdivision> listaSub = new LinkedList<Subdivision>();
 	 				listaSub = ds.getAll();
 	 			%>
 	       		<option value="<% if(i.getSub() != null) i.getSub().getIdSub();%>"> 
-		        <% if(i.getSub() != null) out.print(i.getSub().getNomSubDivision()); else out.print("No tiene sub"); %></option>
+		        <% if(i.getSub() != null) out.print(i.getSub().getNomSubDivision()); else out.print("Seleccionar"); %></option>
 	 			<%
 	 				for(Subdivision s :  listaSub) {
 	 			%>
@@ -81,12 +81,23 @@
 				%>
 			</select><br><br>
 			
+			
+			<script type="text/javascript">
+				function selectRanSub()
+				{
+					var handleSub = document.getElementById("subId").value;	
+					alert("La id de la SubDivision es: " + handleSub);
+				}
+			</script>
+			
 			Rango Sub-division:
        		<select name="ranSub">
 				<%
 	 				DataRan_Subdivision drs = new DataRan_Subdivision();
 	 				LinkedList<Ran_Subdivision> listaRanSub = new LinkedList<Ran_Subdivision>();
-	 				listaRanSub = drs.getAll();
+	 				Ran_Subdivision rsub = new Ran_Subdivision();
+	 				rsub.setIdSub(1);
+	 				listaRanSub = drs.getByIdSub(rsub);
 	 			%>
 	       		<option value="<% if(i.getSub() != null) i.getSub().getIdSub();%>"> 
 		        <% if(i.getSub() != null) out.print(i.getSub().getNomSubDivision()); else out.print("No tiene sub"); %></option>
@@ -150,9 +161,10 @@
 						<a href="<%=s.getUrlSancion()%>" target="_blank">Url imagen</a> 
 					</th>
 					<th> 
-						<form action="apelarS?id=<%=s.getId()%>" method="post">
+						<form action="apelarS?idSA=<%=s.getId()%>" method="post">
 							<input type ="submit" value = "Apelar" >
 						</form>	
+						<%=s.getId()%>
 					</th>
 					<th> 
 						<form action="eliminarS?id=<%=s.getId()%>" method="post">

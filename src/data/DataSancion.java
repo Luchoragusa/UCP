@@ -9,51 +9,8 @@ import java.util.LinkedList;
 import entities.Integrante;
 import entities.Sancion;
 
-public class DataSancion {
-
-
-	public LinkedList<Sancion> getAll()
-	{
-		Statement stmt=null;
-		ResultSet rs=null;
-		LinkedList<Sancion> sanciones= new LinkedList<>();
-		try {
-			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select * from sancion");
-			if(rs!=null) 
-			{
-				while(rs.next()) 
-				{
-					Sancion s = new Sancion();
-					s.setMotivo(rs.getString("motivo"));
-					s.setIdIntegrante(rs.getInt("idIntegrante"));
-					s.setTipoSancion(rs.getString("tipoSancion"));
-					sanciones.add(s);
-				}
-			}
-			
-		} 
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
-		} 
-		finally 
-		{
-			try 
-			{
-				if(rs!=null) {rs.close();}
-				if(stmt!=null) {stmt.close();}
-				DbConnector.getInstancia().releaseConn();
-			} 
-			catch (SQLException e) 
-			{
-				e.printStackTrace();
-			}
-		}
-		
-		return sanciones;
-	}
-	
+public class DataSancion 
+{	
 	public Integrante getById(Integrante i)
 	{
 		PreparedStatement stmt=null;
@@ -72,6 +29,7 @@ public class DataSancion {
 				{
 					Sancion san =new Sancion();
 					san.setIdIntegrante(san.getIdIntegrante());
+					san.setId(rs.getInt("id"));
 					san.setMotivo(rs.getString("motivo"));		
 					san.setTipoSancion(rs.getString("tipoSancion"));
 					san.setEstado(rs.getBoolean("estado"));
@@ -151,14 +109,15 @@ public class DataSancion {
 
 	}
 
-	public void update(Sancion s) {
+	public void apelar(Sancion s) 
+	{
 		PreparedStatement stmt= null;
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"update sancion set tipoSancion=?");
-			stmt.setString(1, s.getTipoSancion());
+					prepareStatement("update sancion set estado = ? where id = ?");
+			stmt.setBoolean(1, false);
+			stmt.setInt(2, s.getId());
 			stmt.executeUpdate();
 		} 
 		catch (SQLException e) 
@@ -177,7 +136,6 @@ public class DataSancion {
             	e.printStackTrace();
             }
 		}
-		
 	}
 
 	public void delete(Sancion s) {
@@ -186,9 +144,8 @@ public class DataSancion {
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement("delete from sancion where  idIntegrante = ?, motivo = ?");
-			stmt.setInt(1, s.getIdIntegrante());
-			stmt.setString(2, s.getMotivo());
+					prepareStatement("delete from sancion where id = ?");
+			stmt.setInt(1, s.getId());
 			stmt.execute();
 		}  
 		catch (SQLException e) 
@@ -209,5 +166,4 @@ public class DataSancion {
             }
 		}
 	}
-	
 }

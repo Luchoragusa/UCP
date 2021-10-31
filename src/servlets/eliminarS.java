@@ -17,7 +17,7 @@ public class eliminarS extends HttpServlet
 	{
 		Sancion s = new Sancion();
 		DataSancion ds = new DataSancion();
-		s.setId(Integer.parseInt(request.getParameter("idSA").toString()));
+		s.setId(Integer.parseInt(request.getParameter("idSE").toString()));
 		
 		ds.delete(s);
 		

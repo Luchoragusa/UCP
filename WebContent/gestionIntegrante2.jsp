@@ -166,7 +166,7 @@
 						</form>	
 					</th>
 					<th> 
-						<form action="eliminarS?id=<%=s.getId()%>" method="post">
+						<form action="eliminarS?idSE=<%=s.getId()%>" method="post">
 							<input type ="submit" value = "Eliminar" >
 						</form>	
 					</th>

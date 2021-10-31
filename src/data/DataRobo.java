@@ -126,12 +126,12 @@ public class DataRobo
 		Robo rd = null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement("select max(nroRobo) from robo");
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select max(nroRobo)as nro from robo");
 			rs= stmt.executeQuery();
 			if(rs!=null && rs.next()) 
 			{
 					rd = new Robo();
-					rd.setNroRobo(rs.getInt("max(idRobo)")+1);
+					rd.setNroRobo(rs.getInt("nro")+1);
 			}
 		} 
 		catch (SQLException e) 

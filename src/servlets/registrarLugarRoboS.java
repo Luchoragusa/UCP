@@ -17,7 +17,8 @@ import entities.*;
 import data.*;
 
 
-@WebServlet(name = "registrarLugarRoboS", urlPatterns = {"/registrarLugarRoboS"})
+
+@WebServlet("registrarLugarRoboS")
 
 public class registrarLugarRoboS extends HttpServlet {
 
@@ -30,22 +31,21 @@ public class registrarLugarRoboS extends HttpServlet {
 		LugarRobo lr = new LugarRobo();
 		DataLugarRobo dlr = new DataLugarRobo();
 		LinkedList<Integrante> integrantes = new LinkedList<>();
-		Boolean band=false;
+		
 		int nroInte;
+		
 		//SETEO NRO ROBO
 		r = dr.getLastIdRobo();
+				
 		
 		//SETEO LUGAR ROBO:
 		lr.setIdLugarRobo(Integer.parseInt(request.getParameter("lugarRobo")));
 		lr = dlr.getById(lr);
 		r.setLugar_robo(lr); 
 		
-		int min,max;
-		min = lr.getMinIntegrantes();
-		max = lr.getMaxIntegrantes();
-		request.setAttribute("minInte",min);
-		request.setAttribute("maxInte",max);
-		
+	
+
+				
 		//SETEO RESULTADO
 		r.setResultado(request.getParameter("rto"));
 		
@@ -66,14 +66,10 @@ public class registrarLugarRoboS extends HttpServlet {
 		
 		for(Integrante i : integrantes) {
 			dr.insertRobo(r, i, lr);
-			band=true;
 		}
 		
-		if(band) {
-			response.sendRedirect("homeTest.jsp");
-		}else {
-		RequestDispatcher rd = request.getRequestDispatcher("/registrarRobo.jsp");
-		rd.forward(request, response);
-		}
+		
+		response.sendRedirect("homeTest.jsp");
+	
 	}
 }

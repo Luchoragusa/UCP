@@ -164,7 +164,6 @@
 						<form action="apelarS?idSA=<%=s.getId()%>" method="post">
 							<input type ="submit" value = "Apelar" >
 						</form>	
-						<%=s.getId()%>
 					</th>
 					<th> 
 						<form action="eliminarS?id=<%=s.getId()%>" method="post">

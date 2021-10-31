@@ -18,7 +18,7 @@ import data.*;
 
 
 
-@WebServlet("registrarLugarRoboS")
+@WebServlet("/registrarLugarRoboS")
 
 public class registrarLugarRoboS extends HttpServlet {
 

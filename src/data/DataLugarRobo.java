@@ -60,7 +60,7 @@ public class DataLugarRobo
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select * from robo where idLugarRobo=?"
+					"select * from lugarrobo where idLugarRobo=?"
 					);
 			stmt.setInt(1, roboToSearch.getIdLugarRobo());
 			rs=stmt.executeQuery();

@@ -16,6 +16,7 @@
 			<tr bgcolor=grey>
 				<th>Nombre y apellido</th>
 				<th>Rango</th>
+				<th>Fecha ultimo ascenso</th>
 				<th>SubDivision</th>	
 				<th>Discord Id</th>	
 			</tr>
@@ -27,7 +28,8 @@
 			%>
 				<tr>
 					<th> <a href='gestionIntegrante2.jsp?id=<%=i.getIdIntegrante()%>'><%=i.getNombre() + " " +  i.getApellido()%></a> </th>
-					<th> <%=i.getRango().getNomRango() %> </th>
+					<th> <%=i.getRanInt().getRango().getNomRango() %> </th>
+					<th> <%=i.getRanInt().getFecha_desde() %> </th>
 					<th> <%
 							String nSub = i.getSub().getDescripcion();
 							if(nSub != null)

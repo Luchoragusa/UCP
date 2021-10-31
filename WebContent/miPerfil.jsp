@@ -35,11 +35,17 @@
 
 		<h4>-- Sub-Division --</h4>
 		
-		<% if(i.getSub().getDescripcion() != null) {%>
-			<b>Nombre sub-division:</b>  <%=i.getSub().getDescripcion()%> <br>
-			<b>Rango sub-division::</b>  <%=i.getSub().getRanSub().get(0).getNombreRangoSub() %> <br>
-			<b>Fecha ultimo ascenso :</b> <%=i.getSub().getRanSub().get(0).getRsi().getFecha_desde() %> <br>
-		<%} else %> <p style="background:red;">No tiene subdivision</p>
+		<% 	
+			if(i.getSub() != null)
+			{
+				out.println("Nombre sub-division: " + i.getSub().getDescripcion());  %> <br> <%
+				out.println("Rango sub-division: " + i.getSub().getRanSub().get(0).getNombreRangoSub()); %> <br> <%
+				out.println("Fecha ultimo ascenso:" + i.getSub().getRanSub().get(0).getRsi().getFecha_desde()); %> <br> <%
+			}  
+			else 
+				out.println("No tiene subdivision");
+		%> <br>
+		
 		<h2 align="center">-- Sanciones --</h2>
 		<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
 			<tr bgcolor=blue>

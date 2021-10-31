@@ -109,11 +109,10 @@ import logic.LlaveMaestra;
 		return status;
 	}
 
-	public Integrante getByIdIntegrante(Integrante inte) 
+	public Integrante getByIdIntegrante(Integrante i) 
 	{
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
-		Integrante i=null;
 		Rango r = null;
 		Subdivision s = null;
 		Ran_Subdivision r_s = null;
@@ -135,23 +134,21 @@ import logic.LlaveMaestra;
 					          + "left join  ransub_integrante ri2 on i.idIntegrante = ri2.idIntegrante\r\n"
 					          + "left join  subdivision s on ri2.idSub = s.idSub\r\n"
 					          + "left join ran_subdivision rs on s.idSub = rs.idSub\r\n"
-					          + "group by ri.idIntegrante;");
-			stmt.setInt(1, inte.getIdIntegrante());
+					          + "group by ri.idIntegrante\r\n"
+							  + "having ri.idIntegrante = ?");
+			stmt.setInt(1, i.getIdIntegrante());
+			stmt.setInt(2, i.getIdIntegrante());
 			rs=stmt.executeQuery();
 			
 			if(rs!=null && rs.next()) 
 			{
-					i = new Integrante();
 					r = new Rango();
-					s = new Subdivision();
 					r_s = new Ran_Subdivision();
 					rol = new Rol();
 					ri = new Ran_Integrante();
-					rsi = new Ransub_integrante();
 					
 					i.setNombre(rs.getString("nombre"));
 					i.setApellido(rs.getString("apellido"));
-					i.setIdIntegrante(inte.getIdIntegrante());
 					i.setDiscordId(rs.getString("discordId"));
 					i.setSteamHex(rs.getString("steamHex"));
 					i.setUsuario(rs.getString("usuario"));
@@ -160,26 +157,34 @@ import logic.LlaveMaestra;
 					rol.setdescRol(rs.getString("descRol"));
 					
 					r_s.setNombreRangoSub(rs.getString("nombreRangoSub"));
-					r_s.setIdRanSub(rs.getInt("idRanSub"));
 					
-					rsi.setFecha_desde((rs.getDate("fechaDesdesub")).toLocalDate());
-					r_s.setRsi(rsi);
-					LinkedList<Ran_Subdivision> lrs = new LinkedList<Ran_Subdivision>();
-					lrs.add(r_s);
-					s.setRanSub(lrs);
+					if (r_s.getNombreRangoSub() != null)
+					{
+						s = new Subdivision();
+						rsi = new Ransub_integrante();
+						
+						r_s.setIdRanSub(rs.getInt("idRanSub"));
+						rsi.setFecha_desde((rs.getDate("fechaDesdesub")).toLocalDate());
+						r_s.setRsi(rsi);
+						
+						LinkedList<Ran_Subdivision> lrs = new LinkedList<Ran_Subdivision>();
+						lrs.add(r_s);
+						
+						s.setDescripcion(rs.getString("descripcion"));
+						s.setIdSub(rs.getInt("idSub"));
+						s.setRanSub(lrs);
+						
+						i.setSub(s);
+					}
 					
 					r.setNomRango(rs.getString("nombRango"));
 					r.setIdRango(rs.getInt("idRango"));
 					
 					ri.setFecha_desde((rs.getDate("fechaDesde")).toLocalDate());
 					
-					s.setDescripcion(rs.getString("descripcion"));
-					s.setIdSub(rs.getInt("idSub"));
-					
 					i.setRol(rol);
 					ri.setRango(r);
 					i.setRanInt(ri);
-					i.setSub(s);
 			}
 			DataSancion ds = new DataSancion();
 			i = ds.getById(i); // carga las sanciones del mismo

@@ -60,8 +60,23 @@
 				}
 			%>
 			</select><br><br>
+			
+			<input type = "submit" onclick = "mostrarForm()" value = "Editar PW" id="btn1"><br><br>
+			
+			<h4 id="lbl1" hidden="">Contrasenia:</h4><input type = "password" id="txt1" name = "pw" hidden="" placeholder="Obligatorio"><br><br>
+			
 			<input type = "submit" value = "Guardar cambios" ><br><br>
 		</form>	
+		
+		<script type="text/javascript">
+			function mostrarForm()
+			{
+				document.getElementById('txt1').hidden=false;
+				document.getElementById('txt1').required=true;
+				document.getElementById('lbl1').hidden=false;
+				document.getElementById('btn1').hidden=true;
+			}
+		</script>
 		
 			<h2 align="center">-- Sanciones --</h2> <br>
 			<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	

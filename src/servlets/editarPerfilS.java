@@ -24,7 +24,7 @@ public class editarPerfilS extends HttpServlet
 		i.setApellido(request.getParameter("apellido"));
 		i.setDiscordId(request.getParameter("discordId"));
 		i.setUsuario(request.getParameter("usuario"));
-		if (request.getParameter("pw") != null)
+		if (!request.getParameter("pw").isEmpty())
 		{
 			i.setPw(request.getParameter("pw"));
 		}

@@ -134,6 +134,7 @@
 		max="<%=por.get(0)%>"
 		value="
 		<%=por.get(1)%>"></progress><br><br>
+		
 		<input type = "submit" onclick = "mostrarForm()" value = "Editar datos personales" id="btn1"><br><br>
 		
 		<form action="editarPerfilS" method="post" id="editarDatos" hidden="">

@@ -24,12 +24,11 @@
 	 <select name="lugarRobo"> 
 	 
 		<%
-			for(int i=1;i<=lugares.size();i++) {
-				lr.setIdLugarRobo(i);
-				lr=dlr.getById(lr);
+			for(LugarRobo i : lugares) {
+			
 		%>
-	    <option value="<%=lr.getIdLugarRobo()%>" > 
-			<% out.print(lr.getLugarRobo()); %>
+	    <option value="<%=i.getIdLugarRobo()%>"> 
+			<% out.print(i.getLugarRobo()); %>
 	    </option>
 	    
 	    <%

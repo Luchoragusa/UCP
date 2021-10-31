@@ -82,6 +82,43 @@ public class DataRobo
 	
 	}
 
+	public void insertRobo(Robo rob, Integrante inte, LugarRobo lr) {
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		try 
+		{
+			stmt=DbConnector.getInstancia().getConn().
+					prepareStatement(
+							"insert into robo(nroRobo, idIntegrante, resultado,hora_robo,fecha_robo,idLugarRobo) values(?,?,?,?,?,?)"
+							);
+			stmt.setInt(1, rob.getNroRobo());
+			stmt.setInt(2, inte.getIdIntegrante());
+			stmt.setString(3,rob.getResultado());
+			stmt.setObject(4,rob.getHora_robo());
+			stmt.setObject(5,rob.getFecha_robo());
+			stmt.setInt(6,lr.getIdLugarRobo());
+			stmt.executeUpdate();
+
+
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			try 
+			{
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+	}
 	public Robo getLastIdRobo() 
 	{	
 		PreparedStatement stmt=null;
@@ -89,13 +126,12 @@ public class DataRobo
 		Robo rd = null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement("select max(idRobo) from roboxdia");
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select max(nroRobo) from robo");
 			rs= stmt.executeQuery();
 			if(rs!=null && rs.next()) 
 			{
 					rd = new Robo();
-					rd.setIdRobo(rs.getInt("max(idRobo)"));
-					rd.setIdRobo(rd.getIdRobo()+1);
+					rd.setNroRobo(rs.getInt("max(idRobo)")+1);
 			}
 		} 
 		catch (SQLException e) 

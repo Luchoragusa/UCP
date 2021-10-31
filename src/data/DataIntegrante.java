@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 
@@ -208,15 +209,20 @@ import logic.LlaveMaestra;
 		Integrante i=null;
 		Rango r = null;
 		Subdivision s = null;
+		Ran_Integrante ri = null;
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select nombre, apellido, steamHex,discordId, r.nombRango, s.descripcion, i.idIntegrante \r\n"
+			rs= stmt.executeQuery("select nombre, apellido, steamHex,discordId, r.nombRango,r.idRango, i.idIntegrante \r\n"
 					+ "from integrante i\r\n"
-					+ "inner join ran_integrante ri on i.idIntegrante = ri.idIntegrante\r\n"
-					+ "inner join rango r on ri.idRango = r.idRango\r\n"
-					+ "left join ransub_integrante ri2 on i.idIntegrante = ri2.idIntegrante\r\n"
-					+ "left join ran_subdivision rs on ri2.idRanSub = rs.idRanSub\r\n"
-					+ "left join  subdivision s on rs.idSub = s.idSub");
+					+ "inner join ran_integrante ri \r\n"
+					+ "	on i.idIntegrante = ri.idIntegrante\r\n"
+					+ "inner join rango r\r\n"
+					+ "	on ri.idRango = r.idRango\r\n"
+					+ "left join ransub_integrante ri2 \r\n"
+					+ "	on i.idIntegrante = ri2.idIntegrante\r\n"
+					+ "left join ran_subdivision rs \r\n"
+					+ "	on ri2.idRanSub = rs.idRanSub\r\n"
+					+ "group by i.idIntegrante;");
 		
 			if(rs!=null) 
 			{
@@ -225,7 +231,8 @@ import logic.LlaveMaestra;
 				{
 					i = new Integrante();
 					r = new Rango();
-					s = new Subdivision();
+					//s = new Subdivision();
+					ri = new Ran_Integrante();
 				
 				
 					i.setNombre(rs.getString("nombre"));
@@ -235,10 +242,14 @@ import logic.LlaveMaestra;
 					i.setSteamHex(rs.getString("steamHex"));
 					
 					r.setNomRango(rs.getString("nombRango"));
-					s.setDescripcion(rs.getString("descripcion"));
+					r.setIdRango(rs.getInt("idRango"));
+					//s.setDescripcion(rs.getString("descripcion"));
 					
-					i.setRango(r);
-					i.setSub(s);
+					ri.setRango(r);
+					ri.setIdIntegrante(rs.getInt("idIntegrante"));
+					ri.setFecha_desde(LocalDate.now());
+					i.setRanInt(ri);
+					//i.setSub(s);
 					
 					integrantes.add(i);
 				}

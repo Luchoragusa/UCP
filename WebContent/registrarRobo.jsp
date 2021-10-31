@@ -11,31 +11,37 @@
 <title>[PSG] Registrar Robos</title>
 </head>
 <body>
-	<form action="registrarRoboS" method="post">
-	<% 
-		DataLugarRobo dlr = new  DataLugarRobo();
-		LinkedList<LugarRobo> lugares = dlr.getAll();
-		
-	%>
-	Seleccione Lugar de robo:
-	 <select name="lugarRobo"> 
-	 
-		<%
-			for(LugarRobo i :  lugares) {
-		%>
-	    <option value="<%=i.getIdLugarRobo()%>"> 
-			<% out.print(i.getLugarRobo()); %>
-	    </option>
-	    <%
-			}
-		%>
-	</select><br><br>
-	<h3>MaxIntegrantes: ${maxInte}</h3>
+	<form action="registrarLugarRoboS" method="post">
+	    
 	
-	  Cantidad de Integrantes: <input type = "number" name = "cantInte"><br><br>
-	  Resultado: <input type = "text" name = "rto"><br><br>
-
+		<%
+	  	DataIntegrante di = new  DataIntegrante();
+    	LinkedList<Integrante> lista = di.getAll();
+    	int contador=1;
+		%>
+		
+	  	<%
+	  		out.print("Seleccione participantes. MAXIMO: "+request.getAttribute("maxInte")+"\n");
+		%>
+		<br><br>
+		<%
+	  		for(Integrante i :  lista) {
+	  			
+		%>
+		<input type="checkbox"  name="integrante[<%=i%>]" value="<%=i.getIdIntegrante()%>" onClick="limitarSelección(this,this.form)">
+		<%
+		out.print(i.getNombre()+" "+i.getApellido());
+		%>
+		<br>
+    	<%
+		}
+		%>
+		<br><br>
+		Ingrese Resultado: <input type = "text" name = "rto"><br><br>
+		
+		<input type = "submit" value = "Guardar" Required><br>
 	</form>
-
+	
+		
 </body>
 </html>

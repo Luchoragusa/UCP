@@ -369,7 +369,7 @@ import logic.LlaveMaestra;
 		int c =1;
 		try 
 		{
-			if(!i.getPw().isEmpty())
+			if(i.getPw() != null)
 			{
 				stmt=DbConnector.getInstancia().getConn().
 						prepareStatement(
@@ -383,6 +383,7 @@ import logic.LlaveMaestra;
 						prepareStatement(
 								"update integrante set nombre=?, apellido=?, usuario=?, discordId=? where idIntegrante = ?");
 			}
+			
 			
 			stmt.setString(c, i.getNombre());c+=1;
 			stmt.setString(c, i.getApellido());c+=1;

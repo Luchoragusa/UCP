@@ -366,19 +366,30 @@ import logic.LlaveMaestra;
 
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
+		int c =1;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"update integrante set nombre=?, apellido=?, usuario=?, pw=AES_ENCRYPT(?,?), discordId=? where idIntegrante = ?");
+			if(i.getPw() != null)
+			{
+				stmt=DbConnector.getInstancia().getConn().
+						prepareStatement(
+								"update integrante set  pw=AES_ENCRYPT(?,?),nombre=?, apellido=?, usuario=?, discordId=? where idIntegrante = ?");
+				stmt.setString(c, i.getPw());c+=1;
+				stmt.setString(c, LlaveMaestra.getLlave());c+=1;
+			}
+			else
+			{
+				stmt=DbConnector.getInstancia().getConn().
+						prepareStatement(
+								"update integrante set nombre=?, apellido=?, usuario=?, discordId=? where idIntegrante = ?");
+			}
 			
-			stmt.setString(1, i.getNombre());
-			stmt.setString(2, i.getApellido());
-			stmt.setString(3, i.getUsuario());
-			stmt.setString(4, i.getPw());
-			stmt.setString(5, LlaveMaestra.getLlave());
-			stmt.setString(6, i.getDiscordId());
-			stmt.setInt(7, i.getIdIntegrante());	
+			
+			stmt.setString(c, i.getNombre());c+=1;
+			stmt.setString(c, i.getApellido());c+=1;
+			stmt.setString(c, i.getUsuario());c+=1;
+			stmt.setString(c, i.getDiscordId());c+=1;
+			stmt.setInt(c, i.getIdIntegrante());
 			stmt.executeUpdate();
 		}  
 		catch (SQLException e) 

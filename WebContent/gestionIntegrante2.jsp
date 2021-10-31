@@ -16,7 +16,7 @@
 			DataIntegrante di = new DataIntegrante();
 			i=di.getByIdIntegrante(i);
 		%>
-		<form action="editarPerfilS" method="post" id="editarDatos" hidden="">
+		<form action="editarPerfilS" method="post">
 			Nombre: <input type = "text" name = "nombre" value="<%=i.getNombre()%>"Required><br><br>
 			Apellido: <input type = "text" name = "apellido" value="<%=i.getApellido()%>"Required><br><br>
 			Discord Id: <input type = "text" name = "discordId" value="<%=i.getDiscordId()%>"Required><br><br>
@@ -31,12 +31,12 @@
 				listaRol = drol.getAll();
        		%>
        		<option value="<%=i.getRol().getIdRol()%>"> 
-	        <%=i.getRol().getDescripcion()%></option>
+	        <%=i.getRol().getdescRol()%></option>
  			<%
  				for(Rol rol :  listaRol) {
  			%>
 	        <option value="<%=rol.getIdRol()%>"> 
-	        <%=rol.getDescripcion()%></option>
+	        <%=rol.getdescRol()%></option>
 		    <%
 				}
 			%>
@@ -49,8 +49,8 @@
  				LinkedList<Rango> lista = new LinkedList<Rango>();
  				lista = dr.getAll();
  			%>
-       		<option value="<%=i.getRango().getIdRango()%>"> 
-	        <%=i.getRango().getNomRango()%></option>
+       		<option value="<%=i.getRanInt().getRango().getIdRango()%>"> 
+	        <%=i.getRanInt().getRango().getNomRango()%></option>
  			<%
  				for(Rango r :  lista) {
  			%>

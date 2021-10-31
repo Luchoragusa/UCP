@@ -32,6 +32,14 @@
 			<b>Steam Hex: </b> <%=i.getSteamHex() %> <br>
 			<b>Nombre Usuario: </b> <%=i.getUsuario() %> <br>
 		
+
+		<h4>-- Sub-Division --</h4>
+		
+		<% if(i.getSub().getDescripcion() != null) {%>
+			<b>Nombre sub-division:</b>  <%=i.getSub().getDescripcion()%> <br>
+			<b>Rango sub-division::</b>  <%=i.getSub().getRanSub().get(0).getNombreRangoSub() %> <br>
+			<b>Fecha ultimo ascenso :</b> <%=i.getSub().getRanSub().get(0).getRsi().getFecha_desde() %> <br>
+		<%} else %> <p style="background:red;">No tiene subdivision</p>
 		<h2 align="center">-- Sanciones --</h2>
 		<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
 			<tr bgcolor=blue>
@@ -121,6 +129,7 @@
 		value="
 		<%=por.get(1)%>"></progress><br><br>
 		<input type = "submit" onclick = "mostrarForm()" value = "Editar datos personales" id="btn1"><br><br>
+		
 		<form action="editarPerfilS" method="post" id="editarDatos" hidden="">
 			Nombre: <input type = "text" name = "nombre" value="<%=i.getNombre()%>"Required><br><br>
 			Apellido: <input type = "text" name = "apellido" value="<%=i.getApellido()%>"Required><br><br>
@@ -129,6 +138,7 @@
 			Contrasenia: <input type = "password" name = "pw" placeholder="Obligatorio" Required><br><br>
 			<input type = "submit" value = "Guardar cambios" ><br><br>
 		</form>
+		
 		<script type="text/javascript">
 			function mostrarForm()
 			{

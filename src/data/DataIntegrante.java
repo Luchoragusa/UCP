@@ -15,6 +15,7 @@ import entities.Integrante;
 import entities.Ran_Integrante;
 import entities.Ran_Subdivision;
 import entities.Rango;
+import entities.Ransub_integrante;
 import entities.Rol;
 import entities.Subdivision;
 import logic.LlaveMaestra;
@@ -30,7 +31,7 @@ import logic.LlaveMaestra;
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idIntegrante,nombre,apellido,discordId,steamHex, i.idRol, r.descripcion\r\n"
+					"select idIntegrante,nombre,apellido,discordId,steamHex, i.idRol, r.descRol\r\n"
 					+ " from integrante i\r\n"
 					+ " inner join rol r\r\n"
 					+ "	on i.idRol = r.idRol\r\n"
@@ -50,7 +51,7 @@ import logic.LlaveMaestra;
 				i.setDiscordId(rs.getString("discordId"));
 
 				rolcito.setIdRol(rs.getInt("idRol"));
-				rolcito.setDescripcion(rs.getString("descripcion"));
+				rolcito.setdescRol(rs.getString("descripcion"));
 			
 				i.setRol(rolcito);
 			}
@@ -118,10 +119,11 @@ import logic.LlaveMaestra;
 		Ran_Subdivision r_s = null;
 		Rol rol = null;
 		Ran_Integrante ri = null;
+		Ransub_integrante rsi = null;
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					          "select nombre, apellido, discordId, steamHex, usuario, i.idRol, r.descripcion, rs.nombreRangoSub, rs.idRanSub, r2.nombRango ,ri.fechaDesde, ri.idRango,s.descripcion, s.idSub\r\n"
+					          "select nombre, apellido, discordId, steamHex, usuario, i.idRol, r.descRol, rs.nombreRangoSub, rs.idRanSub, r2.nombRango ,ri.fechaDesde, ri.idRango,s.descripcion, s.idSub, ri2.fechaDesde as fechaDesdesub\r\n"
 					          + "from (select max(ri.fechaDesde) fecha\r\n"
 					          + "    from ran_integrante ri\r\n"
 					          + "    where idIntegrante = ?\r\n"
@@ -145,6 +147,7 @@ import logic.LlaveMaestra;
 					r_s = new Ran_Subdivision();
 					rol = new Rol();
 					ri = new Ran_Integrante();
+					rsi = new Ransub_integrante();
 					
 					i.setNombre(rs.getString("nombre"));
 					i.setApellido(rs.getString("apellido"));
@@ -154,11 +157,13 @@ import logic.LlaveMaestra;
 					i.setUsuario(rs.getString("usuario"));
 					
 					rol.setIdRol(rs.getInt("idRol"));
-					rol.setDescripcion(rs.getString("descripcion"));
+					rol.setdescRol(rs.getString("descRol"));
 					
 					r_s.setNombreRangoSub(rs.getString("nombreRangoSub"));
 					r_s.setIdRanSub(rs.getInt("idRanSub"));
 					
+					rsi.setFecha_desde((rs.getDate("fechaDesdesub")).toLocalDate());
+					r_s.setRsi(rsi);
 					LinkedList<Ran_Subdivision> lrs = new LinkedList<Ran_Subdivision>();
 					lrs.add(r_s);
 					s.setRanSub(lrs);
@@ -208,9 +213,10 @@ import logic.LlaveMaestra;
 		Integrante i=null;
 		Rango r = null;
 		Subdivision s = null;
+		Ran_Integrante ri = null;
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select nombre, apellido, steamHex,discordId, r.nombRango, s.descripcion, i.idIntegrante \r\n"
+			rs= stmt.executeQuery("select nombre, apellido, steamHex, ri.fechaDesde,discordId, r.nombRango, s.descripcion, i.idIntegrante \r\n"
 					+ "from integrante i\r\n"
 					+ "inner join ran_integrante ri on i.idIntegrante = ri.idIntegrante\r\n"
 					+ "inner join rango r on ri.idRango = r.idRango\r\n"
@@ -226,7 +232,7 @@ import logic.LlaveMaestra;
 					i = new Integrante();
 					r = new Rango();
 					s = new Subdivision();
-				
+					ri = new Ran_Integrante();
 				
 					i.setNombre(rs.getString("nombre"));
 					i.setApellido(rs.getString("apellido"));
@@ -236,8 +242,9 @@ import logic.LlaveMaestra;
 					
 					r.setNomRango(rs.getString("nombRango"));
 					s.setDescripcion(rs.getString("descripcion"));
-					
-					i.setRango(r);
+					ri.setFecha_desde(rs.getDate("fechaDesde").toLocalDate());
+					ri.setRango(r);
+					i.setRanInt(ri);
 					i.setSub(s);
 					
 					integrantes.add(i);

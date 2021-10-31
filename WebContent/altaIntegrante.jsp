@@ -49,7 +49,7 @@
  				for(Rol rol :  listaRol) {
  			%>
 	        <option value="<%=rol.getIdRol()%>"> 
-	        <%=rol.getDescripcion()%></option>
+	        <%=rol.getdescRol()%></option>
 		    <%
 				}
 			%>

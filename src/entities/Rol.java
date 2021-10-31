@@ -3,7 +3,7 @@ package entities;
 public class Rol {
 
 	private int idRol;
-	private String descripcion;
+	private String descRol;
 	
 	public Rol() {
 	}
@@ -15,11 +15,11 @@ public class Rol {
 	{
 		this.idRol = idRol;
 	}
-	public String getDescripcion() 
+	public String getdescRol() 
 	{
-		return descripcion;
+		return descRol;
 	}
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setdescRol(String descripcion) {
+		this.descRol = descripcion;
 	}
 }

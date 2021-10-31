@@ -108,4 +108,5 @@ public class Integrante {
 	public void setRanInt(Ran_Integrante ranInt) {
 		this.ranInt = ranInt;
 	}
+
 }

@@ -50,7 +50,7 @@
 	  		for(Integrante i :  lista) {
 	  			
 		%>
-		<input type="checkbox"  name="integrante[<%=i%>]" value="<%=i.getIdIntegrante()%>" onClick="limitarSelección(this,this.form)">
+		<input type="checkbox"  name="integrante" value="<%=i.getIdIntegrante()%>">
 		<%
 		out.print(i.getNombre()+" "+i.getApellido());
 		%>
@@ -76,3 +76,19 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

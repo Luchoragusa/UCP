@@ -18,6 +18,7 @@ import data.*;
 
 
 
+@SuppressWarnings("serial")
 @WebServlet("/registrarLugarRoboS")
 
 public class registrarLugarRoboS extends HttpServlet {
@@ -59,7 +60,7 @@ public class registrarLugarRoboS extends HttpServlet {
 		//SETEO INTEGRANTES
 		while(band){
 			inte = new Integrante();
-			nroInte = Integer.parseInt(request.getParameter("integrante["+i+"]"));
+			nroInte = Integer.parseInt(request.getParameter("integrante"));
 			
 			inte.setIdIntegrante(nroInte);
 			inte=di.getByIdIntegrante(inte);

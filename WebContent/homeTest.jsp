@@ -18,17 +18,11 @@
 	
 	<body>
 		<%
-		if (session.getAttribute("Nombre") == null)
+		if (session.getAttribute("id") == null)
 			response.sendRedirect("loginTest.jsp");
 		%>
 
 		<b><i>[PSG] Bienvenido al panel de usuario!</i></b>
-		<br>
-		<b>Nombre:</b> ${Nombre} 
-		<br>
-		<b>Apellido:</b> ${Apellido}
-		<br>
-		<b>Id:</b> ${id}
 		
 		<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
 		<tr bgcolor=grey>

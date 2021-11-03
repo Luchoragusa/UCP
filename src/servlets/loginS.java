@@ -31,12 +31,10 @@ public class loginS extends HttpServlet
 			{
 				i = ctrlLogin.getIntegrante(i);
 				HttpSession session = request.getSession();
-				session.setAttribute("Nombre", i.getNombre());
-				session.setAttribute("Apellido", i.getApellido());
 				session.setAttribute("id", i.getIdIntegrante());
 				response.sendRedirect("homeTest.jsp");
 			}
 			else
-				response.sendRedirect("loginTest.jsp");
+				response.sendRedirect("index.jsp");
 	}
 }

@@ -13,7 +13,7 @@
 	</head>
 	<body>
 		<%
-			if (session.getAttribute("Nombre") == null)
+			if (session.getAttribute("id") == null)
 				response.sendRedirect("loginTest.jsp");
 		%>
 		

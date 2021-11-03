@@ -59,8 +59,12 @@
 					Duration diferencia = Duration.between(hr.getHoraInicio(), LocalTime.now());
 					if (fecha.getDayOfMonth() == hr.getFechaInicio().getDayOfMonth())
 				        tServicio = LocalTime.of(diferencia.toHoursPart(), diferencia.toMinutesPart());
-					else					
-				        tServicio = LocalTime.of(diferencia.toHoursPart()+23, diferencia.toMinutesPart()+59);
+					else
+					{
+						tServicio = hr.getHoraInicio();
+						out.println(hr.getHoraInicio());
+						 //tServicio = LocalTime.of(diferencia.toHoursPart()+23, diferencia.toMinutesPart()+59);
+					}
 					out.println(tServicio);
 				     %>
 			    </th>

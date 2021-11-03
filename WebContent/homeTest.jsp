@@ -61,9 +61,16 @@
 				        tServicio = LocalTime.of(diferencia.toHoursPart(), diferencia.toMinutesPart());
 					else
 					{
-						tServicio = hr.getHoraInicio();
-						out.println(hr.getHoraInicio());
-						 //tServicio = LocalTime.of(diferencia.toHoursPart()+23, diferencia.toMinutesPart()+59);
+						out.println(diferencia.toHoursPart() + " " +  diferencia.toMinutesPart());
+						if (diferencia.toMinutesPart()>= -5)
+						{
+							LocalDate now = LocalDate.now();
+							LocalDate monday = now.withDayOfWeek(DateTimeConstants.MONDAY);
+							out.print("se elimina la tuplaDateTime");
+						}
+						else
+							tServicio = LocalTime.of(diferencia.toHoursPart()+23, diferencia.toMinutesPart()+59);
+						tServicio = null; // dsp borrar esto
 					}
 					out.println(tServicio);
 				     %>

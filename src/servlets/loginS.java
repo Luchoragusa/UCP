@@ -35,6 +35,6 @@ public class loginS extends HttpServlet
 				response.sendRedirect("homeTest.jsp");
 			}
 			else
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("loginTest.jsp");
 	}
 }

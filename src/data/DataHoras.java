@@ -7,6 +7,7 @@ import java.sql.SQLType;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Calendar;
 import java.util.LinkedList;
 
 import com.mysql.cj.MysqlType;
@@ -61,16 +62,30 @@ public Hora getHorasDelIntegrante(int id) {
 	return h;
 	}
 	
-public Integrante get5HorasDelIntegrante(Integrante i) 
+public Integrante getHorasSemana(Integrante i) 
 {	
 	PreparedStatement stmt=null;
 	ResultSet rs=null;
 	LinkedList<Hora> lista = null;
+	
+	Calendar calendar=Calendar.getInstance();
+	calendar.set(Calendar.WEEK_OF_YEAR, calendar.get(Calendar.WEEK_OF_YEAR)-1);
+	calendar.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);	
+	LocalDate semanaI = LocalDate.of(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH)+1, calendar.get(Calendar.DAY_OF_MONTH));
+	Calendar calendar1=Calendar.getInstance();
+	calendar.set(Calendar.WEEK_OF_YEAR, calendar.get(Calendar.WEEK_OF_YEAR));
+	calendar.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
+	LocalDate semanaF = LocalDate.of(calendar1.get(Calendar.YEAR), calendar1.get(Calendar.MONTH)+1, calendar1.get(Calendar.DAY_OF_MONTH));
+	
 	try 
 	{
 		stmt = DbConnector.getInstancia().getConn().prepareStatement(
-		 "select * FROM hora WHERE idIntegrante = ? ORDER BY fechaInicio desc, horaInicio desc limit 5");
+		 "select * FROM hora WHERE idIntegrante = ? and fechaInicio between ? and ? and fechaFin between ? and ? ORDER BY fechaInicio desc, horaInicio desc");
 		stmt.setInt(1, i.getIdIntegrante());
+		stmt.setObject(2, semanaI);
+		stmt.setObject(3, semanaF);
+		stmt.setObject(4, semanaI);
+		stmt.setObject(5, semanaF);
 		rs=stmt.executeQuery();
 		
 		if(rs!=null) 

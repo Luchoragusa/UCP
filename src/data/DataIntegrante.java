@@ -189,7 +189,7 @@ import logic.LlaveMaestra;
 			DataSancion ds = new DataSancion();
 			i = ds.getById(i); // carga las sanciones del mismo
 			DataHoras dh = new DataHoras();
-			i = dh.get5HorasDelIntegrante(i); // cambiar para q traiga todas las de la semana
+			i = dh.getHorasSemana(i); // cambiar para q traiga todas las de la semana
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();

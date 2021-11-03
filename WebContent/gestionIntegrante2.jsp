@@ -13,6 +13,7 @@
 		<% 
 			Integrante i = new Integrante();
 			i.setIdIntegrante(Integer.parseInt(request.getParameter("id")));
+			application.setAttribute("idApp", i.getIdIntegrante());
 			DataIntegrante di = new DataIntegrante();
 			i=di.getByIdIntegrante(i);
 		%>
@@ -127,53 +128,10 @@
 				document.getElementById('btn1').hidden=true;
 			}
 		</script>
-		
-			<h2 align="center">-- Sanciones --</h2> <br>
-			<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
-				<tr bgcolor=blue>
-					<th>Tipo Sancion</th>
-					<th>Numero Sancion</th>
-					<th>Estado de la sancion</th>
-					<th>Fecha</th>
-					<th>URL</th>
-					<th>Apelada</th>
-					<th>Elminar</th>
-				</tr>
-				<% 
-					LinkedList<Sancion> listaS = i.getSancion();
-					String url;
-					for(Sancion s :  listaS) {
-						url = s.getUrlSancion();
-				%>
-				<tr>
-					<th> <%=s.getTipoSancion() %> </th>
-					<th> <%=s.getNroSancion() %> </th>
-					<th> 
-					<%	
-						if(s.isEstado())
-							out.print("Activa");
-						else
-							out.print("Apelada");
-					%> 
-					</th>
-					<th> <%=s.getFecha() %> </th>
-					<th> 
-						<a href="<%=s.getUrlSancion()%>" target="_blank">Url imagen</a> 
-					</th>
-					<th> 
-						<form action="apelarS?idSA=<%=s.getId()%>" method="post">
-							<input type ="submit" value = "Apelar" >
-						</form>	
-					</th>
-					<th> 
-						<form action="eliminarS?idSE=<%=s.getId()%>" method="post">
-							<input type ="submit" value = "Eliminar" >
-						</form>	
-					</th>
-				</tr>
-				<%
-					}
-				%>
-			</table><br><br>
+
+		<form action="aplicarSancion.jsp">
+			<input type = "submit" value = "Aplicar Sancion"><br><br>
+		</form>
+			
 	</body>
 </html>

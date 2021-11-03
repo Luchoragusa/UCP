@@ -86,9 +86,6 @@
 		<form action="gestionIntegrante.jsp">
 			<input type = "submit" value = "Gestion Integrante"><br><br>
 		</form>
-		<form action="aplicarSancion.jsp">
-			<input type = "submit" value = "Aplicar Sancion"><br><br>
-		</form>
 		<form action="bitacora.jsp">
 			<input type = "submit" value = "Bitacora"><br><br>
 		</form>

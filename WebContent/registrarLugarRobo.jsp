@@ -47,16 +47,17 @@
 		
 		<br><br>
 		<%
-	  		for(Integrante i :  lista) {
-	  			
+	  		for(Integrante i :  lista) {	
 		%>
 		<input type="checkbox"  name="integrante" value="<%=i.getIdIntegrante()%>">
 		<%
 		out.print(i.getNombre()+" "+i.getApellido());
 		%>
+		
 		<br>
+		
     	<%
-		}
+				}
 		%>
 		<br>
 		Ingrese Resultado:

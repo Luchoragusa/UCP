@@ -34,7 +34,7 @@ public class registrarLugarRoboS extends HttpServlet {
 		LinkedList<Integrante> integrantes = new LinkedList<>();
 		Integrante inte= null;
 		
-		int nroInte;
+		String[] nrosInte;
 		int i=1;
 		Boolean band=true;
 		
@@ -58,26 +58,20 @@ public class registrarLugarRoboS extends HttpServlet {
 		r.setHora_robo(LocalTime.now());
 		
 		//SETEO INTEGRANTES
-		while(band){
+		
 			inte = new Integrante();
-			nroInte = Integer.parseInt(request.getParameter("integrante"));
+			nrosInte = (request.getParameterValues("integrante"));
 			
-			inte.setIdIntegrante(nroInte);
-			inte=di.getByIdIntegrante(inte);
-			integrantes.add(inte);
-			if(i== Integer.parseInt(request.getParameter("sizeLista").toString())) {
-				band=false;
+			for ( String nro : nrosInte) {
+				inte.setIdIntegrante(Integer.parseInt(nro));
+				inte=di.getByIdIntegrante(inte);
+				integrantes.add(inte);
+				dr.insertRobo(r, inte, lr);
 			}
-			i++;
-		}
-		r.setIntegrantes(integrantes);
-	
+
 		//INSERT ROBO:
-		
-		for(Integrante in : integrantes) {
-			dr.insertRobo(r, in, lr);
-		}
-		
+			r.setIntegrantes(integrantes);
+	
 		
 		response.sendRedirect("homeTest.jsp");
 	

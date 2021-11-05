@@ -3,8 +3,6 @@ package data;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalTime;
-import java.util.HashMap;
 import java.util.LinkedList;
 
 import entities.Integrante;
@@ -57,7 +55,7 @@ public class DataRobo
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement( 
-					"delete from roboxdia where idIntegrante = ?");
+					"delete from robo where idIntegrante = ?");
 			
 			stmt.setInt(1, intg.getIdIntegrante());
 			stmt.execute();
@@ -202,6 +200,7 @@ public class DataRobo
 		return numeros;
 	}
 	
+	/*
 	public HashMap<HashMap<Integrante, Robo>, LugarRobo> getUltimos5robos() // hacer el Hash para las 3 entidades
 	{	
 		PreparedStatement stmt=null;
@@ -263,6 +262,6 @@ public class DataRobo
 		}
 		return inteRxdR;
 	}	
-
+	*/
 
 }

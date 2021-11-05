@@ -311,6 +311,39 @@ public Integrante getHorasSemana(Integrante i)
 	
 	}
 
+	public void deleteHorasByIntegrante(Integrante i) {
+
+
+		PreparedStatement stmt= null;
+		try 
+		{
+			stmt=DbConnector.getInstancia().getConn().
+					prepareStatement(
+							"delete from horas where idIntegrante = ?");
+			stmt.setInt(1, i.getIdIntegrante());
+			stmt.executeUpdate();
+		} 
+		catch (SQLException e) 
+		{
+            e.printStackTrace();
+		} 
+		finally 
+		{
+            try 
+            {
+                if(stmt!=null)stmt.close();
+                DbConnector.getInstancia().releaseConn();
+            } 
+            catch (SQLException e) 
+            {
+            	e.printStackTrace();
+            }
+		}
+	
+	
+		
+	}
+	
 	public LinkedList<Hora> getTuplasIntegrante(int id, LocalDate fecha, LocalDate fechaFin) 
 	{
 		PreparedStatement stmt=null;

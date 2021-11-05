@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import entities.Integrante;
 import entities.Ransub_integrante;
 
 public class DataRanSub_Integrante {
@@ -53,4 +54,33 @@ public class DataRanSub_Integrante {
 
 	}
 
+	public void deleteByIntegrante(Integrante i) {
+
+		PreparedStatement stmt= null;
+		try 
+		{
+			stmt=DbConnector.getInstancia().getConn().
+					prepareStatement(
+							"delete from ransub_integrante where idIntegrante=?");
+			stmt.setInt(1, i.getIdIntegrante());
+			stmt.executeUpdate();
+		} 
+		catch (SQLException e) 
+		{
+            e.printStackTrace();
+		} 
+		finally 
+		{
+            try 
+            {
+                if(stmt!=null)stmt.close();
+                DbConnector.getInstancia().releaseConn();
+            } 
+            catch (SQLException e) 
+            {
+            	e.printStackTrace();
+            }
+		}
+	
+	}
 }

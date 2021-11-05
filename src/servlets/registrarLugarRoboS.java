@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.LinkedList;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,8 +33,6 @@ public class registrarLugarRoboS extends HttpServlet {
 		Integrante inte= null;
 		
 		String[] nrosInte;
-		int i=1;
-		Boolean band=true;
 		
 		//SETEO NRO ROBO
 		r = dr.getLastIdRobo();

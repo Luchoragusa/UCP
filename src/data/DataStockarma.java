@@ -5,11 +5,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+import entities.Arma;
 import entities.Stockarma;
 
 public class DataStockarma {
 	
-	public LinkedList<Stockarma> getByIdArma(Stockarma st){
+	public LinkedList<Stockarma> getByIdArma(Arma a){
 
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
@@ -18,8 +19,8 @@ public class DataStockarma {
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-			 "select fecha,cantidad from stockarma where idArma = ?");
-			stmt.setInt(1, st.getIdArma());
+			 "select * from stockarma where idArma = ?");
+			stmt.setInt(1, a.getIdArma());
 			rs=stmt.executeQuery();
 			
 			if(rs!=null) 
@@ -27,7 +28,7 @@ public class DataStockarma {
 				while(rs.next()) 
 				{
 					Stockarma s =new Stockarma();
-					s.setIdArma(st.getIdArma());
+					s.setArma(a);
 					s.setFecha(rs.getDate("fecha").toLocalDate());
 					s.setCantidad(rs.getInt("cantidad"));					
 					starmas.add(s);
@@ -63,7 +64,7 @@ public class DataStockarma {
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
 			 "select idArma, cantidad from stockarma where fecha = ?");
-			stmt.setInt(1, st.getIdArma());
+			stmt.setObject(1, st.getFecha());
 			rs=stmt.executeQuery();
 			
 			if(rs!=null) 
@@ -71,7 +72,10 @@ public class DataStockarma {
 				while(rs.next()) 
 				{
 					Stockarma s =new Stockarma();
-					s.setIdArma(rs.getInt("idArma"));
+					Arma a = new Arma();
+					a.setIdArma(rs.getInt("idArma"));
+					
+					s.setArma(a);
 					s.setFecha(st.getFecha());
 					s.setCantidad(rs.getInt("cantidad"));					
 					starmas.add(s);
@@ -106,7 +110,7 @@ public class DataStockarma {
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
 			 "select idArma, fecha from stockarma where cantidad = ?");
-			stmt.setInt(1, st.getIdArma());
+			stmt.setInt(1, st.getCantidad());
 			rs=stmt.executeQuery();
 			
 			if(rs!=null) 
@@ -114,7 +118,10 @@ public class DataStockarma {
 				while(rs.next()) 
 				{
 					Stockarma s =new Stockarma();
-					s.setIdArma(rs.getInt("idArma"));
+					Arma a = new Arma();
+					a.setIdArma(rs.getInt("idArma"));
+					
+					s.setArma(a);
 					s.setFecha(rs.getDate("fecha").toLocalDate());
 					s.setCantidad(st.getCantidad());					
 					starmas.add(s);
@@ -141,27 +148,20 @@ public class DataStockarma {
 	}
 
 
-	public void add (Stockarma st) {
-		PreparedStatement stmt= null;
-		ResultSet keyResultSet=null;
+	public void add (Stockarma st, Arma a) {
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into stockarma(idArma,fecha,cantidad) values(?,?,?)",
-							PreparedStatement.RETURN_GENERATED_KEYS
+							"insert into stockarma(idArma,fecha,cantidad) values(?,?,?)"
 							);
-			stmt.setInt(1, st.getIdArma());
+			stmt.setInt(1, a.getIdArma());
 			stmt.setObject(2, st.getFecha());
 			stmt.setInt(3, st.getCantidad());
 			stmt.executeUpdate();
 			
-			keyResultSet=stmt.getGeneratedKeys();
-            if(keyResultSet!=null && keyResultSet.next())
-            {
-                st.setIdArma(keyResultSet.getInt(1));
-                st.setFecha(keyResultSet.getDate(2).toLocalDate());
-            }
 
 		} 
 		catch (SQLException e) 
@@ -172,7 +172,7 @@ public class DataStockarma {
 		{
             try 
             {
-                if(keyResultSet!=null)keyResultSet.close();
+            	if(rs!=null) {rs.close();}
                 if(stmt!=null)stmt.close();
                 DbConnector.getInstancia().releaseConn();
             } 
@@ -184,40 +184,8 @@ public class DataStockarma {
 
 	}
 	
-	public void update(Stockarma st) {
-
-		PreparedStatement stmt= null;
-		try 
-		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"update stockarma set cantidad = ? where idArma = ?, fecha = ?");
-			stmt.setInt(1, st.getIdArma());
-			stmt.setObject(2, st.getFecha());
-			stmt.setInt(3, st.getCantidad());
-			
-			stmt.executeUpdate();
-		} 
-		catch (SQLException e) 
-		{
-            e.printStackTrace();
-		} 
-		finally 
-		{
-            try 
-            {
-                if(stmt!=null)stmt.close();
-                DbConnector.getInstancia().releaseConn();
-            } 
-            catch (SQLException e) 
-            {
-            	e.printStackTrace();
-            }
-		}
 	
-	}
-
-	public void remove(Stockarma st) {
+	public void remove(Stockarma st, Arma a) {
 
 		PreparedStatement stmt= null;
 		try 
@@ -225,7 +193,7 @@ public class DataStockarma {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
 							"delete from stockarma where idArma=?, fecha=?");
-			stmt.setInt(1, st.getIdArma());
+			stmt.setInt(1, a.getIdArma());
 			stmt.setObject(2, st.getFecha());
 			stmt.executeUpdate();
 		} 

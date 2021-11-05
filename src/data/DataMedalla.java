@@ -287,7 +287,7 @@ public class DataMedalla {
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement("delete from medalla where  idIntegrante = ?");
+					prepareStatement("delete from medallas where  idIntegrante = ?");
 			stmt.setInt(1, i.getIdIntegrante());
 			stmt.execute();
 		}  

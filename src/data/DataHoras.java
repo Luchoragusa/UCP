@@ -319,7 +319,7 @@ public Integrante getHorasSemana(Integrante i)
 		{
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"delete from horas where idIntegrante = ?");
+							"delete from hora where idIntegrante = ?");
 			stmt.setInt(1, i.getIdIntegrante());
 			stmt.executeUpdate();
 		} 

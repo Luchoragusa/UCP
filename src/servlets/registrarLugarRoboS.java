@@ -72,4 +72,5 @@ public class registrarLugarRoboS extends HttpServlet {
 		response.sendRedirect("homeTest.jsp");
 	
 	}
+
 }

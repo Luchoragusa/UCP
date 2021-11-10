@@ -16,11 +16,11 @@
     <title>[PSG] Panel Usuario</title> 
     <link rel="canonical" href="https://www.wrappixel.com/templates/xtreme-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
     <!-- Custom CSS -->
-    <link href="../../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link href="./assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="../../dist/css/style.min.css" rel="stylesheet">
+    <link href="./dist/css/style.min.css" rel="stylesheet">
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -61,17 +61,17 @@
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="../../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <img src="./assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
                             <!-- Light Logo icon -->
-                            <img src="../../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                            <img src="./assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="logo-text">
                             <!-- dark Logo text -->
-                            <img src="../../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                            <img src="./assets/images/logo-text.png" alt="homepage" class="dark-logo" />
                             <!-- Light Logo text -->
-                            <img src="../../assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                            <img src="./assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
                         </span>
                     </a>
                     <!-- ============================================================== -->
@@ -105,7 +105,7 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../../assets/images/users/lucho.jpg" alt="user" class="rounded-circle" width="31">
+                                <img src="./assets/images/users/lucho.jpg" alt="user" class="rounded-circle" width="31">
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="pages-profile.html"><i class="ti-user m-r-5 m-l-5"></i>
@@ -139,7 +139,7 @@
                         <li>
                             <!-- User Profile-->
                             <div class="user-profile d-flex no-block dropdown m-t-20">
-                                <div class="user-pic"><img src="../../assets/images/users/lucho.jpg" alt="users"
+                                <div class="user-pic"><img src="./assets/images/users/lucho.jpg" alt="users"
                                         class="rounded-circle" width="40" /></div>
                                 <div class="user-content hide-menu m-l-10">
                                     <a href="#" class="" id="Userdd" role="button"
@@ -239,7 +239,7 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="m-r-10">
-                                                        <img src="../../assets/images/users/lucho.jpg" alt="user" width="50" class="rounded-circle">                                                        
+                                                        <img src="./assets/images/users/lucho.jpg" alt="user" width="50" class="rounded-circle">                                                        
                                                     </div>
                                                     <div class="">
                                                         <h4 class="m-b-0 font-16"><a style="color: rgb(0, 58, 248);">Luciano Ragusa</a></h4>
@@ -257,7 +257,7 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="m-r-10">
-                                                        <img src="../../assets/images/users/yo.jpg" alt="user" width="50" class="rounded-circle">    
+                                                        <img src="./assets/images/users/yo.jpg" alt="user" width="50" class="rounded-circle">    
                                                     </div>
                                                     <div class="">
                                                         <h4 class="m-b-0 font-16"><a style="color: rgb(0, 58, 248);">Pucheta Juan Ignacio</a></h4>
@@ -275,7 +275,7 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="m-r-10">
-                                                        <img src="../../assets/images/users/cami.png" alt="user" width="50" class="rounded-circle">    
+                                                        <img src="./assets/images/users/cami.png" alt="user" width="50" class="rounded-circle">    
                                                     </div>
                                                     <div class="">
                                                         <h4 class="m-b-0 font-16"><a style="color: rgb(0, 58, 248);">Pereyra Camilo</a></h4>
@@ -391,21 +391,21 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="./assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../dist/js/app-style-switcher.js"></script>
+    <script src="./assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./dist/js/app-style-switcher.js"></script>
     <!--Wave Effects -->
-    <script src="../../dist/js/waves.js"></script>
+    <script src="./dist/js/waves.js"></script>
     <!--Menu sidebar -->
-    <script src="../../dist/js/sidebarmenu.js"></script>
+    <script src="./dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
-    <script src="../../dist/js/custom.js"></script>
+    <script src="./dist/js/custom.js"></script>
     <!--This page JavaScript -->
     <!--chartis chart-->
-    <script src="../../assets/libs/chartist/dist/chartist.min.js"></script>
-    <script src="../../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    <script src="../../dist/js/pages/dashboards/dashboard1.js"></script>
+    <script src="./assets/libs/chartist/dist/chartist.min.js"></script>
+    <script src="./assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="./dist/js/pages/dashboards/dashboard1.js"></script>
     
 </body>
 

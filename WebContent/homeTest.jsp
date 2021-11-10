@@ -18,17 +18,11 @@
 	
 	<body>
 		<%
-		if (session.getAttribute("Nombre") == null)
+		if (session.getAttribute("id") == null)
 			response.sendRedirect("loginTest.jsp");
 		%>
 
 		<b><i>[PSG] Bienvenido al panel de usuario!</i></b>
-		<br>
-		<b>Nombre:</b> ${Nombre} 
-		<br>
-		<b>Apellido:</b> ${Apellido}
-		<br>
-		<b>Id:</b> ${id}
 		
 		<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
 		<tr bgcolor=grey>
@@ -65,8 +59,15 @@
 					Duration diferencia = Duration.between(hr.getHoraInicio(), LocalTime.now());
 					if (fecha.getDayOfMonth() == hr.getFechaInicio().getDayOfMonth())
 				        tServicio = LocalTime.of(diferencia.toHoursPart(), diferencia.toMinutesPart());
-					else					
-				        tServicio = LocalTime.of(diferencia.toHoursPart()+23, diferencia.toMinutesPart()+59);
+					else
+					{
+						out.println(diferencia.toHoursPart() + " " +  diferencia.toMinutesPart());
+						if (diferencia.toMinutesPart()>= -5)
+							out.print("se elimina la tuplaDateTime");
+						else
+							tServicio = LocalTime.of(diferencia.toHoursPart()+23, diferencia.toMinutesPart()+59);
+						tServicio = null; // dsp borrar esto
+					}
 					out.println(tServicio);
 				     %>
 			    </th>
@@ -91,9 +92,6 @@
 		</form>
 		<form action="gestionIntegrante.jsp">
 			<input type = "submit" value = "Gestion Integrante"><br><br>
-		</form>
-		<form action="aplicarSancion.jsp">
-			<input type = "submit" value = "Aplicar Sancion"><br><br>
 		</form>
 		<form action="bitacora.jsp">
 			<input type = "submit" value = "Bitacora"><br><br>

@@ -1,15 +1,11 @@
 package data;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalTime;
 import java.util.*;
-
-
-
 import entities.Hora;
 import entities.Integrante;
 import entities.Ran_Integrante;
@@ -189,7 +185,7 @@ import logic.LlaveMaestra;
 			DataSancion ds = new DataSancion();
 			i = ds.getById(i); // carga las sanciones del mismo
 			DataHoras dh = new DataHoras();
-			i = dh.get5HorasDelIntegrante(i); // cambiar para q traiga todas las de la semana
+			i = dh.getHorasSemana(i); // cambiar para q traiga todas las de la semana
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();

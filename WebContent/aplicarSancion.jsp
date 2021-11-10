@@ -10,22 +10,63 @@
 		<title>[PSG]Aplicar Sancion</title>
 	</head>
 	<body>
-		<form action="sancionS" method="post">
+		<%
+			if (session.getAttribute("id") == null)
+			response.sendRedirect("loginTest.jsp");
+			Integrante i = new Integrante();
+			i.setIdIntegrante((Integer)application.getAttribute("idApp"));
+			DataIntegrante di = new DataIntegrante();
+			i=di.getByIdIntegrante(i);
+		%>
+	
+	<h2 align="center">-- Sanciones --</h2> <br>
+		<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
+			<tr bgcolor=blue>
+				<th>Tipo Sancion</th>
+				<th>Numero Sancion</th>
+				<th>Estado de la sancion</th>
+				<th>Fecha</th>
+				<th>URL</th>
+				<th>Apelada</th>
+				<th>Elminar</th>
+			</tr>
 			<% 
-		    	DataIntegrante di = new  DataIntegrante();
-		    	LinkedList<Integrante> lista = di.getAll();
+				DataSancion ds = new DataSancion();
+				LinkedList<Sancion> listaS = ds.getById(i).getSancion();
+				for(Sancion s :  listaS) {
 			%>
-			Integrante a sancionar:
-			 <select name="integrante">
-	 			<%
-	 				for(Integrante i :  lista) {
-	 			%>
-		        <option value="<%=i.getIdIntegrante()%>"> 
-		        <% out.print(i.getNombre() + " " + i.getApellido()); %></option>
-			    <%
-					}
-				%>
-	         </select><br><br>
+			<tr>
+				<th> <%=s.getTipoSancion() %> </th>
+				<th> <%=s.getNroSancion() %> </th>
+				<th> 
+				<%	
+					if(s.isEstado())
+						out.print("Activa");
+					else
+						out.print("Apelada");
+				%> 
+				</th>
+				<th> <%=s.getFecha() %> </th>
+				<th> 
+					<a href="<%=s.getUrlSancion()%>" target="_blank">Url imagen</a> 
+				</th>
+				<th> 
+					<form action="apelarS?idSA=<%=s.getId()%>" method="post">
+						<input type ="submit" value = "Apelar" >
+					</form>	
+				</th>
+				<th> 
+					<form action="eliminarS?idSE=<%=s.getId()%>" method="post">
+						<input type ="submit" value = "Eliminar" >
+					</form>	
+				</th>
+			</tr>
+			<%
+				}
+			%>
+		</table><br><br>
+	
+		<form action="sancionS?idS=<%=i.getIdIntegrante() %>" method="post">
 			Tipo de sancion:
 			<select name="tipoSancion">
 		        <option value="Raya"> Raya </option>

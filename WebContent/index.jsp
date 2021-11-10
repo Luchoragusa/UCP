@@ -56,7 +56,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="oldIndex.html">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -173,7 +173,7 @@
                         <!-- Son todas las opciones del costado a la izq-->
 
                         <li class="sidebar-item" style="border-top: 1px solid #c4c4c4"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="index.html" aria-expanded="false"><i class="mdi mdi-home"></i><span
+                                href="oldIndex.html" aria-expanded="false"><i class="mdi mdi-home"></i><span
                                     class="hide-menu">Home</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"

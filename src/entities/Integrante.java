@@ -2,7 +2,7 @@ package entities;
 
 import java.util.LinkedList;
 
-import entities.*;
+
 
 public class Integrante {
 
@@ -13,6 +13,16 @@ public class Integrante {
 	private LinkedList<Hora> hora;
 	private Subdivision sub;
 	private LinkedList<Sancion> sancion;
+	private LinkedList<Medalla> medalla;
+	
+	
+	public LinkedList<Medalla> getMedalla() {
+		return medalla;
+	}
+	public void setMedalla(LinkedList<Medalla> medalla) {
+		this.medalla = medalla;
+	}
+	
 	public Subdivision getSub() 
 	{
 		return sub;

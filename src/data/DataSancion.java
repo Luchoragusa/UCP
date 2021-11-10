@@ -60,6 +60,38 @@ public class DataSancion
 		return i;
 	}
 
+	public void deleteByIdIntegrante(Integrante i) {
+
+		PreparedStatement stmt= null;
+		ResultSet keyResultSet=null;
+		try 
+		{
+			stmt=DbConnector.getInstancia().getConn().
+					prepareStatement("delete from sancion where idIntegrante = ?");
+			stmt.setInt(1, i.getIdIntegrante());
+			stmt.execute();
+		}  
+		catch (SQLException e) 
+		{
+            e.printStackTrace();
+		} 
+		finally 
+		{
+            try 
+            {
+                if(keyResultSet!=null)keyResultSet.close();
+                if(stmt!=null)stmt.close();
+                DbConnector.getInstancia().releaseConn();
+            } 
+            catch (SQLException e) 
+            {
+            	e.printStackTrace();
+            }
+		}
+	
+		
+	}
+	
 	public void add(Sancion s) 
 	{
 		PreparedStatement stmt= null;

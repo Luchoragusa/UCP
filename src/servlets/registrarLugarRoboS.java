@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.LinkedList;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +16,7 @@ import data.*;
 
 
 
+@SuppressWarnings("serial")
 @WebServlet("/registrarLugarRoboS")
 
 public class registrarLugarRoboS extends HttpServlet {
@@ -33,9 +32,7 @@ public class registrarLugarRoboS extends HttpServlet {
 		LinkedList<Integrante> integrantes = new LinkedList<>();
 		Integrante inte= null;
 		
-		int nroInte;
-		int i=1;
-		Boolean band=true;
+		String[] nrosInte;
 		
 		//SETEO NRO ROBO
 		r = dr.getLastIdRobo();
@@ -57,28 +54,23 @@ public class registrarLugarRoboS extends HttpServlet {
 		r.setHora_robo(LocalTime.now());
 		
 		//SETEO INTEGRANTES
-		while(band){
+		
 			inte = new Integrante();
-			nroInte = Integer.parseInt(request.getParameter("integrante["+i+"]"));
+			nrosInte = (request.getParameterValues("integrante"));
 			
-			inte.setIdIntegrante(nroInte);
-			inte=di.getByIdIntegrante(inte);
-			integrantes.add(inte);
-			if(i== Integer.parseInt(request.getParameter("sizeLista").toString())) {
-				band=false;
+			for ( String nro : nrosInte) {
+				inte.setIdIntegrante(Integer.parseInt(nro));
+				inte=di.getByIdIntegrante(inte);
+				integrantes.add(inte);
+				dr.insertRobo(r, inte, lr);
 			}
-			i++;
-		}
-		r.setIntegrantes(integrantes);
-	
+
 		//INSERT ROBO:
-		
-		for(Integrante in : integrantes) {
-			dr.insertRobo(r, in, lr);
-		}
-		
+			r.setIntegrantes(integrantes);
+	
 		
 		response.sendRedirect("homeTest.jsp");
 	
 	}
+
 }

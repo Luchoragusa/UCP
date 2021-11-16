@@ -63,55 +63,6 @@
 				%>
 			</select><br><br>
 			
-			Sub-division:
-       		<select name="sub" id="subId" onchange ="selectRanSub()">
-				<%
-	 				DataSubdivision ds = new DataSubdivision();
-	 				LinkedList<Subdivision> listaSub = new LinkedList<Subdivision>();
-	 				listaSub = ds.getAll();
-	 			%>
-	       		<option value="<% if(i.getSub() != null) i.getSub().getIdSub();%>"> 
-		        <% if(i.getSub() != null) out.print(i.getSub().getNomSubDivision()); else out.print("Seleccionar"); %></option>
-	 			<%
-	 				for(Subdivision s :  listaSub) {
-	 			%>
-		        <option value="<%=s.getIdSub()%>"> 
-		        <%=s.getNomSubDivision()%></option>
-			    <%
-					}
-				%>
-			</select><br><br>
-			
-			
-			<script type="text/javascript">
-				function selectRanSub()
-				{
-					var handleSub = document.getElementById("subId").value;	
-					alert("La id de la SubDivision es: " + handleSub);
-				}
-			</script>
-			
-			Rango Sub-division:
-       		<select name="ranSub">
-				<%
-	 				DataRan_Subdivision drs = new DataRan_Subdivision();
-	 				LinkedList<Ran_Subdivision> listaRanSub = new LinkedList<Ran_Subdivision>();
-	 				Ran_Subdivision rsub = new Ran_Subdivision();
-	 				rsub.setIdSub(1);
-	 				listaRanSub = drs.getByIdSub(rsub);
-	 			%>
-	       		<option value="<% if(i.getSub() != null) i.getSub().getIdSub();%>"> 
-		        <% if(i.getSub() != null) out.print(i.getSub().getNomSubDivision()); else out.print("No tiene sub"); %></option>
-	 			<%
-	 				for(Ran_Subdivision rs :  listaRanSub) {
-	 			%>
-		        <option value="<%=rs.getIdRanSub()%>"> 
-		        <%=rs.getNombreRangoSub()%></option>
-			    <%
-					}
-				%>
-			</select><br><br>
-			
 			<input type = "submit" onclick = "mostrarForm()" value = "Editar PW" id="btn1"><br><br>
 			
 			<h4 id="lbl1" hidden="">Contrasenia:</h4><input type = "password" id="txt1" name = "pw" hidden="" placeholder="Obligatorio"><br><br>
@@ -127,7 +78,48 @@
 				document.getElementById('lbl1').hidden=false;
 				document.getElementById('btn1').hidden=true;
 			}
+		</script>	
+		
+		<input type = "submit" onclick = "mostrarFormSub()" value = "Editar Sub-division" id="btn2"><br><br>
+		
+		<script type="text/javascript">
+			function mostrarFormSub()
+			{
+				document.getElementById('frmSub').hidden=false;
+				document.getElementById('btn2').hidden=true;
+			}
 		</script>
+		
+		<%int idSub = 0; %>
+		
+		<form id="frmSub" hidden="" id="subId" onchange ="selectRanSub()" action="gestionRanSub.jsp?idSub="<%=idSub%>>
+			
+			<h4 >Sub-division:</h4>
+		
+       		<select name="sub">
+				<%
+	 				DataSubdivision ds = new DataSubdivision();
+	 				LinkedList<Subdivision> listaSub = new LinkedList<Subdivision>();
+	 				listaSub = ds.getAll();
+	 			%>
+	       		<option value="<% if(i.getSub() != null) i.getSub().getIdSub();%>"> 
+		        <% if(i.getSub() != null) out.print(i.getSub().getNomSubDivision()); else out.print("Seleccionar"); %></option>
+	 			<%
+	 				for(Subdivision s :  listaSub) {
+	 			%>
+		        <option value="<%=s.getIdSub()%>"> 
+		        <%=s.getNomSubDivision()%></option>
+			    <%
+					}
+				%>
+				
+			</select><br><br>
+			
+			<% session.setAttribute("idSub", idSub);%>
+			
+			<input type = "submit" value = "Asignar Rango Sub division"><br><br>
+		</form>
+
 
 		<form action="aplicarSancion.jsp">
 			<input type = "submit" value = "Aplicar Sancion"><br><br>

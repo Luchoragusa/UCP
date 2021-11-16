@@ -5,34 +5,28 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import entities.Integrante;
+import entities.Ran_Subdivision;
 import entities.Ransub_integrante;
 
 public class DataRanSub_Integrante {
 	
-	public void add(Ransub_integrante rsi) 									
+	public void add(Ran_Subdivision rs) 									
 	{
+		Ransub_integrante rsi = rs.getRsi();
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into ransub_integrante(idIntegrante, fecha_desde, idRangoSub) values(?,?,?)",
+							"insert into ransub_integrante(idIntegrante, fecha_desde, idRangoSub, idSub) values(?,?,?,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
 			stmt.setInt(1, rsi.getIdIntegrante());
 			stmt.setObject(2, rsi.getFecha_desde());
 			stmt.setInt(3, rsi.getIdRangoSub());
+			stmt.setInt(4, rs.getIdSub());
 			stmt.executeUpdate();
-			
-			keyResultSet=stmt.getGeneratedKeys();
-            if(keyResultSet!=null && keyResultSet.next())
-            {
-            	rsi.setIdIntegrante(keyResultSet.getInt(1));
-            	rsi.setFecha_desde(keyResultSet.getDate(2).toLocalDate()); 
-            	rsi.setIdRangoSub(keyResultSet.getInt(3)); // creo q es al pedo pq no le devolvemos
-            }
-
 		} 
 		catch (SQLException e) 
 		{
@@ -51,7 +45,6 @@ public class DataRanSub_Integrante {
             	e.printStackTrace();
             }
 		}
-
 	}
 
 	public void deleteByIntegrante(Integrante i) {

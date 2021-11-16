@@ -27,6 +27,7 @@
  				LinkedList<Rango> lista = new LinkedList<Rango>();
  				lista = dr.getAll();
  			%>
+ 			
 			Rango:
        		<select name="rango">
  			<%
@@ -43,6 +44,7 @@
  				LinkedList<Rol> listaRol = new LinkedList<Rol>();
  				listaRol = drol.getAll();
  			%>
+ 			
 			Rol:
        		<select name="rol">
  			<%

@@ -340,9 +340,6 @@ public Integrante getHorasSemana(Integrante i)
             	e.printStackTrace();
             }
 		}
-	
-	
-		
 	}
 	
 	public LinkedList<Hora> getTuplasIntegrante(int id, LocalDate fecha, LocalDate fechaFin) 

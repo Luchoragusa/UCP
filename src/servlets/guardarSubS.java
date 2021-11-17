@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import data.DataRanSub_Integrante;
 import data.DataRan_Subdivision;
 import entities.Integrante;
 import entities.Ran_Subdivision;
@@ -23,12 +24,12 @@ public class guardarSubS extends HttpServlet
 		Ransub_integrante rsi = new Ransub_integrante();
 		rsi.setIdIntegrante(Integer.parseInt(request.getParameter("idInte").toString()));
 		rsi.setFecha_desde(LocalDate.now());
-		rsi.setIdRangoSub(0);
+		rsi.setIdRangoSub(Integer.parseInt(request.getParameter("ranSub")));
 		
 		rs.setRsi(rsi);
-		rs.setIdSub(Integer.parseInt((String) request.getSession().getAttribute("idSub"))); // esto NO anda
+		rs.setIdSub(Integer.parseInt(request.getParameter("idSub").toString()));
 		
-		DataRan_Subdivision drs = new DataRan_Subdivision();
+		DataRanSub_Integrante drs = new DataRanSub_Integrante();
 		drs.add(rs);
 		response.sendRedirect("homeTest.jsp");
 	}

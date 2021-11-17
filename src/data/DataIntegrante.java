@@ -118,22 +118,47 @@ import logic.LlaveMaestra;
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					          "select nombre, apellido, discordId, steamHex, usuario, i.idRol, r.descRol, rs.nombreRangoSub, rs.idRanSub, r2.nombRango ,ri.fechaDesde, ri.idRango,s.descripcion, s.idSub, ri2.fechaDesde as fechaDesdesub\r\n"
-					          + "from (select max(ri.fechaDesde) fecha\r\n"
-					          + "    from ran_integrante ri\r\n"
-					          + "    where idIntegrante = ?\r\n"
-					          + "    group by ri.idIntegrante) as tabla\r\n"
-					          + "inner join ran_integrante ri on ri.fechaDesde=tabla.fecha\r\n"
-					          + "inner join rango r2 on ri.idRango = r2.idRango\r\n"
-					          + "inner join integrante i on i.idIntegrante=ri.idIntegrante\r\n"
-					          + "inner join rol r on i.idRol = r.idRol\r\n"
-					          + "left join  ransub_integrante ri2 on i.idIntegrante = ri2.idIntegrante\r\n"
-					          + "left join  subdivision s on ri2.idSub = s.idSub\r\n"
-					          + "left join ran_subdivision rs on s.idSub = rs.idSub\r\n"
-					          + "group by ri.idIntegrante\r\n"
-							  + "having ri.idIntegrante = ?");
+					        /* "select max(fechaDesde) into @fecha\r\n"     // Misma query pero con variable, es mas optima
+							+ "from ransub_integrante\r\n"
+							+ "where idIntegrante = ?;\r\n"
+							+ "\r\n"
+							+ "select nombre, apellido, discordId, steamHex, usuario, i.idRol, r.descRol, rs.nombreRangoSub, rs.idRanSub, r2.nombRango ,ri.fechaDesde, ri.idRango,s.descripcion, s.idSub, @fecha as fechaDesdesub\r\n"
+							+ "from (select max(ri.fechaDesde) fecha\r\n"
+							+ "    from ran_integrante ri\r\n"
+							+ "    where idIntegrante = ?\r\n"
+							+ "    group by ri.idIntegrante) as tabla\r\n"
+							+ "\r\n"
+							+ "inner join ran_integrante ri on ri.fechaDesde=tabla.fecha\r\n"
+							+ "inner join rango r2 on ri.idRango = r2.idRango\r\n"
+							+ "inner join integrante i on i.idIntegrante=ri.idIntegrante\r\n"
+							+ "inner join rol r on i.idRol = r.idRol\r\n"
+							+ "\r\n"
+							+ "left join  ransub_integrante ri2 on i.idIntegrante = ri2.idIntegrante and ri2.fechaDesde = @fecha\r\n"
+							+ "left join  subdivision s on ri2.idSub = s.idSub\r\n"
+							+ "left join  ran_subdivision rs on s.idSub = rs.idSub and ri2.idRanSub = rs.idRanSub"
+							+"group by ri.idIntegrante\r\n"
+							+"having ri.idIntegrante = ?");; */
+					
+							  "select nombre, apellido, discordId, steamHex, usuario, i.idRol, r.descRol, rs.nombreRangoSub, rs.idRanSub, r2.nombRango ,ri.fechaDesde, ri.idRango,s.descripcion, s.idSub, max(ri2.fechaDesde) as fechaDesdesub\r\n"
+							  + "from (select max(ri.fechaDesde) fecha\r\n"
+							  + "    from ran_integrante ri\r\n"
+							  + "    where idIntegrante = ?\r\n"
+							  + "    group by ri.idIntegrante) as tabla\r\n"
+							  + "inner join ran_integrante ri on ri.fechaDesde=tabla.fecha\r\n"
+							  + "inner join rango r2 on ri.idRango = r2.idRango\r\n"
+							  + "inner join integrante i on i.idIntegrante=ri.idIntegrante\r\n"
+							  + "inner join rol r on i.idRol = r.idRol\r\n"
+							  + "left join  ransub_integrante ri2 on i.idIntegrante = ri2.idIntegrante and ri2.fechaDesde = (select max(ransub_integrante.fechaDesde)\r\n"
+							  + "                                                                                            from ransub_integrante\r\n"
+							  + "                                                                                            where idIntegrante = ?)\r\n"
+							  + "left join  subdivision s on ri2.idSub = s.idSub\r\n"
+							  + "left join  ran_subdivision rs on s.idSub = rs.idSub and ri2.idRanSub = rs.idRanSub\r\n"
+							  + "group by ri.idIntegrante\r\n"
+							  + "having ri.idIntegrante = ?;");
+					
 			stmt.setInt(1, i.getIdIntegrante());
 			stmt.setInt(2, i.getIdIntegrante());
+			stmt.setInt(3, i.getIdIntegrante());
 			rs=stmt.executeQuery();
 			
 			if(rs!=null && rs.next()) 

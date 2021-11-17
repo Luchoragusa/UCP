@@ -18,10 +18,7 @@ public class DataRanSub_Integrante {
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"insert into ransub_integrante(idIntegrante, fecha_desde, idRangoSub, idSub) values(?,?,?,?)",
-							PreparedStatement.RETURN_GENERATED_KEYS
-							);
+					prepareStatement("insert into ransub_integrante(idIntegrante, fechaDesde, idRanSub, idSub) values(?,?,?,?)");
 			stmt.setInt(1, rsi.getIdIntegrante());
 			stmt.setObject(2, rsi.getFecha_desde());
 			stmt.setInt(3, rsi.getIdRangoSub());

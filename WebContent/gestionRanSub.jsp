@@ -16,10 +16,14 @@
 			DataIntegrante di = new DataIntegrante();
 			i=di.getByIdIntegrante(i);
 			
-			int idSub = Integer.parseInt(request.getParameter("sub")); // ver como pija pasar este parametro
+			int idSub = Integer.parseInt(request.getParameter("sub")); 
 		%>
-		<form action="guardarSubS?idInte=<%=i.getIdIntegrante()%>" method="post">
-			Rango Sub-division:
+		<form action="guardarSubS?idInte=<%=i.getIdIntegrante()%>&idSub=<%=idSub%>" method="post">
+			Rango Sub-division
+			
+			<h4 >Rango de sub-division actual: 
+			<% if(i.getSub() != null) out.print(i.getSub().getRanSub().getFirst().getNombreRangoSub()); else out.print("No pertenece a ninguna subdivision"); %> </h4>
+			
        		<select name="ranSub">
 				<%
 	 				DataRan_Subdivision drs = new DataRan_Subdivision();
@@ -28,22 +32,17 @@
 	 				rsub.setIdSub(idSub);
 	 				listaRanSub = drs.getByIdSub(rsub);
 	 			%>
-	       		<option value="<% if(i.getSub() != null) i.getSub().getIdSub();%>"> 
-		        <% if(i.getSub() != null) out.print(i.getSub().getNomSubDivision()); else out.print("No tiene sub"); %></option>
+	       		<option value = ""> 
+		        <%out.print("Seleccionar"); %></option>
 	 			<%
 	 				for(Ran_Subdivision rs :  listaRanSub) {
 	 			%>
-		        <option value="<%=rs.getIdRanSub()%>"> 
+		        <option value="<%=rs.getIdRanSub()%>">
 		        <%=rs.getNombreRangoSub()%></option>
 			    <%
 					}
 				%>
 			</select><br><br>
-			
-			<%
-				request.setAttribute("idSub", idSub);
-			%>
-			
 			<input type = "submit" value = "Guardar Subdivision" ><br><br>
 		</form>	
 </body>

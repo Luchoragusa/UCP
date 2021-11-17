@@ -94,7 +94,10 @@
 		
 		<form id="frmSub" hidden="" id="subId" onchange ="selectRanSub()" action="gestionRanSub.jsp?idSub="<%=idSub%>>
 			
-			<h4 >Sub-division:</h4>
+			<h4 >Sub-division</h4>
+			
+			<h4 >Sub-division actual: 
+			<% if(i.getSub() != null) out.print(i.getSub().getDescripcion()); else out.print("No pertenece a ninguna subdivision"); %> </h4>
 		
        		<select name="sub">
 				<%
@@ -102,13 +105,13 @@
 	 				LinkedList<Subdivision> listaSub = new LinkedList<Subdivision>();
 	 				listaSub = ds.getAll();
 	 			%>
-	       		<option value="<% if(i.getSub() != null) i.getSub().getIdSub();%>"> 
-		        <% if(i.getSub() != null) out.print(i.getSub().getNomSubDivision()); else out.print("Seleccionar"); %></option>
+	       		<option value = ""> 
+		        <%out.print("Seleccionar"); %></option>
 	 			<%
 	 				for(Subdivision s :  listaSub) {
 	 			%>
 		        <option value="<%=s.getIdSub()%>"> 
-		        <%=s.getNomSubDivision()%></option>
+		        <%=s.getDescripcion()%></option>
 			    <%
 					}
 				%>

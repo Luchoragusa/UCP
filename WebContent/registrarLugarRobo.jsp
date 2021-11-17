@@ -28,7 +28,6 @@
 	 
 		<%
 			for(LugarRobo i : lugares) {
-			
 		%>
 	    <option value="<%=i.getIdLugarRobo()%>"> 
 			<% out.print(i.getLugarRobo()); %>
@@ -37,28 +36,29 @@
 	    <%
 			}
 		%>
-		
 	</select><br><br>
 	
-		
-	  	<%
-	  		out.print("Seleccione participantes Max: NI IDEA COMO TRAER EL MAXIMO DE CADA LUGAR ROBO");
-		%>
-		
-		<br><br>
-		<%
-	  		for(Integrante i :  lista) {	
-		%>
-		<input type="checkbox"  name="integrante" value="<%=i.getIdIntegrante()%>">
-		<%
-		out.print(i.getNombre()+" "+i.getApellido());
-		%>
-		
-		<br>
-		
-    	<%
-				}
-		%>
+  	<%
+  		out.print("Seleccione participantes Max: NI IDEA COMO TRAER EL MAXIMO DE CADA LUGAR ROBO");
+	%><br>
+	
+	<%
+	for(int c=0; c<=2; c++) { // repite el combo box, lo deberia hacer en base a la cantidad integrantes q participaron
+	%><br>
+		 <select name="lugarRobo<%=c%>>">  
+			<%
+		  		for(Integrante i :  lista) {	
+			%>
+			    <option value="<% i.getIdIntegrante(); %>"> 
+					<% out.print(i.getNombre() + "" + i.getApellido()); %>
+	   			 </option>
+	    	<%
+					}
+			%>
+		</select><br>
+   	<%
+		}
+	%>
 		<br>
 		Ingrese Resultado:
 		<select name="rto">
@@ -69,8 +69,6 @@
 		<br>
 		
 		<input type = "submit" value = "Guardar" Required><br>
-	
-
 	</form>
 	
 

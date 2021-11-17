@@ -17,8 +17,32 @@
 		
 	%>
 
-<form action="registrarStockArmaS" method="post">
+	<h4>Listado actual</h4>
+	
+	
+	<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
+			<tr bgcolor=blue>
+				<th>Tipo Arma</th>
+				<th>Nombre Arma</th>
+				<th>Cantidad</th>
+				<th>Fecha de carga</th>
+			</tr>
+			<% 
+				DataStockarma ds = new DataStockarma();
+				LinkedList<Stockarma> listaS = ds.getAll();
+				for(Stockarma s :  listaS) {
+			%>
+			<tr>
+				<th> <%=s.getArma().getTipoArma() %> </th>
+				<th> <%=s.getArma().getNombreArma() %> </th>
+				<th> <%=s.getCantidad() %> </th>
+				<th> <%=s.getFecha() %> </th>
+			<%
+				}
+			%>
+		</table><br><br>
 
+<form action="registrarStockArmaS" method="post">
 	Seleccione Arma para modificar stock:
 		 <select name="arma" > 
 		<%

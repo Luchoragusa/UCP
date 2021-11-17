@@ -10,12 +10,11 @@ import entities.Stockarma;
 
 public class DataStockarma {
 	
-	public LinkedList<Stockarma> getByIdArma(Arma a){
-
+	public LinkedList<Stockarma> getByIdArma(Arma a)
+	{
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		LinkedList<Stockarma> starmas= new LinkedList<>();
-		
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
@@ -101,35 +100,41 @@ public class DataStockarma {
 		return starmas;
 	}
 
-	public LinkedList<Stockarma> getByCantidad(Stockarma st){
+	public LinkedList<Stockarma> getAll()
+	{
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
-		LinkedList<Stockarma> starmas= new LinkedList<>();
-		
+		LinkedList<Stockarma> lista= null;
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-			 "select idArma, fecha from stockarma where cantidad = ?");
-			stmt.setInt(1, st.getCantidad());
+				 "select nombreArma, tipoArma, cantidad, fecha\r\n"
+				 + "from (select max(fecha) as fechaT, idArma\r\n"
+				 + "        from stockarma\r\n"
+				 + "        group by idArma) as tabla\r\n"
+				 + "inner join arma a on tabla.idArma = a.idArma\r\n"
+				 + "inner join stockarma s on tabla.idArma = s.idArma and tabla.fechaT = s.fecha");
 			rs=stmt.executeQuery();
 			
 			if(rs!=null) 
 			{
+				lista = new LinkedList<Stockarma>();
 				while(rs.next()) 
 				{
 					Stockarma s =new Stockarma();
 					Arma a = new Arma();
-					a.setIdArma(rs.getInt("idArma"));
+					
+					a.setNombreArma(rs.getString("nombreArma"));
+					a.setTipoArma(rs.getString("tipoArma"));
 					
 					s.setArma(a);
 					s.setFecha(rs.getDate("fecha").toLocalDate());
-					s.setCantidad(st.getCantidad());					
-					starmas.add(s);
+					s.setCantidad(rs.getInt("cantidad"));		
+					lista.add(s);
 				}
 			}	
 		} catch (SQLException e) {
-			e.printStackTrace();
-			
+			e.printStackTrace();		
 		} 
 		finally 
 		{
@@ -144,7 +149,7 @@ public class DataStockarma {
 				e.printStackTrace();
 			}
 		}
-		return starmas;
+		return lista;
 	}
 
 

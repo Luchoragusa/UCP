@@ -106,7 +106,7 @@
 			<input type = "submit" value = "Registrar Robos"><br><br>
 		</form>
 		
-		<form action="loginTest.jsp">
+		<form action="index.jsp">
 			<input type = "submit" value = "Logout"><br>
 		</form>
 		

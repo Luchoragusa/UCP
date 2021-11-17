@@ -504,6 +504,7 @@ import logic.LlaveMaestra;
 				
 					i.setNombre(rs.getString("nombre"));
 					i.setApellido(rs.getString("apellido"));
+					i.setIdIntegrante(rs.getInt("idIntegrante"));
 					
 					r.setNomRango(rs.getString("nombRango"));
 					h.setHoraInicio(rs.getObject("horaInicio", LocalTime.class));

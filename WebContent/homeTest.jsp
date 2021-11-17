@@ -63,7 +63,12 @@
 					{
 						out.println(diferencia.toHoursPart() + " " +  diferencia.toMinutesPart());
 						if (diferencia.toMinutesPart()>= -5)
+						{
 							out.print("se elimina la tuplaDateTime");
+							DataHoras dh = new DataHoras();
+							hr.setIdIntegrante(entry.getIdIntegrante());
+							dh.remove(hr);
+						}
 						else
 							tServicio = LocalTime.of(diferencia.toHoursPart()+23, diferencia.toMinutesPart()+59);
 						tServicio = null; // dsp borrar esto

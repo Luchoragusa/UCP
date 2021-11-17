@@ -44,7 +44,6 @@ public Hora getHorasDelIntegrante(int id) {
 		}	
 	} catch (SQLException e) {
 		e.printStackTrace();
-		
 	} 
 	finally 
 	{
@@ -288,8 +287,10 @@ public Integrante getHorasSemana(Integrante i)
 		{
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"delete from horas where idIntegrante = ? and horaFin is null");
-			stmt.setInt(1, hr.getIdIntegrante());
+							"delete from hora where idIntegrante = ? and fechaInicio = ? and horaInicio = ? and horaFin is null");
+			stmt.setInt(1, hr.getIdIntegrante());	
+			stmt.setObject(2, hr.getFechaInicio());
+			stmt.setObject(3, hr.getHoraInicio());	
 			stmt.executeUpdate();
 		} 
 		catch (SQLException e) 

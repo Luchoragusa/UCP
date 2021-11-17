@@ -385,8 +385,8 @@ import logic.LlaveMaestra;
 		}
 	}
 	
-	public void update(Integrante i) {
-
+	public void update(Integrante i) 
+	{
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		int c =1;
@@ -406,7 +406,6 @@ import logic.LlaveMaestra;
 						prepareStatement(
 								"update integrante set nombre=?, apellido=?, usuario=?, discordId=? where idIntegrante = ?");
 			}
-			
 			
 			stmt.setString(c, i.getNombre());c+=1;
 			stmt.setString(c, i.getApellido());c+=1;
@@ -432,7 +431,6 @@ import logic.LlaveMaestra;
             	e.printStackTrace();
             }
 		}
-    
 	}
 
 	public void delete(Integrante i) 
@@ -481,7 +479,6 @@ import logic.LlaveMaestra;
 			rs= stmt.executeQuery("select i.idIntegrante, nombre, apellido, s.descripcion, horaInicio, fechaInicio, nombRango\r\n"
 					+ "from (select max(ri.fechaDesde) fecha, ri.idIntegrante\r\n"
 					+ "         from ran_integrante ri\r\n"
-					+ "         where idIntegrante = idIntegrante\r\n"
 					+ "         group by ri.idIntegrante) as tabla\r\n"
 					+ "inner join ran_integrante ri on ri.fechaDesde=tabla.fecha and ri.idIntegrante = tabla.idIntegrante\r\n"
 					+ "inner join integrante i on i.idIntegrante = ri.idIntegrante\r\n"

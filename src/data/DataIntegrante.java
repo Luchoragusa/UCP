@@ -520,7 +520,7 @@ import logic.LlaveMaestra;
 					uActivos.add(i);
 				}
 			}	
-		} 
+		}
 		catch (SQLException e) 
 		{
 			e.printStackTrace();

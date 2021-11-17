@@ -128,5 +128,9 @@
 			<input type = "submit" value = "Aplicar Sancion"><br><br>
 		</form>
 			
+		<form action="deleteIntegranteS?idInte=<%=i.getIdIntegrante()%>" method="post">
+			<input type = "submit" value = "Eliminar" ><br>
+		</form>
+		
 	</body>
 </html>

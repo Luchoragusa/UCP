@@ -21,19 +21,15 @@
 
 	Seleccione Arma para modificar stock:
 		 <select name="arma" > 
-	 
 		<%
 			for(Arma a : armas) {
-			
 		%>
 	    <option value="<%=a.getIdArma()%>"> 
 			<% out.print(a.getNombreArma()); %>
 	    </option>
-	    
 	    <%
 			}
 		%>
-		
 	</select><br><br>
 
 	Ingrese el nuevo stock: 
@@ -45,6 +41,5 @@
 	<input type = "submit" value = "Guardar cambios" Required><br>
 
 </form>
-
 </body>
 </html>

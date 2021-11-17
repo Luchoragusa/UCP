@@ -40,6 +40,7 @@ import logic.LlaveMaestra;
 			if(rs!=null && rs.next()) {
 				i=new Integrante();
 				rolcito = new Rol();
+				
 				i.setIdIntegrante(rs.getInt("idIntegrante"));
 				i.setNombre(rs.getString("nombre"));
 				i.setApellido(rs.getString("apellido"));
@@ -47,7 +48,6 @@ import logic.LlaveMaestra;
 				i.setDiscordId(rs.getString("discordId"));
 
 				rolcito.setIdRol(rs.getInt("idRol"));
-				rolcito.setdescRol(rs.getString("descripcion"));
 			
 				i.setRol(rolcito);
 			}

@@ -20,7 +20,6 @@ public class deleteIntegranteS extends HttpServlet  {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		
 		DataSancion ds = new DataSancion();
 		DataRobo dr = new DataRobo();
 		DataHoras dh = new DataHoras();
@@ -31,16 +30,14 @@ public class deleteIntegranteS extends HttpServlet  {
 		
 		//me traigo el integrante
 		Integrante inte = new Integrante();
-		inte.setIdIntegrante(Integer.parseInt(request.getParameter("integrante")));
+		inte.setIdIntegrante(Integer.parseInt(request.getParameter("idInte")));
 		inte = di.getByIdIntegrante(inte);
 		
 		
 		//delete sanciones
 		ds.deleteByIdIntegrante(inte);
-		
 		// delete robos
 		dr.deleteRobo(inte);
-		
 		//delete horas
 		dh.deleteHorasByIntegrante(inte);
 		//delete medallas
@@ -53,7 +50,6 @@ public class deleteIntegranteS extends HttpServlet  {
 		di.delete(inte);
 		
 		response.sendRedirect("homeTest.jsp");
-	
 	}
 
 

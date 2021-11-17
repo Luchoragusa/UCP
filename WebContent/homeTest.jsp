@@ -1,3 +1,4 @@
+<%@page import="javax.swing.text.Document"%>
 <%@page import="java.util.Collection"%>
 <%@page import="data.*"%>
 <%@page import="entities.*"%>
@@ -20,8 +21,11 @@
 		<%
 		if (session.getAttribute("id") == null)
 			response.sendRedirect("loginTest.jsp");
+		else 
+		{
+			int idRol = Integer.parseInt(session.getAttribute("rol").toString());
+		}
 		%>
-
 		<b><i>[PSG] Bienvenido al panel de usuario!</i></b>
 		
 		<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
@@ -95,20 +99,29 @@
 		<form action="miPerfil.jsp">
 			<input type = "submit" value = "Mi perfil"><br><br>
 		</form>
-		<form action="gestionIntegrante.jsp">
-			<input type = "submit" value = "Gestion Integrante"><br><br>
-		</form>
 		<form action="bitacora.jsp">
 			<input type = "submit" value = "Bitacora"><br><br>
-		</form>
-		<form action="altaIntegrante.jsp">
-			<input type = "submit" value = "Alta Integrante"><br><br>
 		</form>
 		<form action="registrarLugarRobo.jsp">
 			<input type = "submit" value = "Registrar Robos"><br><br>
 		</form>
+		
 		<form action="loginTest.jsp">
 			<input type = "submit" value = "Logout"><br>
 		</form>
+		
+				<!-- Estos son los botones de admin, pero ni idea como esconederlos -->
+		<div class="admin"> <br>
+			<form action="gestionIntegrante.jsp">
+				<input type = "submit" value = "Gestion Integrante"><br><br>
+			</form>
+			<form action="altaIntegrante.jsp">
+				<input type = "submit" value = "Alta Integrante"><br><br>
+			</form>
+			<form action="registrarStockArma.jsp">
+				<input type = "submit" value = "Armeria"><br>
+			</form>
+		</div>
+		
 	</body>
 </html>

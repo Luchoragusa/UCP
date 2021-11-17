@@ -477,16 +477,19 @@ import logic.LlaveMaestra;
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
 			rs= stmt.executeQuery("select i.idIntegrante, nombre, apellido, s.descripcion, horaInicio, fechaInicio, nombRango\r\n"
-					+ "from (select max(ri.fechaDesde) fecha\r\n"
-					+ "    from ran_integrante ri\r\n"
-					+ "    group by ri.idIntegrante) as tabla\r\n"
-					+ "inner join ran_integrante ri on ri.fechaDesde=tabla.fecha\r\n"
-					+ "inner join integrante i on i.idIntegrante=ri.idIntegrante\r\n"
+					+ "from (select max(ri.fechaDesde) fecha, ri.idIntegrante\r\n"
+					+ "         from ran_integrante ri\r\n"
+					+ "         where idIntegrante = idIntegrante\r\n"
+					+ "         group by ri.idIntegrante) as tabla\r\n"
+					+ "inner join ran_integrante ri on ri.fechaDesde=tabla.fecha and ri.idIntegrante = tabla.idIntegrante\r\n"
+					+ "inner join integrante i on i.idIntegrante = ri.idIntegrante\r\n"
 					+ "inner join rol r on i.idRol = r.idRol\r\n"
 					+ "inner join rango r2 on ri.idRango = r2.idRango\r\n"
 					+ "left join hora h on i.idIntegrante = h.idIntegrante\r\n"
-					+ "left join  ransub_integrante ri2 on i.idIntegrante = ri2.idIntegrante\r\n"
-					+ "left join  subdivision s on ri2.idSub = s.idSub\r\n"
+					+ "left join  ransub_integrante ri2 on i.idIntegrante = ri2.idIntegrante and ri2.fechaDesde = (select max(ransub_integrante.fechaDesde)\r\n"
+					+ "                                                                                            from ransub_integrante\r\n"
+					+ "                                                                                            where idIntegrante = i.idIntegrante)\r\n"
+					+ "left join subdivision s on ri2.idSub = s.idSub\r\n"
 					+ "where horaInicio is not null and horaFin is null\r\n"
 					+ "group by ri.idIntegrante;");
 		

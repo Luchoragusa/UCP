@@ -492,7 +492,6 @@ import logic.LlaveMaestra;
 					+ "left join subdivision s on ri2.idSub = s.idSub\r\n"
 					+ "where horaInicio is not null and horaFin is null\r\n"
 					+ "group by ri.idIntegrante;");
-		
 			if(rs!=null) 
 			{
 				uActivos = new LinkedList<>();

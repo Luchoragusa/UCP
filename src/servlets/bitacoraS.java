@@ -32,7 +32,7 @@ public class bitacoraS extends HttpServlet
 		LocalDate fecha = LocalDate.now();
 		h.setFechaInicio(fecha);		
 		dh.add(h);
-		response.sendRedirect("homeTest.jsp");
+		response.sendRedirect("HomeTuneada.jsp");
 	}
 
 }

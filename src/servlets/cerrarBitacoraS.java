@@ -46,7 +46,7 @@ public class cerrarBitacoraS extends HttpServlet
 				h.setHorasJugadas(LocalTime.of(diferencia.toHoursPart()+23, diferencia.toMinutesPart()+59));
 			}
 			dh.update(h);	
-			response.sendRedirect("homeTest.jsp");
+			response.sendRedirect("HomeTuneada.jsp");
 		}
 		else
 		{

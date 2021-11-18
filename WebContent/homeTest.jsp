@@ -106,7 +106,7 @@
 			<input type = "submit" value = "Registrar Robos"><br><br>
 		</form>
 		
-		<form action="index.jsp">
+		<form action="LoginTUNEADO.jsp">
 			<input type = "submit" value = "Logout"><br>
 		</form>
 		

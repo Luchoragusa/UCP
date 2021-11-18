@@ -33,9 +33,9 @@ public class loginS extends HttpServlet
 				HttpSession session = request.getSession();
 				session.setAttribute("id", i.getIdIntegrante());
 				session.setAttribute("rol", i.getRol().getIdRol());
-				response.sendRedirect("homeTest.jsp");
+				response.sendRedirect("HomeTuneada.jsp");
 			}
 			else
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("LoginTUNEADO.jsp");
 	}
 }

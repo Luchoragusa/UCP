@@ -12,7 +12,7 @@
 	<body>
 		<%
 			if (session.getAttribute("id") == null)
-			response.sendRedirect("loginTest.jsp");
+			response.sendRedirect("LoginTUNEADO.jsp");
 			Integrante i = new Integrante();
 			i.setIdIntegrante((Integer)application.getAttribute("idApp"));
 			DataIntegrante di = new DataIntegrante();

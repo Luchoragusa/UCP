@@ -1,3 +1,14 @@
+<%@page import="javax.swing.text.Document"%>
+<%@page import="java.util.Collection"%>
+<%@page import="data.*"%>
+<%@page import="entities.*"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="java.time.Duration"%>
+<%@page import="java.time.LocalTime"%>
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.util.concurrent.LinkedBlockingDeque"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -33,6 +44,14 @@
 </head>
 
 <body>
+		<%
+		if (session.getAttribute("id") == null)
+			response.sendRedirect("index.jsp");
+		else 
+		{
+			int idRol = Integer.parseInt(session.getAttribute("rol").toString());
+		}
+		%>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -108,7 +127,7 @@
                                 <img src="./assets/images/users/lucho.jpg" alt="user" class="rounded-circle" width="31">
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="pages-profile.html"><i class="ti-user m-r-5 m-l-5"></i>
+                                <a class="dropdown-item" href="miPerfilTUNEADO.jsp"><i class="ti-user m-r-5 m-l-5"></i>
                                     Mi perfil</a>
                                 <a class="dropdown-item" href="armasV.html"><i class="ti-wallet m-r-5 m-l-5"></i>
                                     Mi inventario</a>
@@ -162,37 +181,30 @@
                         </li>
 
                         <!-- Entrar/salir de servicio-->
-                        <li class="p-15 m-t-10"><a href="entrarsalir.html"
+                        <li class="p-15 m-t-10"><a href="bitacora.jsp"
                                 class="btn d-block w-100 create-btn text-white no-block d-flex align-items-center"><i
-                                    class="fa fa-plus-square"></i> <span class="hide-menu m-l-5">Entrar en Servicio</span> </a>
-                        </li>
-                        <li class="p-15 m-t-10" style="margin-bottom: 20px"><a href="entrarsalir.html"
-                                class="btn d-block w-100 create-btn text-white no-block d-flex align-items-center"><i
-                                    class="fa fa-plus-square"></i> <span class="hide-menu m-l-5">Salir de Servicio</span> </a>
+                                    class="fa fa-plus-square"></i> <span class="hide-menu m-l-5">Abrir bitacora</span> </a>
                         </li>
                         <!-- Son todas las opciones del costado a la izq-->
 
                         <li class="sidebar-item" style="border-top: 1px solid #c4c4c4"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="oldIndex.html" aria-expanded="false"><i class="mdi mdi-home"></i><span
+                                href="HomeTuneada.jsp" aria-expanded="false"><i class="mdi mdi-home"></i><span
                                     class="hide-menu">Home</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="starter-kit.html" aria-expanded="false"><i class="mdi mdi-pistol"></i><span
+                            href="registrarLugarRobo.jsp" aria-expanded="false"><i class="mdi mdi-pistol"></i><span
                                 class="hide-menu">Robo</span></a>
                         </li>           
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="pages-profile.html" aria-expanded="false">
+                                href="miPerfilTUNEADO.jsp" aria-expanded="false">
                                 <i class="mdi mdi-account-network"></i>
                                 <span class="hide-menu">Mi Perfil</span></a>
                         </li>
                         <li class="sidebar-item" style="border-bottom: 1px solid #c4c4c4"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="table-basic.html" aria-expanded="false"><i class="mdi mdi-cash-usd" ></i><span
+                            href="aplicarSancion.jsp" aria-expanded="false"><i class="mdi mdi-cash-usd" ></i><span
                                 class="hide-menu">Sanciones</span></a>
                         </li>                        
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="icon-material.html" aria-expanded="false"><i class="mdi mdi-face"></i><span
-                                    class="hide-menu">html iconos</span></a>
-                        </li>
+
                     </ul>
 
                 </nav>
@@ -225,7 +237,6 @@
                                 <!-- Listado -->                           
                             <div class="table-responsive">
                                 <table class="table v-middle">
-                                    <thead>
                                         <tr class="bg-light">
                                             <th class="border-top-0">Nombre y Apellido</th>
                                             <th class="border-top-0">Rango</th>
@@ -233,8 +244,13 @@
                                             <th class="border-top-0">Subdivision</th>
                                             <th class="border-top-0">Hora de ingreso</th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
+                                    <%
+										LinkedList<Integrante> uActivos = new LinkedList<>();
+										DataIntegrante di = new DataIntegrante();
+										uActivos = di.getServicio();
+										for(Integrante entry :  uActivos) {
+									%>
+                                    
                                         <tr>
                                             <td>
                                                 <div class="d-flex align-items-center">
@@ -242,54 +258,61 @@
                                                         <img src="./assets/images/users/lucho.jpg" alt="user" width="50" class="rounded-circle">                                                        
                                                     </div>
                                                     <div class="">
-                                                        <h4 class="m-b-0 font-16"><a style="color: rgb(0, 58, 248);">Luciano Ragusa</a></h4>
+                                                        <h4 class="m-b-0 font-16"><a style="color: rgb(0, 58, 248);">
+                                                        	<td>
+                                                        		<%=entry.getNombre() + " " + entry.getApellido() %>
+                                                        	</td>
+                                                        </a></h4>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>Jefe del cuerpo</td>
-                                            <td>147</td>
+                                            <td><%=entry.getRanInt().getRango().getNomRango() %></td>
                                             <td>
-                                                <label class="label label-danger">[INFANTERÍA]</label>
-                                            </td>
-                                            <td>22:22</td>
-                                        </tr>
-                                        <tr>
+                                            	<%
+                                            		Hora hr = entry.getHora().getFirst();
+													out.print(entry.getHora().getFirst().getHoraInicio()); 
+												%>
+											</td>
                                             <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="m-r-10">
-                                                        <img src="./assets/images/users/yo.jpg" alt="user" width="50" class="rounded-circle">    
-                                                    </div>
-                                                    <div class="">
-                                                        <h4 class="m-b-0 font-16"><a style="color: rgb(0, 58, 248);">Pucheta Juan Ignacio</a></h4>
-                                                    </div>
-                                                </div>
+                                            	<% 
+													LocalDate fecha = LocalDate.now();
+													LocalTime tServicio;
+													Duration diferencia = Duration.between(hr.getHoraInicio(), LocalTime.now());
+													if (fecha.getDayOfMonth() == hr.getFechaInicio().getDayOfMonth())
+												        tServicio = LocalTime.of(diferencia.toHoursPart(), diferencia.toMinutesPart());
+													else
+													{
+														out.println(diferencia.toHoursPart() + " " +  diferencia.toMinutesPart());
+														if (diferencia.toMinutesPart()>= -5)
+														{
+															out.print("se elimina la tuplaDateTime");
+															DataHoras dh = new DataHoras();
+															hr.setIdIntegrante(entry.getIdIntegrante());
+															dh.remove(hr);
+														}
+														else
+															tServicio = LocalTime.of(diferencia.toHoursPart()+23, diferencia.toMinutesPart()+59);
+														tServicio = null; // dsp borrar esto
+													}
+													out.println(tServicio);
+											     %>
                                             </td>
-                                            <td>Jefe del cuerpo</td>
-                                            <td>147</td>
                                             <td>
-                                                <label class="label label-megna">[BRIGRADA]</label>
+                                                <label class="label label-danger">
+                                                		<%
+															String nSub = entry.getSub().getDescripcion();
+															if(nSub != null)
+																out.println(nSub);
+															else
+																out.println("Sin Sub");
+														%>
+												</label>
                                             </td>
-                                            <td>18:00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="m-r-10">
-                                                        <img src="./assets/images/users/cami.png" alt="user" width="50" class="rounded-circle">    
-                                                    </div>
-                                                    <div class="">
-                                                        <h4 class="m-b-0 font-16"><a style="color: rgb(0, 58, 248);">Pereyra Camilo</a></h4>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>Jefe del cuerpo</td>
-                                            <td>147</td>
-                                            <td>
-                                                <label class="label label-success">[RAPIDA ACCION]</label>
-                                            </td>
-                                            <td>15:40</td>
-                                        </tr>                                        
-                                    </tbody>
+                                            
+                                        </tr> 
+                                        <%
+											}
+										%>                          
                                 </table>
                             </div>
                         </div>

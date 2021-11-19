@@ -28,6 +28,6 @@ public class editarPerfilS extends HttpServlet
 			i.setPw(request.getParameter("pw"));
 		}
 		di.update(i);
-		response.sendRedirect("homeTest.jsp");
+		response.sendRedirect("HomeTuneada.jsp");
 	}
 }

@@ -19,7 +19,7 @@
 	<body>
 		<%
 			if (session.getAttribute("id") == null)
-			response.sendRedirect("loginTest.jsp");
+			response.sendRedirect("LoginTUNEADO.jsp");
 		%>
 		<form action="bitacoraS" method="post">
 			<input type = "submit" value = "Abrir Bitacora"><br>

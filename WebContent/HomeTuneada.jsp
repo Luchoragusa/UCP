@@ -172,7 +172,7 @@
                                         <a class="dropdown-item" href="settings.html"><i
                                                 class="ti-settings m-r-5 m-l-5"></i>Configuración</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="usted_esta_seguro.html">
+                                        <a class="dropdown-item" href="LoginTUNEADO.jsp">
                                             <i class="fa fa-power-off m-r-5 m-l-5"></i>Cerrar sesión</a>
                                     </div>
                                 </div>
@@ -180,19 +180,19 @@
                             <!-- End User Profile-->
                         </li>
 
-                        <!-- Entrar/salir de servicio-->
-                        <li class="p-15 m-t-10"><a href="bitacora.jsp"
+                        <!-- Bitacora del servicio-->
+                        <li class="p-15 m-t-10"><a href="BitacoraTuneado.jsp"
                                 class="btn d-block w-100 create-btn text-white no-block d-flex align-items-center"><i
-                                    class="fa fa-plus-square"></i> <span class="hide-menu m-l-5">Abrir bitacora</span> </a>
+                                    class="fa fa-plus-square"></i> <span class="hide-menu m-l-5">Panel Bitácora</span> </a>
                         </li>
                         <!-- Son todas las opciones del costado a la izq-->
 
-                        <li class="sidebar-item" style="border-top: 1px solid #c4c4c4"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="HomeTuneada.jsp" aria-expanded="false"><i class="mdi mdi-home"></i><span
                                     class="hide-menu">Home</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="registrarLugarRobo.jsp" aria-expanded="false"><i class="mdi mdi-pistol"></i><span
+                            href="registrarLugarRobo.jsp" aria-expanded="false"><i class="mdi mdi-bank"></i><span
                                 class="hide-menu">Robo</span></a>
                         </li>           
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
@@ -200,10 +200,18 @@
                                 <i class="mdi mdi-account-network"></i>
                                 <span class="hide-menu">Mi Perfil</span></a>
                         </li>
-                        <li class="sidebar-item" style="border-bottom: 1px solid #c4c4c4"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="aplicarSancion.jsp" aria-expanded="false"><i class="mdi mdi-cash-usd" ></i><span
                                 class="hide-menu">Sanciones</span></a>
-                        </li>                        
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                            href="RegistrarStockArmaTUNEADO.jsp" aria-expanded="false"><i class="mdi mdi-pistol" ></i><span
+                                class="hide-menu">Mis armas</span></a>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                            href="AltaIntegranteTuneado.jsp" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span
+                                class="hide-menu">Alta Integrante</span></a>
+                        </li>                              
 
                     </ul>
 

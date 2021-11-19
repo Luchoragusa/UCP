@@ -21,6 +21,6 @@ public class apelarS extends HttpServlet
 		
 		ds.apelar(s);
 		
-		response.sendRedirect("homeTest.jsp");
+		response.sendRedirect("HomeTuneada.jsp");
 	}
 }

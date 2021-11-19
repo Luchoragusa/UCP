@@ -1881,7 +1881,7 @@ progress {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #ffffff;
+  color: rgb(0, 0, 0);
   background-color: #ffffff; /*este es para todos los textbox*/
   background-clip: padding-box;
   border: 1px solid #e9ecef;
@@ -1917,8 +1917,8 @@ progress {
   cursor: pointer;
 }
 .form-control:focus {
-  color: #ffffff;
-  background-color: #ddd;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
   border-color: rgba(0, 0, 0, 0.25);
   outline: 0;
   -webkit-box-shadow: transparent;
@@ -1928,19 +1928,19 @@ progress {
   height: 1.5em;
 }
 .form-control::-webkit-input-placeholder {
-  color: #6c757d;
+  color: #ffffff;
   opacity: 1;
 }
 .form-control::-moz-placeholder {
-  color: #6c757d;
+  color: #ffffff;
   opacity: 1;
 }
 .form-control:-ms-input-placeholder {
-  color: #6c757d;
+  color: #ffffff;
   opacity: 1;
 }
 .form-control::-ms-input-placeholder {
-  color: #6c757d;
+  color: #ffffff;
   opacity: 1;
 }
 .form-control::placeholder {

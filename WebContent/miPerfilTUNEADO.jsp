@@ -7,7 +7,7 @@
 <%@page import="java.util.LinkedList"%>
 
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -314,22 +314,22 @@ ul {
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="HomeTuneada.jsp">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="../../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <img src="./assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
                             <!-- Light Logo icon -->
-                            <img src="../../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                            <img src="./assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="logo-text">
                             <!-- dark Logo text -->
-                            <img src="../../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                            <img src="./assets/images/logo-text.png" alt="homepage" class="dark-logo" />
                             <!-- Light Logo text -->
-                            <img src="../../assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                            <img src="./assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
                         </span>
                     </a>
                     <!-- ============================================================== -->
@@ -363,7 +363,7 @@ ul {
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../../assets/images/users/lucho.jpg" alt="user" class="rounded-circle" width="31">
+                                <img src="./assets/images/users/lucho.jpg" alt="user" class="rounded-circle" width="31">
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="miPerfilTUNEADO.jsp"><i class="ti-user m-r-5 m-l-5"></i>
@@ -395,7 +395,7 @@ ul {
                         <li>
                             <!-- User Profile-->
                             <div class="user-profile d-flex no-block dropdown m-t-20">
-                                <div class="user-pic"><img src="../../assets/images/users/lucho.jpg" alt="users"
+                                <div class="user-pic"><img src="./assets/images/users/lucho.jpg" alt="users"
                                         class="rounded-circle" width="40" /></div>
                                 <div class="user-content hide-menu m-l-10">
                                     <a href="#" class="" id="Userdd" role="button"
@@ -414,29 +414,37 @@ ul {
                                     </div>
                                 </div>
                             </div>
-                        <!-- Entrar/salir de servicio-->
-                        <li class="p-15 m-t-10"><a href="bitacora.jsp"
+                                                <!-- Bitacora del servicio-->
+                        <li class="p-15 m-t-10"><a href="BitacoraTuneado.jsp"
                                 class="btn d-block w-100 create-btn text-white no-block d-flex align-items-center"><i
-                                    class="fa fa-plus-square"></i> <span class="hide-menu m-l-5">Abrir bitacora</span> </a>
+                                    class="fa fa-plus-square"></i> <span class="hide-menu m-l-5">Panel Bitácora</span> </a>
                         </li>
                         <!-- Son todas las opciones del costado a la izq-->
 
-                        <li class="sidebar-item" style="border-top: 1px solid #c4c4c4"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="HomeTuneada.jsp" aria-expanded="false"><i class="mdi mdi-home"></i><span
                                     class="hide-menu">Home</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="registrarLugarRobo.jsp" aria-expanded="false"><i class="mdi mdi-pistol"></i><span
+                            href="registrarLugarRobo.jsp" aria-expanded="false"><i class="mdi mdi-bank"></i><span
                                 class="hide-menu">Robo</span></a>
                         </li>           
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="miPerfil.jsp" aria-expanded="false">
+                                href="miPerfilTUNEADO.jsp" aria-expanded="false">
                                 <i class="mdi mdi-account-network"></i>
                                 <span class="hide-menu">Mi Perfil</span></a>
                         </li>
-                        <li class="sidebar-item" style="border-bottom: 1px solid #c4c4c4"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="aplicarSancion.jsp" aria-expanded="false"><i class="mdi mdi-cash-usd" ></i><span
                                 class="hide-menu">Sanciones</span></a>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                            href="RegistrarStockArmaTUNEADO.jsp" aria-expanded="false"><i class="mdi mdi-pistol" ></i><span
+                                class="hide-menu">Mis armas</span></a>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                            href="AltaIntegranteTuneado.jsp" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span
+                                class="hide-menu">Alta Integrante</span></a>
                         </li>    
                     </ul>
 
@@ -462,7 +470,7 @@ ul {
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="HomeTuneada.jsp">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Library</li>
                                 </ol>
                             </nav>
@@ -496,22 +504,12 @@ ul {
                                         <span class="Error"></span>
                                     </div>
                                     <h4 class="card-title m-t-10"><%=i.getNombre() + " " + i.getApellido()%></h4>
-                                    <div class="row text-center justify-content-md-center">
-                                        <div class="col-4"><a href="javascript:void(0)" class="link"><i
-                                                    class="icon-people"></i>
-                                                <font class="font-medium">254</font>
-                                            </a></div>
-                                        <div class="col-4"><a href="javascript:void(0)" class="link"><i
-                                                    class="icon-picture"></i>
-                                                <font class="font-medium">54</font>
-                                            </a></div>
-                                    </div>
 
                             </div>                          
                             <div>
                                 <hr>
                             </div>
-                      <div class="card-body"> 
+                      <div class="card-body">                      
 						<h2 align="center">-- Sanciones --</h2>
 							<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
 								<tr bgcolor=blue>
@@ -547,110 +545,9 @@ ul {
 									}
 								%>
 							</table><br>
-                                <div class="map-box">
-                                    <iframe
-                                        src="https://www.google.com/maps?q=Rosario%2C%20Provincia%20de%20Santa%20Fe%2C%20Argentina&z=8&t=&ie=UTF8&output=embed"
-                                        width="100%" height="150" frameborder="0" style="border:0"
-                                        allowfullscreen></iframe>
-                                </div> <small class="text-muted p-t-30 db">Perfil social</small>
-                                <br />
-                            
-                                <a href="https://www.facebook.com/Luchito.sj">
-                                    <button class="btn btn-circle btn-secondary">
-                                        <i class="fab fa-facebook-f"></i>                                          
-                                    </button>
-                                </a>
-
-                                <a href="https://www.twitter.com/">
-                                    <button class="btn btn-circle btn-secondary">
-                                        <i class="fab fa-twitter"></i>                                          
-                                    </button>
-                                </a>                                                     
-
-                                <a href="https://www.youtube.com/">
-                                    <button class="btn btn-circle btn-secondary">
-                                        <i class="fab fa-youtube"></i>                                          
-                                    </button>
-                                </a>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <!-- Column -->
-                    <div class="col-lg-8 col-xlg-9 col-md-7">
-                        <div class="card">
-                            <div class="card-body">
-                                <form class="form-horizontal form-material mx-2">
-                                    <div class="form-group">
-                                        <label class="col-md-12">Nombre completo</label>
-                                        <div class="col-md-12">                                            
-                                            <div class="form-control form-control-line-nombrecompletoperfil">>
-                                            	<%=i.getNombre() + " " + i.getApellido() %>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="example-email" class="col-md-12">Rango</label>
-                                        <div class="col-md-12"> 
-                                            <div class="form-control form-control-line-nombrecompletoperfil">>
-                                            	<%=i.getRanInt().getRango().getNomRango() %>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Fecha Ultimo Ascenso</label>
-                                        <div class="col-md-12">
-                                            <div class="form-control form-control-line-nombrecompletoperfil">>
-                                            	<%=i.getRanInt().getFecha_desde() %>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Discord ID</label>
-                                        <div class="col-md-12">
-                                            <div class="form-control form-control-line-nombrecompletoperfil">>
-                                            	<%=i.getDiscordId() %>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Steam Hex</label>
-                                        <div class="col-md-12">
-                                            <div class="form-control form-control-line-nombrecompletoperfil">>
-                                            	<%=i.getSteamHex() %>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Nombre Usuario</label>
-                                        <div class="col-md-12">
-                                            <div class="form-control form-control-line-nombrecompletoperfil">>
-                                            	<%=i.getUsuario() %>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Sub-Division</label>
-                                        <div class="col-md-12">
-                                            <div class="form-control form-control-line-nombrecompletoperfil">>
-                                            	<% 	
-													if(i.getSub() != null)
-													{
-														out.println("Nombre sub-division: " + i.getSub().getDescripcion());  %> <br> <%
-														out.println("Rango sub-division: " + i.getSub().getRanSub().get(0).getNombreRangoSub()); %> <br> <%
-														out.println("Fecha ultimo ascenso:" + i.getSub().getRanSub().get(0).getRsi().getFecha_desde()); %> <br> <%
-													}  
-													else 
-														out.println("No tiene subdivision");
-												%>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-12">Bitacoras</label>
-                                        <div class="col-sm-12">
-                                            <table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
+							
+							<h2 align="center">-- Bitacoras --</h2>
+							<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
 												<tr bgcolor=grey>
 													<th>Hora Inicio</th>
 													<th>Fecha Inicio</th>
@@ -685,43 +582,150 @@ ul {
 													}
 												%>
 											</table><br>
-                                        </div>
-                                    </div>
-                                    <h3> Horas totales:</h3> <% out.println(contadorHorasJugadas); %> </h3>
-									<h3>Progreso de la semana:</h3> <progress align="center" id="horasSemana" 
-									max="720"
-									value="
-									<% 
-									out.print(contadorHorasJugadas.getHour()*60 + contadorHorasJugadas.getMinute());
-									%>"></progress>
+									<label class="col-md-12" style="color: blue">
+                                    	<p style = "font-family:themify;font-size:19px;font-style:normal;"> Horas totales:</p> 
+                                    </label>
+                                    <p style = "font-family:themify;font-size:19px;font-style:normal;">
+                                    	<% out.println(contadorHorasJugadas); %>
+                                    </p>
+                                    
+                                    <label class="col-md-12" style="color: blue">
+										<p style = "font-family:themify;font-size:19px;font-style:normal;">Progreso de la semana:</p> 
+									</label>
+									<progress align="center" id="horasSemana" 
+										max="720"
+										value="
+												<% 
+												out.print(contadorHorasJugadas.getHour()*60 + contadorHorasJugadas.getMinute());
+												%>">
+									</progress>
 									
 									<% 
 										DataRobo dr = new DataRobo();
 										LinkedList<Integer> por = dr.getPorcentaje(i);
 									%>
-									<h3>Porcentaje de robos ganados:</h3> <progress align="center" id="robos" 
-									max="<%=por.get(0)%>"
-									value="
-									<%=por.get(1)%>"></progress><br><br>
+									<label class="col-md-12" style="color: blue">
+										<p style = "font-family:themify;font-size:19px;font-style:normal;">Porcentaje de robos ganados:</p>
+									</label>
+									
+									<progress align="center" id="robos" 
+										max="<%=por.get(0)%>"
+										value="<%=por.get(1)%>">
+									</progress><br><br>
+                                <div class="map-box">
+                                    <iframe
+                                        src="https://www.google.com/maps?q=Rosario%2C%20Provincia%20de%20Santa%20Fe%2C%20Argentina&z=8&t=&ie=UTF8&output=embed"
+                                        width="100%" height="150" frameborder="0" style="border:0"
+                                        allowfullscreen></iframe>
+                                </div>                                 
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-8 col-xlg-9 col-md-7">
+                        <div class="card">
+                            <div class="card-body">
+                                <form class="form-horizontal form-material mx-2">
                                     <div class="form-group">
-                                        <div class="col-sm-12">                                       
-                                            <input type="submit" onclick = "mostrarForm()"  value="Editar datos personales" id="btn1">
-                                                <form action="editarPerfilS" method="post" id="editarDatos" hidden="">
+                                        <label class="col-md-12" style="color: blue">
+                                        	<p style = "font-family:themify;font-size:19px;font-style:normal;">Nombre completo</p>
+                                        </label>
+                                        <div class="col-md-12">                                            
+                                            <div class="form-control form-control-line">
+                                            	<%=i.getNombre() + " " + i.getApellido() %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                     	<label class="col-md-12" style="color: blue">
+                                        	<p style = "font-family:themify;font-size:19px;font-style:normal;">Rango</p>
+                                        </label>
+                                        <div class="col-md-12"> 
+                                            <div class="form-control form-control-line">
+                                            	<%=i.getRanInt().getRango().getNomRango() %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12" style="color: blue">
+                                        	<p style = "font-family:themify;font-size:19px;font-style:normal;">Fecha Ultimo Ascenso</p>
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="form-control form-control-line">
+                                            	<%=i.getRanInt().getFecha_desde() %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12" style="color: blue">
+                                       		<p style = "font-family:themify;font-size:19px;font-style:normal;">Discord ID</p>
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="form-control form-control-line">
+                                            	<%=i.getDiscordId() %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12" style="color: blue">
+                                        	<p style = "font-family:themify;font-size:19px;font-style:normal;">Steam Hex</p>
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="form-control form-control-line">
+                                            	<%=i.getSteamHex() %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12" style="color: blue">
+                                        	<p style = "font-family:themify;font-size:19px;font-style:normal;">Nombre Usuario</p>
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="form-control form-control-line">
+                                            	<%=i.getUsuario() %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12" style="color: blue">
+                                        	<p style = "font-family:themify;font-size:19px;font-style:normal;">Sub-Division</p>
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="form-control form-control-line">
+                                            	<% 	
+													if(i.getSub() != null)
+													{
+														out.println("Nombre sub-division: " + i.getSub().getDescripcion());  %> <br> <%
+														out.println("Rango sub-division: " + i.getSub().getRanSub().get(0).getNombreRangoSub()); %> <br> <%
+														out.println("Fecha ultimo ascenso:" + i.getSub().getRanSub().get(0).getRsi().getFecha_desde()); %> <br> <%
+													}  
+													else 
+														out.println("No tiene subdivision");
+												%>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12" style="color: blue">
+                                        	<p style = "font-family:themify;font-size:19px;font-style:normal;">Bitacoras</p>
+                                        </label>
+                                        <div class="col-sm-12">
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">                                    
+                                        <div class="col-sm-12">   
+                                        <input type="submit" onclick = "mostrarForm()"  value="Editar datos personales" id="btn1">                                                                                
+                                            <form action="editarPerfilS" method="post" id="editarDatos" hidden="">
 												Nombre: <input type = "text" name = "nombre" value="<%=i.getNombre()%>"Required><br><br>
 												Apellido: <input type = "text" name = "apellido" value="<%=i.getApellido()%>"Required><br><br>
 												Discord Id: <input type = "text" name = "discordId" value="<%=i.getDiscordId()%>"Required><br><br>
 												Usuario: <input type = "text" name = "usuario" value="<%=i.getUsuario()%>"Required><br><br>
 												Contrasenia: <input type = "password" name = "pw" placeholder="Obligatorio" Required><br><br>
 												<input type = "submit" value = "Guardar cambios" ><br><br>
-											</form>
-											
-											<script type="text/javascript">
-												function mostrarForm()
-												{
-													document.getElementById('editarDatos').hidden=false;
-													document.getElementById('btn1').hidden=true;
-												}
-											</script>                                        
+											</form>											                                     
                                         </div>                                        
                                     </div>                                    
                                 </form>
@@ -768,16 +772,23 @@ ul {
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript">
+		function mostrarForm()
+		{
+			document.getElementById('editarDatos').hidden=false;
+			document.getElementById('btn1').hidden=true;
+		}
+	</script>  
+    <script src="./assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../dist/js/app-style-switcher.js"></script>
+    <script src="./assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./dist/js/app-style-switcher.js"></script>
     <!--Wave Effects -->
-    <script src="../../dist/js/waves.js"></script>
+    <script src="./dist/js/waves.js"></script>
     <!--Menu sidebar -->
-    <script src="../../dist/js/sidebarmenu.js"></script>
+    <script src="./dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
-    <script src="../../dist/js/custom.js"></script>
+    <script src="./dist/js/custom.js"></script>
 </body>
 
 </html>

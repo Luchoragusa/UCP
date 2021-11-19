@@ -35,7 +35,7 @@ public class registrarStockArmaS extends HttpServlet {
 		//Insert new Stockarma
 		dssarm.add(sarm, arm);
 		
-		response.sendRedirect("registrarStockArma.jsp");
+		response.sendRedirect("RegistrarStockArmaTUNEADO.jsp");
 	}
 
 }

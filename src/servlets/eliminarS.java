@@ -21,6 +21,6 @@ public class eliminarS extends HttpServlet
 		
 		ds.delete(s);
 		
-		response.sendRedirect("homeTest.jsp");
+		response.sendRedirect("HomeTuneada.jsp");
 	}
 }

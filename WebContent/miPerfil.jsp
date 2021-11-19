@@ -14,7 +14,7 @@
 	<body>
 		<%
 			if (session.getAttribute("id") == null)
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("LoginTUNEADO.jsp");
 		%>
 		
 		<b><i>[PSG] Bienvenido a su perfil</i></b>

@@ -237,7 +237,7 @@
 					</form>
 			
 			
-					<form action="aplicarSancion.jsp">
+					<form action="AplicarSancionTuneado.jsp">
 						<input type = "submit" value = "Aplicar Sancion"><br><br>
 					</form>
 						

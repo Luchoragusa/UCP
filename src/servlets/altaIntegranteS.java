@@ -43,6 +43,6 @@ public class altaIntegranteS extends HttpServlet
 		
 		di.addRangoIntegrante(ranI);
 		
-		response.sendRedirect("homeTest.jsp");
+		response.sendRedirect("HomeTuneada.jsp");
 	}
 }

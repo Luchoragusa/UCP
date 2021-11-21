@@ -50,7 +50,7 @@ public class cerrarBitacoraS extends HttpServlet
 		}
 		else
 		{
-			response.sendRedirect("bitacora.jsp");
+			response.sendRedirect("BitacoraTuneado.jsp");
 		}
 	}
 }

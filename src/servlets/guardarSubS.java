@@ -31,6 +31,6 @@ public class guardarSubS extends HttpServlet
 		
 		DataRanSub_Integrante drs = new DataRanSub_Integrante();
 		drs.add(rs);
-		response.sendRedirect("homeTest.jsp");
+		response.sendRedirect("HomeTuneada.jsp");
 	}
 }

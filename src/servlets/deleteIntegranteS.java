@@ -49,7 +49,7 @@ public class deleteIntegranteS extends HttpServlet  {
 		//deleteIntegrante
 		di.delete(inte);
 		
-		response.sendRedirect("homeTest.jsp");
+		response.sendRedirect("HomeTuneada.jsp");
 	}
 
 

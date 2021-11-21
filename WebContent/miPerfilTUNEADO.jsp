@@ -414,7 +414,8 @@ ul {
                                     </div>
                                 </div>
                             </div>
-                                                <!-- Bitacora del servicio-->
+                            
+                        <!-- Bitacora del servicio-->
                         <li class="p-15 m-t-10"><a href="BitacoraTuneado.jsp"
                                 class="btn d-block w-100 create-btn text-white no-block d-flex align-items-center"><i
                                     class="fa fa-plus-square"></i> <span class="hide-menu m-l-5">Panel Bitácora</span> </a>
@@ -445,7 +446,11 @@ ul {
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="AltaIntegranteTuneado.jsp" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span
                                 class="hide-menu">Alta Integrante</span></a>
-                        </li>    
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                            href="GestionInt_1.jsp" aria-expanded="false"><i class="mdi mdi-account-check"></i><span
+                                class="hide-menu">Gestion Integrante</span></a>
+                        </li>      
                     </ul>
 
                 </nav>

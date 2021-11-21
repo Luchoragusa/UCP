@@ -211,7 +211,11 @@
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="AltaIntegranteTuneado.jsp" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span
                                 class="hide-menu">Alta Integrante</span></a>
-                        </li>                              
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                            href="GestionInt_1.jsp" aria-expanded="false"><i class="mdi mdi-account-check"></i><span
+                                class="hide-menu">Gestion Integrante</span></a>
+                        </li>                                
 
                     </ul>
 

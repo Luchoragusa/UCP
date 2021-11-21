@@ -48,13 +48,13 @@
                     <div class="d-flex flex-column align-items-center text-center">
 
                     <!-- Imagen para subir INICIO-->
-                    <img src="./assets/images/users/lucho.jpg" alt="user" class="rounded-circle" width="175">
+                    <img src="../../assets/images/logo-light-icon.png" alt="Preview Image" width="200" height="200"/>
                     <!-- Imagen para subir FIN-->
 
                     <div class="mt-3">
-                        <h4><%=i.getNombre() + " " + i.getApellido() %></h4>
-                        <p class="text-secondary mb-1"><%=i.getRanInt().getRango().getNomRango() %></p>
-                        <p class="text-muted font-size-sm">Rosario, ARG</p>
+                        <h4>ALTA INTEGRANTE</h4>
+                        <p class="text-secondary mb-1">Ingrese los datos requeridos para dar de alta un nuevo integrante en el sistema.</p>
+                        <p class="text-muted font-size-sm">[UCP-PSG] </p>
                         <!--<button class="btn btn-primary">Follow</button>
                         <button class="btn btn-outline-primary">Message</button>-->
                         

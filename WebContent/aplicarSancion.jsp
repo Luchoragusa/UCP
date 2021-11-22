@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page import="data.*"%>
@@ -9,7 +10,7 @@
 		<meta charset="ISO-8859-1">
 		<title>[PSG]Aplicar Sancion</title>
 	</head>
-	<body>
+	<body> 
 		<%
 			if (session.getAttribute("id") == null)
 			response.sendRedirect("LoginTUNEADO.jsp");

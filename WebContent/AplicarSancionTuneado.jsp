@@ -46,7 +46,6 @@
 		if (session.getAttribute("id") == null)
 		response.sendRedirect("LoginTUNEADO.jsp");
 		Integrante i = new Integrante();
-		i.setIdIntegrante((Integer)application.getAttribute("idApp"));
 		DataIntegrante di = new DataIntegrante();
 		i=di.getByIdIntegrante(i);
 	%>
@@ -127,12 +126,14 @@
 
 		</br></br>
         <div class="containerHome">
-            <a button type="button" class="btn btn-outline-secondary" href="HomeTuneada.jsp">Home</a>
+            <a button type="button" class="btn btn-outline-secondary" href="GestionInt_2.jsp">Volver atrás</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a button type="button" class="btn btn-outline-danger" href="HomeTuneada.jsp">Home</a>
         </div>
         
         
             <footer class="footer text-center">
-                Panel de la faccion de Prosegur en [BA:RP] ||
+                Panel de la faccion de Prosegur en [BA:RP] || 
                     <a href="https://github.com/Luchoragusa">Luciano Ragusa</a> || 
                     <a href="https://github.com/JuaniPucheta">Juan Ignacio Pucheta</a>.|| 
                     <a href="https://github.com/CamiloPereyra">Camilo Pereyra</a>.

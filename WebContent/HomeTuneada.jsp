@@ -122,19 +122,9 @@
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="./assets/images/users/lucho.jpg" alt="user" class="rounded-circle" width="31">
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="miPerfilTUNEADO.jsp"><i class="ti-user m-r-5 m-l-5"></i>
-                                    Mi perfil</a>
-                                <a class="dropdown-item" href="armasV.html"><i class="ti-wallet m-r-5 m-l-5"></i>
-                                    Mi inventario</a>
-                                <a class="dropdown-item" href="messagebox.html"><i class="ti-email m-r-5 m-l-5"></i>
-                                    Casilla de mensajes</a>
-                            </ul>
-                        </li>
+                        <ul class="navbar-nav ml-auto">
+                            <li><a href="LoginTUNEADO.jsp" class="nav-item nav-link active">Cerrar sesión</a></li>
+                        </ul>  
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
@@ -201,7 +191,7 @@
                                 <span class="hide-menu">Mi Perfil</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="aplicarSancion.jsp" aria-expanded="false"><i class="mdi mdi-cash-usd" ></i><span
+                            href="aplicarSancion.jsp" aria-expanded="false"><i class="mdi mdi-note-text" ></i><span
                                 class="hide-menu">Sanciones</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"

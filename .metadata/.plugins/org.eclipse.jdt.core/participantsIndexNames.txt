@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+C:\Users\x\Documents\GitHub\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4109653164.index
+\web-ucp-psg\src
+C:\Users\x\Documents\GitHub\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2255824848.index
+\jspTarde\src

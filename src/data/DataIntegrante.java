@@ -27,7 +27,7 @@ import logic.LlaveMaestra;
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idIntegrante,nombre,apellido,discordId,steamHex, i.idRol, r.descRol\r\n"
+					"select idIntegrante,nombre,apellido,discordId,steamHex, i.idRol, r.descripcion\r\n"
 					+ " from integrante i\r\n"
 					+ " inner join rol r\r\n"
 					+ "	on i.idRol = r.idRol\r\n"
@@ -37,6 +37,7 @@ import logic.LlaveMaestra;
 			stmt.setString(2, inte.getPw());
 			stmt.setString(3, LlaveMaestra.getLlave());
 			rs=stmt.executeQuery();
+			
 			if(rs!=null && rs.next()) {
 				i=new Integrante();
 				rolcito = new Rol();
@@ -78,7 +79,7 @@ import logic.LlaveMaestra;
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idIntegrante,nombre,apellido,discordId,steamHex from integrante where usuario=? and pw = AES_ENCRYPT(?,?)"
+					"select * from integrante where usuario=? and pw = AES_ENCRYPT(?,?)"
 					);
 			stmt.setString(1, inte.getUsuario());
 			stmt.setString(2, inte.getPw());

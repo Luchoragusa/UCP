@@ -4,14 +4,14 @@ import java.sql.*;
 
 public class DbConnector {
 
-private static DbConnector instancia;
+	private static DbConnector instancia;
 	
 	private String driver="com.mysql.cj.jdbc.Driver";
-	private String host="sql.uruguayo.me"; // "127.0.0.1"
+	private String host="localhost"; // "127.0.0.1"
 	private String port="3306";
-	private String user="psg";
-	private String password="nXY7DZvjCHHj5CBH";
-	private String db="psg";
+	private String user="ucp-psg";
+	private String password="bocajuniors";
+	private String db="ucp-psg";
 	private int conectados=0;
 	private Connection conn=null;
 	

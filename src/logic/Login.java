@@ -43,10 +43,10 @@ public class Login
 		return di.getAll();
 	}
 
-	public LinkedList<Integrante> getByApellido(Integrante I)
-	{
-		return di.getByApellido(I);
-	}
+	//public LinkedList<Integrante> getByApellido(Integrante I)
+	//{
+	//	return di.getByApellido(I);
+	//}
 
 	public void add(Integrante I)
 	{

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<item key="GitSelectRepositoryPage.lastRepository" value="C:\Users\x\git\UCP\.git"/>
+	<list key="EGit.KnownHosts">
+		<item value="git.eclipse.org"/>
+		<item value="bitbucket.org"/>
+		<item value="github.com"/>
+	</list>
+	<list key="RepositorySelectionPage.UsedUris">
+		<item value="https://github.com/Luchoragusa/UCP.git"/>
+	</list>
 	<section name="GitImportWizard">
 	</section>
 </section>

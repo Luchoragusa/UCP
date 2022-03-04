@@ -27,7 +27,7 @@ import logic.LlaveMaestra;
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idIntegrante,nombre,apellido,discordId,steamHex, i.idRol, r.descripcion\r\n"
+					"select idIntegrante,nombre,apellido,discordId,steamHex, i.idRol, r.descRol\r\n"
 					+ " from integrante i\r\n"
 					+ " inner join rol r\r\n"
 					+ "	on i.idRol = r.idRol\r\n"

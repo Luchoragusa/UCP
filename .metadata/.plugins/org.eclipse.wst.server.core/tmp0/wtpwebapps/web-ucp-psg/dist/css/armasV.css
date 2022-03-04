@@ -1,0 +1,166 @@
+body {
+  font-size: 20px;
+  font-family: 'Rajdhani', sans-serif;
+  background: #010A13;
+}
+
+.madeBy {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  margin-bottom: 69px;
+  text-align: center;
+  color: #fff;
+  font-family: Helvetica;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+/*//////////////////////////////////////////////////////*/
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  text-align: center;
+}
+
+.killFeed {
+  margin-top: 15px;
+  min-width: 100px;
+  position: relative;
+  display: inline-block;
+  height: 40px;
+  background: rgba(0,0,0,0.5);
+  border: 2px #ffffff solid;
+  border-radius: 6px;
+  padding: 0 10px;
+  transform: scale(1);
+  transition: .1s;
+}
+
+.killFeed:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 10px rgba(111, 0, 0, 0.5);
+}
+
+.killer {
+  color: #ECCE51;
+  line-height: 40px;
+  display: inline-block;
+  margin-right: 10px;
+  float: left;
+}
+
+.weapon {
+  float: left;
+}
+
+.weapon.m4a1 {
+    margin-top: 8px;
+    height: 25px;
+    width: 80px;
+    background: url(https://tools.dathost.net/killfeed-generator/sprites/m4a1.png) no-repeat;
+    background-size: cover;
+    float: left;
+  }
+
+  .weapon.ak47 {
+    margin-top: 8px;
+    height: 25px;
+    width: 80px;
+    background: url(https://tools.dathost.net/killfeed-generator/sprites/ak47.png) no-repeat;
+    background-size: cover;
+    float: left;
+  }
+
+.weapon.appistol {
+  margin-top: 8px;
+  height: 25px;
+  width: 80px;
+  background: url(https://tools.dathost.net/killfeed-generator/sprites/usp_silencer.png) no-repeat;
+  background-size: cover;
+  float: left;
+}
+
+.weapon.mag7 {
+    margin-top: 8px;
+    height: 25px;
+    width: 80px;
+    background: url(https://tools.dathost.net/killfeed-generator/sprites/mag7.png) no-repeat;
+    background-size: cover;
+    float: left;
+  }
+
+.weapon.awp {
+  margin-top: 8px;
+  height: 30px;
+  width: 100px;
+  background: url(https://tools.dathost.net/killfeed-generator/sprites/awp.png) no-repeat;
+  background-size: cover;
+  float: left;
+}
+
+.weapon.glock {
+    margin-top: 8px;
+    height: 25px;
+    width: 55px;
+    background: url(https://tools.dathost.net/killfeed-generator/sprites/glock.png) no-repeat;
+    background-size: cover;
+    float: left;
+  }
+
+.weapon.deagle {
+    margin-top: 8px;
+    height: 27px;
+    width: 49px;
+    background: url(https://tools.dathost.net/killfeed-generator/sprites/deagle.png) no-repeat;
+    background-size: cover;
+    float: left;
+  }
+
+  .weapon.g3sg1 {
+    margin-top: 8px;
+    height: 20px;
+    width: 71px;
+    background: url(https://tools.dathost.net/killfeed-generator/sprites/g3sg1.png) no-repeat;
+    background-size: cover;
+    float: left;
+  }
+
+.headshot.true {
+  margin: 8px 0px 0px 10px;
+  height: 22px;
+  width: 22px;
+  background-image: url(https://www.steamid.co.uk/images/headshot.png);
+  background-size: cover;
+  float: left;
+}
+
+.wallbang {
+  float: left;
+}
+
+.wallbang.true {
+  margin: 8px 0px 0px 10px;
+  height: 22px;
+  width: 22px;
+  background: url(http://i.imgur.com/FmmFb28.png);
+  background-size: cover;
+  float: left;
+}
+
+.headshot {
+  float: left;
+}
+
+.killed {
+  margin-left: 10px;
+  color: #71A6FF;
+  line-height: 40px;
+  display: inline-block;
+  float: left;
+}

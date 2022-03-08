@@ -7,7 +7,7 @@ public class DbConnector {
 	private static DbConnector instancia;
 	
 	private String driver="com.mysql.cj.jdbc.Driver";
-	private String host="fincafivem.myddns.me"; // "127.0.0.1"
+	private String host="luchor.myddns.me"; // "127.0.0.1"
 	private String port="3306";
 	private String user="java";
 	private String password="java";

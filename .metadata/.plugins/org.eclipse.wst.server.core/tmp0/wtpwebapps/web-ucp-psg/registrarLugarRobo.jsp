@@ -9,7 +9,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>[PSG] Registrar lugar Robo</title>
-
+<script src = "jquery-3.6.0,js"></script>
 </head>
 <body>
 	<% 
@@ -21,26 +21,43 @@
     	LinkedList<Integrante> lista = di.getAll();
 	%>
 		
-<form action="registrarLugarRoboS?sizeLista=<%=lista.size()%>" method="post">
+<form action="registrarLugarRoboS?sizeLista=<%=lista.size()%>" method="post"> 
 	
 	Seleccione Lugar de robo:
 	 <select name="lugarRobo" > 
 	 
 		<%
 			for(LugarRobo i : lugares) {
-		%>
-	    <option value="<%=i.getIdLugarRobo()%>"> 
-			<% out.print(i.getLugarRobo()); %>
-	    </option>
-	    
+		%>		
+			    <option value="<%=i.getIdLugarRobo()%>"> <!-- No logro conservar la id fuera del for-->
+					<% out.print(i.getLugarRobo()); %>
+			    </option>
 	    <%
 			}
+			lr = dlr.getById(i.getIdLugarRobo);
 		%>
 	</select><br><br>
 	
   	<%
-  		out.print("Seleccione participantes Max: NI IDEA COMO TRAER EL MAXIMO DE CADA LUGAR ROBO");
-	%><br>
+  		out.print("Seleccione participantes Max: NI IDEA COMO TRAER EL MAXIMO DE CADA LUGAR ROBO");	
+	%>
+	<div class = "container">
+		<form class = "MaxMin">
+			<p>
+				Maximo de integrantes:
+									<%
+										out.print(lr.getMaxIntegrantes());
+									%>
+				Minimo de integrantes:
+									<%
+										out.print(lr.getMinIntegrantes());
+									%>
+		</form>
+		<button id="botonEleccion" onclick="ShowHideElement()">Mostrar Max/Min</button>
+	</div>
+	
+	
+	<br>
 	
 	<%
 	for(int c=0; c<=2; c++) { // repite el combo box, lo deberia hacer en base a la cantidad integrantes q participaron
@@ -71,7 +88,24 @@
 		<input type = "submit" value = "Guardar" Required><br>
 	</form>
 	
-
+<!--  Scripts -->
+	<script type="text/javascript">
+	
+		$(".myForm").hide();
+		
+		function ShowHideElement(){
+			let text = "";
+			
+			if($("#MaxMin").text() === "Mostrar Max/Min"){
+				$(".myForm").show();
+			}else{
+				$(".myForm").hide();
+				text = "Mostrar Max/Min";
+			}
+			
+			$("#MaxMin").html();
+		}
+	</script>
 
 </body>
 </html>

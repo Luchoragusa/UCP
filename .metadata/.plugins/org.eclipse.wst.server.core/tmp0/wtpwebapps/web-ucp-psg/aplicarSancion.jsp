@@ -14,8 +14,10 @@
 		<%
 			if (session.getAttribute("id") == null)
 			response.sendRedirect("LoginTUNEADO.jsp");
+		
 			Integrante i = new Integrante();
 			i.setIdIntegrante((Integer)application.getAttribute("idApp"));
+			
 			DataIntegrante di = new DataIntegrante();
 			i=di.getByIdIntegrante(i);
 		%>

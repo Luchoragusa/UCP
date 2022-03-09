@@ -32,16 +32,12 @@
 </head>
 
 <body>
-		<%
-			if (session.getAttribute("id") == null)
-				response.sendRedirect("LoginTUNEADO.jsp");
-		%>
-		
 		<% 
-			DataIntegrante di = new DataIntegrante();
 			Integrante i = new Integrante();
-			i.setIdIntegrante((int)session.getAttribute("id"));
-			i = di.getByIdIntegrante(i);
+			i.setIdIntegrante(Integer.parseInt(request.getParameter("id")));
+			application.setAttribute("idApp", i.getIdIntegrante());
+			DataIntegrante di = new DataIntegrante();
+			i=di.getByIdIntegrante(i);
 		%>
     <div class="container">
         <div class="main-body">
@@ -63,7 +59,7 @@
                     <!-- Imagen para subir FIN-->
 
                     <div class="mt-3">
-                        <h4>ALTA INTEGRANTE</h4>
+                        <h4>GESTION INTEGRANTE</h4>
                         <p class="text-secondary mb-1">Menu de Gestion de integrante.</p>
                         <p class="text-muted font-size-sm">[UCP-PSG] </p>
                         <!--<button class="btn btn-primary">Follow</button>
@@ -75,9 +71,13 @@
                 </div>
                 
             </div>
+            		
+            
             <div class="col-md-8">
                 <div class="card mb-3">
                 <div class="card-body">
+          		  <form action="editarPerfilS?idInte=<%=i.getIdIntegrante()%>" method="post">      
+          		  
                     <div class="row">
                     <div class="col-sm-3">
                         <h6 class="mb-0">Nombre</h6>
@@ -128,8 +128,8 @@
                         <h6 class="mb-0">Contraseña</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        <input type = "submit" onclick = "mostrarForm()" value = "Editar PW" id="btn1"><br><br>
-                        <h4 id="lbl1" hidden="">Contrasenia:</h4><input type = "password" id="txt1" name = "pw" hidden="" placeholder="Obligatorio"><br><br>
+                        <input type = "submit" class="btn btn-warning" onclick = "mostrarForm()" value = "Editar PW" id="btn1">
+                        <h4 id="lbl1" hidden="">Contrasenia:</h4><input type = "password" id="txt1" name = "pw" hidden="" placeholder="Obligatorio">
                     </div>
                     </div>
                     <hr>
@@ -182,6 +182,8 @@
 						</select><br><br>
                     </div>
                     </div>                    																	
+					                    <hr>
+					</form>
 					
 					<script type="text/javascript">
 						function mostrarForm()
@@ -193,8 +195,15 @@
 						}
 					</script>	
 					
-					<input type = "submit" onclick = "mostrarFormSub()" value = "Editar Sub-division" id="btn2"><br><br>
-					
+				<div class="row">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Sub-Division</h6>
+                    </div>
+	                    <div class="col-sm-9 text-secondary">
+							<input type = "submit" class="btn btn-warning" onclick = "mostrarFormSub()" value = "Editar Sub-division" id="btn2"><br><br>
+						</div><hr>&nbsp;&nbsp;
+                </div>  
+				
 					<script type="text/javascript">
 						function mostrarFormSub()
 						{
@@ -236,18 +245,17 @@
 						<input type = "submit" value = "Asignar Rango Sub division"><br><br>
 					</form>
 			
-			
+			<div style="text-align:center">
 					<form action="AplicarSancionTuneado.jsp">
-						<input type = "submit" value = "Aplicar Sancion"><br><br>
+						<input type = "submit" class="btn btn-info" value = "Aplicar Sancion"><br><br>
 					</form>
 						
 					<form action="deleteIntegranteS?idInte=<%=i.getIdIntegrante()%>" method="post">
-						<input type = "submit" value = "Eliminar" ><br>
+						<input type = "submit" class="btn btn-danger" value = "Eliminar" ><br>
 					</form>
-					
-					</br>
-					<input type = "submit" value = "Guardar cambios" ><br><br>
 
+					<br><input type = "submit" class="btn btn-success" value = "Guardar cambios" style="width: 300px;"></br>
+			</div>
                 </div>
                 </div>
                 

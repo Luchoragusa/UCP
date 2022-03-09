@@ -39,7 +39,7 @@
                     <div class="table-responsive">
                         <table class="table user-list">
                             <thead>
-                                <tr>
+                                <tr style="font-size:100%; background-color:#FFB731; border: 1px solid black; above=10">
 	                                <th>Usuario</th>
 	                                <th>Rango</th>
 	                                <th>Fecha ultimo ascenso</th>
@@ -62,11 +62,15 @@
                                         <span class="user-subhead">Usuario/Admin</span>
                                     </td>
                                     <td>
-                                    	<span class="label label-info"><%=i.getRanInt().getRango().getNomRango() %> </span>                                    	
+                                    	<span class="label label-info" style="font-size:100%">
+                                    	<%=i.getRanInt().getRango().getNomRango() %> 
+                                    	</span>                                    	
                                     </td>
-                                    <td class="text-center"><%=i.getRanInt().getFecha_desde() %></td>
+                                    <td class="text-center" style="font-size:100%">
+                                    	<b><%=i.getRanInt().getFecha_desde() %></b>
+                                    </td>
                                     <td>
-                                    	<span class="label label-danger">
+                                    	<span class="label label-danger" style="font-size:100%">
 	                                    	<%
 												String nSub = i.getSub().getDescripcion();
 												if(nSub != null)
@@ -76,7 +80,7 @@
 											%> 
 										</span>                                    	
                                     </td>
-                                    <td style="width: 20%;"> <%=i.getDiscordId() %> </td>
+                                    <td style="width: 20%; font-size:100%"><b><%=i.getDiscordId() %></b></td>
                                 </tr>
             <%
 				}

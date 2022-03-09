@@ -17,6 +17,13 @@
     <link href="./dist/css/style.min.css" rel="stylesheet">
     <link href="./dist/css/entrarsalir.css" rel="stylesheet">
     <title>[PSG] Alta Integrante</title>
+    <style type="text/css">     
+		.form {
+		        text-align: right;
+    margin: auto;
+    display: table;
+		    }
+    </style>
 </head>
 
 <body>
@@ -42,37 +49,29 @@
             </nav>
             <!-- /Breadcrumb -->    
             <div class="row gutters-sm">
-            <div class="col-md-4 mb-3">
                 <div class="card">
                 <div class="card-body">
                     <div class="d-flex flex-column align-items-center text-center">
 
-                    <!-- Imagen para subir INICIO-->
-                    <img src="../../assets/images/logo-light-icon.png" alt="Preview Image" width="200" height="200"/>
-                    <!-- Imagen para subir FIN-->
+                    <img src="./assets/images/logo-light-icon.png" alt="Preview Image" width="200" height="200"/>
 
                     <div class="mt-3">
                         <h4>ALTA INTEGRANTE</h4>
                         <p class="text-secondary mb-1">Ingrese los datos requeridos para dar de alta un nuevo integrante en el sistema.</p>
-                        <p class="text-muted font-size-sm">[UCP-PSG] </p>
-                        <!--<button class="btn btn-primary">Follow</button>
-                        <button class="btn btn-outline-primary">Message</button>-->
-                        
+                        <p class="text-muted font-size-sm">[UCP-PSG] </p>                        
                     </div>
                     </div>
                 </div>
                 </div>
-                
-            </div>
             <form action="altaIntegranteS" method="post">
-                <div class="col-md-8">
-                	<div class="card mb-3">
-                		<div class="card-body">
-                    		<div class="row">
-                    			<div class="col-sm-3">
-                        			<h6 class="mb-0">Nombre</h6>
-                    			</div>
-                    			<div class="col-sm-9 text-secondary">
+	            <div class="col-md-6">
+	                <div class="card mb-3">
+	                	<div class="card-body">
+	                    	<div class="row">
+	                    		<div class="col-sm-3">
+	                        		<h6 class="mb-0">Nombre</h6>
+	                    		</div>
+                    			<div class="col-sm-5 text-secondary">
                         			<input type = "text" name = "nombre" Required><br><br>
                     			</div>
                     		</div>
@@ -83,7 +82,7 @@
                         		<div class="col-sm-3">
                             		<h6 class="mb-0">Apellido</h6>
                         		</div>
-                        		<div class="col-sm-9 text-secondary">
+                        		<div class="col-sm-5 text-secondary">
                             		<input type="text" name = "apellido" Required><br><br>
                         		</div>
                         	</div>
@@ -94,7 +93,7 @@
                         		<div class="col-sm-3">
                             		<h6 class="mb-0">DiscordID</h6>
                         		</div>
-                       			<div class="col-sm-9 text-secondary">
+                       			<div class="col-sm-5 text-secondary">
                             		<input type="text" name = "dsId" Required><br><br>
                         		</div>
                         	</div>
@@ -105,7 +104,7 @@
                         		<div class="col-sm-3">
                             		<h6 class="mb-0">SteamHex</h6>
                         		</div>
-                        		<div class="col-sm-9 text-secondary">
+                        		<div class="col-sm-5 text-secondary">
                             		<input type="text" name = "steamHex" Required><br><br>
                         		</div>
                         	</div>
@@ -116,7 +115,7 @@
                     			<div class="col-sm-3">
                         			<h6 class="mb-0">Nombre Usuario</h6>
                     			</div>
-                    			<div class="col-sm-9 text-secondary">
+                    			<div class="col-sm-5 text-secondary">
                         			<input type="text" name = "nombreUsuario" Required><br><br>
                     			</div>
                     		</div>
@@ -127,7 +126,7 @@
                     			<div class="col-sm-3">
                         			<h6 class="mb-0">Contraseña</h6>
                     			</div>
-                    			<div class="col-sm-9 text-secondary">
+                    			<div class="col-sm-5 text-secondary">
                         			<input type="password" name = "pw" Required><br><br>
                     			</div>
                     		</div>
@@ -143,7 +142,7 @@
                     			<div class="col-sm-3">
                         			<h6 class="mb-0">Rango</h6>
                     			</div>
-                    			<div class="col-sm-9 text-secondary">
+                    			<div class="col-sm-5 text-secondary">
                         			<select name="rango">
 							 			<%
 							 				for(Rango r :  lista) {
@@ -168,7 +167,7 @@
                     			<div class="col-sm-3">
                         			<h6 class="mb-0">Rol</h6>
                     			</div>
-                    			<div class="col-sm-9 text-secondary">
+                    			<div class="col-sm-5 text-secondary">
                         			<select name="rol">
 							 			<%
 							 				for(Rol rol :  listaRol) {
@@ -187,7 +186,7 @@
                     
                     <div class="row">
 	                    <div class="col-sm-12">
-							<input type = "submit" value = "Agregar"><br>                    
+							<input type = "submit" class = "btn btn-primary" value = "Agregar"><br>       
 						</div>
                     </div>
                 </div>

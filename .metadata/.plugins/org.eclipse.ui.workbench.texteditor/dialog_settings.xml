@@ -1,23 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Luciano"/>
+		<item key="selection" value="Sancio"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="luciano"/>
-			<item value="index"/>
-			<item value="home"/>
-			<item value="configur"/>
-			<item value="hora de"/>
-			<item value="sanc"/>
-			<item value="visible"/>
+			<item value="sancio"/>
+			<item value="browse"/>
+			<item value="psg"/>
+			<item value="getNom"/>
 			<item value="alta"/>
+			<item value="tipo"/>
+			<item value="th"/>
+			<item value="table"/>
+			<item value="border"/>
+			<item value="grey"/>
+			<item value="a7a"/>
+			<item value="td"/>
+			<item value="container"/>
+			<item value="contai"/>
+			<item value="sanc"/>
 		</list>
 		<list key="replacehistory">
+			<item value="td"/>
+			<item value=""/>
+			<item value="th"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

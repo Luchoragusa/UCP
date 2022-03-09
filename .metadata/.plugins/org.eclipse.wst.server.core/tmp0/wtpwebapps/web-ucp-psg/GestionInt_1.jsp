@@ -10,8 +10,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[PSG]Gestion Integrante</title>
-    <link rel="stylesheet" href="./dist/css/GestionIntegrante.css">
+    <link rel="stylesheet" href="./dist/css/GestionInt_1.css">
     <link href="./dist/css/style.min.css" rel="stylesheet">
+    <link href="./dist/css/font-awesome.min.css" rel="stylesheet">
     <style type="text/css">
         .btn-outline-secondary {
             padding-right: 50px;
@@ -29,7 +30,6 @@
     </style>
 </head>
 <body>
-    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 <hr>
 <div class="container bootstrap snippets bootdey">
     <div class="row">
@@ -49,12 +49,12 @@
 	                                <th></th>
                                 </tr>
                             </thead>
-			<%
-				LinkedList<Integrante> integrantes = new LinkedList<>();
-				DataIntegrante di = new DataIntegrante();
-				integrantes = di.getAll();
-				for(Integrante i :  integrantes) {
-			%>
+									<%
+										LinkedList<Integrante> integrantes = new LinkedList<>();
+										DataIntegrante di = new DataIntegrante();
+										integrantes = di.getAll();
+										for(Integrante i :  integrantes) {
+									%>
                                 <tr>
                                     <td>
                                         <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">

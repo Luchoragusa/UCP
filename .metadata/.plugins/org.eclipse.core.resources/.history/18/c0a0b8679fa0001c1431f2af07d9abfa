@@ -262,6 +262,7 @@
                                             <th class="border-top-0">Nombre y Apellido</th>
                                             <th class="border-top-0">Rango</th>
                                             <th class="border-top-0">Tiempo en servicio</th>
+                                            <th class="border-top-0">Subdivision</th>
                                             <th class="border-top-0">Hora de ingreso</th>
                                             <th class="border-top-0">Subdivision</th>
                                         </tr>

@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Sancio"/>
+		<item key="selection" value="index"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="sancio"/>
-			<item value="browse"/>
-			<item value="psg"/>
-			<item value="getNom"/>
-			<item value="alta"/>
-			<item value="tipo"/>
-			<item value="th"/>
-			<item value="table"/>
-			<item value="border"/>
-			<item value="grey"/>
-			<item value="a7a"/>
-			<item value="td"/>
-			<item value="container"/>
-			<item value="contai"/>
-			<item value="sanc"/>
+			<item value="index"/>
+			<item value="cerrar"/>
+			<item value="nombre"/>
+			<item value="progr"/>
+			<item value="proges"/>
+			<item value="volver"/>
+			<item value="progreso"/>
+			<item value="horas tot"/>
+			<item value="aplica"/>
+			<item value="home"/>
+			<item value="nombre comple"/>
+			<item value="mi perfil"/>
+			<item value="editar"/>
+			<item value="aplicar"/>
+			<item value="editar sub"/>
 		</list>
 		<list key="replacehistory">
 			<item value="td"/>
@@ -31,8 +31,8 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="995"/>
-		<item key="DIALOG_Y_ORIGIN" value="281"/>
+		<item key="DIALOG_X_ORIGIN" value="1470"/>
+		<item key="DIALOG_Y_ORIGIN" value="221"/>
 		<item key="DIALOG_WIDTH" value="322"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>

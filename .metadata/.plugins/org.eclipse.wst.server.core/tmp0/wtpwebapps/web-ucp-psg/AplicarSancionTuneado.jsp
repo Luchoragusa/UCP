@@ -44,7 +44,7 @@
 
 <body>
 		<%
-		int userid = 0;
+		/*int userid = 0;
 		Integrante i = new Integrante();
 		if (session.getAttribute("id") == null)
 			response.sendRedirect("LoginTUNEADO.jsp");
@@ -55,7 +55,22 @@
 			
 			DataIntegrante dataint = new DataIntegrante();	
 			i = dataint.getByIdIntegrante(i);
-		}
+		}*/
+
+		int idRol = 0;
+		int userid = 0;
+		Integrante usuarioOnline = new Integrante();
+		
+		userid = Integer.parseInt(session.getAttribute("id").toString());
+		
+		usuarioOnline.setIdIntegrante(userid);
+		
+		DataIntegrante dataint = new DataIntegrante();
+		
+		usuarioOnline = dataint.getByIdIntegrante(usuarioOnline);
+		
+		idRol = Integer.parseInt(session.getAttribute("rol").toString());
+
 		%>
 		
     <h1>
@@ -77,7 +92,7 @@
             
             <% 
 				DataSancion ds = new DataSancion();
-				LinkedList<Sancion> listaS = ds.getById(i).getSancion();
+				LinkedList<Sancion> listaS = ds.getById(usuarioOnline).getSancion();
 				for(Sancion s :  listaS) {
 			%>
                 <tr>
@@ -113,7 +128,7 @@
         
             </br></br>
             
-        <form action="sancionS?idS=<%=i.getIdIntegrante() %>" metdod="post">
+        <form action="sancionS?idS=<%=usuarioOnline.getIdIntegrante() %>" metdod="post">
 			&nbsp;&nbsp;Tipo de sancion:
 			<select name="tipoSancion">
 		        <option value="Raya"> Raya </option>
@@ -135,8 +150,6 @@
 
 		</br></br>
         <div class="containerHome">
-            <a button type="button" class="btn btn-outline-secondary" href="GestionInt_2.jsp">Volver atrás</a>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a button type="button" class="btn btn-outline-danger" href="HomeTuneada.jsp">Home</a>
         </div>
         

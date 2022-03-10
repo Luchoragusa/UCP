@@ -11,6 +11,7 @@
   <meta charset="UTF-8">
   <title>[Mi inventario]</title>  
   <link rel="stylesheet" href="./dist/css/armasV.css">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
   <style type="text/css">
     .btn-mensajes {
       color: #fff;
@@ -137,5 +138,7 @@
   <div class="container">
       <a button class="btn-mensajes" class="btn btn-primary" href="HomeTuneada.jsp">Home</a>
   </div>
+  
+  
 </body>
 </html>

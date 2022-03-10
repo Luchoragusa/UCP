@@ -33,263 +33,22 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 <script src="//code.tidio.co/p26dt4g3heql4zxjwvkmcyecxl33ssqy.js" async></script>
-
-<style type="text/css">
-    .whos-speaking-area .speakers {
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    transition: all 0.4s;
-    border: 1px solid #dee2e6;
-    border-radius: 6px;
-}
-.whos-speaking-area .speakers:hover {
-    -webkit-box-shadow: 0 0 6px 5px #ddd;
-    box-shadow: 0 0 6px 5px #ddd;
-    border-radius: 6px;
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    transition: all 0.4s;
-    border: 1px solid #dee2e6;
-}
-.whos-speaking-area .speakers .spk-img {
-    position: relative;
-}
-.whos-speaking-area .speakers .spk-img:before {
-    background: rgba(91, 69, 213, 0.8);
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    -webkit-transform: scale(0);
-    -ms-transform: scale(0);
-    transform: scale(0);
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    transition: all 0.4s;
-    z-index: 5;
-}
-.whos-speaking-area .speakers .spk-img:hover:before {
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1);
-}
-.whos-speaking-area .speakers .spk-img img {
-    width: 100%;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-}
-.whos-speaking-area .speakers .spk-img ul {
-    position: absolute;
-    display: inline-block;
-    top: 35%;
-    left: 40%;
-    width: 100px;
-    line-height: 3;
-    opacity: 0;
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    transition: all 0.4s;
-}
-.whos-speaking-area .speakers .spk-img ul:before {
-    position: absolute;
-    content: "";
-    height: 110px;
-    width: 110px;
-    background: transparent;
-    top: -15%;
-    left: -15px;
-    border: 1px solid #fff;
-    -webkit-transform: rotate(44deg) scale(1.4);
-    -ms-transform: rotate(44deg) scale(1.4);
-    transform: rotate(44deg) scale(1.4);
-    opacity: 0;
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    transition: all 0.4s;
-}
-.whos-speaking-area .speakers .spk-img ul li {
-    display: inline-block;
-    margin: 0 3px;
-    -webkit-transform: perspective(50px) rotatey(80deg);
-    transform: perspective(50px) rotatey(80deg);
-    -webkit-transition: all 0.5s ease 0.2s;
-    -o-transition: all 0.5s ease 0.2s;
-    transition: all 0.5s ease 0.2s;
-    margin: 0 5px;
-}
-.whos-speaking-area .speakers .spk-img ul li a i.fa {
-    color: rgba(255, 78, 0, 0.8);
-    font-size: 18px;
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    transition: all 0.4s;
-    width: 28px;
-    color: #fff;
-    height: 28px;
-    line-height: 21px;
-    text-align: center;
-}
-.whos-speaking-area .speakers .spk-img ul li a i.fa:hover {
-    color: #cf057c;
-}
-.whos-speaking-area .speakers .spk-img ul li:nth-child(1) {
-    -webkit-transform: translate3d(-53px, -50px, 0);
-    transform: translate3d(-53px, -50px, 0);
-}
-.whos-speaking-area .speakers .spk-img ul li:nth-child(2) {
-    -webkit-transform: translate3d(53px, -50px, 0);
-    transform: translate3d(53px, -50px, 0);
-}
-.whos-speaking-area .speakers .spk-img ul li:nth-child(3) {
-    -webkit-transform: translate3d(-53px, 50px, 0);
-    transform: translate3d(-53px, 50px, 0);
-}
-.whos-speaking-area .speakers .spk-img ul li:nth-child(4) {
-    -webkit-transform: translate3d(53px, 50px, 0);
-    transform: translate3d(53px, 50px, 0);
-}
-.whos-speaking-area .speakers .spk-img:hover ul {
-    left: 35%;
-    opacity: 1;
-    z-index: 9;
-}
-.whos-speaking-area .speakers .spk-img:hover ul:before {
-    opacity: 1;
-    -webkit-transform: rotate(44deg) scale(1);
-    -ms-transform: rotate(44deg) scale(1);
-    transform: rotate(44deg) scale(1);
-}
-.whos-speaking-area .speakers .spk-img:hover ul li:nth-child(1),
-.whos-speaking-area .speakers .spk-img:hover ul li:nth-child(2),
-.whos-speaking-area .speakers .spk-img:hover ul li:nth-child(3),
-.whos-speaking-area .speakers .spk-img:hover ul li:nth-child(4) {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-}
-.whos-speaking-area .speakers .spk-info {
-    text-align: center;
-    padding: 30px 0;
-}
-.whos-speaking-area .speakers .spk-info h3 {
-    color: #252525;
-    font-size: 20px;
-    line-height: 20px;
-    margin-bottom: 5px;
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    transition: all 0.4s;
-    text-transform: capitalize;
-}
-.whos-speaking-area .speakers .spk-info h3:hover {
-    color: #4125dd;
-}
-.whos-speaking-area .speakers .spk-info p {
-    font-size: 15px;
-    margin-bottom: 0;
-    color: #656565;
-}
-
-.whos-speaking-area-two .title-text h2 {
-    color: #fff;
-}
-
-.whos-speaking-area-two .speakers {
-    position: relative;
-    overflow: hidden;
-}
-.whos-speaking-area-two .speakers:hover img {
-    -webkit-transform: translate3d(0px, 0px, 0px);
-    transform: translate3d(0px, 0px, 0px);
-}
-.whos-speaking-area-two .speakers img {
-    position: relative;
-    -webkit-transform: translate3d(0px, 0px, 0px);
-    transform: translate3d(0px, 0px, 0px);
-    -webkit-transition: all 0.3s linear 0s;
-    -o-transition: all 0.3s linear 0s;
-    transition: all 0.3s linear 0s;
-}
-.whos-speaking-area-two .speakers .img-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    background: rgba(91, 69, 213, 0.9);
-    -webkit-transition: all 0.3s ease 0s;
-    -o-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
-}
-.whos-speaking-area-two .speakers:hover .img-overlay {
-    opacity: 1;
-}
-.whos-speaking-area-two .speakers .name a {
-    position: absolute;
-    bottom: -20%;
-    left: 10%;
-    color: #fff;
-    font-size: 20px;
-    font-weight: 600;
-    text-transform: capitalize;
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    transition: all 0.4s;
-}
-.whos-speaking-area-two .speakers .name a:hover {
-    color: #cf057c;
-}
-.whos-speaking-area-two .speakers:hover .name a {
-    bottom: 10%;
-}
-.whos-speaking-area-two .speakers .social-icons {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    position: absolute;
-    bottom: 23%;
-    left: 0;
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    transition: all 0.4s;
-}
-.whos-speaking-area-two .speakers .social-icons li {
-    margin-right: 10px;
-}
-.whos-speaking-area-two .speakers .social-icons li a {
-    color: #fff;
-}
-.whos-speaking-area-two .speakers .social-icons li a:hover {
-    color: #252525;
-}
-.whos-speaking-area-two .speakers:hover .social-icons {
-    left: 27px;
-}
-ul {
-    list-style: outside none none;
-    margin: 0;
-    padding: 0;
-    outline: none;
-}
-.mb50 {
-    margin-bottom: 50px;
-}
-</style>
 </head>
-
-<body>
-		<%
-			if (session.getAttribute("id") == null)
-				response.sendRedirect("LoginTUNEADO.jsp");
-		%>
-		
+<body>	
 		<% 
-			DataIntegrante di = new DataIntegrante();
-			Integrante i = new Integrante();
-			i.setIdIntegrante((int)session.getAttribute("id"));
-			i = di.getByIdIntegrante(i);
+		int idRol = 0;
+		int userid = 0;
+		Integrante usuarioOnline = new Integrante();
+		
+		userid = Integer.parseInt(session.getAttribute("id").toString());
+		
+		usuarioOnline.setIdIntegrante(userid);
+		
+		DataIntegrante dataint = new DataIntegrante();
+		
+		usuarioOnline = dataint.getByIdIntegrante(usuarioOnline);
+		
+		idRol = Integer.parseInt(session.getAttribute("rol").toString());
 		%>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
@@ -361,17 +120,9 @@ ul {
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="./assets/images/users/lucho.jpg" alt="user" class="rounded-circle" width="31">
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="miPerfilTUNEADO.jsp"><i class="ti-user m-r-5 m-l-5"></i>
-                                    Mi perfil</a>
-                                <a class="dropdown-item" href="registrarStockArmaTUNEADO.jsp"><i class="ti-wallet m-r-5 m-l-5"></i>
-                                    Mi inventario</a>
-                            </ul>
-                        </li>
+                        <ul class="navbar-nav ml-auto">
+                            <li><a href="LoginTUNEADO.jsp" class="nav-item nav-link active">Cerrar sesión</a></li>
+                        </ul> 
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
@@ -395,22 +146,23 @@ ul {
                         <li>
                             <!-- User Profile-->
                             <div class="user-profile d-flex no-block dropdown m-t-20">
-                                <div class="user-pic"><img src="./assets/images/users/lucho.jpg" alt="users"
-                                        class="rounded-circle" width="40" /></div>
+                            
+                                <div class="user-pic"><img src="./assets/images/Prosegur.jpg" alt="users" class="light-logo" width="50" /></div>
                                 <div class="user-content hide-menu m-l-10">
                                     <a href="#" class="" id="Userdd" role="button"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <h5 class="m-b-0 user-name font-medium">Luciano Ragusa <i
-                                                class="fa fa-angle-down"></i></h5>
+                                        <h5 class="m-b-0 user-name font-medium">
+                                        
+                                        <%=usuarioOnline.getNombre() + " " + usuarioOnline.getApellido() %>
+                                        
+                                        <i class="fa fa-angle-down"></i></h5>
                                         <span class="op-5 user-email">DiscordName</span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="Userdd">
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="settings.html"><i
+                                        <div class="dropdown-divider">
+                                        </div>
+                                        <a class="dropdown-item" href="configuracion.jsp"><i
                                                 class="ti-settings m-r-5 m-l-5"></i>Configuración</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="usted_esta_seguro.html"><i
-                                                class="fa fa-power-off m-r-5 m-l-5"></i>Cerrar sesión</a>
                                     </div>
                                 </div>
                             </div>
@@ -470,13 +222,13 @@ ul {
             <!-- ============================================================== -->
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
-                    <div class="col-5">
+                    <div class="col-2">
                         <h4 class="page-title">Perfil</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="HomeTuneada.jsp">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Mi Perfil</li>
                                 </ol>
                             </nav>
                         </div>
@@ -504,7 +256,7 @@ ul {
                                         <img class="preview-img" src="http://simpleicon.com/wp-content/uploads/account.png" alt="Preview Image" width="200" height="200"/>
                                         <span class="Error"></span>
                                     </div>
-                                    <h4 class="card-title m-t-10"><%=i.getNombre() + " " + i.getApellido()%></h4>
+                                    <h4 class="card-title m-t-10"><%=usuarioOnline.getNombre() + " " + usuarioOnline.getApellido()%></h4>
 
                             </div>                          
                             <div>
@@ -521,7 +273,7 @@ ul {
 									<th>URL</th>
 								</tr>
 								<% 
-									LinkedList<Sancion> listaS = i.getSancion();
+									LinkedList<Sancion> listaS = usuarioOnline.getSancion();
 									String url;
 									for(Sancion s :  listaS) {
 										url = s.getUrlSancion();
@@ -557,7 +309,7 @@ ul {
 													<th>Horas Jugadas</th>		
 												</tr>
 												<%
-													LinkedList<Hora> horas = i.getHora();	
+													LinkedList<Hora> horas = usuarioOnline.getHora();	
 													for(Hora h :  horas) {
 												%>
 													<tr>
@@ -586,6 +338,7 @@ ul {
 									<label class="col-md-12" style="color: blue">
                                     	<p style = "font-family:themify;font-size:19px;font-style:normal;"> Horas totales:</p> 
                                     </label>
+                                    
                                     <p style = "font-family:themify;font-size:19px;font-style:normal;">
                                     	<% out.println(contadorHorasJugadas); %>
                                     </p>
@@ -603,7 +356,7 @@ ul {
 									
 									<% 
 										DataRobo dr = new DataRobo();
-										LinkedList<Integer> por = dr.getPorcentaje(i);
+										LinkedList<Integer> por = dr.getPorcentaje(usuarioOnline);
 									%>
 									<label class="col-md-12" style="color: blue">
 										<p style = "font-family:themify;font-size:19px;font-style:normal;">Porcentaje de robos ganados:</p>
@@ -634,7 +387,7 @@ ul {
                                         </label>
                                         <div class="col-md-12">                                            
                                             <div class="form-control form-control-line">
-                                            	<%=i.getNombre() + " " + i.getApellido() %>
+                                            	<%=usuarioOnline.getNombre() + " " + usuarioOnline.getApellido() %>
                                             </div>
                                         </div>
                                     </div>
@@ -644,7 +397,7 @@ ul {
                                         </label>
                                         <div class="col-md-12"> 
                                             <div class="form-control form-control-line">
-                                            	<%=i.getRanInt().getRango().getNomRango() %>
+                                            	<%=usuarioOnline.getRanInt().getRango().getNomRango() %>
                                             </div>
                                         </div>
                                     </div>
@@ -654,7 +407,7 @@ ul {
                                         </label>
                                         <div class="col-md-12">
                                             <div class="form-control form-control-line">
-                                            	<%=i.getRanInt().getFecha_desde() %>
+                                            	<%=usuarioOnline.getRanInt().getFecha_desde() %>
                                             </div>
                                         </div>
                                     </div>
@@ -664,7 +417,7 @@ ul {
                                         </label>
                                         <div class="col-md-12">
                                             <div class="form-control form-control-line">
-                                            	<%=i.getDiscordId() %>
+                                            	<%=usuarioOnline.getDiscordId() %>
                                             </div>
                                         </div>
                                     </div>
@@ -674,7 +427,7 @@ ul {
                                         </label>
                                         <div class="col-md-12">
                                             <div class="form-control form-control-line">
-                                            	<%=i.getSteamHex() %>
+                                            	<%=usuarioOnline.getSteamHex() %>
                                             </div>
                                         </div>
                                     </div>
@@ -684,7 +437,7 @@ ul {
                                         </label>
                                         <div class="col-md-12">
                                             <div class="form-control form-control-line">
-                                            	<%=i.getUsuario() %>
+                                            	<%=usuarioOnline.getUsuario() %>
                                             </div>
                                         </div>
                                     </div>
@@ -695,11 +448,11 @@ ul {
                                         <div class="col-md-12">
                                             <div class="form-control form-control-line">
                                             	<% 	
-													if(i.getSub() != null)
+													if(usuarioOnline.getSub() != null)
 													{
-														out.println("Nombre sub-division: " + i.getSub().getDescripcion());  %> <br> <%
-														out.println("Rango sub-division: " + i.getSub().getRanSub().get(0).getNombreRangoSub()); %> <br> <%
-														out.println("Fecha ultimo ascenso:" + i.getSub().getRanSub().get(0).getRsi().getFecha_desde()); %> <br> <%
+														out.println("Nombre sub-division: " + usuarioOnline.getSub().getDescripcion());  %> <br> <%
+														out.println("Rango sub-division: " + usuarioOnline.getSub().getRanSub().get(0).getNombreRangoSub()); %> <br> <%
+														out.println("Fecha ultimo ascenso:" + usuarioOnline.getSub().getRanSub().get(0).getRsi().getFecha_desde()); %> <br> <%
 													}  
 													else 
 														out.println("No tiene subdivision");
@@ -720,10 +473,10 @@ ul {
                                         <div class="col-sm-12">   
                                         <input type="submit" onclick = "mostrarForm()"  value="Editar datos personales" id="btn1">                                                                                
                                             <form action="editarPerfilS" method="post" id="editarDatos" hidden="">
-												Nombre: <input type = "text" name = "nombre" value="<%=i.getNombre()%>"Required><br><br>
-												Apellido: <input type = "text" name = "apellido" value="<%=i.getApellido()%>"Required><br><br>
-												Discord Id: <input type = "text" name = "discordId" value="<%=i.getDiscordId()%>"Required><br><br>
-												Usuario: <input type = "text" name = "usuario" value="<%=i.getUsuario()%>"Required><br><br>
+												Nombre: <input type = "text" name = "nombre" value="<%=usuarioOnline.getNombre()%>"Required><br><br>
+												Apellido: <input type = "text" name = "apellido" value="<%=usuarioOnline.getApellido()%>"Required><br><br>
+												Discord Id: <input type = "text" name = "discordId" value="<%=usuarioOnline.getDiscordId()%>"Required><br><br>
+												Usuario: <input type = "text" name = "usuario" value="<%=usuarioOnline.getUsuario()%>"Required><br><br>
 												Contrasenia: <input type = "password" name = "pw" placeholder="Obligatorio" Required><br><br>
 												<input type = "submit" value = "Guardar cambios" ><br><br>
 											</form>											                                     

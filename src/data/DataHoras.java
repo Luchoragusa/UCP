@@ -219,10 +219,9 @@ public Integrante getHorasSemana(Integrante i)
 		{
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into hora(idIntegrante, horaInicio,fechaInicio) values(?,?,?)");
+							"insert into hora(idIntegrante, inicio) values(?,?)");
 			stmt.setInt(1, hr.getIdIntegrante());
-			stmt.setObject (2, hr.getHoraInicio()); 
-			stmt.setObject(3, hr.getFechaInicio());
+			stmt.setObject(2, hr.getInicio());
 			stmt.executeUpdate();
 		} 
 		catch (SQLException e) 

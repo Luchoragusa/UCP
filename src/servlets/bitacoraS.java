@@ -1,9 +1,8 @@
 package servlets;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
+import java.time.*;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,11 +26,9 @@ public class bitacoraS extends HttpServlet
 		Hora h = new Hora();
 		DataHoras dh = new DataHoras();
 		h.setIdIntegrante(i.getIdIntegrante());
-		LocalTime a = LocalTime.now();
-		h.setHoraInicio(a);
-		LocalDate fecha = LocalDate.now();
-		h.setFechaInicio(fecha);		
+		h.setInicio(LocalDateTime.now());
 		dh.add(h);
+		
 		response.sendRedirect("HomeTuneada.jsp");
 	}
 

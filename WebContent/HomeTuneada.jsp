@@ -249,7 +249,11 @@
 										LinkedList<Integrante> uActivos = new LinkedList<>();
 										DataIntegrante di = new DataIntegrante();
 										uActivos = di.getServicio();
+										DateTimeFormatter isoHora = DateTimeFormatter.ISO_LOCAL_TIME;
+                                        DateTimeFormatter isoFecha = DateTimeFormatter.ISO_LOCAL_DATE;
 										for(Integrante entry :  uActivos) {
+                                    		Hora hr = entry.getHora().getFirst();
+											Duration diferencia = Duration.between(entry.getHora().getFirst().getInicio(), LocalDateTime.now());
 									%>
                                     
                                         <tr>
@@ -271,19 +275,10 @@
                                             </td>
                                             <td><%=entry.getRanInt().getRango().getNomRango() %></td>
                                             <td>
-                                            	<%
-                                            		Hora hr = entry.getHora().getFirst();
-                                            	
-	                                                DateTimeFormatter isoHora = DateTimeFormatter.ISO_LOCAL_TIME;
-	                                                DateTimeFormatter isoFecha = DateTimeFormatter.ISO_LOCAL_DATE;
-	                                                out.print(hr.getInicio().format(isoHora) +" || "+ hr.getInicio().format(isoFecha));
-												%>
+                                            	<%=(hr.getInicio().format(isoHora) +" || "+ hr.getInicio().format(isoFecha))%>
 											</td>
                                             <td>
-                                            	<% 
-													Duration diferencia = Duration.between(entry.getHora().getFirst().getInicio(), LocalDateTime.now());
-													out.println(LocalTime.of(diferencia.toHoursPart(), diferencia.toMinutesPart()));
-											     %>
+                                            	<%=(LocalTime.of(diferencia.toHoursPart(), diferencia.toMinutesPart()))%>
                                             </td>
                                             <td>
                                                 <label class="label label-danger">

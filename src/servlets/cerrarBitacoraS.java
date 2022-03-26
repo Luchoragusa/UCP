@@ -29,7 +29,7 @@ public class cerrarBitacoraS extends HttpServlet
 		DataHoras dh = new DataHoras();
 
 		h.setIdIntegrante(i.getIdIntegrante());
-		h = dh.getHorasDelIntegrante(h.getIdIntegrante());					
+		h = dh.getHorasDelIntegrante(i);					
 				
 		if (h.getFin() == null) 
 		{

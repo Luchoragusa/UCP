@@ -19,7 +19,7 @@ import entities.Integrante;
 
 public class DataHoras {
 	
-public Hora getHorasDelIntegrante(int id) {
+public Hora getHorasDelIntegrante(Integrante i) {
 		
 	PreparedStatement stmt=null;
 	ResultSet rs=null;
@@ -28,14 +28,14 @@ public Hora getHorasDelIntegrante(int id) {
 	{
 		stmt = DbConnector.getInstancia().getConn().prepareStatement(
 		 "select * FROM hora WHERE idIntegrante = ? ORDER BY inicio desc limit 1");
-		stmt.setInt(1, id);
+		stmt.setInt(1, i.getIdIntegrante());
 		rs=stmt.executeQuery();
 		
 		if(rs!=null) 
 		{
 			while(rs.next()) 
 			{
-				h.setIdIntegrante(id);
+				h.setIdIntegrante(i.getIdIntegrante());
 				h.setInicio(rs.getObject("inicio", LocalDateTime.class));
 				h.setFin(rs.getObject("fin", LocalDateTime.class));
 			}

@@ -28,7 +28,7 @@ public class bitacoraS extends HttpServlet
 		
 		// Valido si tiene bitacora abierta
 		
-		h = dh.getHorasDelIntegrante(i.getIdIntegrante());
+		h = dh.getHorasDelIntegrante(i);
 		if (h.getFin() == null)
 			dh.remove(h);
 

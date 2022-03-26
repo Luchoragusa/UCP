@@ -565,8 +565,8 @@ ul {
 													for(Hora h :  horas) {
 												%>
 													<tr>
-														<th> <% out.print(h.getInicio().format(isoHora) +" || "+ h.getInicio().format(isoFecha)); %> </th>
-														<th> <% out.print(h.getInicio().format(isoHora) +" || "+ h.getInicio().format(isoFecha)); %> </th>
+														<th> <%=(h.getInicio().format(isoHora) +" || "+ h.getInicio().format(isoFecha))%> </th>
+														<th> <%=(h.getInicio().format(isoHora) +" || "+ h.getInicio().format(isoFecha))%> </th>
 														<th> <%=h.getHorasJugadas() %> </th>
 												   </tr>
 												<%
@@ -589,7 +589,7 @@ ul {
                                     	<p style = "font-family:themify;font-size:19px;font-style:normal;"> Horas totales:</p> 
                                     </label>
                                     <p style = "font-family:themify;font-size:19px;font-style:normal;">
-                                    	<% out.println(contadorHorasJugadas); %>
+                                    	<%=contadorHorasJugadas%>
                                     </p>
                                     
                                     <label class="col-md-12" style="color: blue">
@@ -598,9 +598,7 @@ ul {
 									<progress align="center" id="horasSemana" 
 										max="720"
 										value="
-												<% 
-												out.print(contadorHorasJugadas.getHour()*60 + contadorHorasJugadas.getMinute());
-												%>">
+												<%=(contadorHorasJugadas.getHour()*60 + contadorHorasJugadas.getMinute())%>">
 									</progress>
 									
 									<% 

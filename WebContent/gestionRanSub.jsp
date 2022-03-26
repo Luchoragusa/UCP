@@ -22,7 +22,10 @@
 			Rango Sub-division
 			
 			<h4 >Rango de sub-division actual: 
-			<% if(i.getSub() != null) out.print(i.getSub().getRanSub().getFirst().getNombreRangoSub()); else out.print("No pertenece a ninguna subdivision"); %> </h4>
+			<% if(i.getSub() != null) 
+				out.print(i.getSub().getRanSub().getFirst().getNombreRangoSub()); 
+			else 
+				out.print("No pertenece a ninguna subdivision"); %> </h4>
 			
        		<select name="ranSub">
 				<%

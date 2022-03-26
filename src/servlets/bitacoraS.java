@@ -23,13 +23,20 @@ public class bitacoraS extends HttpServlet
 		Integrante i = new Integrante();
 		HttpSession session = request.getSession();
 		i.setIdIntegrante((int) session.getAttribute("id"));
-		Hora h = new Hora();
+		Hora h = null;
 		DataHoras dh = new DataHoras();
+		
+		// Valido si tiene bitacora abierta
+		
+		h = dh.getHorasDelIntegrante(i.getIdIntegrante());
+		if (h.getFin() == null)
+			dh.remove(h);
+
+		h = new Hora();
 		h.setIdIntegrante(i.getIdIntegrante());
 		h.setInicio(LocalDateTime.now());
 		dh.add(h);
 		
 		response.sendRedirect("HomeTuneada.jsp");
 	}
-
 }

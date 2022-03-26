@@ -3,9 +3,8 @@
 <%@page import="data.*"%>
 <%@page import="entities.*"%>
 <%@page import="java.util.LinkedList"%>
-<%@page import="java.time.Duration"%>
-<%@page import="java.time.LocalTime"%>
-<%@page import="java.time.LocalDate"%>
+<%@page import="java.time.*"%>
+<%@page import="java.time.format.*"%>
 <%@page import="java.util.concurrent.LinkedBlockingDeque"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -274,31 +273,16 @@
                                             <td>
                                             	<%
                                             		Hora hr = entry.getHora().getFirst();
-													out.print(entry.getHora().getFirst().getInicio().getMinute()); 
+                                            	
+	                                                DateTimeFormatter isoHora = DateTimeFormatter.ISO_LOCAL_TIME;
+	                                                DateTimeFormatter isoFecha = DateTimeFormatter.ISO_LOCAL_DATE;
+	                                                out.print(hr.getInicio().format(isoHora) +" || "+ hr.getInicio().format(isoFecha));
 												%>
 											</td>
                                             <td>
                                             	<% 
-													LocalDate fecha = LocalDate.now();
-													LocalTime tServicio;
-													Duration diferencia = Duration.between(hr.getHoraInicio(), LocalTime.now());
-													if (fecha.getDayOfMonth() == hr.getFechaInicio().getDayOfMonth())
-												        tServicio = LocalTime.of(diferencia.toHoursPart(), diferencia.toMinutesPart());
-													else
-													{
-														out.println(diferencia.toHoursPart() + " " +  diferencia.toMinutesPart());
-														if (diferencia.toMinutesPart()>= -5)
-														{
-															out.print("se elimina la tuplaDateTime");
-															DataHoras dh = new DataHoras();
-															hr.setIdIntegrante(entry.getIdIntegrante());
-															dh.remove(hr);
-														}
-														else
-															tServicio = LocalTime.of(diferencia.toHoursPart()+23, diferencia.toMinutesPart()+59);
-														tServicio = null; // dsp borrar esto
-													}
-													out.println(tServicio);
+													Duration diferencia = Duration.between(entry.getHora().getFirst().getInicio(), LocalDateTime.now());
+													out.println(LocalTime.of(diferencia.toHoursPart(), diferencia.toMinutesPart()));
 											     %>
                                             </td>
                                             <td>

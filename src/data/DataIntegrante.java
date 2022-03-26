@@ -515,6 +515,7 @@ import logic.LlaveMaestra;
 					
 					LinkedList<Hora> horas = new LinkedList<Hora>();
 					horas.add(h);
+					
 					i.setHora(horas);
 					ri.setRango(r);
 					i.setRanInt(ri);

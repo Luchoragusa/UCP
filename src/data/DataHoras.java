@@ -23,8 +23,7 @@ public Hora getHorasDelIntegrante(int id) {
 		
 	PreparedStatement stmt=null;
 	ResultSet rs=null;
-	Hora h = null;
-	
+	Hora h = new Hora();
 	try 
 	{
 		stmt = DbConnector.getInstancia().getConn().prepareStatement(
@@ -36,7 +35,6 @@ public Hora getHorasDelIntegrante(int id) {
 		{
 			while(rs.next()) 
 			{
-				h = new Hora();
 				h.setIdIntegrante(id);
 				h.setInicio(rs.getObject("inicio", LocalDateTime.class));
 				h.setFin(rs.getObject("fin", LocalDateTime.class));
@@ -95,12 +93,10 @@ public Integrante getHorasSemana(Integrante i)
 				Hora h = null;
 				h = new Hora();
 				h.setIdIntegrante(i.getIdIntegrante());
-				h.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
-				h.setHoraInicio(rs.getObject("horaInicio", LocalTime.class));
-				if (rs.getObject("horaFin", LocalTime.class) != null)
+				h.setInicio(rs.getObject("inicio", LocalDateTime.class));
+				if (rs.getObject("fin", LocalDateTime.class) != null)
 				{
-					h.setHoraFin(rs.getObject("horaFin", LocalTime.class));
-					h.setFechaFin(rs.getDate("fechaFin").toLocalDate());
+					h.setFin(rs.getObject("fin", LocalDateTime.class));
 					h.setHorasJugadas(rs.getObject("horasJugadas", LocalTime.class));
 				}
 				lista.add(h);
@@ -132,7 +128,7 @@ public Integrante getHorasSemana(Integrante i)
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-			 "select horaInicio,horaFin,fecha from horas where idIntegrante = ?");
+			 "select inicio, fin, from horas where idIntegrante = ?");
 			stmt.setInt(1, hr.getIdIntegrante());
 			rs=stmt.executeQuery();
 			
@@ -142,9 +138,8 @@ public Integrante getHorasSemana(Integrante i)
 				{
 					Hora h=new Hora();
 					h.setIdIntegrante(hr.getIdIntegrante());
-					//h.setFecha(rs.getDate("fecha").toLocalDate());
-					h.setHoraInicio(rs.getObject("horaInicio", LocalTime.class));
-					h.setHoraFin(rs.getTime("horaFin").toLocalTime());	
+					h.setInicio(rs.getObject("inicio", LocalDateTime.class));
+					h.setFin(rs.getObject("fin", LocalDateTime.class));
 					hras.add(h);
 				}
 			}	
@@ -168,7 +163,7 @@ public Integrante getHorasSemana(Integrante i)
 		return hras;
 	}
 	
-	public LinkedList<Hora> getByFecha(Hora hr){
+	/*public LinkedList<Hora> getByFecha(Hora hr){
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		LinkedList<Hora> hras= new LinkedList<>();
@@ -210,7 +205,7 @@ public Integrante getHorasSemana(Integrante i)
 			}
 		}
 		return hras;
-	}
+	}*/
 	
 	public void add (Hora hr) {
 		PreparedStatement stmt= null;
@@ -284,10 +279,9 @@ public Integrante getHorasSemana(Integrante i)
 		{
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"delete from hora where idIntegrante = ? and fechaInicio = ? and horaInicio = ? and horaFin is null");
+							"delete from hora where idIntegrante = ? and inicio = ? and fin is null");
 			stmt.setInt(1, hr.getIdIntegrante());	
-			stmt.setObject(2, hr.getFechaInicio());
-			stmt.setObject(3, hr.getHoraInicio());	
+			stmt.setObject(2, hr.getInicio());
 			stmt.executeUpdate();
 		} 
 		catch (SQLException e) 
@@ -437,7 +431,7 @@ public Integrante getHorasSemana(Integrante i)
         return h;
     }
 	
-	public void diferenciaHoras(Hora h) 
+	/*public void diferenciaHoras(Hora h) 
 	{
 		PreparedStatement stmt= null;
 		try 
@@ -466,5 +460,6 @@ public Integrante getHorasSemana(Integrante i)
             	e.printStackTrace();
             }
 		}
-	}
+	}*/
+	
 }

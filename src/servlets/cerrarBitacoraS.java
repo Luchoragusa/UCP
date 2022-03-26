@@ -3,6 +3,7 @@ package servlets;
 import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import javax.servlet.ServletException;
@@ -30,21 +31,12 @@ public class cerrarBitacoraS extends HttpServlet
 		h.setIdIntegrante(i.getIdIntegrante());
 		h = dh.getHorasDelIntegrante(h.getIdIntegrante());					
 				
-		if (h.getHoraFin() == null) 
+		if (h.getFin() == null) 
 		{
-			LocalDate fechaF = LocalDate.now();
-			LocalTime fin = LocalTime.now();
-			h.setHoraFin(fin);
-			h.setFechaFin(fechaF);
-			Duration diferencia = Duration.between(h.getHoraInicio(), h.getHoraFin());
-			if (fechaF.getDayOfMonth() == h.getFechaInicio().getDayOfMonth())
-			{
-				h.setHorasJugadas(LocalTime.of(diferencia.toHoursPart(), diferencia.toMinutesPart())); 
-			}
-			else
-			{
-				h.setHorasJugadas(LocalTime.of(diferencia.toHoursPart()+23, diferencia.toMinutesPart()+59));
-			}
+			h.setFin(LocalDateTime.now());
+			
+			Duration diferencia = Duration.between(h.getInicio(), h.getFin());
+			h.setHorasJugadas(LocalTime.of(diferencia.toHoursPart(), diferencia.toMinutesPart()));
 			dh.update(h);	
 			response.sendRedirect("HomeTuneada.jsp");
 		}

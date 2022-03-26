@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.SQLType;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.LinkedList;
@@ -27,7 +28,7 @@ public Hora getHorasDelIntegrante(int id) {
 	try 
 	{
 		stmt = DbConnector.getInstancia().getConn().prepareStatement(
-		 "select * FROM hora WHERE idIntegrante = ? ORDER BY fechaInicio desc, horaInicio desc limit 1");
+		 "select * FROM hora WHERE idIntegrante = ? ORDER BY inicio desc limit 1");
 		stmt.setInt(1, id);
 		rs=stmt.executeQuery();
 		
@@ -37,9 +38,8 @@ public Hora getHorasDelIntegrante(int id) {
 			{
 				h = new Hora();
 				h.setIdIntegrante(id);
-				h.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
-				h.setHoraInicio(rs.getObject("horaInicio", LocalTime.class));
-				h.setHoraFin(rs.getObject("horaFin", LocalTime.class));	
+				h.setInicio(rs.getObject("inicio", LocalDateTime.class));
+				h.setFin(rs.getObject("fin", LocalDateTime.class));
 			}
 		}	
 	} catch (SQLException e) {
@@ -251,13 +251,11 @@ public Integrante getHorasSemana(Integrante i)
 		{
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"update hora set horaFin = ?, fechaFin = ?, horasJugadas = ? where idIntegrante=? and fechaInicio = ? and horaInicio = ?");
-			stmt.setObject(1, hr.getHoraFin());		
-			stmt.setObject(2, hr.getFechaFin());
-			stmt.setObject(3, hr.getHorasJugadas());	
-			stmt.setInt(4, hr.getIdIntegrante());
-			stmt.setObject(5, hr.getFechaFin());
-			stmt.setObject(6, hr.getHoraInicio());
+							"update hora set fin = ?, horasJugadas = ? where idIntegrante=? and inicio=?");
+			stmt.setObject(1, hr.getFin());	
+			stmt.setObject(2, hr.getHorasJugadas());	
+			stmt.setInt(3, hr.getIdIntegrante());
+			stmt.setObject(4, hr.getInicio());
 			
 			stmt.executeUpdate();
 		} 

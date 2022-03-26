@@ -40,29 +40,16 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 <script src="//code.tidio.co/p26dt4g3heql4zxjwvkmcyecxl33ssqy.js" async></script> 
-	<style>
-		a.nav-item.nav-link.active:hover {color:#000000; background:#ffe635 }
-	</style>
+
 </head>
 
 <body>
 		<%
-		int idRol = 0;
-		int userid = 0;
-		Integrante usuarioOnline = new Integrante();
 		if (session.getAttribute("id") == null)
-			response.sendRedirect("LoginTUNEADO.jsp");
+			response.sendRedirect("index.jsp");
 		else 
 		{
-			userid = Integer.parseInt(session.getAttribute("id").toString());
-			
-			usuarioOnline.setIdIntegrante(userid);
-			
-			DataIntegrante dataint = new DataIntegrante();
-			
-			usuarioOnline = dataint.getByIdIntegrante(usuarioOnline);
-			
-			idRol = Integer.parseInt(session.getAttribute("rol").toString());
+			int idRol = Integer.parseInt(session.getAttribute("rol").toString());
 		}
 		%>
     <!-- ============================================================== -->
@@ -161,24 +148,22 @@
                         <li>
                             <!-- User Profile-->
                             <div class="user-profile d-flex no-block dropdown m-t-20">
- 
-                                <div class="user-pic"><img src="./assets/images/Prosegur.jpg" alt="users"
-                                        class="light-logo" width="50" /></div>
+                                <div class="user-pic"><img src="./assets/images/users/lucho.jpg" alt="users"
+                                        class="rounded-circle" width="40" /></div>
                                 <div class="user-content hide-menu m-l-10">
                                     <a href="#" class="" id="Userdd" role="button"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <h5 class="m-b-0 user-name font-medium">
-                                        
-                                    		<%=usuarioOnline.getNombre() + " " + usuarioOnline.getApellido() %>
-                                    
-                                        <i class="fa fa-angle-down"></i></h5>
+                                        <h5 class="m-b-0 user-name font-medium">Luciano Ragusa<i
+                                                class="fa fa-angle-down"></i></h5>
                                         <span class="op-5 user-email">DiscordName</span>
                                     </a>
-  
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="Userdd">
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="configuracion.jsp"><i
+                                        <a class="dropdown-item" href="settings.html"><i
                                                 class="ti-settings m-r-5 m-l-5"></i>Configuración</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="LoginTUNEADO.jsp">
+                                            <i class="fa fa-power-off m-r-5 m-l-5"></i>Cerrar sesión</a>
                                     </div>
                                 </div>
                             </div>
@@ -206,21 +191,17 @@
                                 <span class="hide-menu">Mi Perfil</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="AplicarSancionTuneado.jsp" aria-expanded="false"><i class="mdi mdi-note-text" ></i><span
+                            href="aplicarSancion.jsp" aria-expanded="false"><i class="mdi mdi-note-text" ></i><span
                                 class="hide-menu">Sanciones</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="RegistrarStockArmaTUNEADO.jsp" aria-expanded="false"><i class="mdi mdi-pistol" ></i><span
                                 class="hide-menu">Mis armas</span></a>
                         </li>
-                        		<%
-								if (idRol == 1)
-								%>
-								<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            		href="AltaIntegranteTuneado.jsp" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span
-                                	class="hide-menu">Alta Integrante</span></a>
-                        		</li>
-                        
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                            href="AltaIntegranteTuneado.jsp" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span
+                                class="hide-menu">Alta Integrante</span></a>
+                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="GestionInt_1.jsp" aria-expanded="false"><i class="mdi mdi-account-check"></i><span
                                 class="hide-menu">Gestion Integrante</span></a>
@@ -262,8 +243,8 @@
                                             <th class="border-top-0">Nombre y Apellido</th>
                                             <th class="border-top-0">Rango</th>
                                             <th class="border-top-0">Tiempo en servicio</th>
-                                            <th class="border-top-0">Hora de ingreso</th>
                                             <th class="border-top-0">Subdivision</th>
+                                            <th class="border-top-0">Hora de ingreso</th>
                                         </tr>
                                     <%
 										LinkedList<Integrante> uActivos = new LinkedList<>();
@@ -274,14 +255,26 @@
                                     
                                         <tr>
                                             <td>
-
-                                                        		<%=entry.getNombre() + " " + entry.getApellido() %>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="m-r-10">
+                                                        <img src="./assets/images/users/lucho.jpg" alt="user" width="50" class="rounded-circle">                                                        
+                                                    </div>
+                                                    <div class="">
+                                                        <h4 class="m-b-0 font-16">
+	                                                        <a style="color: rgb(0, 58, 248);">
+	                                                        	<td>
+	                                                        		<%=entry.getNombre() + " " + entry.getApellido() %>
+	                                                        	</td>
+	                                                        </a>
+                                                        </h4>
+                                                    </div>
+                                                </div>
                                             </td>
                                             <td><%=entry.getRanInt().getRango().getNomRango() %></td>
                                             <td>
                                             	<%
                                             		Hora hr = entry.getHora().getFirst();
-													out.print(entry.getHora().getFirst().getHoraInicio()); 
+													out.print(entry.getHora().getFirst().getInicio().getMinute()); 
 												%>
 											</td>
                                             <td>
@@ -296,7 +289,7 @@
 														out.println(diferencia.toHoursPart() + " " +  diferencia.toMinutesPart());
 														if (diferencia.toMinutesPart()>= -5)
 														{
-															//out.print("se elimina la tuplaDateTime");
+															out.print("se elimina la tuplaDateTime");
 															DataHoras dh = new DataHoras();
 															hr.setIdIntegrante(entry.getIdIntegrante());
 															dh.remove(hr);

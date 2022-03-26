@@ -68,19 +68,21 @@ public Integrante getHorasSemana(Integrante i)
 	Calendar calendar=Calendar.getInstance();
 	calendar.set(Calendar.WEEK_OF_YEAR, calendar.get(Calendar.WEEK_OF_YEAR)-1);
 	calendar.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);	
-	LocalDate semanaI = LocalDate.of(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH)+1, calendar.get(Calendar.DAY_OF_MONTH));
+	LocalDateTime semanaI = LocalDateTime.of(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH)+1, calendar.get(Calendar.DAY_OF_MONTH), 0, 0, 0, 0);
 	Calendar calendar1=Calendar.getInstance();
 	calendar.set(Calendar.WEEK_OF_YEAR, calendar.get(Calendar.WEEK_OF_YEAR));
 	calendar.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
-	LocalDate semanaF = LocalDate.of(calendar1.get(Calendar.YEAR), calendar1.get(Calendar.MONTH)+1, calendar1.get(Calendar.DAY_OF_MONTH));
+	LocalDateTime semanaF = LocalDateTime.of(calendar1.get(Calendar.YEAR), calendar1.get(Calendar.MONTH)+1, calendar1.get(Calendar.DAY_OF_MONTH), 23, 59, 59, 59);
 	
 	try 
 	{
 		stmt = DbConnector.getInstancia().getConn().prepareStatement(
-		 "select * FROM hora WHERE idIntegrante = ? and fechaInicio between ? and ? and fechaFin between ? and ? ORDER BY fechaInicio desc, horaInicio desc");
+		 "select * FROM hora WHERE idIntegrante = ? and inicio between ? and ? and fin between ? and ? ORDER BY inicio desc");
 		stmt.setInt(1, i.getIdIntegrante());
+		
 		stmt.setObject(2, semanaI);
 		stmt.setObject(3, semanaF);
+		
 		stmt.setObject(4, semanaI);
 		stmt.setObject(5, semanaF);
 		rs=stmt.executeQuery();
@@ -90,8 +92,7 @@ public Integrante getHorasSemana(Integrante i)
 			lista = new LinkedList<Hora>();
 			while(rs.next()) 
 			{
-				Hora h = null;
-				h = new Hora();
+				Hora h = new Hora();
 				h.setIdIntegrante(i.getIdIntegrante());
 				h.setInicio(rs.getObject("inicio", LocalDateTime.class));
 				if (rs.getObject("fin", LocalDateTime.class) != null)

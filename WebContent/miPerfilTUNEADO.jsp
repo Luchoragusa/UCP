@@ -1,7 +1,7 @@
 <%@page import="entities.*"%>
 <%@page import="data.*"%>
-<%@page import="java.time.Duration"%>
-<%@page import="java.time.LocalTime"%>
+<%@page import="java.time.*"%>
+<%@page import="java.time.format.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.LinkedList"%>
@@ -554,21 +554,19 @@ ul {
 							<h2 align="center">-- Bitacoras --</h2>
 							<table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
 												<tr bgcolor=grey>
-													<th>Hora Inicio</th>
-													<th>Fecha Inicio</th>
-													<th>horaFin</th>
-													<th>Fecha Fin</th>	
+													<th>Inicio</th>
+													<th>Fin</th>
 													<th>Horas Jugadas</th>		
 												</tr>
 												<%
+	                                                DateTimeFormatter isoHora = DateTimeFormatter.ISO_LOCAL_TIME;
+	                                                DateTimeFormatter isoFecha = DateTimeFormatter.ISO_LOCAL_DATE;
 													LinkedList<Hora> horas = i.getHora();	
 													for(Hora h :  horas) {
 												%>
 													<tr>
-														<th> <%=h.getHoraInicio() %> </th>
-														<th> <%=h.getFechaInicio() %> </th>
-														<th> <%=h.getHoraFin() %> </th>
-														<th> <%=h.getFechaFin() %> </th>
+														<th> <% out.print(h.getInicio().format(isoHora) +" || "+ h.getInicio().format(isoFecha)); %> </th>
+														<th> <% out.print(h.getInicio().format(isoHora) +" || "+ h.getInicio().format(isoFecha)); %> </th>
 														<th> <%=h.getHorasJugadas() %> </th>
 												   </tr>
 												<%

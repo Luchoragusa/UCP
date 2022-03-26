@@ -1,2 +1,2 @@
-create user 'ucp-psg'@'%' identified by 'bocajuniors';
-GRANT SELECT, INSERT, UPDATE, DELETE ON `ucp-psg`.* TO 'ucp-psg'@'%';
+create user 'psgpanel'@'%' identified by 'bocajuniors';
+GRANT SELECT, INSERT, UPDATE, DELETE ON `psgpanel`.* TO 'psgpanel'@'%';

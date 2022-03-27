@@ -343,8 +343,8 @@ import logic.LlaveMaestra;
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
 							"insert into ran_integrante(idIntegrante, idRango, fechaDesde) values(?,?,?)");
-			stmt.setInt(1, ri.getIdIntegrante());
-			stmt.setInt(2, ri.getIdRango());
+			stmt.setInt(1, ri.getInte().getIdIntegrante());
+			stmt.setInt(2, ri.getRango().getIdRango());
 			stmt.setObject(3, ri.getFecha_desde());
 			stmt.executeUpdate();
 		}  

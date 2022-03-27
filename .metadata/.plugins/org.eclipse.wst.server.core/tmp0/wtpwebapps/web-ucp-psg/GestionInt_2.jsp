@@ -145,6 +145,8 @@
                     </div>
                     <div class="col-sm-9 text-secondary">
                         <select name="rango">
+               	       		<option value="<%=i.getRanInt().getRango().getIdRango()%>"> 
+		       					 <%=i.getRanInt().getRango().getNomRango()%></option>
 				 			<%
 				 				for(Rango r :  lista) {
 				 			%>

@@ -170,6 +170,8 @@
                     </div>
                     <div class="col-sm-9 text-secondary">
                         <select name="rol">
+ 				       		<option value = ""> 
+	        				<%out.print("Seleccionar"); %></option>
 				 			<%
 				 				for(Rol rol :  listaRol) {
 				 			%>

@@ -158,8 +158,8 @@
                         <li>
                             <!-- User Profile-->
                             <div class="user-profile d-flex no-block dropdown m-t-20">
-                                <div class="user-pic"><img src="./assets/images/users/lucho.jpg" alt="users"
-                                        class="rounded-circle" width="40" /></div>
+                                 <div class="user-pic"><img src="./assets/images/logo-light-icon.png" alt="users"
+                                        class="light-logo" width="50" /></div>
                                 <div class="user-content hide-menu m-l-10">
                                     <a href="#" class="" id="Userdd" role="button"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -201,7 +201,7 @@
                                 <span class="hide-menu">Mi Perfil</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="aplicarSancion.jsp" aria-expanded="false"><i class="mdi mdi-note-text" ></i><span
+                            href="AplicarSancionTuneado.jsp" aria-expanded="false"><i class="mdi mdi-note-text" ></i><span
                                 class="hide-menu">Sanciones</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"

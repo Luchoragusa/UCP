@@ -12,7 +12,7 @@ body {
 }
 
 .card {
-  position: relative;
+  text-align: center;
   display: flex;
   flex-direction: column;
   min-width: 0;

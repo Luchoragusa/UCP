@@ -12,14 +12,19 @@
 	</head>
 	<body> 
 		<%
+			int userid = 0;
+			Integrante i = new Integrante();
 			if (session.getAttribute("id") == null)
 			response.sendRedirect("LoginTUNEADO.jsp");
 		
-			Integrante i = new Integrante();
-			i.setIdIntegrante((Integer)application.getAttribute("idApp"));
+			else 
+			{
+				userid = Integer.parseInt(session.getAttribute("id").toString());		
+				i.setIdIntegrante(userid);
 			
-			DataIntegrante di = new DataIntegrante();
-			i=di.getByIdIntegrante(i);
+				DataIntegrante dataint = new DataIntegrante();	
+				i = dataint.getByIdIntegrante(i);
+			}
 		%>
 	
 	<h2 align="center">-- Sanciones --</h2> <br>

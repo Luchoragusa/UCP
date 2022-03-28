@@ -42,20 +42,31 @@
 </head>
 
 <body>
-	<%
-		if (session.getAttribute("id") == null)
-		response.sendRedirect("LoginTUNEADO.jsp");
-		Integrante i = new Integrante();
-		DataIntegrante di = new DataIntegrante();
-		i=di.getByIdIntegrante(i);
-	%>
+		<%
+			int userid = 0;
+			Integrante i = new Integrante();
+
+			if (session.getAttribute("id") == null)
+				response.sendRedirect("LoginTUNEADO.jsp");
+			else 
+			{
+				userid = Integer.parseInt(session.getAttribute("id").toString());		
+				i.setIdIntegrante(userid);
+				
+				DataIntegrante dataint = new DataIntegrante();	
+				i = dataint.getByIdIntegrante(i);
+			}
+		%>
 		
-    <h1><span class="blue"></span>[PSG]<span class="blue"></span> <span class="yellow">Sanciones</pan></h1>       
-        
-        <table class="container">
-            <thead>
-                <tr>
-                    <th><h1>Tipo Sancion</h1></th>
+    <h1>
+	    <span class="blue"></span>[PSG]<span class="blue"></span> 
+	    <span class="yellow">Sanciones</span>
+
+    </h1>       
+        <br>
+        <table class="container" align="center" cellspacing="2" cellpadding="2" width ="500">
+                <tr bgcolor=blue>
+                    <th><h1>Tipo Sancion</h1></th> 
                     <th><h1>Numero Sancion</h1></th>
                     <th><h1>Estado de la sancion</h1></th>
                     <th><h1>Fecha</h1></th>
@@ -63,7 +74,6 @@
                     <th><h1>Apelada</h1></th>
                     <th><h1>Eliminar</h1></th>
                 </tr>
-            </thead>
             
             <% 
 				DataSancion ds = new DataSancion();
@@ -71,7 +81,6 @@
 				for(Sancion s :  listaS) {
 			%>
             
-            <tbody>
                 <tr>
                     <td> <%=s.getTipoSancion() %></td>
                     <td><%=s.getNroSancion() %></td>
@@ -84,7 +93,9 @@
 						%> 
 					</td>
                     <td> <%=s.getFecha() %></td>
-                    <td> <a href="<%=s.getUrlSancion()%>" target="_blank">Url imagen</a> </td>
+                    <td> 
+                    	<a href="<%=s.getUrlSancion()%>" target="_blank">Url imagen</a> 
+                    </td>
                     <td> 
                     	<form action="apelarS?idSA=<%=s.getId()%>" method="post">
 							<input type ="submit" value = "Apelar" >
@@ -99,28 +110,27 @@
             <%
 				}
 			%>                
-            </tbody>
         </table>
         
             </br></br>
             
         <form action="sancionS?idS=<%=i.getIdIntegrante() %>" method="post">
-			Tipo de sancion:
+			&nbsp;&nbsp;Tipo de sancion:
 			<select name="tipoSancion">
 		        <option value="Raya"> Raya </option>
 				<option value="Strike"> Strike </option>
 	        </select><br><br>
-	        Numero de Sancion: 
+	        &nbsp;&nbsp;Numero de Sancion: 
 	        <select name="nroSancion">
 		        <option value="1"> 1 </option>
 				<option value="2"> 2 </option>
 				<option value="3"> 3 </option>
 	        </select><br><br>
-	        Motivo de la sancion: <input type = "text" name = "motivo" Required><br><br>
-	        Imagen (opcional): <input type = "text" name = "url" Required><br><br>
+	        &nbsp;&nbsp;Motivo de la sancion: <input type = "text" name = "motivo" Required><br><br>
+	        &nbsp;&nbsp;Imagen (opcional): <input type = "text" name = "url" Required><br><br>
 			
 			<div class="AS">
-                <input type = "submit" value = "Aplicar Sancion" Required><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type = "submit" value = "Aplicar Sancion" Required><br>
             </div>
 		</form>
 

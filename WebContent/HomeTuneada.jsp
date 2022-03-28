@@ -44,11 +44,22 @@
 
 <body>
 		<%
+		int idRol = 0;
+		int userid = 0;
+		Integrante usuarioOnline = new Integrante();
 		if (session.getAttribute("id") == null)
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("LoginTuneado.jsp");
 		else 
 		{
-			int idRol = Integer.parseInt(session.getAttribute("rol").toString());
+			userid = Integer.parseInt(session.getAttribute("id").toString());
+			
+			usuarioOnline.setIdIntegrante(userid);
+			
+			DataIntegrante dataint = new DataIntegrante();
+			
+			usuarioOnline = dataint.getByIdIntegrante(usuarioOnline);
+			
+			idRol = Integer.parseInt(session.getAttribute("rol").toString());
 		}
 		%>
     <!-- ============================================================== -->
@@ -152,17 +163,17 @@
                                 <div class="user-content hide-menu m-l-10">
                                     <a href="#" class="" id="Userdd" role="button"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <h5 class="m-b-0 user-name font-medium">Luciano Ragusa<i
-                                                class="fa fa-angle-down"></i></h5>
+                                        <h5 class="m-b-0 user-name font-medium">
+
+                                    		<%=usuarioOnline.getNombre() + " " + usuarioOnline.getApellido() %>
+
+                                        <i class="fa fa-angle-down"></i></h5>
                                         <span class="op-5 user-email">DiscordName</span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="Userdd">
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="settings.html"><i
+                                        <a class="dropdown-item" href="configuracion.jsp"><i
                                                 class="ti-settings m-r-5 m-l-5"></i>Configuración</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="LoginTUNEADO.jsp">
-                                            <i class="fa fa-power-off m-r-5 m-l-5"></i>Cerrar sesión</a>
                                     </div>
                                 </div>
                             </div>
@@ -244,6 +255,7 @@
                                             <th class="border-top-0">Tiempo en servicio</th>
                                             <th class="border-top-0">Subdivision</th>
                                             <th class="border-top-0">Hora de ingreso</th>
+                                            <th class="border-top-0">Subdivision</th>>
                                         </tr>
                                     <%
 										LinkedList<Integrante> uActivos = new LinkedList<>();

@@ -281,15 +281,23 @@ ul {
 
 <body>
 		<%
-			if (session.getAttribute("id") == null)
-				response.sendRedirect("LoginTUNEADO.jsp");
-		%>
-		
-		<% 
-			DataIntegrante di = new DataIntegrante();
-			Integrante i = new Integrante();
-			i.setIdIntegrante((int)session.getAttribute("id"));
-			i = di.getByIdIntegrante(i);
+		int idRol = 0;
+		int userid = 0;
+		Integrante usuarioOnline = new Integrante();
+		if (session.getAttribute("id") == null)
+			response.sendRedirect("LoginTuneado.jsp");
+		else 
+		{
+			userid = Integer.parseInt(session.getAttribute("id").toString());
+			
+			usuarioOnline.setIdIntegrante(userid);
+			
+			DataIntegrante dataint = new DataIntegrante();
+			
+			usuarioOnline = dataint.getByIdIntegrante(usuarioOnline);
+			
+			idRol = Integer.parseInt(session.getAttribute("rol").toString());
+		}
 		%>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
@@ -400,8 +408,11 @@ ul {
                                 <div class="user-content hide-menu m-l-10">
                                     <a href="#" class="" id="Userdd" role="button"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <h5 class="m-b-0 user-name font-medium">Luciano Ragusa <i
-                                                class="fa fa-angle-down"></i></h5>
+                                        <h5 class="m-b-0 user-name font-medium">
+
+                                    		<%=usuarioOnline.getNombre() + " " + usuarioOnline.getApellido() %>
+
+                                        <i class="fa fa-angle-down"></i></h5>
                                         <span class="op-5 user-email">DiscordName</span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="Userdd">
@@ -508,7 +519,7 @@ ul {
                                         </div>
                                         <span class="Error"></span>
                                     </div>
-                                    <h4 class="card-title m-t-10"><%=i.getNombre() + " " + i.getApellido()%></h4>
+                                    <h4 class="card-title m-t-10"><%=usuarioOnline.getNombre() + " " + usuarioOnline.getApellido()%></h4>
 
                             </div>                          
                             <div>
@@ -525,7 +536,7 @@ ul {
 									<th>URL</th>
 								</tr>
 								<% 
-									LinkedList<Sancion> listaS = i.getSancion();
+									LinkedList<Sancion> listaS = usuarioOnline.getSancion();
 									String url;
 									for(Sancion s :  listaS) {
 										url = s.getUrlSancion();
@@ -561,7 +572,7 @@ ul {
 												<%
 	                                                DateTimeFormatter isoHora = DateTimeFormatter.ISO_LOCAL_TIME;
 	                                                DateTimeFormatter isoFecha = DateTimeFormatter.ISO_LOCAL_DATE;
-													LinkedList<Hora> horas = i.getHora();	
+													LinkedList<Hora> horas = usuarioOnline.getHora();	
 													for(Hora h :  horas) {
 												%>
 													<tr>
@@ -603,7 +614,7 @@ ul {
 									
 									<% 
 										DataRobo dr = new DataRobo();
-										LinkedList<Integer> por = dr.getPorcentaje(i);
+										LinkedList<Integer> por = dr.getPorcentaje(usuarioOnline);
 									%>
 									<label class="col-md-12" style="color: blue">
 										<p style = "font-family:themify;font-size:19px;font-style:normal;">Porcentaje de robos ganados:</p>
@@ -634,7 +645,7 @@ ul {
                                         </label>
                                         <div class="col-md-12">                                            
                                             <div class="form-control form-control-line">
-                                            	<%=i.getNombre() + " " + i.getApellido() %>
+                                            	<%=usuarioOnline.getNombre() + " " + usuarioOnline.getApellido() %>
                                             </div>
                                         </div>
                                     </div>
@@ -644,7 +655,7 @@ ul {
                                         </label>
                                         <div class="col-md-12"> 
                                             <div class="form-control form-control-line">
-                                            	<%=i.getRanInt().getRango().getNomRango() %>
+                                            	<%=usuarioOnline.getRanInt().getRango().getNomRango() %>
                                             </div>
                                         </div>
                                     </div>
@@ -654,7 +665,7 @@ ul {
                                         </label>
                                         <div class="col-md-12">
                                             <div class="form-control form-control-line">
-                                            	<%=i.getRanInt().getFecha_desde() %>
+                                            	<%=usuarioOnline.getRanInt().getFecha_desde() %>
                                             </div>
                                         </div>
                                     </div>
@@ -664,7 +675,7 @@ ul {
                                         </label>
                                         <div class="col-md-12">
                                             <div class="form-control form-control-line">
-                                            	<%=i.getDiscordId() %>
+                                            	<%=usuarioOnline.getDiscordId() %>
                                             </div>
                                         </div>
                                     </div>
@@ -674,7 +685,7 @@ ul {
                                         </label>
                                         <div class="col-md-12">
                                             <div class="form-control form-control-line">
-                                            	<%=i.getSteamHex() %>
+                                            	<%=usuarioOnline.getSteamHex() %>
                                             </div>
                                         </div>
                                     </div>
@@ -684,7 +695,7 @@ ul {
                                         </label>
                                         <div class="col-md-12">
                                             <div class="form-control form-control-line">
-                                            	<%=i.getUsuario() %>
+                                            	<%=usuarioOnline.getUsuario() %>
                                             </div>
                                         </div>
                                     </div>
@@ -695,11 +706,11 @@ ul {
                                         <div class="col-md-12">
                                             <div class="form-control form-control-line">
                                             	<% 	
-													if(i.getSub() != null)
+													if(usuarioOnline.getSub() != null)
 													{
-														out.println("Nombre sub-division: " + i.getSub().getDescripcion());  %> <br> <%
-														out.println("Rango sub-division: " + i.getSub().getRanSub().get(0).getNombreRangoSub()); %> <br> <%
-														out.println("Fecha ultimo ascenso:" + i.getSub().getRanSub().get(0).getRsi().getFecha_desde()); %> <br> <%
+														out.println("Nombre sub-division: " + usuarioOnline.getSub().getDescripcion());  %> <br> <%
+														out.println("Rango sub-division: " + usuarioOnline.getSub().getRanSub().get(0).getNombreRangoSub()); %> <br> <%
+														out.println("Fecha ultimo ascenso:" + usuarioOnline.getSub().getRanSub().get(0).getRsi().getFecha_desde()); %> <br> <%
 													}  
 													else 
 														out.println("No tiene subdivision");
@@ -720,10 +731,10 @@ ul {
                                         <div class="col-sm-12">   
                                         <input type="submit" onclick = "mostrarForm()"  value="Editar datos personales" id="btn1">                                                                                
                                             <form action="editarPerfilS" method="post" id="editarDatos" hidden="">
-												Nombre: <input type = "text" name = "nombre" value="<%=i.getNombre()%>"Required><br><br>
-												Apellido: <input type = "text" name = "apellido" value="<%=i.getApellido()%>"Required><br><br>
-												Discord Id: <input type = "text" name = "discordId" value="<%=i.getDiscordId()%>"Required><br><br>
-												Usuario: <input type = "text" name = "usuario" value="<%=i.getUsuario()%>"Required><br><br>
+												Nombre: <input type = "text" name = "nombre" value="<%=usuarioOnline.getNombre()%>"Required><br><br>
+												Apellido: <input type = "text" name = "apellido" value="<%=usuarioOnline.getApellido()%>"Required><br><br>
+												Discord Id: <input type = "text" name = "discordId" value="<%=usuarioOnline.getDiscordId()%>"Required><br><br>
+												Usuario: <input type = "text" name = "usuario" value="<%=usuarioOnline.getUsuario()%>"Required><br><br>
 												Contrasenia: <input type = "password" name = "pw" placeholder="Obligatorio" Required><br><br>
 												<input type = "submit" value = "Guardar cambios" ><br><br>
 											</form>											                                     

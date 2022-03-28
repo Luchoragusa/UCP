@@ -271,20 +271,7 @@
                                     
                                         <tr>
                                             <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="m-r-10">
-                                                        <img src="./assets/images/users/lucho.jpg" alt="user" width="50" class="rounded-circle">                                                        
-                                                    </div>
-                                                    <div class="">
-                                                        <h4 class="m-b-0 font-16">
-	                                                        <a style="color: rgb(0, 58, 248);">
-	                                                        	<td>
-	                                                        		<%=entry.getNombre() + " " + entry.getApellido() %>
-	                                                        	</td>
-	                                                        </a>
-                                                        </h4>
-                                                    </div>
-                                                </div>
+                                                <%=entry.getNombre() + " " + entry.getApellido() %>
                                             </td>
                                             <td><%=entry.getRanInt().getRango().getNomRango() %></td>
                                             <td>

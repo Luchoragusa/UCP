@@ -185,7 +185,7 @@
 							<input type = "submit" class="btn btn-primary" value = "Agregar"><br>                    
 						</div>
                     </div>
-                    </form>>
+                    </form>
                 </div>
                </div>
                 

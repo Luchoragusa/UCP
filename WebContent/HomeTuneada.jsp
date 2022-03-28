@@ -39,9 +39,9 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 <script src="//code.tidio.co/p26dt4g3heql4zxjwvkmcyecxl33ssqy.js" async></script> 
-<style>
-	a.nav-item.nav-link.active:hover {color:#000000; background:#ffe635 }
-</style>
+	<style>
+		a.nav-item.nav-link.active:hover {color:#000000; background:#ffe635 }
+	</style>
 </head>
 
 <body>
@@ -255,9 +255,8 @@
                                             <th class="border-top-0">Nombre y Apellido</th>
                                             <th class="border-top-0">Rango</th>
                                             <th class="border-top-0">Tiempo en servicio</th>
-                                            <th class="border-top-0">Subdivision</th>
                                             <th class="border-top-0">Hora de ingreso</th>
-                                            <th class="border-top-0">Subdivision</th>>
+                                            <th class="border-top-0">Subdivision</th>
                                         </tr>
                                     <%
 										LinkedList<Integrante> uActivos = new LinkedList<>();

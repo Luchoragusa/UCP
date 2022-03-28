@@ -17,19 +17,12 @@
     <link href="./dist/css/style.min.css" rel="stylesheet">
     <link href="./dist/css/entrarsalir.css" rel="stylesheet">
     <title>[PSG] Alta Integrante</title>
- <style type="text/css">     
-		.form {
-		        text-align: right;
-    margin: auto;
-    display: table;
-		    }
-</style>
 </head>
 
 <body>
 		<%
 			if (session.getAttribute("id") == null)
-				response.sendRedirect("LoginTUNEADO.jsp");
+				response.sendRedirect("HomeTuneado.jsp");
 		%>
 		
 		<% 
@@ -49,6 +42,7 @@
             </nav>
             <!-- /Breadcrumb -->    
             <div class="row gutters-sm">
+              <div class="col-md-4 mb-3">
                 <div class="card">
                 <div class="card-body">
                     <div class="d-flex flex-column align-items-center text-center">
@@ -63,6 +57,7 @@
                     </div>
                 </div>
                 </div>
+               </div>
                 <div class="col-md-6">
                 	<div class="card mb-3">
                 		<div class="card-body">
@@ -198,6 +193,16 @@
 
           </div>
          </div>
+        </div>
+        
+        
+        <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+        	 <footer class="footer text-center">
+                Panel de la faccion de Prosegur en [BA:RP] ||
+                    <a href="https://github.com/Luchoragusa">Luciano Ragusa</a> || 
+                    <a href="https://github.com/JuaniPucheta">Juan Ignacio Pucheta</a>|| 
+                    <a href="https://github.com/CamiloPereyra">Camilo Pereyra</a>
+            </footer>
         </div>
 </body>
 </html>

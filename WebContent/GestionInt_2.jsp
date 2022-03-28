@@ -263,6 +263,15 @@
             </div>
             </div>
         </div>
-
+        
+<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+            <footer class="footer text-center">
+                Panel de la faccion de Prosegur en [BA:RP] ||
+                    <a href="https://github.com/Luchoragusa">Luciano Ragusa</a> || 
+                    <a href="https://github.com/JuaniPucheta">Juan Ignacio Pucheta</a>|| 
+                    <a href="https://github.com/CamiloPereyra">Camilo Pereyra</a>
+            </footer>
+</div>
 </body>
 </html>

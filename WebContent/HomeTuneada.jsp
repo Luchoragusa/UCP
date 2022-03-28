@@ -39,7 +39,9 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 <script src="//code.tidio.co/p26dt4g3heql4zxjwvkmcyecxl33ssqy.js" async></script> 
-
+<style>
+	a.nav-item.nav-link.active:hover {color:#000000; background:#ffe635 }
+</style>
 </head>
 
 <body>
@@ -158,7 +160,7 @@
                         <li>
                             <!-- User Profile-->
                             <div class="user-profile d-flex no-block dropdown m-t-20">
-                                 <div class="user-pic"><img src="./assets/images/logo-light-icon.png" alt="users"
+                                 <div class="user-pic"><img src="./assets/images/Prosegur.jpg" alt="users"
                                         class="light-logo" width="50" /></div>
                                 <div class="user-content hide-menu m-l-10">
                                     <a href="#" class="" id="Userdd" role="button"

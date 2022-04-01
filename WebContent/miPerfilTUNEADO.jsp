@@ -41,16 +41,12 @@
 		int idRol = 0;
 		int userid = 0;
 		Integrante usuarioOnline = new Integrante();
-		
 		userid = Integer.parseInt(session.getAttribute("id").toString());
-		
 		usuarioOnline.setIdIntegrante(userid);
-		
 		DataIntegrante dataint = new DataIntegrante();
-		
 		usuarioOnline = dataint.getByIdIntegrante(usuarioOnline);
 		
-		idRol = Integer.parseInt(session.getAttribute("rol").toString());
+		// usuarioOnline.getRol().getIdRol(); se obtiene la id del rol
 		%>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->

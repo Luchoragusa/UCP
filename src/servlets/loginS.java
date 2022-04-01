@@ -32,7 +32,6 @@ public class loginS extends HttpServlet
 				i = ctrlLogin.getIntegrante(i);
 				HttpSession session = request.getSession();
 				session.setAttribute("id", i.getIdIntegrante());
-				session.setAttribute("rol", i.getRol().getIdRol());
 				response.sendRedirect("HomeTuneada.jsp");
 			}
 			else

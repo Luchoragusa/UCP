@@ -55,18 +55,11 @@
 		else 
 		{
 			userid = Integer.parseInt(session.getAttribute("id").toString());
-			
 			usuarioOnline.setIdIntegrante(userid);
-			
 			DataIntegrante dataint = new DataIntegrante();
-			
 			usuarioOnline = dataint.getByIdIntegrante(usuarioOnline);
 			
-			/*rol = usuarioOnline.getRol();
-			idRol = rol.getIdRol();*/
-			
-			//idRol = Integer.parseInt(usuarioOnline.getRol().toString());
-			idRol = Integer.parseInt(session.getAttribute("rol").toString());
+			// usuarioOnline.getRol().getIdRol(); se obtiene la id del rol
 		}
 		%>
     <!-- ============================================================== -->

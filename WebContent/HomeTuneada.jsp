@@ -165,7 +165,7 @@
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <h5 class="m-b-0 user-name font-medium">
 
-                                    		<%=usuarioOnline.getNombre() + " " + usuarioOnline.getApellido() + " " + usuarioOnline.getRol() %>
+                                    		<%=usuarioOnline.getNombre() + " " + usuarioOnline.getApellido()%>
 
                                         <i class="fa fa-angle-down"></i></h5>
                                         <span class="op-5 user-email">DiscordName</span>
@@ -185,39 +185,38 @@
                                 class="btn d-block w-100 create-btn text-white no-block d-flex align-items-center"><i
                                     class="fa fa-plus-square"></i> <span class="hide-menu m-l-5">Panel Bitácora</span> </a>
                         </li>
-                        <!-- Son todas las opciones del costado a la izq-->
 
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="HomeTuneada.jsp" aria-expanded="false"><i class="mdi mdi-home"></i><span
                                     class="hide-menu">Home</span></a>
                         </li>
+                        
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="registrarLugarRobo.jsp" aria-expanded="false"><i class="mdi mdi-bank"></i><span
                                 class="hide-menu">Robo</span></a>
-                        </li>           
+                        </li>  
+                                 
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="miPerfilTUNEADO.jsp" aria-expanded="false">
                                 <i class="mdi mdi-account-network"></i>
                                 <span class="hide-menu">Mi Perfil</span></a>
                         </li>
                         
-                        <li id="liSanciones">
-                        	<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="AplicarSancionTuneado.jsp" aria-expanded="false">
-	                            <i class="mdi mdi-note-text" ></i>
-		                            <span class="hide-menu">
-		                            	Sanciones
-		                            </span></a>
-	                        </li>
+                       	<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="AplicarSancionTuneado.jsp" aria-expanded="false">
+                            <i class="mdi mdi-note-text" ></i>
+	                        <span class="hide-menu">Sanciones</span></a>
                         </li>
 	                                              
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="RegistrarStockArmaTUNEADO.jsp" aria-expanded="false"><i class="mdi mdi-pistol" ></i><span
                                 class="hide-menu">Mis armas</span></a>
-                        </li id="liAltaInt">
+                        </li>
+                        
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="AltaIntegranteTuneado.jsp" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span
                                 class="hide-menu">Alta Integrante</span></a>
-                        </li id="liGestInt">
+                        </li>
+                        
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="GestionInt_1.jsp" aria-expanded="false"><i class="mdi mdi-account-check"></i><span
                                 class="hide-menu">Gestion Integrante</span></a>
@@ -417,18 +416,15 @@
     <script src="./assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="./dist/js/pages/dashboards/dashboard1.js"></script>
     
-	<script type="text/javascript" language = "javascript">
-		function invisible(){
-			
-			if (idRol !== 1){
-				document.getElementById("sidebarnav").children[6].style.display="none";
-				$(".sidebarnav #liSanciones").hide();
-			}
-			
-		}
-				
+	<script type="text/javascript">
+		function invisible(idRol){
+			if (idRol !== 1){																//1 es el rol de admin, puede hacer todo, otro distinto de 1 es usuario
+				document.getElementById("sidebarnav").children[5].style.display="none";		//[5] SANCIONES  
+				document.getElementById("sidebarnav").children[7].style.display="none";		//[7] ALTA INTEGRANTE
+				document.getElementById("sidebarnav").children[8].style.display="none";		//[8] GESTION INTEGRANTE
+			}			
+		}				
 	</script>  
     
 </body>
-
 </html>

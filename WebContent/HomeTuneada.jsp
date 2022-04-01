@@ -44,10 +44,11 @@
 	</style>
 </head>
 
-<body>
+<body onload="invisible()">
 		<%
 		int idRol = 0;
 		int userid = 0;
+		Rol rol = new Rol();
 		Integrante usuarioOnline = new Integrante();
 		if (session.getAttribute("id") == null)
 			response.sendRedirect("LoginTuneado.jsp");
@@ -61,6 +62,10 @@
 			
 			usuarioOnline = dataint.getByIdIntegrante(usuarioOnline);
 			
+			/*rol = usuarioOnline.getRol();
+			idRol = rol.getIdRol();*/
+			
+			//idRol = Integer.parseInt(usuarioOnline.getRol().toString());
 			idRol = Integer.parseInt(session.getAttribute("rol").toString());
 		}
 		%>
@@ -167,7 +172,7 @@
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <h5 class="m-b-0 user-name font-medium">
 
-                                    		<%=usuarioOnline.getNombre() + " " + usuarioOnline.getApellido() %>
+                                    		<%=usuarioOnline.getNombre() + " " + usuarioOnline.getApellido() + " " + usuarioOnline.getRol() %>
 
                                         <i class="fa fa-angle-down"></i></h5>
                                         <span class="op-5 user-email">DiscordName</span>
@@ -202,18 +207,24 @@
                                 <i class="mdi mdi-account-network"></i>
                                 <span class="hide-menu">Mi Perfil</span></a>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="AplicarSancionTuneado.jsp" aria-expanded="false"><i class="mdi mdi-note-text" ></i><span
-                                class="hide-menu">Sanciones</span></a>
+                        
+                        <li id="liSanciones">
+                        	<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="AplicarSancionTuneado.jsp" aria-expanded="false">
+	                            <i class="mdi mdi-note-text" ></i>
+		                            <span class="hide-menu">
+		                            	Sanciones
+		                            </span></a>
+	                        </li>
                         </li>
+	                                              
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="RegistrarStockArmaTUNEADO.jsp" aria-expanded="false"><i class="mdi mdi-pistol" ></i><span
                                 class="hide-menu">Mis armas</span></a>
-                        </li>
+                        </li id="liAltaInt">
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="AltaIntegranteTuneado.jsp" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span
                                 class="hide-menu">Alta Integrante</span></a>
-                        </li>
+                        </li id="liGestInt">
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="GestionInt_1.jsp" aria-expanded="false"><i class="mdi mdi-account-check"></i><span
                                 class="hide-menu">Gestion Integrante</span></a>
@@ -412,6 +423,18 @@
     <script src="./assets/libs/chartist/dist/chartist.min.js"></script>
     <script src="./assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="./dist/js/pages/dashboards/dashboard1.js"></script>
+    
+	<script type="text/javascript" language = "javascript">
+		function invisible(){
+			
+			if (idRol !== 1){
+				document.getElementById("sidebarnav").children[6].style.display="none";
+				$(".sidebarnav #liSanciones").hide();
+			}
+			
+		}
+				
+	</script>  
     
 </body>
 

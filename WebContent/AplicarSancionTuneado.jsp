@@ -38,6 +38,15 @@
     width: 80%;
     margin: 0 auto;
 	} 
+	input[type=submit] {
+	  background-color: #04AA6D;
+	  border: none;
+	  color: white;
+	  padding: 6px 14px;
+	  text-decoration: none;
+	  margin: 4px 2px;
+	  cursor: pointer;
+	}
     </style>
 </head>
 
@@ -70,8 +79,8 @@
                 <tr bgcolor=blue>
                     <th><h1>Tipo Sancion</h1></th> 
                     <th><h1>Numero Sancion</h1></th>
-                    <th><h1>Estado de la sancion</h1></th>
-                    <th><h1>Fecha</h1></th>
+					<th><h1>Fecha</h1></th>
+                    <th><h1>Estado</h1></th>
                     <th><h1>URL</h1></th>
                     <th><h1>Apelada</h1></th>
                     <th><h1>Eliminar</h1></th>
@@ -88,12 +97,17 @@
                     <td><%=s.getNroSancion() %></td>
                     <td> <%=s.getFecha() %></td>
                     <td>
-                    	<%	
-							if(s.isEstado())
-								out.print("Activa");
-							else
-								out.print("Apelada");
-						%> 
+									<%	
+										if(s.isEstado()){
+									%>
+                                        	<p>Activa</p>
+									<%}; %>
+									
+									<%
+										if(s.isEstado()==false){
+									%>
+                                        	<p>Apelada</p>
+									<%}; %>
 					</td>
                     <td> 
                     	<a href="<%=s.getUrlSancion()%>" target="_blank">Url imagen</a> 
@@ -113,32 +127,32 @@
 				}
 			%>                
         </table>
-        
-            </br></br>
-            
+                    
         <form action="sancionS?idS=<%=usuarioOnline.getIdIntegrante() %>" method="post">
-			&nbsp;&nbsp;Tipo de sancion:
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p style = "font-family:Arial; font-size:18px;">Tipo de sancion:</p>
 			<select name="tipoSancion">
 		        <option value="Raya"> Raya </option>
 				<option value="Strike"> Strike </option>
 	        </select><br><br>
-	        &nbsp;&nbsp;Numero de Sancion: 
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p style = "font-family:Arial; font-size:18px;">Numero de Sancion: </p>
 	        <select name="nroSancion">
 		        <option value="1"> 1 </option>
 				<option value="2"> 2 </option>
 				<option value="3"> 3 </option>
 	        </select><br><br>
-	        &nbsp;&nbsp;Motivo de la sancion: <input type = "text" name = "motivo" Required><br><br>
-	        &nbsp;&nbsp;Imagen (opcional): <input type = "text" name = "url" Required><br><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p style = "font-family:Arial; font-size:18px;">Motivo de la sancion:</p>
+			<input type = "text" name = "motivo" Required><br><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p style = "font-family:Arial; font-size:18px;">Imagen (opcional):</p>
+			<input type = "url" name = "url" Required><br><br>
 			
 			<div class="AS">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type = "submit" value = "Aplicar Sancion" Required><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type = "submit" value = "Aplicar Sancion" Required><br>
             </div>
 		</form>
 
-		</br></br>
         <div class="containerHome">
-            <a button type="button" class="btn btn-outline-danger" href="HomeTuneada.jsp">Home</a>
+            <a button type="button" class="btn btn-outline-danger" href="HomeTuneada.jsp">Volver a la home</a>
         </div>
         
         
@@ -148,14 +162,6 @@
                     <a href="https://github.com/JuaniPucheta">Juan Ignacio Pucheta</a>.|| 
                     <a href="https://github.com/CamiloPereyra">Camilo Pereyra</a>.
             </footer>
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
-    </div>
-</body>
 
+</body>
 </html>

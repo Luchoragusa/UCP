@@ -15,7 +15,7 @@
   <style type="text/css">
     .btn-mensajes {
       color: #fff;
-      background-color: #7e799b;
+      background-color: #323C50;
       border-color: #7460ee;
       font-size: 19px;
       padding: 13px;
@@ -25,7 +25,16 @@
       position: relative;
       bottom: -100px;
       margin-top: 30px;
-    }   
+    }  
+    input[type=submit] {
+	  background-color: #323C50;
+	  border: none;
+	  color: white;
+	  padding: 8px 17px;
+	  text-decoration: none;
+	  margin: 4px 2px;
+	  cursor: pointer;
+	} 
   </style>
   <link href='https://fonts.googleapis.com/css?family=Rajdhani:600' rel='stylesheet' type='text/css'>
 </head>
@@ -113,7 +122,7 @@
   </table><br><br>
 
  <div style="color:#ffffff">
- <form action="registrarStockArmaS" method="post">Seleccione un arma para modificar el Stock.
+ <form action="registrarStockArmaS" method="post">Seleccione un arma para modificar el Stock: 
 		 <select name="arma" > 
 		<%
 			for(Arma a : ar) {

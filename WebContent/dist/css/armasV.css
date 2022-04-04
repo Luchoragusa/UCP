@@ -1,8 +1,10 @@
-body {
-  font-size: 20px;
-  font-family: 'Rajdhani', sans-serif;
-  background: #010A13;
-}
+ body {
+   font-family: 'Open Sans', sans-serif;
+   font-weight: 300;
+   line-height: 1.42em;
+   color:#A7A1AE;
+   background-color:#1F2739;
+ }
 
 .madeBy {
   position: absolute;

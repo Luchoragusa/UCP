@@ -150,24 +150,27 @@
                         <li>
                             <!-- User Profile-->
                             <div class="user-profile d-flex no-block dropdown m-t-20">
-                                <div class="user-pic"><img src="./assets/images/Prosegur.jpg" alt="users" class="light-logo" width="50" /></div>
+                                 <div class="user-pic"><img src="./assets/images/Prosegur.jpg" alt="users"
+                                        class="light-logo" width="50" /></div>
                                 <div class="user-content hide-menu m-l-10">
                                     <a href="#" class="" id="Userdd" role="button"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <h5 class="m-b-0 user-name font-medium">
 
-                                    		<%=usuarioOnline.getNombre() + " " + usuarioOnline.getApellido() %>
+                                    		<%=usuarioOnline.getNombre() + " " + usuarioOnline.getApellido()%>
 
                                         <i class="fa fa-angle-down"></i></h5>
                                         <span class="op-5 user-email">DiscordName</span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="Userdd">
                                         <div class="dropdown-divider"></div>
-                                        	<a class="dropdown-item" href="configuracion.jsp"><i class="ti-settings m-r-5 m-l-5"></i>Configuración</a>
+                                        <a class="dropdown-item" href="configuracion.jsp"><i
+                                                class="ti-settings m-r-5 m-l-5"></i>Configuración</a>
                                     </div>
                                 </div>
                             </div>
-                            
+                            <!-- End User Profile-->
+                        </li>
                         <!-- Bitacora del servicio-->
                         <li class="p-15 m-t-10"><a href="BitacoraTuneado.jsp"
                                 class="btn d-block w-100 create-btn text-white no-block d-flex align-items-center"><i
@@ -276,8 +279,8 @@
 								<tr bgcolor=#FA8369>
 									<th>Tipo Sancion</th>
 									<th>Numero Sancion</th>
-									<th>Estado de la sancion</th>
 									<th>Fecha</th>
+									<th>Estado de la sancion</th>
 									<th>URL</th>
 								</tr>
 								<% 
@@ -292,7 +295,7 @@
 									<%	
 										if(s.isEstado()){
 									%>
-									<th class="border-top-0">Aceptada</th>
+									<th class="border-top-0">Activa</th>
 									<%}; %>
 									
 									<%
@@ -346,14 +349,14 @@
 												%>
 											</table><br>
 									<label class="col-md-12" style="color: blue">
-                                    	<p style = "font-family:themify;font-size:19px;font-style:normal;"> Horas totales:</p> 
+									 	<p style = "font-family:Arial; font-size:18px; font-style:oblique;">Horas totales.</p>
                                     </label>
                                     <p style = "font-family:themify;font-size:19px;font-style:normal;">
                                     	<%=contadorHorasJugadas%>
                                     </p>
                                     
                                     <label class="col-md-12" style="color: blue">
-										<p style = "font-family:themify;font-size:19px;font-style:normal;">Progreso de la semana:</p> 
+									 	<p style = "font-family:Arial; font-size:18px; font-style:oblique;">Progreso de la semana.</p>
 									</label>
 									<progress align="center" id="horasSemana" 
 										max="720"
@@ -366,7 +369,7 @@
 										LinkedList<Integer> por = dr.getPorcentaje(usuarioOnline);
 									%>
 									<label class="col-md-12" style="color: blue">
-										<p style = "font-family:themify;font-size:19px;font-style:normal;">Porcentaje de robos ganados:</p>
+									 	<p style = "font-family:Arial; font-size:18px; font-style:oblique;">Porcentaje de robos ganados.</p>
 									</label>
 									
 									<progress align="center" id="robos" 
@@ -454,16 +457,22 @@
                                         </label>
                                         <div class="col-md-12">
                                             <div class="form-control form-control-line">
-                                            	<% 	
-													if(usuarioOnline.getSub() != null)
-													{
-														out.println("Nombre sub-division: " + usuarioOnline.getSub().getDescripcion());  %> <br> <%
-														out.println("Rango sub-division: " + usuarioOnline.getSub().getRanSub().get(0).getNombreRangoSub()); %> <br> <%
-														out.println("Fecha ultimo ascenso:" + usuarioOnline.getSub().getRanSub().get(0).getRsi().getFecha_desde()); %> <br> <%
-													}  
-													else 
-														out.println("No tiene subdivision");
+									
+												<%
+													if(usuarioOnline.getSub() != null){
 												%>
+                                    				<%="Nombre sub-division: " + usuarioOnline.getSub().getDescripcion()%> <br>
+                                    				<%="Rango sub-division: " + usuarioOnline.getSub().getRanSub().get(0).getNombreRangoSub()%> <br>
+                                    				<%="Fecha ultimo ascenso: " + usuarioOnline.getSub().getRanSub().get(0).getRsi().getFecha_desde()%> <br>
+												<%};%>
+												
+												<%
+													if(usuarioOnline.getSub() == null){
+												%>
+                                        			<p>No tiene sub-división.</p>
+												<%}; %>
+												
+												
                                             </div>
                                         </div>
                                     </div>
@@ -520,13 +529,6 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-	<script type="text/javascript">
-		function mostrarForm()
-		{
-			document.getElementById('editarDatos').hidden=true;
-			document.getElementById('btn1').hidden=true;
-		}
-	</script>  
     <script src="./assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="./assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

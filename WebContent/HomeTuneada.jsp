@@ -165,7 +165,7 @@
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <h5 class="m-b-0 user-name font-medium">
 
-                                    		<%=usuarioOnline.getNombre() + " " + usuarioOnline.getApellido() + " " + usuarioOnline.getRol().getIdRol()%>
+                                    		<%=usuarioOnline.getNombre() + " " + usuarioOnline.getApellido()%>
 
                                         <i class="fa fa-angle-down"></i></h5>
                                         <span class="op-5 user-email">DiscordName</span>
@@ -341,21 +341,21 @@
                                         <tbody>
                                             <tr>
                                                 <th scope="row">1</th>
-                                                <td>Kiosco</td>
-                                                <td>$1500</td>
-                                                <td>Exitoso</td>
+                                                <td>TRAER DESDE LA BD</td>
+                                                <td>TRAER DESDE LA BD</td>
+                                                <td>TRAER DESDE LA BD</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">2</th>
-                                                <td>Bar</td>
-                                                <td>$15.000</td>
-                                                <td>Exitoso</td>
+                                                <td>TRAER DESDE LA BD</td>
+                                                <td>TRAER DESDE LA BD</td>
+                                                <td>TRAER DESDE LA BD</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">3</th>
-                                                <td>Banco Nación</td>
-                                                <td>$0</td>
-                                                <td>Fracaso</td>
+                                                <td>TRAER DESDE LA BD</td>
+                                                <td>TRAER DESDE LA BD</td>
+                                                <td>TRAER DESDE LA BD</td>
                                             </tr>
                                         </tbody>
                                     </table>

@@ -44,10 +44,10 @@
 	</style>
 </head>
 
-<body onload="invisible()">
+<body>
 		<%
-		int idRol = 0;
 		int userid = 0;
+		int idRol = 0;
 		Rol rol = new Rol();
 		Integrante usuarioOnline = new Integrante();
 		if (session.getAttribute("id") == null)
@@ -59,7 +59,7 @@
 			DataIntegrante dataint = new DataIntegrante();
 			usuarioOnline = dataint.getByIdIntegrante(usuarioOnline);
 			
-			// usuarioOnline.getRol().getIdRol(); se obtiene la id del rol
+			idRol = usuarioOnline.getRol().getIdRol();
 		}
 		%>
     <!-- ============================================================== -->
@@ -165,7 +165,7 @@
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <h5 class="m-b-0 user-name font-medium">
 
-                                    		<%=usuarioOnline.getNombre() + " " + usuarioOnline.getApellido()%>
+                                    		<%=usuarioOnline.getNombre() + " " + usuarioOnline.getApellido() + " " + usuarioOnline.getRol().getIdRol()%>
 
                                         <i class="fa fa-angle-down"></i></h5>
                                         <span class="op-5 user-email">DiscordName</span>
@@ -202,25 +202,29 @@
                                 <span class="hide-menu">Mi Perfil</span></a>
                         </li>
                         
+                        <% if(idRol==1){ %>
                        	<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="AplicarSancionTuneado.jsp" aria-expanded="false">
                             <i class="mdi mdi-note-text" ></i>
 	                        <span class="hide-menu">Sanciones</span></a>
                         </li>
+	                    <%} %> 
 	                                              
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="RegistrarStockArmaTUNEADO.jsp" aria-expanded="false"><i class="mdi mdi-pistol" ></i><span
                                 class="hide-menu">Mis armas</span></a>
                         </li>
                         
+                        <% if(idRol==1){ %>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="AltaIntegranteTuneado.jsp" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span
                                 class="hide-menu">Alta Integrante</span></a>
                         </li>
-                        
+
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="GestionInt_1.jsp" aria-expanded="false"><i class="mdi mdi-account-check"></i><span
                                 class="hide-menu">Gestion Integrante</span></a>
                         </li>                                
+	                    <%} %> 
 
                     </ul>
 
@@ -415,16 +419,6 @@
     <script src="./assets/libs/chartist/dist/chartist.min.js"></script>
     <script src="./assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="./dist/js/pages/dashboards/dashboard1.js"></script>
-    
-	<script type="text/javascript">
-		function invisible(idRol){
-			if (idRol !== 1){																//1 es el rol de admin, puede hacer todo, otro distinto de 1 es usuario
-				document.getElementById("sidebarnav").children[5].style.display="none";		//[5] SANCIONES  
-				document.getElementById("sidebarnav").children[7].style.display="none";		//[7] ALTA INTEGRANTE
-				document.getElementById("sidebarnav").children[8].style.display="none";		//[8] GESTION INTEGRANTE
-			}			
-		}				
-	</script>  
     
 </body>
 </html>

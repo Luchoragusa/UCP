@@ -38,15 +38,21 @@
 
 <body>
 		<%
-		int idRol = 0;
 		int userid = 0;
+		int idRol = 0;
+		Rol rol = new Rol();
 		Integrante usuarioOnline = new Integrante();
-		userid = Integer.parseInt(session.getAttribute("id").toString());
-		usuarioOnline.setIdIntegrante(userid);
-		DataIntegrante dataint = new DataIntegrante();
-		usuarioOnline = dataint.getByIdIntegrante(usuarioOnline);
-		
-		// usuarioOnline.getRol().getIdRol(); se obtiene la id del rol
+		if (session.getAttribute("id") == null)
+			response.sendRedirect("LoginTuneado.jsp");
+		else 
+		{
+			userid = Integer.parseInt(session.getAttribute("id").toString());
+			usuarioOnline.setIdIntegrante(userid);
+			DataIntegrante dataint = new DataIntegrante();
+			usuarioOnline = dataint.getByIdIntegrante(usuarioOnline);
+			
+			idRol = usuarioOnline.getRol().getIdRol();
+		}
 		%>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
@@ -182,22 +188,29 @@
                                 <i class="mdi mdi-account-network"></i>
                                 <span class="hide-menu">Mi Perfil</span></a>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="AplicarSancionTuneado.jsp" aria-expanded="false"><i class="mdi mdi-note-text" ></i><span
-                                class="hide-menu">Sanciones</span></a>
+                        <% if(idRol==1){ %>
+                       	<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="AplicarSancionTuneado.jsp" aria-expanded="false">
+                            <i class="mdi mdi-note-text" ></i>
+	                        <span class="hide-menu">Sanciones</span></a>
                         </li>
+	                    <%} %> 
+	                                              
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="RegistrarStockArmaTUNEADO.jsp" aria-expanded="false"><i class="mdi mdi-pistol" ></i><span
                                 class="hide-menu">Mis armas</span></a>
                         </li>
+                        
+                        <% if(idRol==1){ %>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="AltaIntegranteTuneado.jsp" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span
                                 class="hide-menu">Alta Integrante</span></a>
                         </li>
+
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="GestionInt_1.jsp" aria-expanded="false"><i class="mdi mdi-account-check"></i><span
                                 class="hide-menu">Gestion Integrante</span></a>
-                        </li>      
+                        </li>                                
+	                    <%} %>   
                     </ul>
 
                 </nav>

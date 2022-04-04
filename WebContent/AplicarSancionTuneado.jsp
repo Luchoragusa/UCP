@@ -43,31 +43,21 @@
 
 <body>
 		<%
-			/*Integrante i = new Integrante();
-
-			if (session.getAttribute("id") == null)
-				response.sendRedirect("LoginTUNEADO.jsp");
-			else 
-			{
-				userid = Integer.parseInt(session.getAttribute("id").toString());		
-				i.setIdIntegrante(userid);
-				
-				DataIntegrante dataint = new DataIntegrante();	
-				i = dataint.getByIdIntegrante(i);
-			}*/
-			int idRol = 0;
-			int userid = 0;
-			Integrante usuarioOnline = new Integrante();
-			
+		int userid = 0;
+		int idRol = 0;
+		Rol rol = new Rol();
+		Integrante usuarioOnline = new Integrante();
+		if (session.getAttribute("id") == null)
+			response.sendRedirect("LoginTuneado.jsp");
+		else 
+		{
 			userid = Integer.parseInt(session.getAttribute("id").toString());
-			
 			usuarioOnline.setIdIntegrante(userid);
-			
 			DataIntegrante dataint = new DataIntegrante();
-			
 			usuarioOnline = dataint.getByIdIntegrante(usuarioOnline);
 			
-			idRol = Integer.parseInt(session.getAttribute("rol").toString());
+			idRol = usuarioOnline.getRol().getIdRol();
+		}
 		%>
 		
     <h1>
@@ -96,6 +86,7 @@
                 <tr>
                     <td> <%=s.getTipoSancion() %></td>
                     <td><%=s.getNroSancion() %></td>
+                    <td> <%=s.getFecha() %></td>
                     <td>
                     	<%	
 							if(s.isEstado())
@@ -104,7 +95,6 @@
 								out.print("Apelada");
 						%> 
 					</td>
-                    <td> <%=s.getFecha() %></td>
                     <td> 
                     	<a href="<%=s.getUrlSancion()%>" target="_blank">Url imagen</a> 
                     </td>

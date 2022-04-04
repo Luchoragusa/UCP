@@ -231,7 +231,7 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-2">
-                        <h4 class="page-title">Perfil</h4>
+                        <h3 class="page-title">[PSG] PERFIL</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -272,7 +272,7 @@
                             </div>
                             <div class="card-body">
                                 <h2 align="center">Sanciones</h2>
-							<table  cellspacing="2" cellpadding="10" border="2">	
+							<table  cellspacing="2" cellpadding="10" border="2" align="center">	
 								<tr bgcolor=#FA8369>
 									<th>Tipo Sancion</th>
 									<th>Numero Sancion</th>
@@ -289,14 +289,18 @@
 								<tr>
 									<th> <%=s.getTipoSancion() %> </th>
 									<th> <%=s.getNroSancion() %> </th>
-									<th> 
 									<%	
-										if(s.isEstado())
-											out.print("Activa");
-										else
-											out.print("Apelada");
-									%> 
-									</th>
+										if(s.isEstado()){
+									%>
+									<th class="border-top-0">Aceptada</th>
+									<%}; %>
+									
+									<%
+										if(s.isEstado()==false){
+									%>
+									<th class="border-top-0">Apelada</th>	
+									<%}; %>
+									
 									<th> <%=s.getFecha() %> </th>
 									<th> 
 										<a href="<%=s.getUrlSancion()%>" target="_blank">Url imagen</a> 
@@ -308,7 +312,7 @@
 							</table><br>
 							
                             <h2 align="center">Bitacoras</h2>
-                                <table cellspacing="2" cellpadding="10" border="2">	
+                                <table cellspacing="2" cellpadding="10" border="2" align="center">	
                                     <tr bgcolor=#FFDF4F>
 													<th>Inicio</th>
 													<th>Fin</th>
@@ -463,29 +467,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12" style="color: #FF8F00 ">
-                                        	<p style = "font-family:Arial; font-size:22px; font-style:oblique;">Bitacoras</p>
-                                        </label>
-                                        <div class="col-sm-12">
-                                            
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">                                    
+                                    
+                                    <div class="form-group" align="center">                                    
                                         <div class="col-sm-12">   
-                                        <input type="submit" onclick = "mostrarForm()"  value="Editar datos personales" id="btn1">   
-                                                                                                                     
-                                            <form action="editarPerfilS" method="post" id="editarDatos" hidden="">
-												Nombre: <input type = "text" name = "nombre" value="<%=usuarioOnline.getNombre()%>"Required><br><br>
-												Apellido: <input type = "text" name = "apellido" value="<%=usuarioOnline.getApellido()%>"Required><br><br>
-												Discord Id: <input type = "text" name = "discordId" value="<%=usuarioOnline.getDiscordId()%>"Required><br><br>
-												Usuario: <input type = "text" name = "usuario" value="<%=usuarioOnline.getUsuario()%>"Required><br><br>
-												Contrasenia: <input type = "password" name = "pw" placeholder="Obligatorio" Required><br><br>
-												<input type = "submit" value = "Guardar cambios" ><br><br>
-											</form>											                                     
+                                            <button action="editarPerfilS" method="post">
+                                            	<a href="EditarPerfil.jsp" class="nav-item nav-link active">Editar datos personales</a>
+                                            </button>
                                         </div>                                        
-                                    </div>                                    
+                                    </div>    
+                                                                   
                                 </form>
                             </div>
                         </div>
@@ -533,7 +523,7 @@
 	<script type="text/javascript">
 		function mostrarForm()
 		{
-			document.getElementById('editarDatos').hidden=false;
+			document.getElementById('editarDatos').hidden=true;
 			document.getElementById('btn1').hidden=true;
 		}
 	</script>  

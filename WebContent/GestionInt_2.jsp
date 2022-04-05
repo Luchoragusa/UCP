@@ -11,23 +11,20 @@
     
 <head>
     <meta charset="UTF-8">
-    <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
-    <!-- Custom CSS -->
     <link href="./dist/css/style.min.css" rel="stylesheet">
     <link href="./dist/css/entrarsalir.css" rel="stylesheet">
     <title>[PSG] Gestion Integrante</title>
-    <style type="text/css">
-    
-    .input[type=submit] {
-    padding:5px 15px; 
-    background:#ccc; 
-    border:0 none;
-    cursor:pointer;
-    -webkit-border-radius: 5px;
-    border-radius: 5px; 
-    text-align:center;
-}
+    <style type="text/css"> 
+	    .input[type=submit] {
+		    padding:5px 15px; 
+		    background:#ccc; 
+		    border:0 none;
+		    cursor:pointer;
+		    -webkit-border-radius: 5px;
+		    border-radius: 5px; 
+		    text-align:center;
+		}
     </style>
 </head>
 
@@ -41,13 +38,11 @@
 		%>
     <div class="container">
         <div class="main-body">
-            <!-- Breadcrumb -->
             <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="HomeTuneada.jsp">Home</a></li>
             </ol>
             </nav>
-            <!-- /Breadcrumb -->    
             <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
                 <div class="card">
@@ -62,9 +57,6 @@
                         <h4>GESTIÓN INTEGRANTE</h4>
                         <p class="text-secondary mb-1">Menu de Gestion de integrante.</p>
                         <p class="text-muted font-size-sm">[UCP-PSG] </p>
-                        <!--<button class="btn btn-primary">Follow</button>
-                        <button class="btn btn-outline-primary">Message</button>-->
-                        
                     </div>
                     </div>
                 </div>
@@ -264,14 +256,14 @@
             </div>
         </div>
         
-<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
-        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-            <footer class="footer text-center">
-                Panel de la faccion de Prosegur en [BA:RP] ||
-                    <a href="https://github.com/Luchoragusa">Luciano Ragusa</a> || 
-                    <a href="https://github.com/JuaniPucheta">Juan Ignacio Pucheta</a>|| 
-                    <a href="https://github.com/CamiloPereyra">Camilo Pereyra</a>
-            </footer>
-</div>
+	<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+	        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+	            <footer class="footer text-center">
+	                Panel de la faccion de Prosegur en [BA:RP] ||
+	                    <a href="https://github.com/Luchoragusa">Luciano Ragusa</a> || 
+	                    <a href="https://github.com/JuaniPucheta">Juan Ignacio Pucheta</a>|| 
+	                    <a href="https://github.com/CamiloPereyra">Camilo Pereyra</a>
+	            </footer>
+	</div>
 </body>
 </html>

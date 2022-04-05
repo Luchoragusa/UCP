@@ -19,44 +19,43 @@
     <link href="./dist/css/style.min.css" rel="stylesheet">
     <style type="text/css">
         body{
-    background:#eee;
-}
-.card {
-    box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
-}
-.card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 0 solid rgba(0,0,0,.125);
-    border-radius: 1rem;
-}
-.img-thumbnail {
-    padding: .25rem;
-    background-color: #ecf2f5;
-    border: 1px solid #dee2e6;
-    border-radius: .25rem;
-    max-width: 100%;
-    height: auto;
-}
-.avatar-lg {
-    height: 150px;
-    width: 150px;
-}
-
-input[type=submit] {
-    padding:5px 15px; 
-    background:#ccc; 
-    border:0 none;
-    cursor:pointer;
-    -webkit-border-radius: 5px;
-    border-radius: 5px; 
-}
-
+		    background:#eee;
+		}
+		.card {
+		    box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+		}
+		.card {
+		    position: relative;
+		    display: flex;
+		    flex-direction: column;
+		    min-width: 0;
+		    word-wrap: break-word;
+		    background-color: #fff;
+		    background-clip: border-box;
+		    border: 0 solid rgba(0,0,0,.125);
+		    border-radius: 1rem;
+		}
+		.img-thumbnail {
+		    padding: .25rem;
+		    background-color: #ecf2f5;
+		    border: 1px solid #dee2e6;
+		    border-radius: .25rem;
+		    max-width: 100%;
+		    height: auto;
+		}
+		.avatar-lg {
+		    height: 150px;
+		    width: 150px;
+		}
+		
+		input[type=submit] {
+		    padding:5px 15px; 
+		    background:#ccc; 
+		    border:0 none;
+		    cursor:pointer;
+		    -webkit-border-radius: 5px;
+		    border-radius: 5px; 
+		}
     </style>
 </head>
 
@@ -97,7 +96,5 @@ input[type=submit] {
                     <a href="https://github.com/CamiloPereyra">Camilo Pereyra</a>.
             </footer>
         </div>                
-    </table>
 </body>
-
 </html>

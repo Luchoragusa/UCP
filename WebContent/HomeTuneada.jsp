@@ -15,29 +15,17 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords"
         content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Xtreme lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Xtreme admin lite design, Xtreme admin lite dashboard bootstrap 5 dashboard template">
     <meta name="description"
         content="Xtreme Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <!-- Este texto de aca es el que aparece arriba en la pestana de google -->
     <title>[PSG] Panel Usuario</title> 
     <link rel="canonical" href="https://www.wrappixel.com/templates/xtreme-admin-lite/" />
-    <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
-    <!-- Custom CSS -->
     <link href="./assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <link href="./dist/css/style.min.css" rel="stylesheet">
-    
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
 <script src="//code.tidio.co/p26dt4g3heql4zxjwvkmcyecxl33ssqy.js" async></script> 
 	<style>
 		a.nav-item.nav-link.active:hover {color:#000000; background:#ffe635 }
@@ -62,61 +50,52 @@
 			idRol = usuarioOnline.getRol().getIdRol();
 		}
 		%>
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
+    <!-- ================== -->
+    <!-- 	Preloader 
+    <!-- ================== -->
     <div class="preloader">
         <div class="lds-ripple">
             <div class="lds-pos"></div>
             <div class="lds-pos"></div>
         </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
+    <!-- ========================= -->
+    <!-- 		Main wrapper 
+    <!-- ========================= -->
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
+        <!-- ==================== -->
+        <!-- 	Topbar header
+        <!-- ==================== -->
         <header class="topbar" data-navbarbg="skin5">
             <nav class="navbar top-navbar navbar-expand-md navbar-dark">
                 <div class="navbar-header" data-logobg="skin5">
-                    <!-- ============================================================== -->
-                    <!-- Logo -->
-                    <!-- ============================================================== -->
+                    <!-- =================== -->
+                    <!-- 		Logo 
+                    <!-- =================== -->
                     <a class="navbar-brand" href="oldIndex.html">
                         <!-- Logo icon -->
                         <b class="logo-icon">
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
                             <img src="./assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
-                            <!-- Light Logo icon -->
                             <img src="./assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
                         </b>
-                        <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="logo-text">
-                            <!-- dark Logo text -->
                             <img src="./assets/images/logo-text.png" alt="homepage" class="dark-logo" />
-                            <!-- Light Logo text -->
                             <img src="./assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
                         </span>
                     </a>
-                    <!-- ============================================================== -->
-                    <!-- End Logo -->
-                    <!-- ============================================================== -->
                     <!-- This is for the sidebar toggle which is visible on mobile only -->
                     <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
                             class="ti-menu ti-close"></i></a>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Logo -->
-                <!-- ============================================================== -->
+                <!-- ================== -->
+                <!-- 	End Logo 
+                <!-- ================== -->
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->              
+                    <!-- =========================== -->
+                    <!-- 	toggle and nav items 
+                    <!-- =========================== -->              
                         <div class="container h-100">
                             <div class="d-flex justify-content-center h-100">
                             <div class="searchbar">
@@ -125,38 +104,32 @@
                             </div>
                             </div>
                         </div>
-                    <!-- ============================================================== -->
-                    <!-- Right side toggle and nav items -->
-                    <!-- ============================================================== -->
+                    <!-- ====================================== -->
+                    <!-- 	Lado derecho toggle y nav items 
+                    <!-- ====================================== -->
                     <ul class="navbar-nav float-end">
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
+                        <!-- ====================== -->
+                        <!--	 Cerrar sesión 
+                        <!-- ====================== -->
                         <ul class="navbar-nav ml-auto">
                             <li><a href="LoginTUNEADO.jsp" class="nav-item nav-link active">Cerrar sesión</a></li>
                         </ul>  
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
                     </ul>
                 </div>
             </nav>
         </header>
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
+        <!-- =======================-->
+        <!-- 	End Topbar header
+        <!-- ======================= -->
+        <!-- ============================ -->
+        <!-- 	Sidebar a la izquierda
+        <!-- ============================ -->
         <aside class="left-sidebar" data-sidebarbg="skin6">
-            <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <!-- User Profile-->
                         <li>
-                            <!-- User Profile-->
+                            <!-- Perfil de usuario -->
                             <div class="user-profile d-flex no-block dropdown m-t-20">
                                  <div class="user-pic"><img src="./assets/images/Prosegur.jpg" alt="users"
                                         class="light-logo" width="50" /></div>
@@ -177,7 +150,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- End User Profile-->
+                            <!-- Fin de perfil de usuario -->
                         </li>
 
                         <!-- Bitacora del servicio-->
@@ -185,7 +158,7 @@
                                 class="btn d-block w-100 create-btn text-white no-block d-flex align-items-center"><i
                                     class="fa fa-plus-square"></i> <span class="hide-menu m-l-5">Panel Bitácora</span> </a>
                         </li>
-
+                        <!-- Fin Bitacora del servicio-->
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="HomeTuneada.jsp" aria-expanded="false"><i class="mdi mdi-home"></i><span
                                     class="hide-menu">Home</span></a>
@@ -202,6 +175,7 @@
                                 <span class="hide-menu">Mi Perfil</span></a>
                         </li>
                         
+                        <!-- Show/Hide opciones en base a rol -->
                         <% if(idRol==1){ %>
                        	<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="AplicarSancionTuneado.jsp" aria-expanded="false">
                             <i class="mdi mdi-note-text" ></i>
@@ -229,20 +203,15 @@
                     </ul>
 
                 </nav>
-                <!-- End Sidebar navigation -->
             </div>
-            <!-- End Sidebar scroll-->
         </aside>
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
+        <!-- ========================== -->
+        <!-- 		Page wrapper  
+        <!-- ========================== -->
         <div class="page-wrapper">
-                <!-- ============================================================== -->
+                <!-- ======================================= -->
                 <!-- Tabla del inicio (psg en servicio) -->
-                <!-- ============================================================== -->
+                <!-- ======================================= -->
                 <div class="row">
                     <!-- column -->
                     <div class="col-12">
@@ -308,25 +277,17 @@
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- Table -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Robos recientes ? -->
-                <!-- ============================================================== -->
 
-                <!-- SANCIONES -->
                 <div class="container-fluid">
-                    <!-- ============================================================== -->
-                    <!-- Start Page Content -->
-                    <!-- ============================================================== -->
+                    <!-- ============================== -->
+                    <!-- 	Robos recientes -->
+                    <!-- ============================== -->
                     <div class="row">                                        
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Listado de robos del equipo PSG</h4>
                                     <h5 class="card-subtitle">En esta sección se mostrarían los robos hechos por equipo</h5>
-                                    <!-- <h6 class="card-subtitle">Formato de tabla tipo <code>.table-striped "Striped rows"</code></h6> -->
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table table-striped">
@@ -363,47 +324,25 @@
                             </div>
                         </div>                                                            
                     </div>
-                    <!-- ============================================================== -->
-                    <!-- End PAge Content -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
-                    <!-- Right sidebar -->
-                    <!-- ============================================================== -->
-                    <!-- .right-sidebar -->
-                    <!-- ============================================================== -->
-                    <!-- End Right sidebar -->
-                    <!-- ============================================================== -->
                 </div>
-                <!-- ============================================================== -->
-                <!-- Recent comment and chats -->
-                <!-- ============================================================== -->
             </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
+            <!-- ======================== -->
+            <!-- 		footer -->
+            <!-- ======================== -->
             <footer class="footer text-center">
                 Panel de la faccion de Prosegur en [BA:RP] ||
                     <a href="https://github.com/Luchoragusa">Luciano Ragusa</a> || 
                     <a href="https://github.com/JuaniPucheta">Juan Ignacio Pucheta</a>.|| 
                     <a href="https://github.com/CamiloPereyra">Camilo Pereyra</a>.
             </footer>
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
         </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
+        <!-- ========================== -->
+        <!-- 	End Page wrapper  -->
+        <!-- ========================== -->
+    <!-- ============================= -->
+    <!-- 		End Wrapper -->
+    <!-- ============================= -->
+
     <script src="./assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="./assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -414,7 +353,6 @@
     <script src="./dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="./dist/js/custom.js"></script>
-    <!--This page JavaScript -->
     <!--chartis chart-->
     <script src="./assets/libs/chartist/dist/chartist.min.js"></script>
     <script src="./assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>

@@ -14,9 +14,7 @@
     
 <head>
     <meta charset="UTF-8">
-    <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
-    <!-- Custom CSS -->
     <link href="./dist/css/style.min.css" rel="stylesheet">
     <link href="./dist/css/entrarsalir.css" rel="stylesheet">
     <title>[PSG] Editar Perfil</title>
@@ -42,14 +40,12 @@
 		%>
     <div class="container">
         <div class="main-body">
-            <!-- Breadcrumb -->
             <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="HomeTuneada.jsp">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><a href="miPerfilTUNEADO.jsp">Mi perfil</a></li>
             </ol>
             </nav>
-            <!-- /Breadcrumb -->    
             <div class="row gutters-sm">
               <div class="col-md-4 mb-3">
                 <div class="card">

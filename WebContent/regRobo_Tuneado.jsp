@@ -12,7 +12,6 @@
 <link href="./dist/css/regRobo_Tuneado.css" rel="stylesheet">
 <link href="./dist/css/RLR_Tuneado.css" rel="stylesheet">
 <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
-
     <style type="text/css">
         .btn-outline-secondary {
             padding-right: 50px;
@@ -87,6 +86,10 @@
      
 	<div class="AS">
         <input type = "submit" value = "Guardar" Required><br>
+    </div>
+    
+    <div class="containerHome">
+        <a button type="button" class="btn btn-outline-danger" href="HomeTuneada.jsp">Volver a la home</a>
     </div>
     
     

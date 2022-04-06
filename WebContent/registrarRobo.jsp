@@ -27,6 +27,7 @@
 	
 	<%		
 		int idLR; 
+		int cantidadElejida;
 		idLR = Integer.parseInt(request.getParameter("lugarRobo"));
 	  	DataIntegrante di = new  DataIntegrante();
     	LinkedList<Integrante> lista = di.getAll();
@@ -38,9 +39,13 @@
     %>
     
 	<h3 class="card-text">Seleccione los participantes: </h3>
+	<h4 class="card-text">Elija cantidad: Mínimo <%=lr.getMinIntegrantes() %>, máximo <%=lr.getMaxIntegrantes() %> </h4>
+	
+	<input type = "text" name = "cantidad"><br><br>
+
 	
 	<%
-		for(int c=1; c<=lr.getMaxIntegrantes(); c++) { 
+		for(int c=1; c<= Integer.parseInt(request.getParameter("cantidad")); c++) { 
 	%>
 	<br>
 		 <select name="lugarRobo<%=c%>>">  

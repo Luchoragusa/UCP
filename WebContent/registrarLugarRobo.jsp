@@ -15,7 +15,7 @@
 		DataLugarRobo dlr = new  DataLugarRobo();
 		LinkedList<LugarRobo> lugares = dlr.getAll();
 		LugarRobo lr =  new LugarRobo();
-		
+		int cant;
 	%>
 		
 <form action="registrarRobo.jsp" method="post">
@@ -35,6 +35,9 @@
 		
 		%>
 	</select><br><br>
+	
+	
+	
 	
   	<input type = "submit" value = "Continuar" Required><br>
 	</form>

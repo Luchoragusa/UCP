@@ -101,7 +101,7 @@
   <br/><br/>
 
   <table  align="center" cellspacing="2" cellpadding="2" border="2" width ="500">	
-    <tr bgcolor=#71A6FF>
+    <tr bgcolor=#fff>
       <th>Tipo Arma</th>
       <th>Nombre Arma</th>
       <th>Fecha de carga</th>

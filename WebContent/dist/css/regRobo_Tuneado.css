@@ -1,0 +1,70 @@
+@charset "ISO-8859-1";
+@import "compass/css3";
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600);
+
+body {
+ background: #1c5570; 
+  color: #ffffff;
+  font:400 .9em/1.9 'Open Sans', Calibri, Helvetica, Arial, sans-serif;
+}
+
+.custom-select {
+  position : relative;
+  width: 100%;
+  max-width:  25em;
+  margin: 4em auto;
+  cursor: pointer;
+}
+.select,
+.label{
+  display: block;
+}
+.select {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  padding: 1em;
+  height: 4em;
+  opacity: 0;
+  background: none transparent;
+  border: 0 none;
+}
+.label {
+  position:  relative;
+  padding: 1em;
+  border-radius: .5em;
+  cursor: pointer;
+}
+.label::after {
+  content: "▼";
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 1em;
+  border-left: 1px solid;
+}
+.open .label::after {
+   content: "▲";
+}
+.select-1 {
+   background: #21cf8f;
+  border-bottom: .25em solid darken(#21cf8f, 10);
+
+}
+.select-2 {
+   background: #307ddb;
+  border-bottom: .25em solid darken(#307ddb, 10);
+
+}
+.select-3 {
+   background: #f2bb18;
+  border-bottom: .25em solid darken(#f2bb18, 10);
+
+}
+.select-4 {
+  background: #db3d3d;
+  border-bottom: .25em solid darken(#db3d3d, 10);
+
+}
+

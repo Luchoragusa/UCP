@@ -3,6 +3,9 @@ package data;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.LinkedList;
 
 import entities.Integrante;
@@ -11,6 +14,57 @@ import entities.Robo;
 
 public class DataRobo
 {
+	public LinkedList<Robo> getAllRobosIntegrante()
+	{
+		Statement stmt=null;
+		ResultSet rs=null;
+		Robo r = null;
+		LugarRobo lr = null;
+		LinkedList<Robo> robos= null;
+		try {
+			stmt= DbConnector.getInstancia().getConn().createStatement();
+			rs= stmt.executeQuery("select r.nroRobo, r.resultado, lug.lugarRobo, lug.tipoRobo\r\n"
+					+ "from robo r\r\n"
+					+ "inner join lugarrobo lug on r.idLugarRobo = lug.idLugarRobo");
+			if(rs!=null) 
+			{
+				robos = new LinkedList<>();
+				while(rs.next()) 
+				{
+					r=new Robo();
+					lr = new LugarRobo();
+					
+					r.setNroRobo(rs.getInt("nroRobo"));
+					r.setResultado(rs.getString("resultado"));
+					lr.setLugarRobo("lugarRobo");
+					lr.setTipoRobo("tipoRobo");
+					
+					r.setLugar_robo(lr);
+
+					robos.add(r);
+				}
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		} 
+		finally 
+		{
+			try 
+			{
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+		return robos;
+	}
+	
 	public void saveRobo(Integrante intg, LugarRobo rob, Robo rd) 
 	{
 		PreparedStatement stmt=null;
@@ -199,69 +253,5 @@ public class DataRobo
 		}
 		return numeros;
 	}
-	
-	/*
-	public HashMap<HashMap<Integrante, Robo>, LugarRobo> getUltimos5robos() // hacer el Hash para las 3 entidades
-	{	
-		PreparedStatement stmt=null;
-		ResultSet rs=null;
-		Integrante i = null;
-		LugarRobo r = null;
-		Robo rxd = null;
-		
-		HashMap<Integrante,Robo> irxd = null;
-	
-		HashMap<HashMap<Integrante,Robo>, LugarRobo> inteRxdR = null;
-		try 
-		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement("select i.nombre, i.apellido, r.nomRobo, roboxdia.resultado, roboxdia.hora_robo, roboxdia.idRobo \r\n"
-					+ "					from integrante i\r\n"
-					+ "                    inner join roboxdia  on roboxdia.idIntegrante = i.idIntegrante \r\n"
-					+ "                    inner join robo r on r.idLugarRobo = roboxdia.idLugarRobo\r\n"
-					+ "					where roboxdia.idRobo between ((select max(roboxdia.idRobo)-5 from roboxdia)) and (select max(roboxdia.idRobo) from roboxdia) \r\n"
-					+ "					order by roboxdia.idRobo asc");
-			rs= stmt.executeQuery();
-			if(rs!=null) 
-			{
-				while(rs.next()) 
-				{
-					irxd = new HashMap<>();
-					inteRxdR = new HashMap<>();
-					r=new LugarRobo();
-					r.setTipoRobo(rs.getString("nomRobo"));
-					
-					rxd=new Robo();
-					rxd.setResultado(rs.getString("resultado"));
-					rxd.setIdRobo(rs.getInt("idRobo"));
-					rxd.setHora_robo(rs.getObject("hora_robo", LocalTime.class));
-					
-					i=new Integrante();
-					i.setNombre(rs.getString("nombre"));
-					i.setApellido(rs.getString("apellido"));
-					irxd.put(i,rxd);
-					inteRxdR.put(irxd,r);
-				}
-			}
-		} 
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
-		}
-		finally 
-		{
-			try 
-			{
-				if(rs!=null) {rs.close();}
-				if(stmt!=null) {stmt.close();}
-				DbConnector.getInstancia().releaseConn();
-			} 
-			catch (SQLException e) 
-			{
-				e.printStackTrace();
-			}
-		}
-		return inteRxdR;
-	}	
-	*/
 
 }

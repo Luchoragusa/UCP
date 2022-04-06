@@ -8,7 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>[PSG] Registrar lugar Robo</title>
-
+<link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
 </head>
 <body>
 	<% 
@@ -26,9 +26,7 @@
 		<%
 			for(LugarRobo i : lugares) {
 		%>
-	    <option value="<%=i.getIdLugarRobo()%>"> 
-			<% out.print(i.getLugarRobo()); %>
-	    </option>
+	    <option value="<%=i.getIdLugarRobo()%>"> <% out.print(i.getLugarRobo()); %></option>
 	    
 	    <%
 			}

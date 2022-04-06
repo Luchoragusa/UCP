@@ -8,28 +8,42 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
+<title>[PSG Registrar Robo]</title>
+<style>
+	input[type=submit] {
+	  background-color: #04AA6D;
+	  border: none;
+	  color: white;
+	  padding: 6px 14px;
+	  text-decoration: none;
+	  margin: 4px 2px;
+	  cursor: pointer;
+	}
+</style>
 </head>
 <body>
 
-
-<%		int idLR;
+	
+	<%		
+		int idLR;
 	  	DataIntegrante di = new  DataIntegrante();
-    	LinkedList<Integrante> lista = di.getAll();%>
-<%
-  		out.print("Seleccione participantes Max: NI IDEA COMO TRAER EL MAXIMO DE CADA LUGAR ROBO");
-	%><br>
+    	LinkedList<Integrante> lista = di.getAll();
+    %>
+    
+	<h3 class="card-text">Seleccione los participantes: </h3>
 	
 	<%
-	for(int c=0; c<=2; c++) { // repite el combo box, lo deberia hacer en base a la cantidad integrantes q participaron
-	%><br>
+		for(int c=0; c<=2; c++) { 
+	%>
+	<br>
 		 <select name="lugarRobo<%=c%>>">  
 			<%
 		  		for(Integrante i :  lista) {	
 			%>
-			    <option value="<% i.getIdIntegrante(); %>"> 
-					<% out.print(i.getNombre() + "" + i.getApellido()); %>
-	   			 </option>
+			    <option value="<% i.getIdIntegrante(); %>">
+			    	<% out.print(i.getNombre() + "" + i.getApellido()); %>
+			    </option>
 	    	<%
 					}
 			%>
@@ -38,6 +52,7 @@
 		}
 	%>
 		<br>
+	<h3 class="card-text">Ingrese Resultado: </h3>
 		Ingrese Resultado:
 		<select name="rto">
 			<option value="Ganado">Ganado</option>

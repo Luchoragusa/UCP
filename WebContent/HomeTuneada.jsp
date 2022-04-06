@@ -165,7 +165,7 @@
                         </li>
                         
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="registrarLugarRobo.jsp" aria-expanded="false"><i class="mdi mdi-bank"></i><span
+                            href="RLR_Tuneado.jsp" aria-expanded="false"><i class="mdi mdi-bank"></i><span
                                 class="hide-menu">Robo</span></a>
                         </li>  
                                  
@@ -294,31 +294,34 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">Orden de robos</th>
-                                                <th scope="col">Lugar</th>
-                                                <th scope="col">Dinero recaudado</th>
                                                 <th scope="col">Resultado</th>
+                                                <th scope="col">Lugar</th>
+                                                <th scope="col">Nivel de robo</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                   	<%
+	                            		DataRobo dr = new DataRobo();
+	                            		LinkedList<Robo> robos = dr.getAllRobosIntegrante();
+	                            		
+	                            		for(Robo r : robos){
+									%>
                                             <tr>
-                                                <th scope="row">1</th>
-                                                <td>TRAER DESDE LA BD</td>
-                                                <td>TRAER DESDE LA BD</td>
-                                                <td>TRAER DESDE LA BD</td>
+                                                <td scope="row">
+                                                	<%=r.getNroRobo() %>
+                                                </td>
+                                                <td>
+                                                	<%=r.getResultado() %>
+                                                </td>
+                                                <td>
+                                                	<%=r.getLugar_robo().getLugarRobo() %>
+                                                </td>
+                                                <td>
+                                                	<%=r.getLugar_robo().getTipoRobo() %>
+                                                </td>
                                             </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>TRAER DESDE LA BD</td>
-                                                <td>TRAER DESDE LA BD</td>
-                                                <td>TRAER DESDE LA BD</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>TRAER DESDE LA BD</td>
-                                                <td>TRAER DESDE LA BD</td>
-                                                <td>TRAER DESDE LA BD</td>
-                                            </tr>
-                                        </tbody>
+                                    <%
+											}
+									%>  
                                     </table>
                                 </div>
                             </div>

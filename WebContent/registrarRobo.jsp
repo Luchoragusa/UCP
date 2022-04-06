@@ -26,15 +26,21 @@
 
 	
 	<%		
-		int idLR;
+		int idLR; 
+		idLR = Integer.parseInt(request.getParameter("lugarRobo"));
 	  	DataIntegrante di = new  DataIntegrante();
     	LinkedList<Integrante> lista = di.getAll();
+    	
+    	LugarRobo lr = new LugarRobo();
+    	DataLugarRobo dlr = new DataLugarRobo();
+    	lr.setIdLugarRobo(idLR);
+    	lr = dlr.getById(lr);
     %>
     
 	<h3 class="card-text">Seleccione los participantes: </h3>
 	
 	<%
-		for(int c=0; c<=2; c++) { 
+		for(int c=1; c<=lr.getMaxIntegrantes(); c++) { 
 	%>
 	<br>
 		 <select name="lugarRobo<%=c%>>">  

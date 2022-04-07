@@ -4,6 +4,7 @@
 <%@page import="data.*"%>
 <%@page import="entities.*"%>
 <%@page import="java.util.LinkedList"%>
+<%@page import="java.util.Scanner"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,12 +27,6 @@
             margin-bottom: 30px;
             margin-top: 20px;
         } 
-		.AS {
-		    text-align: left;
-		    overflow: hidden;
-		    width: 80%;
-		    margin: 0 auto;
-		} 
 		input[type=submit] {
 		  background-color: #04AA6D;
 		  text-align: center;
@@ -54,27 +49,41 @@
 </head>
 <body>
 	<%		
-		int idLR;
+		int idLR; 
+		int cantidadElejida;
+		//Scanner scan = new Scanner(System.in);<h4 class="card-text">Elija: <%=cantidadElejida = Integer.parseInt(scan.nextLine())
+		idLR = Integer.parseInt(request.getParameter("lugarRobo"));
 	  	DataIntegrante di = new  DataIntegrante();
     	LinkedList<Integrante> lista = di.getAll();
+    	
+    	LugarRobo lr = new LugarRobo();
+    	DataLugarRobo dlr = new DataLugarRobo();
+    	lr.setIdLugarRobo(idLR);
+    	lr = dlr.getById(lr);
     %>
    <div class="containerHome">
 	<h3 class="card-text">Seleccione los participantes: </h3>
-	    <%
-			for(int c=0; c<=2; c++) { 
-		%>
-			 <select name="lugarRobo<%=c%>>">  
-				<%
-			  		for(Integrante i :  lista) {	
-				%>
-				    <option value="<% i.getIdIntegrante(); %>"><% out.print(i.getNombre() + "" + i.getApellido()); %></option>
-		    	<%
-						}
-				%>
-			</select><br>
-	   	<%
-			}
-		%>
+		<h4 class="card-text">Mínimos integrantes: <%=lr.getMinIntegrantes() %>, máximo integrantes: <%=lr.getMaxIntegrantes() %> </h4>
+		
+	<%
+		for(int c=1; c<=2; c++) { 		//cantidadElejida
+	%>
+	<br>
+		 <select name="lugarRobo<%=c%>>">  
+			<%
+		  		for(Integrante i :  lista) {	
+			%>
+			    <option value="<% i.getIdIntegrante(); %>">
+			    	<% out.print(i.getNombre() + "" + i.getApellido()); %>
+			    </option>
+	    	<%
+					}
+			%>
+		</select><br>
+   	<%
+		}
+	%>
+		<br><br><br>
         
 	<h3 class="card-text">Ingrese Resultado: </h3>
 		<select name="rto">
@@ -82,13 +91,11 @@
 			<option value="Perdido">Perdido</option>
 			<option value="Empatado">Empatado</option>
 		</select>
-		<br>
-     
-	<div class="AS">
-        <input type = "submit" value = "Guardar" Required><br>
-    </div>
+		<br><br><br>
     
     <div class="containerHome">
+        <input type = "submit" value = "Guardar" Required><br>
+        <br>
         <a button type="button" class="btn btn-outline-danger" href="HomeTuneada.jsp">Volver a la home</a>
     </div>
     

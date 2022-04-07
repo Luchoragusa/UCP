@@ -41,11 +41,8 @@
 	<h3 class="card-text">Seleccione los participantes: </h3>
 	<h4 class="card-text">Elija cantidad: Mínimo <%=lr.getMinIntegrantes() %>, máximo <%=lr.getMaxIntegrantes() %> </h4>
 	
-	<input type = "text" name = "cantidad"><br><br>
-
-	
 	<%
-		for(int c=1; c<= Integer.parseInt(request.getParameter("cantidad")); c++) { 
+		for(int c=1; c<=lr.getMaxIntegrantes(); c++) { 
 	%>
 	<br>
 		 <select name="lugarRobo<%=c%>>">  

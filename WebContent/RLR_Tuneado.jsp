@@ -40,7 +40,7 @@
 			<%
 				for(LugarRobo i : lugares) {
 			%>
-		    <option value="<%=i.getIdLugarRobo()%>"> <% out.print(i.getLugarRobo()); %></option>
+		    <option name="idLugarRobo" value="<%=i.getIdLugarRobo()%>"> <% out.print(i.getLugarRobo()); %></option>
 		    
 		    <%
 				}

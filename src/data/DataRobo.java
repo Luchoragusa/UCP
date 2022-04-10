@@ -14,7 +14,7 @@ import entities.Robo;
 
 public class DataRobo
 {
-	public LinkedList<Robo> getAllRobosIntegrante()
+	public LinkedList<Robo> getAllRobosIntegrante(Integrante inte)
 	{
 		Statement stmt=null;
 		ResultSet rs=null;
@@ -22,10 +22,18 @@ public class DataRobo
 		LugarRobo lr = null;
 		LinkedList<Robo> robos= null;
 		try {
-			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select r.nroRobo, r.resultado, lug.lugarRobo, lug.tipoRobo\r\n"
-					+ "from robo r\r\n"
-					+ "inner join lugarrobo lug on r.idLugarRobo = lug.idLugarRobo");
+			
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select r.nroRobo, r.resultado, lug.lugarRobo, lug.tipoRobo\r\n"
+					+ " from robo r\r\n"
+					+ " inner join lugarrobo lug on r.idLugarRobo = lug.idLugarRobo\r\n"
+					+ " inner join integrante i\r\n"
+					+ " on  r.nroRobo = i.idIntegrante\r\n"
+					+ " where i.idIntegrante = ?");
+			
+			stmt.setInt(1, inte.getIdIntegrante());
+			
+			rs=stmt.executeQuery();
+			
 			if(rs!=null) 
 			{
 				robos = new LinkedList<>();

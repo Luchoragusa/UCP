@@ -26,9 +26,9 @@
 
 	
 	<%		
-		int idLR = Integer.parseInt(request.getParameter("idLR"));
+		int idLR; 
 		int cantidadElejida;
-		cantidadElejida = Integer.parseInt(request.getParameter("cant"));
+		idLR = Integer.parseInt(request.getParameter("lugarRobo"));
 	  	DataIntegrante di = new  DataIntegrante();
     	LinkedList<Integrante> lista = di.getAll();
     	
@@ -37,45 +37,32 @@
     	
     	lr.setIdLugarRobo(idLR);
     	lr = dlr.getById(lr);
-    	
     %>
     
 	<h3 class="card-text">Seleccione los participantes: </h3>
+	<h4 class="card-text">Elija cantidad: Mínimo <%=lr.getMinIntegrantes() %>, máximo <%=lr.getMaxIntegrantes() %> </h4>
 	
-<form action = "registrarLugarRoboS" method="post">	
-
-	<input type = "hidden" value = "<%=idLR%>" name = "idLR">
-
-	<%
-		for(int c = 1; c<=cantidadElejida; c++) { 
-	%>
-	<br>
-		 <select name="integrante">  
-			<%
-		  		for(Integrante i :  lista) {	
-			%>
-			    <option value="<%=i.getIdIntegrante()%>">
-			    	<% out.print(i.getNombre() + "" + i.getApellido()); %>
-			    </option>
-	    	<%
-					}
-			%>
-		</select><br>
-   	<%
-		}
-	%>
+<form action="registrarRobo.jsp" method="post">
 	
-		<br>
-	<h3 class="card-text">Ingrese Resultado: </h3>
-		Ingrese Resultado:
-		<select name="rto">
-			<option value="Ganado">Ganado</option>
-			<option value="Perdido">Perdido</option>
-			<option value="Empatado">Empatado</option>
-		</select>
-		<br>
+	<input type = "hidden" name = "idLR" value = "<%=idLR%>">
 		
-		<input type = "submit" value = "Guardar" Required><br>
+	Seleccione cantidad de integrantes:
+	 <select name="cant" >  
+		<%
+			for(int c=lr.getMinIntegrantes(); c<=lr.getMaxIntegrantes(); c++) { 
+		%>
+		    <option name="cantRobo" value="<%=c%>"> 
+		    	<% out.print(c); %>
+		    </option>
+		   	    	
+	    <%
+			}
+		
+		%>
+	</select><br><br>		
+  	<input type = "submit" value = "Continuar" Required><br>
+  	
 </form>
+
 </body>
 </html>

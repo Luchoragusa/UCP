@@ -165,7 +165,7 @@
                         </li>
                         
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="RLR_Tuneado.jsp" aria-expanded="false"><i class="mdi mdi-bank"></i><span
+                            href="registrarLugarRobo.jsp" aria-expanded="false"><i class="mdi mdi-bank"></i><span
                                 class="hide-menu">Robo</span></a>
                         </li>  
                                  

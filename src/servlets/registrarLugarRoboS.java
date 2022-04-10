@@ -36,16 +36,12 @@ public class registrarLugarRoboS extends HttpServlet {
 		
 		//SETEO NRO ROBO
 		r = dr.getLastIdRobo();
-				
-		
+						
 		//SETEO LUGAR ROBO:
-		lr.setIdLugarRobo(Integer.parseInt(request.getParameter("lugarRobo")));
+		lr.setIdLugarRobo(Integer.parseInt(request.getParameter("idLR")));
 		lr = dlr.getById(lr);
 		r.setLugar_robo(lr); 
-		
-	
-
-				
+						
 		//SETEO RESULTADO
 		r.setResultado(request.getParameter("rto"));
 		
@@ -66,10 +62,9 @@ public class registrarLugarRoboS extends HttpServlet {
 			}
 
 		//INSERT ROBO:
-			r.setIntegrantes(integrantes);
-	
+			r.setIntegrantes(integrantes);	
 		
-		response.sendRedirect("homeTest.jsp");
+		response.sendRedirect("HomeTuneada.jsp");
 	
 	}
 

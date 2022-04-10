@@ -18,7 +18,7 @@
 		int cant;
 	%>
 		
-<form action="registrarRobo.jsp" method="post">
+<form action="ingresoIntegrantesRobo.jsp" method="post">
 	
 	Seleccione Lugar de robo:
 	 <select name="lugarRobo" > 
@@ -41,8 +41,6 @@
 	
   	<input type = "submit" value = "Continuar" Required><br>
 	</form>
-	
-
 
 </body>
 </html>

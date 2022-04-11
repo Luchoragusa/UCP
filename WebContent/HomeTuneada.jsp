@@ -302,12 +302,11 @@
                                    	<%
 	                            		DataRobo dr = new DataRobo();
 	                            		LinkedList<Robo> robos = dr.getAllRobosIntegrante(usuarioOnline);
-	                            		
+                            			LugarRobo lug = new LugarRobo();
+
 	                            		for(Robo r : robos){          
-	                            			
-	                            			LugarRobo lug = new LugarRobo();
+	                      			
 	                            			lug = r.getLugar_robo();
-	                            			
 									%>
                                             <tr>
                                                 <td scope="row">

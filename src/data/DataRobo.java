@@ -16,7 +16,7 @@ public class DataRobo
 {
 	public LinkedList<Robo> getAllRobosIntegrante(Integrante inte)
 	{
-		Statement stmt=null;
+		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		Robo r = null;
 		LugarRobo lr = null;
@@ -31,8 +31,7 @@ public class DataRobo
 					+ " where i.idIntegrante = ?");
 			
 			stmt.setInt(1, inte.getIdIntegrante());
-			
-			rs=stmt.executeQuery();
+			rs= stmt.executeQuery();
 			
 			if(rs!=null) 
 			{

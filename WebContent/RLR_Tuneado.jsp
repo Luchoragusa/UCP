@@ -30,7 +30,7 @@
 	%>
   
   <div class="grid">
-    <form action="regRobo_Tuneado.jsp" method="post" class="form login">
+    <form action="ingresoIntegrantesRobo.jsp" method="post" class="form login">
       <div class="form__field">
 	      <label for="login__username">
 	      	Seleccione Lugar de robo:</label>

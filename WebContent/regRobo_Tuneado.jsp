@@ -49,24 +49,26 @@
 </head>
 <body>
 	<%		
-		int idLR; 
+		int idLR = Integer.parseInt(request.getParameter("idLR"));
 		int cantidadElejida;
-		//Scanner scan = new Scanner(System.in);<h4 class="card-text">Elija: <%=cantidadElejida = Integer.parseInt(scan.nextLine())
-		idLR = Integer.parseInt(request.getParameter("lugarRobo"));
+		cantidadElejida = Integer.parseInt(request.getParameter("cant"));
 	  	DataIntegrante di = new  DataIntegrante();
     	LinkedList<Integrante> lista = di.getAll();
     	
     	LugarRobo lr = new LugarRobo();
     	DataLugarRobo dlr = new DataLugarRobo();
+    	
     	lr.setIdLugarRobo(idLR);
     	lr = dlr.getById(lr);
+    	
     %>
    <div class="containerHome">
-	<h3 class="card-text">Seleccione los participantes: </h3>
-		<h4 class="card-text">Mínimos integrantes: <%=lr.getMinIntegrantes() %>, máximo integrantes: <%=lr.getMaxIntegrantes() %> </h4>
+	<h3 class="card-text" style = "color:#F0F8FF">Seleccione los participantes: </h3>
+<form action = "registrarLugarRoboS" method="post">	
+	<input type = "hidden" value = "<%=idLR%>" name = "idLR">
 		
 	<%
-		for(int c=1; c<=2; c++) { 		//cantidadElejida
+		for(int c=1; c<=cantidadElejida; c++) { 		//cantidadElejida
 	%>
 	<br>
 		 <select name="lugarRobo<%=c%>>">  
@@ -85,7 +87,7 @@
 	%>
 		<br><br><br>
         
-	<h3 class="card-text">Ingrese Resultado: </h3>
+	<h3 class="card-text" style = "color:#F0F8FF">Ingrese Resultado: </h3>
 		<select name="rto">
 			<option value="Ganado">Ganado</option>
 			<option value="Perdido">Perdido</option>
@@ -99,6 +101,7 @@
         <a button type="button" class="btn btn-outline-danger" href="HomeTuneada.jsp">Volver a la home</a>
     </div>
     
+</form>  
     
     <footer class="footer text-center">
         Panel de la faccion de Prosegur en [BA:RP] || 

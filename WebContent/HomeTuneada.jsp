@@ -301,9 +301,13 @@
                                         </thead>
                                    	<%
 	                            		DataRobo dr = new DataRobo();
-	                            		LinkedList<Robo> robos = dr.getAllRobosIntegrante();
+	                            		LinkedList<Robo> robos = dr.getAllRobosIntegrante(usuarioOnline);
 	                            		
-	                            		for(Robo r : robos){
+	                            		for(Robo r : robos){          
+	                            			
+	                            			LugarRobo lug = new LugarRobo();
+	                            			lug = r.getLugar_robo();
+	                            			
 									%>
                                             <tr>
                                                 <td scope="row">
@@ -313,10 +317,10 @@
                                                 	<%=r.getResultado() %>
                                                 </td>
                                                 <td>
-                                                	<%=r.getLugar_robo().getLugarRobo() %>
+                                                	<%=lug.getLugarRobo() %>
                                                 </td>
                                                 <td>
-                                                	<%=r.getLugar_robo().getTipoRobo() %>
+                                                	<%=lug.getTipoRobo() %>
                                                 </td>
                                             </tr>
                                     <%

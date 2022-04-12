@@ -68,42 +68,6 @@ public class DataRobo
 		return robos;
 	}
 	
-	public void saveRobo(Integrante intg, LugarRobo rob, Robo rd) 
-	{
-		PreparedStatement stmt=null;
-		ResultSet rs=null;
-		try 
-		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement( 
-					"insert into roboxdia (idLugarRobo, idIntegrante, fecha_robo,resultado, idRobo) values(?,?,?,?,?)");
-			
-			//stmt.setInt(1, rd.getIdLugarRobo());
-			stmt.setInt(2, intg.getIdIntegrante());
-			stmt.setObject(3, rd.getFecha_robo());
-			stmt.setString(5, rd.getResultado());
-			//stmt.setInt(6, rd.getIdRobo());
-			stmt.executeUpdate();
-		} 
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
-		}
-		finally 
-		{
-			try 
-			{
-				if(rs!=null) {rs.close();}
-				if(stmt!=null) {stmt.close();}
-				DbConnector.getInstancia().releaseConn();
-			} 
-			catch (SQLException e) 
-			{
-				e.printStackTrace();
-			}
-		}
-	
-	}
-	
 	public void deleteRobo(Integrante intg) 
 	{
 		PreparedStatement stmt=null;
@@ -143,7 +107,7 @@ public class DataRobo
 		{
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into robo(nroRobo, idIntegrante, resultado,fecha_robo,idLugarRobo) values(?,?,?,?,?)"
+							"insert into robo(nroRobo, idIntegrante, resultado, fecha_robo, idLugarRobo) values(?,?,?,?,?)"
 							);
 			stmt.setInt(1, rob.getNroRobo());
 			stmt.setInt(2, inte.getIdIntegrante());
@@ -222,8 +186,8 @@ public class DataRobo
 				numeros.add(rs.getInt("Suma"));
 			}
 			
-			stmt=null;
-			rs=null;
+			stmt= null;
+			rs= null;
 			stmt=DbConnector.getInstancia().getConn().prepareStatement("select count(*) as SumaG from robo where idIntegrante = ? and resultado = ?");
 			stmt.setInt(1, i.getIdIntegrante());
 			stmt.setString(2, "Ganado");

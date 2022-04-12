@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.LinkedList;
 import javax.servlet.ServletException;
@@ -46,11 +47,9 @@ public class registrarLugarRoboS extends HttpServlet {
 		r.setResultado(request.getParameter("rto"));
 		
 		//SETEO FECHA y HORA DEL ROBO:
-		r.setFecha_robo(LocalDate.now());
-		r.setHora_robo(LocalTime.now());
+		r.setFecha_robo(LocalDateTime.now());
 		
 		//SETEO INTEGRANTES
-		
 			inte = new Integrante();
 			nrosInte = (request.getParameterValues("integrante"));
 			

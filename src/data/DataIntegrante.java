@@ -4,9 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.*;
 import entities.Hora;
 import entities.Integrante;
@@ -18,8 +16,8 @@ import entities.Rol;
 import entities.Subdivision;
 import logic.LlaveMaestra;
 
-	public class DataIntegrante 
-	{
+public class DataIntegrante 
+{
 	Scanner s = null;
 	public Integrante getByUser(Integrante inte) 
 	{	
@@ -27,34 +25,32 @@ import logic.LlaveMaestra;
 		Rol rolcito = null;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
-		try {
+		try 
+		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
 					"select idIntegrante,nombre,apellido,discordId,steamHex, i.idRol, r.descRol\r\n"
 					+ " from integrante i\r\n"
 					+ " inner join rol r\r\n"
 					+ "	on i.idRol = r.idRol\r\n"
-					+ " where usuario=? and pw = AES_ENCRYPT(?,?)"
-					);
+					+ " where usuario=? and pw = AES_ENCRYPT(?,?)");
 			stmt.setString(1, inte.getUsuario());
 			stmt.setString(2, inte.getPw());
 			stmt.setString(3, LlaveMaestra.getLlave());
 			rs=stmt.executeQuery();
-			
-			if(rs!=null && rs.next()) {
+			if(rs!=null && rs.next()) 
+			{
 				i=new Integrante();
 				rolcito = new Rol();
-				
 				i.setIdIntegrante(rs.getInt("idIntegrante"));
 				i.setNombre(rs.getString("nombre"));
 				i.setApellido(rs.getString("apellido"));
 				i.setSteamHex(rs.getString("steamHex"));
 				i.setDiscordId(rs.getString("discordId"));
-
 				rolcito.setIdRol(rs.getInt("idRol"));
-			
 				i.setRol(rolcito);
 			}
-		} catch (SQLException e) 
+		} 
+		catch (SQLException e) 
 		{
 			e.printStackTrace();
 		}
@@ -80,9 +76,7 @@ import logic.LlaveMaestra;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		try {
-			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select * from integrante where usuario=? and pw = AES_ENCRYPT(?,?)"
-					);
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select * from integrante where usuario=? and pw = AES_ENCRYPT(?,?)");
 			stmt.setString(1, inte.getUsuario());
 			stmt.setString(2, inte.getPw());
 			stmt.setString(3, LlaveMaestra.getLlave());
@@ -95,7 +89,8 @@ import logic.LlaveMaestra;
 		}
 		finally 
 		{
-			try {
+			try 
+			{
 				if(rs!=null) {rs.close();}
 				if(stmt!=null) {stmt.close();}
 				DbConnector.getInstancia().releaseConn();
@@ -142,49 +137,37 @@ import logic.LlaveMaestra;
 			stmt.setInt(2, i.getIdIntegrante());
 			stmt.setInt(3, i.getIdIntegrante());
 			rs=stmt.executeQuery();
-			
 			if(rs!=null && rs.next()) 
 			{
 					r = new Rango();
 					r_s = new Ran_Subdivision();
 					rol = new Rol();
-					ri = new Ran_Integrante();
-					
+					ri = new Ran_Integrante();					
 					i.setNombre(rs.getString("nombre"));
 					i.setApellido(rs.getString("apellido"));
 					i.setDiscordId(rs.getString("discordId"));
 					i.setSteamHex(rs.getString("steamHex"));
-					i.setUsuario(rs.getString("usuario"));
-					
+					i.setUsuario(rs.getString("usuario"));					
 					rol.setIdRol(rs.getInt("idRol"));
-					rol.setdescRol(rs.getString("descRol"));
-					
-					r_s.setNombreRangoSub(rs.getString("nombreRangoSub"));
-					
+					rol.setdescRol(rs.getString("descRol"));					
+					r_s.setNombreRangoSub(rs.getString("nombreRangoSub"));					
 					if (r_s.getNombreRangoSub() != null)
 					{
 						s = new Subdivision();
-						rsi = new Ransub_integrante();
-						
+						rsi = new Ransub_integrante();						
 						r_s.setIdRanSub(rs.getInt("idRanSub"));
 						rsi.setFecha_desde((rs.getDate("fechaDesdesub")).toLocalDate());
-						r_s.setRsi(rsi);
-						
+						r_s.setRsi(rsi);						
 						LinkedList<Ran_Subdivision> lrs = new LinkedList<Ran_Subdivision>();
-						lrs.add(r_s);
-						
+						lrs.add(r_s);						
 						s.setDescripcion(rs.getString("descripcion"));
 						s.setIdSub(rs.getInt("idSub"));
-						s.setRanSub(lrs);
-						
+						s.setRanSub(lrs);						
 						i.setSub(s);
 					}
-					
 					r.setNomRango(rs.getString("nombRango"));
-					r.setIdRango(rs.getInt("idRango"));
-					
-					ri.setFecha_desde((rs.getDate("fechaDesde")).toLocalDate());
-					
+					r.setIdRango(rs.getInt("idRango"));					
+					ri.setFecha_desde((rs.getDate("fechaDesde")).toLocalDate());					
 					i.setRol(rol);
 					ri.setRango(r);
 					i.setRanInt(ri);
@@ -246,21 +229,18 @@ import logic.LlaveMaestra;
 					i = new Integrante();
 					r = new Rango();
 					s = new Subdivision();
-					ri = new Ran_Integrante();
-				
+					ri = new Ran_Integrante();				
 					i.setNombre(rs.getString("nombre"));
 					i.setApellido(rs.getString("apellido"));
 					i.setDiscordId(rs.getString("discordId"));
 					i.setIdIntegrante(rs.getInt("idIntegrante"));
-					i.setSteamHex(rs.getString("steamHex"));
-					
+					i.setSteamHex(rs.getString("steamHex"));					
 					r.setNomRango(rs.getString("nombRango"));
 					s.setDescripcion(rs.getString("descripcion"));
 					ri.setFecha_desde(rs.getDate("fechaDesde").toLocalDate());
 					ri.setRango(r);
 					i.setRanInt(ri);
-					i.setSub(s);
-					
+					i.setSub(s);					
 					integrantes.add(i);
 				}
 			}	
@@ -292,11 +272,9 @@ import logic.LlaveMaestra;
 		ResultSet keyResultSet=null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
+			stmt=DbConnector.getInstancia().getConn().prepareStatement(
 							"insert into integrante(nombre, apellido, discordId, steamHex, usuario, pw, idRol) values(?,?,?,?,?,AES_ENCRYPT(?,?),?)",
-							PreparedStatement.RETURN_GENERATED_KEYS
-							);
+							PreparedStatement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, i.getNombre());
 			stmt.setString(2, i.getApellido());
 			stmt.setString(3, i.getDiscordId());
@@ -305,10 +283,8 @@ import logic.LlaveMaestra;
 			stmt.setString(6, i.getPw());
 			stmt.setString(7, LlaveMaestra.getLlave());
 			stmt.setInt(8, r.getIdRol());
-			stmt.executeUpdate();
-			
-			keyResultSet=stmt.getGeneratedKeys();
-			
+			stmt.executeUpdate();		
+			keyResultSet=stmt.getGeneratedKeys();		
 			if(keyResultSet!=null && keyResultSet.next())
 			{
                 i.setIdIntegrante(keyResultSet.getInt(1));
@@ -340,9 +316,7 @@ import logic.LlaveMaestra;
 		ResultSet keyResultSet=null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"insert into ran_integrante(idIntegrante, idRango, fechaDesde) values(?,?,?)");
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("insert into ran_integrante(idIntegrante, idRango, fechaDesde) values(?,?,?)");
 			stmt.setInt(1, ri.getInte().getIdIntegrante());
 			stmt.setInt(2, ri.getRango().getIdRango());
 			stmt.setObject(3, ri.getFecha_desde());
@@ -376,19 +350,16 @@ import logic.LlaveMaestra;
 		{
 			if(i.getPw() != null)
 			{
-				stmt=DbConnector.getInstancia().getConn().
-						prepareStatement(
+				stmt=DbConnector.getInstancia().getConn().prepareStatement(
 								"update integrante set  pw=AES_ENCRYPT(?,?),nombre=?, apellido=?, usuario=?, discordId=? where idIntegrante = ?");
 				stmt.setString(c, i.getPw());c+=1;
 				stmt.setString(c, LlaveMaestra.getLlave());c+=1;
 			}
 			else
 			{
-				stmt=DbConnector.getInstancia().getConn().
-						prepareStatement(
+				stmt=DbConnector.getInstancia().getConn().prepareStatement(
 								"update integrante set nombre=?, apellido=?, usuario=?, discordId=? where idIntegrante = ?");
 			}
-			
 			stmt.setString(c, i.getNombre());c+=1;
 			stmt.setString(c, i.getApellido());c+=1;
 			stmt.setString(c, i.getUsuario());c+=1;
@@ -421,8 +392,7 @@ import logic.LlaveMaestra;
 		ResultSet keyResultSet=null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement("delete from integrante where idIntegrante = ?");
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("delete from integrante where idIntegrante = ?");
 			stmt.setInt(1, i.getIdIntegrante());	
 			stmt.execute();
 		}  
@@ -449,7 +419,6 @@ import logic.LlaveMaestra;
 	{
 		Statement stmt=null;
 		ResultSet rs=null;
-		
 		LinkedList<Integrante> uActivos = null;
 		Integrante i=null;
 		Rango r = null;
@@ -482,24 +451,19 @@ import logic.LlaveMaestra;
 					r = new Rango();
 					h = new Hora();
 					s = new Subdivision();
-					ri = new Ran_Integrante();
-				
+					ri = new Ran_Integrante();				
 					i.setNombre(rs.getString("nombre"));
 					i.setApellido(rs.getString("apellido"));
-					i.setIdIntegrante(rs.getInt("idIntegrante"));
-					
+					i.setIdIntegrante(rs.getInt("idIntegrante"));					
 					r.setNomRango(rs.getString("nombRango"));
 					s.setDescripcion(rs.getString("descripcion"));
 					h.setInicio(rs.getObject("inicio", LocalDateTime.class));
-					
 					LinkedList<Hora> horas = new LinkedList<Hora>();
-					horas.add(h);
-					
+					horas.add(h);				
 					i.setHora(horas);
 					ri.setRango(r);
 					i.setRanInt(ri);
-					i.setSub(s);
-					
+					i.setSub(s);				
 					uActivos.add(i);
 				}
 			}	
@@ -523,5 +487,4 @@ import logic.LlaveMaestra;
 		}
 		return uActivos;
 	}
-
 }

@@ -23,7 +23,6 @@ public class DataRobo
 		LugarRobo lr = null;
 		LinkedList<Robo> robos= null;
 		try {
-			
 			stmt=DbConnector.getInstancia().getConn().prepareStatement("select r.nroRobo, r.resultado, lug.lugarRobo, lug.tipoRobo, r.fecha_robo\r\n"
 					+ "from robo r\r\n"
 					+ "inner join lugarrobo lug on r.idLugarRobo = lug.idLugarRobo\r\n"
@@ -75,9 +74,7 @@ public class DataRobo
 		ResultSet rs=null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement( 
-					"delete from robo where idIntegrante = ?");
-			
+			stmt=DbConnector.getInstancia().getConn().prepareStatement( "delete from robo where idIntegrante = ?");		
 			stmt.setInt(1, intg.getIdIntegrante());
 			stmt.execute();
 		} 
@@ -98,7 +95,6 @@ public class DataRobo
 				e.printStackTrace();
 			}
 		}
-	
 	}
 
 	public void insertRobo(Robo rob) {
@@ -106,10 +102,7 @@ public class DataRobo
 		ResultSet rs=null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"insert into robo(nroRobo, idIntegrante, resultado, fecha_robo, idLugarRobo) values(?,?,?,?,?)"
-							);
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("insert into robo(nroRobo, idIntegrante, resultado, fecha_robo, idLugarRobo) values(?,?,?,?,?)");
 			stmt.setInt(1, rob.getNroRobo());
 			stmt.setInt(2, rob.getIntegrantes().getFirst().getIdIntegrante());
 			stmt.setString(3,rob.getResultado());
@@ -180,13 +173,11 @@ public class DataRobo
 			stmt=DbConnector.getInstancia().getConn().prepareStatement("select count(*) as Suma from robo where idIntegrante = ?");
 			stmt.setInt(1, i.getIdIntegrante());
 			rs= stmt.executeQuery();
-			
 			if(rs!=null && rs.next()) 
 			{
 				numeros = new LinkedList<Integer>();
 				numeros.add(rs.getInt("Suma"));
 			}
-			
 			stmt= null;
 			rs= null;
 			stmt=DbConnector.getInstancia().getConn().prepareStatement("select count(*) as SumaG from robo where idIntegrante = ? and resultado = ?");

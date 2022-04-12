@@ -3,12 +3,9 @@ package data;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.LinkedList;
-import entities.Integrante;
 import entities.Ran_Subdivision;
 import entities.Rango;
-import entities.Ran_Integrante;
 
 public class DataRan_Subdivision {
 	

@@ -28,7 +28,8 @@ public class DataRobo
 					+ "from robo r\r\n"
 					+ "inner join lugarrobo lug on r.idLugarRobo = lug.idLugarRobo\r\n"
 					+ "inner join integrante i on  r.idIntegrante = i.idIntegrante\r\n"
-					+ "where i.idIntegrante = ?");
+					+ "where i.idIntegrante = ?\r\n"
+					+ "order by fecha_robo desc limit 5");
 			stmt.setInt(1, inte.getIdIntegrante());
 			rs= stmt.executeQuery();
 			if(rs!=null) 
@@ -112,8 +113,8 @@ public class DataRobo
 			stmt.setInt(1, rob.getNroRobo());
 			stmt.setInt(2, inte.getIdIntegrante());
 			stmt.setString(3,rob.getResultado());
-			stmt.setObject(5,rob.getFecha_robo());
-			stmt.setInt(6,lr.getIdLugarRobo());
+			stmt.setObject(4,rob.getFecha_robo());
+			stmt.setInt(5,lr.getIdLugarRobo());
 			stmt.executeUpdate();
 		} 
 		catch (SQLException e) 

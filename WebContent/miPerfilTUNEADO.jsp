@@ -157,29 +157,33 @@
                                 href="HomeTuneada.jsp" aria-expanded="false"><i class="mdi mdi-home"></i><span
                                     class="hide-menu">Home</span></a>
                         </li>
+                        <% if(idRol==1 || idRol==3){ %> 
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                            href="registrarLugarRobo.jsp" aria-expanded="false"><i class="mdi mdi-bank"></i><span
+                            href="RLR_Tuneado.jsp" aria-expanded="false"><i class="mdi mdi-bank"></i><span
                                 class="hide-menu">Robo</span></a>
-                        </li>           
+                        </li>  
+                        <%} %>         
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="miPerfilTUNEADO.jsp" aria-expanded="false">
                                 <i class="mdi mdi-account-network"></i>
                                 <span class="hide-menu">Mi Perfil</span></a>
                         </li>
+                        
                         <!-- Show/Hide opciones en base a rol -->
-                        <% if(idRol==1){ %>
+                        <% if(idRol==1 || idRol==2){ %>
                        	<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="AplicarSancionTuneado.jsp" aria-expanded="false">
                             <i class="mdi mdi-note-text" ></i>
 	                        <span class="hide-menu">Sanciones</span></a>
                         </li>
 	                    <%} %> 
-	                                              
+	                    
+	                    <% if(idRol==1 || idRol==3){ %>                        
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="RegistrarStockArmaTUNEADO.jsp" aria-expanded="false"><i class="mdi mdi-pistol" ></i><span
                                 class="hide-menu">Mis armas</span></a>
                         </li>
-                        
-                        <% if(idRol==1){ %>
+                        <%} %> 
+                        <% if(idRol==1){ %> 
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="AltaIntegranteTuneado.jsp" aria-expanded="false"><i class="mdi mdi-account-edit"></i><span
                                 class="hide-menu">Alta Integrante</span></a>
@@ -189,7 +193,7 @@
                             href="GestionInt_1.jsp" aria-expanded="false"><i class="mdi mdi-account-check"></i><span
                                 class="hide-menu">Gestion Integrante</span></a>
                         </li>                                
-	                    <%} %>   
+	                    <%} %> 
                     </ul>
 
                 </nav>

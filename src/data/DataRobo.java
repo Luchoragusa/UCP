@@ -101,7 +101,7 @@ public class DataRobo
 	
 	}
 
-	public void insertRobo(Robo rob, Integrante inte, LugarRobo lr) {
+	public void insertRobo(Robo rob) {
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		try 
@@ -111,10 +111,10 @@ public class DataRobo
 							"insert into robo(nroRobo, idIntegrante, resultado, fecha_robo, idLugarRobo) values(?,?,?,?,?)"
 							);
 			stmt.setInt(1, rob.getNroRobo());
-			stmt.setInt(2, inte.getIdIntegrante());
+			stmt.setInt(2, rob.getIntegrantes().getFirst().getIdIntegrante());
 			stmt.setString(3,rob.getResultado());
 			stmt.setObject(4,rob.getFecha_robo());
-			stmt.setInt(5,lr.getIdLugarRobo());
+			stmt.setInt(5,rob.getLugar_robo().getIdLugarRobo());
 			stmt.executeUpdate();
 		} 
 		catch (SQLException e) 

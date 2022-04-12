@@ -30,7 +30,7 @@ public class registrarLugarRoboS extends HttpServlet {
 		DataIntegrante di = new DataIntegrante();
 		LugarRobo lr = new LugarRobo();
 		DataLugarRobo dlr = new DataLugarRobo();
-		LinkedList<Integrante> integrantes = new LinkedList<>();
+		LinkedList<Integrante> integrantes = null;
 		Integrante inte= null;
 		
 		String[] nrosInte;
@@ -54,15 +54,13 @@ public class registrarLugarRoboS extends HttpServlet {
 			nrosInte = (request.getParameterValues("integrante"));
 			
 			for ( String nro : nrosInte) {
+				integrantes = new LinkedList<>();
 				inte.setIdIntegrante(Integer.parseInt(nro));
 				inte=di.getByIdIntegrante(inte);
 				integrantes.add(inte);
-				dr.insertRobo(r, inte, lr);
+				r.setIntegrantes(integrantes);
+				dr.insertRobo(r);
 			}
-
-		//INSERT ROBO:
-			r.setIntegrantes(integrantes);	
-		
 		response.sendRedirect("HomeTuneada.jsp");
 	
 	}

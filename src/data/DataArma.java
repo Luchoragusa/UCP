@@ -10,12 +10,11 @@ import entities.Arma;
 
 public class DataArma {
 
-	public LinkedList<Arma> getAll(){
+	public LinkedList<Arma> getAll()
+	{
 		Statement stmt=null;
 		ResultSet rs=null;
 		LinkedList<Arma> armas= new LinkedList<>();
-		
-		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
 			rs= stmt.executeQuery("select * from arma");
@@ -30,7 +29,6 @@ public class DataArma {
 					armas.add(a);
 				}
 			}
-			
 		} 
 		catch (SQLException e) 
 		{
@@ -49,19 +47,17 @@ public class DataArma {
 				e.printStackTrace();
 			}
 		}
-		
 		return armas;
 	}
 	
-	public Arma getById(Arma armaToSearch) {
+	public Arma getById(Arma armaToSearch)
+	{
 		Arma a = null;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select * from arma where idArma=?"
-					);
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select * from arma where idArma=?");
 			stmt.setInt(1, armaToSearch.getIdArma());
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()) 
@@ -92,15 +88,14 @@ public class DataArma {
 		return a;
 	}
 
-	public Arma getByNombre(Arma armaToSearch) {
+	public Arma getByNombre(Arma armaToSearch) 
+	{
 		Arma a = null;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select * from arma where nombreArma=?"
-					);
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select * from arma where nombreArma=?");
 			stmt.setString(1, armaToSearch.getNombreArma());
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()) 
@@ -132,12 +127,11 @@ public class DataArma {
 		return a;
 	}
 
-	public LinkedList<Arma> getByTipo(){
+	public LinkedList<Arma> getByTipo()
+	{
 		Statement stmt=null;
 		ResultSet rs=null;
 		LinkedList<Arma> armas= new LinkedList<>();
-		
-		
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
 			rs= stmt.executeQuery("select * from arma where tipoArma = ?");
@@ -175,26 +169,21 @@ public class DataArma {
 		return armas;
 	}
 
-	public void add(Arma a) {
+	public void add(Arma a) 
+	{
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"insert into arma(nombreArma,tipoArma) values(?,?)",
-							PreparedStatement.RETURN_GENERATED_KEYS
-							);
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("insert into arma(nombreArma,tipoArma) values(?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, a.getNombreArma());
 			stmt.setString(2, a.getTipoArma());
 			stmt.executeUpdate();
-			
 			keyResultSet=stmt.getGeneratedKeys();
             if(keyResultSet!=null && keyResultSet.next())
             {
                 a.setIdArma(keyResultSet.getInt(1));
             }
-
 		} 
 		catch (SQLException e) 
 		{
@@ -213,16 +202,14 @@ public class DataArma {
             	e.printStackTrace();
             }
 		}
-
 	}
 
-	public void update(Arma a) {
+	public void update(Arma a) 
+	{
 		PreparedStatement stmt= null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"update arma set nombreArma=?, tipoArma = ? where idArma=?");
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("update arma set nombreArma=?, tipoArma = ? where idArma=?");
 			stmt.setString(1, a.getNombreArma());
 			stmt.setString(2, a.getTipoArma());
 			stmt.setInt(3, a.getIdArma());
@@ -244,16 +231,15 @@ public class DataArma {
             	e.printStackTrace();
             }
 		}
-		
 	}
 
-	public void delete(Arma a) {
+	public void delete(Arma a) 
+	{
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement("delete from arma where  idArma = ?");
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("delete from arma where  idArma = ?");
 			stmt.setInt(1, a.getIdArma());
 			stmt.execute();
 		}  

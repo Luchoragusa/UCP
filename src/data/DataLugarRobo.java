@@ -59,9 +59,7 @@ public class DataLugarRobo
 		ResultSet rs=null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select * from lugarrobo where idLugarRobo=?"
-					);
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select * from lugarrobo where idLugarRobo=?"					);
 			stmt.setInt(1, roboToSearch.getIdLugarRobo());
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()) 
@@ -100,9 +98,7 @@ public class DataLugarRobo
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		try {
-			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select * from rol where nomRobo=?"
-					);
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select * from rol where nomRobo=?");
 			stmt.setString(1, roboToSearch.getTipoRobo());
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()) 
@@ -114,8 +110,7 @@ public class DataLugarRobo
 				r.setMaxIntegrantes(rs.getInt("maxIntegrantes"));
 				r.setMinIntregantes(rs.getInt("minIntegrantes"));
 			}
-		}
-		
+		}	
 		catch (SQLException e) 
 		{
 			e.printStackTrace();
@@ -142,11 +137,8 @@ public class DataLugarRobo
 		ResultSet keyResultSet=null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"insert into robo(nomRobo, lugarRobo, maxIntegrantes, minIntegrantes) values(?,?,?,?)",
-							PreparedStatement.RETURN_GENERATED_KEYS
-							);
+			stmt=DbConnector.getInstancia().getConn().prepareStatement(
+							"insert into robo(nomRobo, lugarRobo, maxIntegrantes, minIntegrantes) values(?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, robo.getTipoRobo());
 			stmt.setString(2, robo.getLugarRobo());
 			stmt.setInt(3, robo.getMaxIntegrantes());
@@ -156,9 +148,8 @@ public class DataLugarRobo
 			keyResultSet=stmt.getGeneratedKeys();
             if(keyResultSet!=null && keyResultSet.next())
             {
-                robo.setIdLugarRobo(keyResultSet.getInt(1));   // creo q es al pedo pq no le devolvemos
+                robo.setIdLugarRobo(keyResultSet.getInt(1));
             }
-
 		} 
 		catch (SQLException e) 
 		{
@@ -177,7 +168,6 @@ public class DataLugarRobo
             	e.printStackTrace();
             }
 		}
-
 	}
 
 	public void update(LugarRobo robo) 
@@ -185,9 +175,7 @@ public class DataLugarRobo
 		PreparedStatement stmt= null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"update robo set nomRobo=?, lugarRobo=?, maxIntegrantes=?, minIntegrantes=? where idLugarRobo=?");
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("update robo set nomRobo=?, lugarRobo=?, maxIntegrantes=?, minIntegrantes=? where idLugarRobo=?");
 			stmt.setString(1, robo.getTipoRobo());
 			stmt.setString(2, robo.getLugarRobo());
 			stmt.setInt(3, robo.getMaxIntegrantes());
@@ -218,9 +206,7 @@ public class DataLugarRobo
 		PreparedStatement stmt= null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"delete from robo where idLugarRobo=?");
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("delete from robo where idLugarRobo=?");
 			stmt.setInt(1, robo.getIdLugarRobo());
 			stmt.executeUpdate();
 		} 
@@ -241,5 +227,4 @@ public class DataLugarRobo
             }
 		}
 	}
-	
 }

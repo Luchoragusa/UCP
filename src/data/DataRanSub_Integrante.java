@@ -49,9 +49,7 @@ public class DataRanSub_Integrante {
 		PreparedStatement stmt= null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"delete from ransub_integrante where idIntegrante=?");
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("delete from ransub_integrante where idIntegrante=?");
 			stmt.setInt(1, i.getIdIntegrante());
 			stmt.executeUpdate();
 		} 
@@ -71,6 +69,5 @@ public class DataRanSub_Integrante {
             	e.printStackTrace();
             }
 		}
-	
 	}
 }

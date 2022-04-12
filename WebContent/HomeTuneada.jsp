@@ -176,7 +176,7 @@
                         </li>
                         
                         <!-- Show/Hide opciones en base a rol -->
-                        <% if(idRol==1){ %>
+                        <% if(idRol==1 || idRol==2){ %>
                        	<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="AplicarSancionTuneado.jsp" aria-expanded="false">
                             <i class="mdi mdi-note-text" ></i>
 	                        <span class="hide-menu">Sanciones</span></a>

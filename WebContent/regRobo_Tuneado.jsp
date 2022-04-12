@@ -68,14 +68,14 @@
 	<input type = "hidden" value = "<%=idLR%>" name = "idLR">
 		
 	<%
-		for(int c=1; c<=cantidadElejida; c++) { 		//cantidadElejida
+		for(int c=1; c<=cantidadElejida; c++) { 		
 	%>
 	<br>
-		 <select name="lugarRobo<%=c%>>">  
+		 <select name="integrante">  
 			<%
 		  		for(Integrante i :  lista) {	
 			%>
-			    <option value="<% i.getIdIntegrante(); %>">
+			    <option value="<%=i.getIdIntegrante()%>">
 			    	<% out.print(i.getNombre() + "" + i.getApellido()); %>
 			    </option>
 	    	<%

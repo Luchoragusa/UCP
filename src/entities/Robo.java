@@ -7,8 +7,7 @@ public class Robo {
 	
 	private int nroRobo;
 	private String resultado;
-	private LocalTime hora_robo;
-	private LocalDate fecha_robo;
+	private LocalDateTime fecha_robo;
 	
 	private LinkedList<Integrante> integrantes;
 	private LugarRobo lugar_robo;
@@ -25,18 +24,6 @@ public class Robo {
 	public void setResultado(String resultado) {
 		this.resultado = resultado;
 	}
-	public LocalTime getHora_robo() {
-		return hora_robo;
-	}
-	public void setHora_robo(LocalTime hora_robo) {
-		this.hora_robo = hora_robo;
-	}
-	public LocalDate getFecha_robo() {
-		return fecha_robo;
-	}
-	public void setFecha_robo(LocalDate fecha_robo) {
-		this.fecha_robo = fecha_robo;
-	}
 	public LinkedList<Integrante> getIntegrantes() {
 		return integrantes;
 	}
@@ -48,5 +35,11 @@ public class Robo {
 	}
 	public void setLugar_robo(LugarRobo lugar_robo) {
 		this.lugar_robo = lugar_robo;
+	}
+	public LocalDateTime getFecha_robo() {
+		return fecha_robo;
+	}
+	public void setFecha_robo(LocalDateTime fecha_robo) {
+		this.fecha_robo = fecha_robo;
 	}
 }

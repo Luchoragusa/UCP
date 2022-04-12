@@ -3,15 +3,11 @@ package data;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLType;
-import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.LinkedList;
-
-import com.mysql.cj.MysqlType;
 
 import entities.Hora;
 import entities.Integrante;

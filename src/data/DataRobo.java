@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.LinkedList;
 
@@ -23,16 +24,13 @@ public class DataRobo
 		LinkedList<Robo> robos= null;
 		try {
 			
-			stmt=DbConnector.getInstancia().getConn().prepareStatement("select r.nroRobo, r.resultado, lug.lugarRobo, lug.tipoRobo\r\n"
-					+ " from robo r\r\n"
-					+ " inner join lugarrobo lug on r.idLugarRobo = lug.idLugarRobo\r\n"
-					+ " inner join integrante i\r\n"
-					+ " on  r.nroRobo = i.idIntegrante\r\n"
-					+ " where i.idIntegrante = ?");
-			
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select r.nroRobo, r.resultado, lug.lugarRobo, lug.tipoRobo, r.fecha_robo\r\n"
+					+ "from robo r\r\n"
+					+ "inner join lugarrobo lug on r.idLugarRobo = lug.idLugarRobo\r\n"
+					+ "inner join integrante i on  r.idIntegrante = i.idIntegrante\r\n"
+					+ "where i.idIntegrante = ?");
 			stmt.setInt(1, inte.getIdIntegrante());
 			rs= stmt.executeQuery();
-			
 			if(rs!=null) 
 			{
 				robos = new LinkedList<>();
@@ -40,14 +38,12 @@ public class DataRobo
 				{
 					r=new Robo();
 					lr = new LugarRobo();
-					
 					r.setNroRobo(rs.getInt("nroRobo"));
 					r.setResultado(rs.getString("resultado"));
-					lr.setLugarRobo("lugarRobo");
-					lr.setTipoRobo("tipoRobo");
-					
+					r.setFecha_robo(rs.getObject("fecha_robo", LocalDateTime.class));
+					lr.setLugarRobo(rs.getString("lugarRobo"));
+					lr.setTipoRobo(rs.getString("tipoRobo"));
 					r.setLugar_robo(lr);
-
 					robos.add(r);
 				}
 			}
@@ -79,12 +75,11 @@ public class DataRobo
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement( 
-					"insert into roboxdia (idLugarRobo, idIntegrante, fecha_robo, hora_robo,resultado, idRobo) values(?,?,?,?,?,?)");
+					"insert into roboxdia (idLugarRobo, idIntegrante, fecha_robo,resultado, idRobo) values(?,?,?,?,?)");
 			
 			//stmt.setInt(1, rd.getIdLugarRobo());
 			stmt.setInt(2, intg.getIdIntegrante());
 			stmt.setObject(3, rd.getFecha_robo());
-			stmt.setObject(4, rd.getHora_robo());
 			stmt.setString(5, rd.getResultado());
 			//stmt.setInt(6, rd.getIdRobo());
 			stmt.executeUpdate();
@@ -148,17 +143,14 @@ public class DataRobo
 		{
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into robo(nroRobo, idIntegrante, resultado,hora_robo,fecha_robo,idLugarRobo) values(?,?,?,?,?,?)"
+							"insert into robo(nroRobo, idIntegrante, resultado,fecha_robo,idLugarRobo) values(?,?,?,?,?)"
 							);
 			stmt.setInt(1, rob.getNroRobo());
 			stmt.setInt(2, inte.getIdIntegrante());
 			stmt.setString(3,rob.getResultado());
-			stmt.setObject(4,rob.getHora_robo());
 			stmt.setObject(5,rob.getFecha_robo());
 			stmt.setInt(6,lr.getIdLugarRobo());
 			stmt.executeUpdate();
-
-
 		} 
 		catch (SQLException e) 
 		{
@@ -260,5 +252,4 @@ public class DataRobo
 		}
 		return numeros;
 	}
-
 }

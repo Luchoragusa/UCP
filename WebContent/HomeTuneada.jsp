@@ -230,8 +230,8 @@
                                         <tr class="bg-light">
                                             <th class="border-top-0">Nombre y Apellido</th>
                                             <th class="border-top-0">Rango</th>
+                                            <th class="border-top-0">Fecha y Hora de ingreso</th>
                                             <th class="border-top-0">Tiempo en servicio</th>
-                                            <th class="border-top-0">Hora de ingreso</th>
                                             <th class="border-top-0">Subdivision</th>
                                         </tr>
                                     <%
@@ -286,15 +286,16 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Listado de robos del equipo PSG</h4>
-                                    <h5 class="card-subtitle">En esta sección se mostrarían los robos hechos por equipo</h5>
+                                    <h4 class="card-title">Listado de robos de PSG.</h4>
+                                    <h5 class="card-subtitle">En esta sección se mostrarían los robos ultimos robos asistidos.</h5>
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Orden de robos</th>
+                                                <th scope="col">Nro de robos</th>
                                                 <th scope="col">Resultado</th>
+                                                <th scope="col">Fecha</th>
                                                 <th scope="col">Lugar</th>
                                                 <th scope="col">Nivel de robo</th>
                                             </tr>
@@ -314,6 +315,9 @@
                                                 </td>
                                                 <td>
                                                 	<%=r.getResultado() %>
+                                                </td>
+                                                <td>
+                                                	<%=r.getFecha_robo() %>
                                                 </td>
                                                 <td>
                                                 	<%=lug.getLugarRobo() %>

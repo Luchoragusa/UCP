@@ -75,7 +75,8 @@
         <table class="container" align="center" cellspacing="2" cellpadding="2" width ="500">
                 <tr bgcolor=blue>
                     <th><h1>Tipo Sancion</h1></th> 
-                    <th><h1>Numero Sancion</h1></th>
+                    <th><h1>N° Sancion</h1></th>
+                    <th><h1>Motivo</h1></th>
 					<th><h1>Fecha</h1></th>
                     <th><h1>Estado</h1></th>
                     <th><h1>URL</h1></th>
@@ -92,6 +93,7 @@
                 <tr>
                     <td> <%=s.getTipoSancion() %></td>
                     <td><%=s.getNroSancion() %></td>
+                    <td><%=s.getMotivo() %></td>
                     <td> <%=s.getFecha() %></td>
                     <td>
 									<%	
@@ -110,9 +112,18 @@
                     	<a href="<%=s.getUrlSancion()%>" target="_blank">Url imagen</a> 
                     </td>
                     <td> 
+                    <%	
+						if(s.isEstado()){
+					%>
                     	<form action="apelarS?idSA=<%=s.getId()%>" method="post">
 							<input type ="submit" value = "Apelar" >
 						</form>	
+					<%}; %>
+					<%
+						if(s.isEstado()==false){
+					%>
+							<p>A la espera...</p>
+					<%}; %>	
                     </td>
                     <td> 
 	                    <form action="eliminarS?idSE=<%=s.getId()%>" method="post">

@@ -28,6 +28,6 @@ public class sancionS extends HttpServlet
 		DataSancion ds = new DataSancion();
 		ds.add(s);
 		
-		response.sendRedirect("HomeTuneada.jsp");
+		response.sendRedirect("AplicarSancionTuneado.jsp");
 	}
 }

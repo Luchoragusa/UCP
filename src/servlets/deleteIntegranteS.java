@@ -23,7 +23,7 @@ public class deleteIntegranteS extends HttpServlet  {
 		DataSancion ds = new DataSancion();
 		DataRobo dr = new DataRobo();
 		DataHoras dh = new DataHoras();
-		DataMedalla dm = new DataMedalla();
+		//DataMedalla dm = new DataMedalla();
 		DataRango dran = new DataRango();
 		DataRanSub_Integrante  dransub = new DataRanSub_Integrante();
 		DataIntegrante di = new DataIntegrante();
@@ -41,7 +41,7 @@ public class deleteIntegranteS extends HttpServlet  {
 		//delete horas
 		dh.deleteHorasByIntegrante(inte);
 		//delete medallas
-		dm.deleteByIntegrante(inte);
+		//dm.deleteByIntegrante(inte);
 		//delete rango
 		dran.deleteRango(inte);
 		//delete ransub

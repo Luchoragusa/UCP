@@ -3,12 +3,9 @@ package data;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.LinkedList;
-import entities.Integrante;
 import entities.Ran_Subdivision;
 import entities.Rango;
-import entities.Ran_Integrante;
 
 public class DataRan_Subdivision {
 	
@@ -17,14 +14,11 @@ public class DataRan_Subdivision {
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		LinkedList<Ran_Subdivision> rsubs= new LinkedList<>();
-		
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-			 "select * from ran_subdivision where idSub = ?");
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select * from ran_subdivision where idSub = ?");
 			stmt.setInt(1, rsub.getIdSub());
 			rs=stmt.executeQuery();
-			
 			if(rs!=null) 
 			{
 				while(rs.next()) 
@@ -36,9 +30,9 @@ public class DataRan_Subdivision {
 					rsubs.add(s);
 				}
 			}	
-		} catch (SQLException e) {
+		} catch (SQLException e) 
+		{
 			e.printStackTrace();
-			
 		} 
 		finally 
 		{
@@ -62,22 +56,17 @@ public class DataRan_Subdivision {
 		ResultSet keyResultSet=null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"insert into ran_subdivision(idSub, nombreRangoSub, idRanSub) values(?,?,?)",
-							PreparedStatement.RETURN_GENERATED_KEYS
-							);
+			stmt=DbConnector.getInstancia().getConn().prepareStatement(
+							"insert into ran_subdivision(idSub, nombreRangoSub, idRanSub) values(?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
 			stmt.setInt(1, rsub.getIdSub());
 			stmt.setString(2, rsub.getNombreRangoSub());			
 			stmt.setInt(3, rsub.getIdRanSub());
-			stmt.executeUpdate();
-			
+			stmt.executeUpdate();		
 			keyResultSet=stmt.getGeneratedKeys();
             if(keyResultSet!=null && keyResultSet.next())
             {
-                rsub.setIdRanSub(keyResultSet.getInt(1));   // creo q es al pedo pq no le devolvemos
+                rsub.setIdRanSub(keyResultSet.getInt(1)); 
             }
-
 		} 
 		catch (SQLException e) 
 		{
@@ -96,7 +85,6 @@ public class DataRan_Subdivision {
             	e.printStackTrace();
             }
 		}
-
 	}
 
 	public void update(Rango rango) 
@@ -104,9 +92,7 @@ public class DataRan_Subdivision {
 		PreparedStatement stmt= null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"update rango set nombRango=? where idRango=?");
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("update rango set nombRango=? where idRango=?");
 			stmt.setString(1, rango.getNomRango());
 			stmt.setInt(2, rango.getIdRango());
 			stmt.executeUpdate();
@@ -134,9 +120,7 @@ public class DataRan_Subdivision {
 		PreparedStatement stmt= null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"delete from ran_subdivision where idRanSub=?");
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("delete from ran_subdivision where idRanSub=?");
 			stmt.setInt(1, rango.getIdRanSub());
 			stmt.executeUpdate();
 		} 
@@ -157,5 +141,4 @@ public class DataRan_Subdivision {
             }
 		}
 	}
-
 }

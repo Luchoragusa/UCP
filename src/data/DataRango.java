@@ -57,9 +57,7 @@ public class DataRango
 		ResultSet rs=null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select * from rango where idRango=?"
-					);
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select * from rango where idRango=?");
 			stmt.setInt(1, rangoToSearch.getIdRango());
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()) 
@@ -95,9 +93,7 @@ public class DataRango
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		try {
-			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select * from rango where nombRango=?"
-					);
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select * from rango where nombRango=?");
 			stmt.setString(1, rangoToSearch.getNomRango());
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()) 
@@ -107,7 +103,6 @@ public class DataRango
 				r.setNomRango(rs.getString("nombRango"));
 			}
 		}
-		
 		catch (SQLException e) 
 		{
 			e.printStackTrace();
@@ -134,20 +129,14 @@ public class DataRango
 		ResultSet keyResultSet=null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"insert into rango(nombRango) values(?)",
-							PreparedStatement.RETURN_GENERATED_KEYS
-							);
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("insert into rango(nombRango) values(?)", PreparedStatement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, rango.getNomRango());
 			stmt.executeUpdate();
-			
 			keyResultSet=stmt.getGeneratedKeys();
             if(keyResultSet!=null && keyResultSet.next())
             {
-                rango.setIdRango(keyResultSet.getInt(1));   // creo q es al pedo pq no le devolvemos
+                rango.setIdRango(keyResultSet.getInt(1));
             }
-
 		} 
 		catch (SQLException e) 
 		{
@@ -166,7 +155,6 @@ public class DataRango
             	e.printStackTrace();
             }
 		}
-
 	}
 
 	public void update(Rango rango) 
@@ -174,9 +162,7 @@ public class DataRango
 		PreparedStatement stmt= null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"update rango set nombRango=? where idRango=?");
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("update rango set nombRango=? where idRango=?");
 			stmt.setString(1, rango.getNomRango());
 			stmt.setInt(2, rango.getIdRango());
 			stmt.executeUpdate();
@@ -204,9 +190,7 @@ public class DataRango
 		PreparedStatement stmt= null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"delete from rango where idRango=?");
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("delete from rango where idRango=?");
 			stmt.setInt(1, rango.getIdRango());
 			stmt.executeUpdate();
 		} 
@@ -241,7 +225,6 @@ public class DataRango
 					+ "inner join rango r on ran_integrante.idRango = r.idRango\r\n"
 					+ "WHERE idIntegrante=? \r\n"
 					+ "ORDER BY fecha_desde DESC LIMIT 1");
-			
 			stmt.setInt(1, intg.getIdIntegrante());
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()) 
@@ -277,9 +260,7 @@ public class DataRango
 		ResultSet rs=null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement( 
-					"insert into ran_integrante (idRango, idIntegrante, fecha_desde) values(?,?,?)");
-			
+			stmt=DbConnector.getInstancia().getConn().prepareStatement( "insert into ran_integrante (idRango, idIntegrante, fecha_desde) values(?,?,?)");
 			stmt.setInt(1, rango.getIdRango());
 			stmt.setInt(2, intg.getIdIntegrante());
 			stmt.setObject(3, LocalDate.now());
@@ -310,9 +291,7 @@ public class DataRango
 		ResultSet rs=null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement( 
-					"delete from ran_integrante where idIntegrante = ?");
-			
+			stmt=DbConnector.getInstancia().getConn().prepareStatement( "delete from ran_integrante where idIntegrante = ?");	
 			stmt.setInt(1, intg.getIdIntegrante());
 			stmt.execute();
 		} 
@@ -334,5 +313,4 @@ public class DataRango
 			}
 		}
 	}
-
 }

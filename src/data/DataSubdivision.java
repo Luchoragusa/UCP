@@ -7,10 +7,8 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import entities.Subdivision;
 
-public class DataSubdivision {
-
-
-
+public class DataSubdivision 
+{
 	public LinkedList<Subdivision> getAll()
 	{
 		Statement stmt=null;
@@ -30,7 +28,6 @@ public class DataSubdivision {
 					subdivisiones.add(s);
 				}
 			}
-			
 		} 
 		catch (SQLException e) 
 		{
@@ -49,19 +46,17 @@ public class DataSubdivision {
 				e.printStackTrace();
 			}
 		}
-		
 		return subdivisiones;
 	}
 	
-	public Subdivision getById(Subdivision subdivisionesToSearch) {
+	public Subdivision getById(Subdivision subdivisionesToSearch) 
+	{
 		Subdivision s = null;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select * from subdivision where idSub=?"
-					);
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select * from subdivision where idSub=?");
 			stmt.setInt(1, subdivisionesToSearch.getIdSub());
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()) 
@@ -92,15 +87,14 @@ public class DataSubdivision {
 		return s;
 	}
 
-	public Subdivision getByNombre(Subdivision subdivisionesToSearch) {
+	public Subdivision getByNombre(Subdivision subdivisionesToSearch) 
+	{
 		Subdivision s = null;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select * from subdivisiones where nomSubdivision=?"
-					);
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select * from subdivisiones where nomSubdivision=?");
 			stmt.setString(1, subdivisionesToSearch.getNomSubDivision());
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()) 
@@ -132,12 +126,11 @@ public class DataSubdivision {
 		return s;
 	}
 
-	public LinkedList<Subdivision> getByDescripcion(){
+	public LinkedList<Subdivision> getByDescripcion()
+	{
 		Statement stmt=null;
 		ResultSet rs=null;
-		LinkedList<Subdivision> subdivisiones= new LinkedList<>();
-		
-		
+		LinkedList<Subdivision> subdivisiones= new LinkedList<>();	
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
 			rs= stmt.executeQuery("select * from subdivision where descripcion = ?");
@@ -152,7 +145,6 @@ public class DataSubdivision {
 					subdivisiones.add(s);
 				}
 			}
-			
 		} 
 		catch (SQLException e) 
 		{
@@ -171,30 +163,24 @@ public class DataSubdivision {
 				e.printStackTrace();
 			}
 		}
-		
 		return subdivisiones;
 	}
 
-	public void add(Subdivision s) {
+	public void add(Subdivision s) 
+	{
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"insert into subdivision(descripcion,nomSubdivision) values(?,?)",
-							PreparedStatement.RETURN_GENERATED_KEYS
-							);
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("insert into subdivision(descripcion,nomSubdivision) values(?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, s.getDescripcion());
 			stmt.setString(2, s.getNomSubDivision());
-			stmt.executeUpdate();
-			
+			stmt.executeUpdate();		
 			keyResultSet=stmt.getGeneratedKeys();
             if(keyResultSet!=null && keyResultSet.next())
             {
                 s.setIdSub(keyResultSet.getInt(1));
             }
-
 		} 
 		catch (SQLException e) 
 		{
@@ -213,16 +199,14 @@ public class DataSubdivision {
             	e.printStackTrace();
             }
 		}
-
 	}
 
-	public void update(Subdivision s) {
+	public void update(Subdivision s) 
+	{
 		PreparedStatement stmt= null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement(
-							"update subdivision set descripcion=?, nomSubdivision = ? where idSub=?");
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("update subdivision set descripcion=?, nomSubdivision = ? where idSub=?");
 			stmt.setString(1, s.getDescripcion());
 			stmt.setString(2, s.getNomSubDivision());
 			stmt.setInt(3, s.getIdSub());
@@ -244,16 +228,15 @@ public class DataSubdivision {
             	e.printStackTrace();
             }
 		}
-		
 	}
 
-	public void delete(Subdivision s) {
+	public void delete(Subdivision s) 
+	{
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		try 
 		{
-			stmt=DbConnector.getInstancia().getConn().
-					prepareStatement("delete from subdivision where idSub = ?");
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("delete from subdivision where idSub = ?");
 			stmt.setInt(1, s.getIdSub());
 			stmt.execute();
 		}  
@@ -274,7 +257,5 @@ public class DataSubdivision {
             	e.printStackTrace();
             }
 		}
-	}
-
-	
+	}	
 }

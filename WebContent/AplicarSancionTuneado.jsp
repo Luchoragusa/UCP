@@ -136,7 +136,7 @@
 			%>                
         </table>
                     
-        <form action="sancionS?idS=<%=usuarioOnline.getIdIntegrante() %>" method="post">
+        <form action="sancionS?idS=<%=usuarioOnline.getIdIntegrante() %>" method="post" enctype="multipart/form-data">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p style = "font-family:Arial; font-size:18px;">Tipo de sancion:</p>
 			<select name="tipoSancion">
 		        <option value="Raya"> Raya </option>
@@ -150,8 +150,12 @@
 	        </select><br><br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p style = "font-family:Arial; font-size:18px;">Motivo de la sancion:</p>
 			<input type = "text" name = "motivo" Required><br><br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p style = "font-family:Arial; font-size:18px;">Imagen (opcional):</p>
-			<input type = "url" name = "url" Required><br><br>
+			<div align="center">
+
+		   <b>Seleccionar imagen:</b>
+		   <input type="file" name="image">
+
+		</div>
 			
 			<div class="AS">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

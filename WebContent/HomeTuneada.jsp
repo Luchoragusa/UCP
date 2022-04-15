@@ -26,6 +26,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
     <link href="./assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
     <link href="./dist/css/style.min.css" rel="stylesheet">
+   
 <script src="//code.tidio.co/p26dt4g3heql4zxjwvkmcyecxl33ssqy.js" async></script> 
 	<style>
 		a.nav-item.nav-link.active:hover {color:#000000; background:#ffe635 }

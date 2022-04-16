@@ -51,7 +51,7 @@
 		<%
 		int userid = 0;
 		int idRol = 0;
-		String rutaCarpeta="C:/Users/luchi/Documents/GitHub/UCP/imagenes/";
+		String rutaCarpeta="C:/Users/x/Pictures/Saved Pictures/";
 		Rol rol = new Rol();
 		Integrante usuarioOnline = new Integrante();
 		if (session.getAttribute("id") == null)
@@ -110,7 +110,7 @@
 									<%}; %>
 					</td>
                     <td> 
-                    		<a class="fcc-btn" href="C:/Users/luchi/Documents/GitHub/UCP/imagenes/<%=s.getUrlSancion()%> %>>">Imagen de la sancion</a>
+						<a href="mostrarFotoSancion.jsp" name = "imagen" value="<%=s.getUrlSancion()%>">Ver imagen</a>	
                     </td>
                     <td> 
                     <%	

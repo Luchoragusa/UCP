@@ -27,8 +27,7 @@
 		imagen = request.getParameter("imagen");
 
     %>
-
-		<img alt="" src="<%=imagen%>" width="400" height="400"/>
+		<img class="" alt="" src="<%=imagen%>" width="400" height="400"/>
 	
 </body>
 </html>

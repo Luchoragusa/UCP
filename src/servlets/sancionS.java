@@ -19,6 +19,7 @@ import entities.Sancion;
 @WebServlet("/sancionS")
 public class sancionS extends HttpServlet 
 {
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		Sancion s = new Sancion();
@@ -54,7 +55,17 @@ public class sancionS extends HttpServlet
 		
 		DataSancion ds = new DataSancion();
 		ds.add(s);
-		
+		int id = Integer.parseInt(request.getParameter("idS"));
+		ds.listarImagen(id, response);
 		response.sendRedirect("AplicarSancionTuneado.jsp");
 	}
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		DataSancion ds = new DataSancion();
+		int id = Integer.parseInt(request.getParameter("idS"));
+		ds.listarImagen(id, response);
+	}
+	
 }

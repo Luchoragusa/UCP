@@ -110,7 +110,10 @@
 									<%}; %>
 					</td>
                     <td> 
+                    
+                  	 <img class="" alt="" src="sancionS?idS=<%=s.getId()%>" width="400" height="400"/>
 						<a href="mostrarFotoSancion.jsp" name = "imagen" value="<%=s.getUrlSancion()%>">Ver imagen</a>	
+					
                     </td>
                     <td> 
                     <%	

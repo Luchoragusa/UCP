@@ -1,9 +1,16 @@
 package data;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
+
+import javax.servlet.http.HttpServletResponse;
+
 import entities.Integrante;
 import entities.Sancion;
 
@@ -85,6 +92,36 @@ public class DataSancion
 		}
 	
 		
+	}
+	
+	public void listarImagen (int id, HttpServletResponse response) {
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		
+		InputStream is= null;
+		OutputStream os = null;
+		BufferedInputStream bis = null;
+		BufferedOutputStream bos = null;
+		response.setContentType("image/*");
+		try {
+			os=response.getOutputStream();
+			stmt=DbConnector.getInstancia().getConn().prepareStatement("select * from sancion where idIntegrante = ? order by fecha desc");
+			stmt.setInt(1, id);
+			rs=stmt.executeQuery();
+			if(rs!=null) 
+			{
+				is = rs.getBinaryStream("urlImagen");
+			}	
+			
+			bis = new BufferedInputStream(is);
+			bos = new BufferedOutputStream(os);
+			int i=0;
+			while ((i=bis.read()) != -1) {
+				bos.write(i);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 	
 	public void add(Sancion s) 

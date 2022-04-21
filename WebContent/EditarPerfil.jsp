@@ -27,7 +27,7 @@
 		Rol rol = new Rol();
 		Integrante usuarioOnline = new Integrante();
 		if (session.getAttribute("id") == null)
-			response.sendRedirect("LoginTuneado.jsp");
+			response.sendRedirect("index.jsp");
 		else 
 		{
 			userid = Integer.parseInt(session.getAttribute("id").toString());

@@ -35,6 +35,6 @@ public class loginS extends HttpServlet
 				response.sendRedirect("HomeTuneada.jsp");
 			}
 			else
-				response.sendRedirect("LoginTUNEADO.jsp");
+				response.sendRedirect("index.jsp");
 	}
 }

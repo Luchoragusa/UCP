@@ -40,7 +40,7 @@
 		Rol rol = new Rol();
 		Integrante usuarioOnline = new Integrante();
 		if (session.getAttribute("id") == null)
-			response.sendRedirect("LoginTuneado.jsp");
+			response.sendRedirect("index.jsp");
 		else 
 		{
 			userid = Integer.parseInt(session.getAttribute("id").toString());
@@ -113,7 +113,7 @@
                         <!--	 Cerrar sesión 
                         <!-- ====================== -->
                         <ul class="navbar-nav ml-auto">
-                            <li><a href="LoginTUNEADO.jsp" class="nav-item nav-link active">Cerrar sesión</a></li>
+                            <li><a href="index.jsp" class="nav-item nav-link active">Cerrar sesión</a></li>
                         </ul>  
                     </ul>
                 </div>

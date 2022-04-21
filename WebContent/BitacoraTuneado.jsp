@@ -62,7 +62,7 @@
 <body style="background-color: #f4f4f4; margin: 0 !important;">
 		<%
 			if (session.getAttribute("id") == null)
-			response.sendRedirect("LoginTUNEADO.jsp");
+			response.sendRedirect("index.jsp");
 		%>
     <div class="container">
     <br>

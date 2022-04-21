@@ -111,7 +111,7 @@
 					</td>
                     <td> 
                     
-                    	<a class="fcc-btn" href="C:/Users/x/Desktop/UCP/imagenes/<%=s.getUrlSancion()%>">Imagen de la sancion</a>
+                    	<a class="fcc-btn" href="<%=request.getContextPath()+"/assets/images/"+ s.getUrlSancion()%>">Imagen de la sancion</a>
 					
                     </td>
                     <td> 

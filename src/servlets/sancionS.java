@@ -33,7 +33,7 @@ public class sancionS extends HttpServlet
 		
 		Part file=request.getPart("image");
 		String imageFileName=file.getSubmittedFileName();  // se le pide al archivo file, el nombre, que resulta ser el nombre de la imagen
-		String uploadPath="C:/Users/x/Pictures/Saved Pictures/"+imageFileName;  // genera la ruta de donde esta se deberia guardar la iomagen
+		String uploadPath="assets/images/"+imageFileName;  // genera la ruta de donde esta se deberia guardar la iomagen
 		// Uploading our selected image into the images folder
 		try
 		{
@@ -44,6 +44,8 @@ public class sancionS extends HttpServlet
 			is.read(data);
 			fos.write(data);
 			fos.close();
+			System.out.println("########################################################################");
+			System.out.println(getServletContext().getRealPath("/"));
 		}
 		catch(Exception e)
 		{

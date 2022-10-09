@@ -130,7 +130,7 @@ public class DataIntegrante
 							  + "                                                                                            where idIntegrante = ?)\r\n"
 							  + "left join  subdivision s on ri2.idSub = s.idSub\r\n"
 							  + "left join  ran_subdivision rs on s.idSub = rs.idSub and ri2.idRanSub = rs.idRanSub\r\n"
-							  + "group by ri.idIntegrante\r\n"
+							  + "group by nombre, apellido, discordId, steamHex, usuario, i.idRol, r.descRol, rs.nombreRangoSub, rs.idRanSub, r2.nombRango ,ri.fechaDesde, ri.idRango,s.descripcion, s.idSub\r\n"
 							  + "having ri.idIntegrante = ?;");
 					
 			stmt.setInt(1, i.getIdIntegrante());
@@ -219,7 +219,7 @@ public class DataIntegrante
 					+ "                                                                                            from ransub_integrante\r\n"
 					+ "                                                                                            where idIntegrante = i.idIntegrante)\r\n"
 					+ "left join  subdivision s on ri2.idSub = s.idSub\r\n"
-					+ "group by ri.idIntegrante;");
+					+ "group by nombre,apellido,steamHex,ri.fechaDesde,discordId,r2.nombRango,s.descripcion,i.idIntegrante;");
 		
 			if(rs!=null) 
 			{

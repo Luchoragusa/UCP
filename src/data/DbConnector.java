@@ -9,8 +9,8 @@ public class DbConnector {
 	private String driver="com.mysql.cj.jdbc.Driver";
 	private String host="186.182.43.139"; // "127.0.0.1"
 	private String port="3306";
-	private String user="vps";
-	private String password="admin";
+	private String user="psg";
+	private String password="PSGjava_2022";
 	private String db="psgpanel";
 	private int conectados=0;
 	private Connection conn=null;

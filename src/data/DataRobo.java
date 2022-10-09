@@ -28,7 +28,7 @@ public class DataRobo
 					+ "inner join lugarrobo lug on r.idLugarRobo = lug.idLugarRobo\r\n"
 					+ "inner join integrante i on  r.idIntegrante = i.idIntegrante\r\n"
 					+ "where i.idIntegrante = ?\r\n"
-					+ "order by fecha_robo desc limit 5");
+					+ "order by r.nroRobo desc");
 			stmt.setInt(1, inte.getIdIntegrante());
 			rs= stmt.executeQuery();
 			if(rs!=null) 

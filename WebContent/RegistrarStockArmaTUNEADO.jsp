@@ -46,56 +46,7 @@
 		LinkedList<Arma> ar = da.getAll();
 		DataStockarma ds = new DataStockarma();
 		LinkedList<Stockarma> listaS = ds.getAll();
-		for(Stockarma s :  listaS) {
-	%>
-
-  <div class="container">
-    <div class="killFeed">
-      <div class="killer"><%=s.getArma().getNombreArma() %> </div>
-      <%
-      	if(s.getArma().getNombreArma().equalsIgnoreCase("Revolver")){
-      %>
-      	<div class="weapon deagle"></div>
-      <%
-      	} else if(s.getArma().getNombreArma().equalsIgnoreCase("AK-47")){      		
-      %>
-      	<div class="weapon ak47"></div>
-      <%
-      	} else if(s.getArma().getNombreArma().equalsIgnoreCase("ApPistol")){      		
-      %>
-    	<div class="weapon appistol"></div>
-      <%
-    	} else if(s.getArma().getNombreArma().equalsIgnoreCase("Mag7")){      		
-      %>
-		<div class="weapon mag7"></div>
-      <%
-    	} else if(s.getArma().getNombreArma().equalsIgnoreCase("Francotirador")){      		
-      %>
-      	<div class="weapon awp"></div>
-      <%
-    	} else if(s.getArma().getNombreArma().equalsIgnoreCase("Glock")){      		
-      %>
-      	<div class="weapon glock"></div>
-      <%
-    	} else if(s.getArma().getNombreArma().equalsIgnoreCase("G3sg1")){ 
-      %>
-      	<div class="weapon g3sg1"></div>
-      <%
-    	} else if(s.getArma().getNombreArma().equalsIgnoreCase("M4a1")){ 
-      %>
-      	<div class="weapon m4a1"></div>
-      <%
-    	} 
-      %>    	
-      
-      <div class="killed">
-        Cantidad: <%=s.getCantidad() %>
-      </div>
-    </div>
-  </div>
-  
-  	<%
-		}
+	
 	%>
 
   <br/><br/>
@@ -105,6 +56,7 @@
       <th>Tipo Arma</th>
       <th>Nombre Arma</th>
       <th>Fecha de carga</th>
+      <th>Cantidad</th>
     </tr>
     
     <% 
@@ -116,6 +68,7 @@
 		<th bgcolor=#ffffff> <%=s.getArma().getTipoArma() %> </th>
 		<th bgcolor=#ffffff> <%=s.getArma().getNombreArma() %> </th>
 		<th bgcolor=#ffffff> <%=s.getFecha() %> </th>
+		<th bgcolor=#ffffff> <%=s.getCantidad() %> </th>
 	<%
 		}
 	%>    

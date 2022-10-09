@@ -315,7 +315,7 @@
                                                 	<%=r.getResultado() %>
                                                 </td>
                                                 <td>
-                                                	<%=(r.getFecha_robo().format(isoHora) +" || "+ r.getFecha_robo().format(isoFecha))%>
+                                                	<%=(r.getFecha_robo().format(isoFecha))%>
                                                 </td>
                                                 <td>
                                                 	<%=lug.getLugarRobo() %>

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 import entities.Arma;
+import entities.Rol;
 import entities.Stockarma;
 
 public class DataStockarma 
@@ -105,12 +106,9 @@ public class DataStockarma
 		try 
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-				 "select nombreArma, tipoArma, cantidad, fecha\r\n"
-				 + "from (select max(fecha) as fechaT, idArma\r\n"
-				 + "        from stockarma\r\n"
-				 + "        group by idArma) as tabla\r\n"
-				 + "inner join arma a on tabla.idArma = a.idArma\r\n"
-				 + "inner join stockarma s on tabla.idArma = s.idArma and tabla.fechaT = s.fecha");
+				 "select a.nombreArma, a.tipoArma, s.cantidad, s.fecha\r\n"
+				 + "				  from stockarma s\r\n"
+				 + "				  inner join arma a on s.idArma = a.idArma");
 			rs=stmt.executeQuery();
 			if(rs!=null) 
 			{
@@ -208,4 +206,6 @@ public class DataStockarma
             }
 		}
 	}
+
+	
 }

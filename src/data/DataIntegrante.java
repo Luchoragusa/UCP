@@ -121,7 +121,7 @@ public class DataIntegrante
 							  + " discordId,\r\n"
 							  + " steamHex, \r\n"
 							  + " usuario, \r\n"
-							  + " i.idRol, \r\n"
+							  + " i.idRol as idRol, \r\n"
 							  + " r.descRol,\r\n"
 							  + " rs.nombreRangoSub, \r\n"
 							  + " rs.idRanSub,\r\n"
@@ -154,7 +154,7 @@ public class DataIntegrante
 					
 			stmt.setInt(1, i.getIdIntegrante());
 			stmt.setInt(2, i.getIdIntegrante());
-			stmt.setInt(3, i.getIdIntegrante());
+			// stmt.setInt(3, i.getIdIntegrante());
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()) 
 			{

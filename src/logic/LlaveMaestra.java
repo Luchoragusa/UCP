@@ -2,7 +2,7 @@ package logic;
 
 public class LlaveMaestra 
 {
-	static private String llave = "password";
+	static private String llave = "llaveMaestra";
 
 	static public String getLlave() 
 	{

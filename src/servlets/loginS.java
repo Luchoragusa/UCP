@@ -27,8 +27,11 @@ public class loginS extends HttpServlet
 			i.setUsuario(user);
 			i.setPw(pw);
 			
+			System.out.println("Validando correctamente");
+			
 			if (ctrlLogin.validateWeb(i))
 			{
+				
 				i = ctrlLogin.getIntegrante(i);
 				HttpSession session = request.getSession();
 				session.setAttribute("id", i.getIdIntegrante());

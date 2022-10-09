@@ -31,19 +31,19 @@ public class sancionS extends HttpServlet
 		
 		// Pego el codigo del otro JSP
 		
-		Part file=request.getPart("image");
-		String imageFileName=file.getSubmittedFileName();  // se le pide al archivo file, el nombre, que resulta ser el nombre de la imagen
-		String uploadPath=getServletContext().getRealPath("/")+"assets/images/"+imageFileName;  // genera la ruta de donde esta se deberia guardar la iomagen
+		//Part file=request.getPart("image");
+		//String imageFileName=file.getSubmittedFileName();  // se le pide al archivo file, el nombre, que resulta ser el nombre de la imagen
+		//String uploadPath=getServletContext().getRealPath("/")+"assets/images/"+imageFileName;  // genera la ruta de donde esta se deberia guardar la iomagen
 		// Uploading our selected image into the images folder
 		try
 		{
-			FileOutputStream fos=new FileOutputStream(uploadPath);
-			InputStream is=file.getInputStream();
+			//FileOutputStream fos=new FileOutputStream(uploadPath);
+			//InputStream is=file.getInputStream();
 			
-			byte[] data=new byte[is.available()];
-			is.read(data);
-			fos.write(data);
-			fos.close();
+//			byte[] data=new byte[is.available()];
+//			is.read(data);
+//			fos.write(data);
+//			fos.close();
 			System.out.println("########################################################################");
 			System.out.println(getServletContext().getRealPath("/"));
 		}
@@ -52,13 +52,13 @@ public class sancionS extends HttpServlet
 			e.printStackTrace();
 		}
 		
-		s.setUrlSancion(imageFileName);
+		//s.setUrlSancion(imageFileName);
 		s.setFecha(LocalDate.now());
 		
 		DataSancion ds = new DataSancion();
 		ds.add(s);
 		int id = Integer.parseInt(request.getParameter("idS"));
-		ds.listarImagen(id, response);
+		//ds.listarImagen(id, response);
 		response.sendRedirect("AplicarSancionTuneado.jsp");
 	}
 
@@ -67,7 +67,7 @@ public class sancionS extends HttpServlet
 	{
 		DataSancion ds = new DataSancion();
 		int id = Integer.parseInt(request.getParameter("idS"));
-		ds.listarImagen(id, response);
+		//ds.listarImagen(id, response);
 	}
 	
 }

@@ -9,31 +9,31 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-import javax.servlet.http.HttpServletResponse;
+//import jakarta.http.HttpServletResponse;
 
 import entities.Integrante;
 import entities.Sancion;
 
-public class DataSancion 
-{	
+public class DataSancion
+{
 	public Integrante getById(Integrante i)
 	{
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		LinkedList<Sancion> sanciones= new LinkedList<>();
-		try 
+		try
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement("select * from sancion where idIntegrante = ? order by fecha desc");
 			stmt.setInt(1, i.getIdIntegrante());
 			rs=stmt.executeQuery();
-			if(rs!=null) 
+			if(rs!=null)
 			{
-				while(rs.next()) 
+				while(rs.next())
 				{
 					Sancion san =new Sancion();
 					san.setIdIntegrante(san.getIdIntegrante());
 					san.setId(rs.getInt("id"));
-					san.setMotivo(rs.getString("motivo"));		
+					san.setMotivo(rs.getString("motivo"));
 					san.setTipoSancion(rs.getString("tipoSancion"));
 					san.setEstado(rs.getBoolean("estado"));
 					san.setNroSancion(rs.getInt("nroSancion"));
@@ -41,21 +41,21 @@ public class DataSancion
 					san.setUrlSancion(rs.getString("urlImagen"));
 					sanciones.add(san);
 				}
-			}	
+			}
 			i.setSancion(sanciones);
-		} catch (SQLException e) 
+		} catch (SQLException e)
 		{
 			e.printStackTrace();
-		} 
-		finally 
+		}
+		finally
 		{
-			try 
+			try
 			{
 				if(rs!=null) {rs.close();}
 				if(stmt!=null) {stmt.close();}
 				DbConnector.getInstancia().releaseConn();
-			} 
-			catch (SQLException e) 
+			}
+			catch (SQLException e)
 			{
 				e.printStackTrace();
 			}
@@ -67,52 +67,52 @@ public class DataSancion
 
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
-		try 
+		try
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement("delete from sancion where idIntegrante = ?");
 			stmt.setInt(1, i.getIdIntegrante());
 			stmt.execute();
-		}  
-		catch (SQLException e) 
+		}
+		catch (SQLException e)
 		{
             e.printStackTrace();
-		} 
-		finally 
+		}
+		finally
 		{
-            try 
+            try
             {
                 if(keyResultSet!=null)keyResultSet.close();
                 if(stmt!=null)stmt.close();
                 DbConnector.getInstancia().releaseConn();
-            } 
-            catch (SQLException e) 
+            }
+            catch (SQLException e)
             {
             	e.printStackTrace();
             }
 		}
-	
-		
+
+
 	}
-	
-	public void listarImagen (int id, HttpServletResponse response) {
+
+	public void listarImagen (int id /*,HttpServletResponse response*/) {
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
-		
+
 		InputStream is= null;
 		OutputStream os = null;
 		BufferedInputStream bis = null;
 		BufferedOutputStream bos = null;
-		response.setContentType("image/*");
+		//response.setContentType("image/*");
 		try {
-			os=response.getOutputStream();
+			//os=response.getOutputStream();
 			stmt=DbConnector.getInstancia().getConn().prepareStatement("select * from sancion where idIntegrante = ? order by fecha desc");
 			stmt.setInt(1, id);
 			rs=stmt.executeQuery();
-			if(rs!=null) 
+			if(rs!=null)
 			{
 				is = rs.getBinaryStream("urlImagen");
-			}	
-			
+			}
+
 			bis = new BufferedInputStream(is);
 			bos = new BufferedOutputStream(os);
 			int i=0;
@@ -123,12 +123,12 @@ public class DataSancion
 			// TODO: handle exception
 		}
 	}
-	
-	public void add(Sancion s) 
+
+	public void add(Sancion s)
 	{
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
-		try 
+		try
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
 							"insert into sancion (tipoSancion, motivo, idIntegrante, estado, nroSancion, fecha, urlImagen) VALUES (?,?,?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
@@ -146,48 +146,48 @@ public class DataSancion
                 s.setIdIntegrante(keyResultSet.getInt(1));
                 s.setMotivo(keyResultSet.getString(2));
             }
-		} 
-		catch (SQLException e) 
+		}
+		catch (SQLException e)
 		{
             e.printStackTrace();
-		} 
-		finally 
+		}
+		finally
 		{
-            try 
+            try
             {
                 if(keyResultSet!=null)keyResultSet.close();
                 if(stmt!=null)stmt.close();
                 DbConnector.getInstancia().releaseConn();
-            } 
-            catch (SQLException e) 
+            }
+            catch (SQLException e)
             {
             	e.printStackTrace();
             }
 		}
 	}
 
-	public void apelar(Sancion s) 
+	public void apelar(Sancion s)
 	{
 		PreparedStatement stmt= null;
-		try 
+		try
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement("update sancion set estado = ? where id = ?");
 			stmt.setBoolean(1, false);
 			stmt.setInt(2, s.getId());
 			stmt.executeUpdate();
-		} 
-		catch (SQLException e) 
+		}
+		catch (SQLException e)
 		{
             e.printStackTrace();
-		} 
-		finally 
+		}
+		finally
 		{
-            try 
+            try
             {
                 if(stmt!=null)stmt.close();
                 DbConnector.getInstancia().releaseConn();
-            } 
-            catch (SQLException e) 
+            }
+            catch (SQLException e)
             {
             	e.printStackTrace();
             }
@@ -197,25 +197,25 @@ public class DataSancion
 	public void delete(Sancion s) {
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
-		try 
+		try
 		{
 			stmt=DbConnector.getInstancia().getConn().prepareStatement("delete from sancion where id = ?");
 			stmt.setInt(1, s.getId());
 			stmt.execute();
-		}  
-		catch (SQLException e) 
+		}
+		catch (SQLException e)
 		{
             e.printStackTrace();
-		} 
-		finally 
+		}
+		finally
 		{
-            try 
+            try
             {
                 if(keyResultSet!=null)keyResultSet.close();
                 if(stmt!=null)stmt.close();
                 DbConnector.getInstancia().releaseConn();
-            } 
-            catch (SQLException e) 
+            }
+            catch (SQLException e)
             {
             	e.printStackTrace();
             }

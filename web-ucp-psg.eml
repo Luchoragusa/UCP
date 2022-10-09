@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inheritJdk="true">
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<lib name="mysql-connector-java-8.0.24.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/mysql-connector-java-8.0.24.jar!/"/>
+	</lib>
+	<lib name="WebContent/WEB-INF/lib/mysql-connector-java-8.0.24.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/WebContent/WEB-INF/lib/mysql-connector-java-8.0.24.jar!/"/>
+	</lib>
+	<levels>
+		<level name="J2EE 1.4-J2EE 1.4" value="project"/>
+		<level name="Java EE 6-Java EE 6" value="project"/>
+		<level name="javax-inject" value="project"/>
+		<level name="cdi-api-1.1" value="project"/>
+	</levels>
+</component>

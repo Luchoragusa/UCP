@@ -19,7 +19,7 @@ import entities.Rol;
 @WebServlet("/altaIntegranteS")
 public class altaIntegranteS extends HttpServlet 
 {
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		Integrante i = new Integrante();
 		DataIntegrante di = new DataIntegrante();

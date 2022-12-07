@@ -82,7 +82,9 @@
                     <th><h1>Estado</h1></th>
                     <th><h1>URL</h1></th>
                     <th><h1>Apelada</h1></th>
+                    <% if(idRol==1){ %> 
                     <th><h1>Eliminar</h1></th>
+                    <%} %> 
                 </tr>
             
             <% 
@@ -128,11 +130,13 @@
 							<p>A la espera...</p>
 					<%}; %>	
                     </td>
+                    <% if(idRol==1){ %> 
                     <td> 
 	                    <form action="eliminarS?idSE=<%=s.getId()%>" method="post">
 							<input type ="submit" value = "Eliminar" >
 						</form>	
                     </td>
+                    <%} %> 
                 </tr>
             <%
 				}

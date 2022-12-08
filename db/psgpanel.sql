@@ -304,7 +304,6 @@ CREATE TABLE `robo` (
   `nroRobo` int NOT NULL,
   `idIntegrante` int NOT NULL,
   `resultado` varchar(45) NOT NULL,
-  `hora_robo` time NOT NULL,
   `fecha_robo` date NOT NULL,
   `idLugarRobo` int NOT NULL,
   PRIMARY KEY (`nroRobo`,`idIntegrante`),
@@ -321,7 +320,7 @@ CREATE TABLE `robo` (
 
 LOCK TABLES `robo` WRITE;
 /*!40000 ALTER TABLE `robo` DISABLE KEYS */;
-INSERT INTO `robo` VALUES (1,1,'Ganado','10:54:00','2021-10-29',1),(2,1,'Ganado','10:55:00','2021-10-29',1),(3,1,'Perdido','19:55:52','2021-10-31',3);
+INSERT INTO `robo` VALUES (1,1,'Ganado','2021-10-29',1),(2,1,'Ganado','2021-10-29',1),(3,1,'Perdido','2021-10-31',3);
 /*!40000 ALTER TABLE `robo` ENABLE KEYS */;
 UNLOCK TABLES;
 

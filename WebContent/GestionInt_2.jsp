@@ -237,9 +237,7 @@
 					</form>
 					
 						<div style="text-align:center">	
-							<form action="AplicarSancionTuneado.jsp">
-								<input type = "submit" class="btn btn-info" value = "Aplicar Sancion"><br><br>
-							</form>
+							
 								
 							<form action="deleteIntegranteS?idInte=<%=i.getIdIntegrante()%>" method="post">
 								<input type = "submit" class="btn btn-danger" value = "Eliminar" ><br>

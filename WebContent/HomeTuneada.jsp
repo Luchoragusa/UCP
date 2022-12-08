@@ -74,7 +74,7 @@
                     <!-- =================== -->
                     <!-- 		Logo 
                     <!-- =================== -->
-                    <a class="navbar-brand" href="oldIndex.html">
+                    <a class="navbar-brand" href="HomeTuneada.jsp">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <img src="./assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
@@ -141,14 +141,10 @@
 
                                     		<%=usuarioOnline.getNombre() + " " + usuarioOnline.getApellido()%>
 
-                                        <i class="fa fa-angle-down"></i></h5>
+                                        </h5>
                                         <span class="op-5 user-email">DiscordName</span>
                                     </a>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="Userdd">
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="configuracion.jsp"><i
-                                                class="ti-settings m-r-5 m-l-5"></i>Configuración</a>
-                                    </div>
+                                
                                 </div>
                             </div>
                             <!-- Fin de perfil de usuario -->
